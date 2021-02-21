@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="../../../css/dashboard.css"/>
+<link rel="stylesheet" href="../../../css/product.css">
+<section class="best_product products">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h2><%= labels['LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_SALES'][language] %></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box dash_bg">
+						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
+							<table class="tbl-bottom-space">
+								<thead>
+									<tr>
+										<th scope="col" width='13%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID'][language] %></th>
+										<th scope="col" width='13%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_CLIENT_ID'][language] %></th>
+										<th scope="col" width='12%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE'][language] %></th>
+										<th scope="col" width='12%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE'][language] %></th>
+										<th scope="col" width='30%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS'][language] %></th>
+										<th scope="col" width='10%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT'][language] %></th>
+										<th scope="col" width='10%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_STATUS'][language] %></th>
+									</tr>
+								</thead>
+								<tbody id='tbl_total_sales_orders'>
+							  		<tr><td colspan='7'><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][language] %></td></tr>
+							  	</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+$(document).ready(()=> {
+	$.ajax({url: "<%=baseURL%>aggregators/statistics/get-total-sales", success: (result) => {
+        $('#tbl_total_sales_orders').html(result)
+    }});
+})
+</script>

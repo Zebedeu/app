@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="../../../css/chat.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script src="../../../js/chat.js"></script>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row add-address post-add">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+			 		<h3 style="margin-bottom: 10px !important;"><%= labels['LBL_CHAT'][language] %></h3>
+				</div>
+
+				<div style="padding:0;" class="col-md-12">
+					<div class="messaging">
+					  <div class="inbox_msg">
+						<div class="row">
+							<!-- <div style="padding: 0;" class="col-md-4">
+								<div class="inbox_people">
+									  <div class="headind_srch">
+										<div class="recent_heading">
+										  <h4><%= labels['LBL_ALL_CHATS'][language] %></h4>
+										</div>
+									  </div>
+									  <div class="inbox_chat scroll">
+									  	<% for(let i=0; i < administrators.length; i++) { %>
+											<div class="chat_list enable-cursor" chat_user="<%= administrators[i]['name'] %>">
+											  <div class="chat_people">
+												<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt=""> </div>
+												<div class="chat_ib">
+												  <h5><%= administrators[i]['name'] %> <span class="chat_date"><%= moment(administrators[i]['last_login_date']).format('DD MMM') %></span></h5>
+												  <p><%= administrators[i]['email'] %></p>
+												</div>
+											  </div>
+											</div>
+										<% } %>
+									  </div>
+								</div>
+							</div> -->
+
+							<div class="col-md-6" style="float: right;">
+								<div class="mesgs" style='width: 100%;'>
+									<div class="recent_heading_">
+									  	<h4><img src="https://ptetutorials.com/images/user-profile.png" alt=""><span class='admin_user'><%= user.name %></h4>
+									  	<ul class="chat_drop">
+											<li class="dropdown">
+										 		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="images/more.png"></a>
+								        		<ul class="dropdown-menu dropdown-cart my_account" role="menu">
+								              		<li>
+								              			<a href="javascript:void(0)" onclick="deleteChat()"><%= labels['LBL_DELETE_CHAT'][language] %></a>
+								              		</li>
+								          		</ul>
+								        	</li>
+							    		</ul>
+									</div>
+								  	<div class="msg_history" id="chatroom">
+										
+								  	</div>
+								  <div class="type_msg">
+									<div class="input_msg_write">
+									  <input type="text" id="message" class="write_msg" placeholder="<%= labels['LBL_TYPE_A_MESSAGE'][language] %>" />
+									  <button class="msg_send_btn" id="send_message" type="button"><img src="images/send_.png"></button>
+									</div>
+								  </div>
+								</div>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$( document ).ready(function() {
+    	$('.chat_list').on('click', function(){
+    		$('.admin_user').text($(this).attr('chat_user'));
+			deleteChat();
+		})
+	});
+
+	function deleteChat(){
+		$('#chatroom').html('');
+	}
+</script>

@@ -1,0 +1,197 @@
+<script src="../../../../js/profile.js"></script>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<div class="row add-address">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+				 		<h3><%= labels['LBL_LOGIN_SECURITY'][language] %> </h3>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_USER_ID'][language] %>:</label>
+							    <p><%= user_info.user_id %></p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_USER_TYPE'][language] %>:</label>
+							    <p><%= user_info.user_type %></p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_TYPE'][language] %>:</label>
+							    <p class='capitalize'><%= user_info.type %></p>
+							</div>
+						</div>
+						<% if(user_info.type == 'company'){ %>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+						 		<div class="search-container loginsecurity_detail security-box-height">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_COMPANY_NAME'][language] %>:</label>
+								    <p><%= user_info.company_name %></p>
+								</div>
+							</div>
+						<% } %>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_LOGIN_SECURITY_FIRST_NAME'][language] %>:</label>
+							    <p class='profile_first_name'><%= user_info.first_name %></p>
+							    <button class="main_btn2" onClick="getUserInfo('first_name','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_FIRST_NAME'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_FIRST_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_LOGIN_SECURITY_LAST_NAME'][language] %>:</label>
+							    <p class='profile_last_name'><%= user_info.last_name %></p>
+							    <button class="main_btn2" onClick="getUserInfo('last_name','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_LAST_NAME'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_LAST_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %>:</label>
+							    <p class='profile_email'><%= user_info.email %></p>
+							    <button class="main_btn2" onClick="getUserInfo('email','<%= labels['LBL_EMAIL'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_EMAIL'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<% if(user.login_type == 'email'){ %>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+						 		<div class="search-container loginsecurity_detail security-box-height">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PASSWORD'][language] %>:</label>
+						        	<p class='profile_password'><%= user_info.display_password %></p>
+						        	<input type='hidden' class='default_profile_password' value='<%= user_info.password %>'>
+								    <button class="main_btn2" onClick="getUserPasswordInfo('password','<%= labels['LBL_PASSWORD'][language] %>', '<%= user_info.password %>')"><%= labels['LBL_EDIT'][language] %></button>
+								</div>
+							</div>
+						<% } %>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_MOBILE_NUMBER'][language] %>:</label>
+							    <p class='profile_phone_number'><%= user_info.mobile_country_code %> <%= user_info.phone_number %></p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>:</label>
+							    <p class='profile_bank_name'><%= user_info.bank_name %></p>
+							    <button class="main_btn2" onClick="getUserInfo('bank_name','<%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_USER_BANK_ACCOUNT_NO'][language] %>:</label>
+							    <p class='profile_bank_account_no'><%= user_info.bank_account_no %></p>
+							    <button class="main_btn2" onClick="getUserInfo('bank_account_no','<%= labels['LBL_PRODUCER_USER_BANK_ACCOUNT_NO'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= lbl_nif %>:</label>
+							    <p class='profile_nif'><%= user_info.nif %></p>
+							    <button class="main_btn2" onClick="getUserInfo('nif','<%= lbl_nif %>','<%= lbl_validate_nif %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_LOGIN_SECURITY_ADDRESS'][language] %>:</label>
+							    <p class='profile_address'><%= user_info.address %></p>
+							    <button class="main_btn2" onClick="getUserInfo('address','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_ADDRESS'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_ADDRESS'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_PROVINCE'][language] %>:</label>
+							    <p class='profile_state'><%= user_info.state_name %></p>
+							    <button class="main_btn2" onClick="getUserStateCityInfo('<%=baseURL%>','state','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_PROVINCE'][language] %>','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_PROVINCE'][language] %>','<%= user_info.state_id %>','<%= user_info.city_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_CITY'][language] %>:</label>
+							    <p class='profile_city'><%= user_info.city_name %></p>
+							    <button class="main_btn2" onClick="getUserStateCityInfo('<%=baseURL%>','city','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_CITY'][language] %>','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_CITY'][language] %>','<%= user_info.state_id %>','<%= user_info.city_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div id="googleMap" style="width:100%;height:500px;"></div> 		
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<a href="<%=baseURL%>producers/dashboard"><button class="main_btn"><%= labels['LBL_DONE'][language] %></button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+let latitude = 0, longitude = 0, def_latitude = -12.380055701520678, def_longitude = 17.560387343750005;
+let typingTimer;
+let doneTypingInterval = 1000;
+let gpsLocation = {};
+let city_latitude = "<%= user_info.city_latitude %>";
+let city_longitude = "<%= user_info.city_longitude %>";
+gpsLocation = JSON.parse('<%- JSON.stringify(user_info.gps_location) %>');
+
+if(gpsLocation.latitude && gpsLocation.longitude){
+	def_latitude = parseFloat(gpsLocation.latitude);
+	def_longitude = parseFloat(gpsLocation.longitude);
+} else if(city_latitude && city_longitude){
+	def_latitude = parseFloat(city_latitude);
+	def_longitude = parseFloat(city_longitude);
+}
+
+function myMap() {
+	var map;
+	var myLatlng = new google.maps.LatLng(def_latitude, def_longitude);
+	var myOptions = {
+        zoom: 17,
+        center: myLatlng,
+        mapTypeId: 'satellite'
+    };
+    map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+	var marker = new google.maps.Marker({
+		draggable: true,
+		position: myLatlng,
+		map: map,
+		title: "<%= labels['LBL_PRODUCER_LOGIN_SECURITY_GPS_LOCATION_YOUR_LOCATION'][language] %>"
+    });
+
+    google.maps.event.addListener(marker, 'dragend', function (event) {
+    	clearTimeout(typingTimer);
+		typingTimer = setTimeout(doneTyping, doneTypingInterval);
+
+		function doneTyping () {
+
+			latitude = event.latLng.lat();
+    		longitude = event.latLng.lng();
+
+		 	saveLocation();
+		}
+    });
+}
+
+function saveLocation(){
+	console.log(latitude+' = '+longitude);
+	
+	if(latitude && longitude){
+		let url = "<%=baseURL%>save-gps-location?latitude="+latitude+"&longitude="+longitude;
+		$.ajax({url,  success: function(response) {
+            showAlert(response.message, "<%=baseURL%>", "<%= labels['LBL_PROFILE_UPDATED'][language] %>");
+	        setTimeout(() => {
+	            hideAlert()
+	        }, 3000);
+        }});
+	}
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= google_api_key %>&callback=myMap"></script>

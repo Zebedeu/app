@@ -1,0 +1,17 @@
+<div class="col-md-12 col-sm-12 form">
+	<ul class="topnav" id="myTopnav" style="padding-top: 0">
+		<li>
+			<div class="row head_bg">
+				<div style="width: 100%;" class="">
+					<form class="boxed">
+						<input type="radio" id="ios" name="language" value="PT" <%= (language == 'PT') ? 'checked' : '' %>>
+					  	<label for="ios" class="enable-cursor" onClick="setLabels('PT', '<%=baseURL%>')">PT</label>
+					  	<span>|</span>
+					  	<input type="radio" id="android" name="language" value="EN" <%= (language == 'EN') ? 'checked' : '' %>>
+					  	<label for="android" class="enable-cursor" onClick="setLabels('EN', '<%=baseURL%>')">EN</label>
+					</form>
+				</div>
+		    </div>
+		</li>
+	</ul>
+</div>

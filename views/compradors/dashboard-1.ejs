@@ -1,0 +1,171 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row add-address">
+							<div class="col-md-12">
+								<div class="col-md-12 col-sm-12 col-xs-12 align-right">
+									<h3><%= labels['LBL_YOUR_ACCOUNT'][language] %></h3>
+								</div>
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/order/list">
+											<div class="account_box">
+									        	<img src="../../../images/order.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/product/add">
+											<div class="account_box">
+									        	<img src="../../../images/postadd.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/explore/list">
+											<div class="account_box">
+									        	<img src="../../../images/explore_pro.PNG">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS_DESCRIPTION'][language] %> </p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/favourite/list">
+											<div class="account_box">
+									        	<img src="../../../images/wishlist.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/user/address">
+											<div class="account_box">
+									        	<img src="../../../images/pin_.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>compradors/user/profile">
+											<div class="account_box">
+									        	<img src="../../../images/login.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY'][language] %></h3>
+										        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>							
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> 
+
+<% if(products.length > 0){ %>
+<section class="best_product products">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h2><%= labels['LBL_RECOMMEDED_BASED_ON_YOUR_ACTIVITY'][language] %></h2>
+				</div>
+			</div>
+			<div class="row">
+				<% for(let i=0; i < products.length; i++) { %>
+					<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+						<div class="product-data" style='position:relative;'>
+                            <span style='z-index:999;' class="add-fav" onClick="toggleGetSetFavourite('<%= (products[i].product_id) %>')"><a href="javascript:void(0)"><i favourite_product_id="<%= products[i].product_id %>" class="favourite_icon favourite_icon_<%= products[i].product_id %> <% if(products[i].is_favourite == 'yes'){ %> fa fa-heart <% } else { %> fa fa-heart-o <% } %>" aria-hidden="true"></i></a></span>
+							<div class="product-img" onClick="goToDetails('<%= products[i].product_id %>')">
+							  <img src="<%= products[i]['image'] %>" alt="Avatar" class="pro-image img-size">
+							</div>
+							<div class="product-text">
+								<a href="<%=baseURL%>compradors/explore/details/<%= products[i]['product_id'] %>"><p><%= products[i]['sub_category_title'] %></p></a>
+								<h5><%= products[i]['category_title'] %></h5>
+								<h5 class='capitalize'><span>Kz <%= products[i]['unit_price'] %> / <%= products[i]['unit_type'] %></span></h5>
+								<h6 class='capitalize'><%= labels['LBL_QUANTITY'][language] %> : <%= products[i]['remaining_unit_value'] %> <%= (products[i]['remaining_unit_value'] > 1) ? products[i]['unit_plural_title'] : products[i]['unit_type'] %></h6>
+								<div class="kp_location">
+									<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].state_name %></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+<% } %>
+
+<script>
+function goToDetails(product_id){
+	window.location.href = "<%=baseURL%>compradors/explore/details/"+product_id;
+}
+
+let typingTimer;
+let doneTypingInterval = 1000;
+let ajax_product_id = '', ajax_favourite_type = '', ajax_product_arr = [];
+function toggleGetSetFavourite(product_id){
+	ajax_product_id = product_id;
+	if($(".favourite_icon_"+product_id).hasClass("fa fa-heart-o")){
+		ajax_favourite_type = 'set';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart-o");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart");
+	} else {
+		ajax_favourite_type = 'unset';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart-o");
+	}
+
+	clearTimeout(typingTimer);
+	typingTimer = setTimeout(setFavourite, doneTypingInterval);
+}
+
+function setFavourite(){
+	ajax_product_arr = [];
+	$( ".product-list .product-data .add-fav a .favourite_icon" ).each(function( index ) {
+		let inner_favourite_type = '';
+		if($(this).hasClass("fa fa-heart")){
+			inner_favourite_type = 'set';
+		} else {
+			inner_favourite_type = 'unset';
+		}
+
+		ajax_product_arr.push({
+			product_id: $(this).attr('favourite_product_id'),
+			type: inner_favourite_type
+		});
+	});
+
+	console.log(ajax_product_arr);
+	clearTimeout(typingTimer);
+	let url = "<%=baseURL%>compradors/favourite/set-unset";
+	$.post( url, { product_obj: ajax_product_arr }).done(function( data ) {
+	    console.log('done');
+	});
+}
+</script>

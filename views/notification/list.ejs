@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="../../../css/notification.css"/>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-6">
+			 		<h3><%= labels['LBL_NOTIFICATION_TITLE'][language] %></h3>
+				</div>
+				<div class="notification-no-records">
+					<% if(logs.length > 0){ %>
+						<div class="col-md-6 col-sm-6 col-xs-6 clear-notification-icon" onclick='clearNotification()'>
+					 		<i class="fa fa-trash bin"></i>
+						</div>
+						<% for(let i=0; i < logs.length; i++) { %>
+							<div class="col-md-12">
+								<div class="my_orders notification">
+									<div class="order_header">
+										<div class="row">
+											<div class="col-md-10 col-sm-10 col-xs-10">
+												<p><%= logs[i]['title'] %></p>
+											</div>
+											<div class="col-md-2 col-sm-2 col-xs-2" >
+												<form id="delete-notify">
+													<input type="hidden" name="id" class="id-<%= logs[i]['notification_log_id'] %>" value="<%= logs[i]['notification_log_id'] %>">
+													<!-- <i id="clicke-me" class="fa fa-trash bin"></i> -->
+
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+			                            <div class="col-md-12 mb-sm--20">
+			                                <div class="text-block2">
+			                                    <h4 class="mb--20"><%= logs[i]['description'] %></h4>
+			                                    <p class="noti_date"><%= logs[i]['created_at'] %></p>
+			                                </div>
+			                            </div>
+			                        </div>
+								</div>
+							</div>
+							<script>
+
+							$(document).ready(function() {
+								$('#clicke-me').on("click", function(e) {
+									e.preventDefault();
+									var id = $(".id-<%= logs[i]['notification_log_id'] %>").val();
+									$.post( "<%=baseURL%>note/"+ id, {}).done(function( data ) {});
+						  
+								});
+							  });
+						  </script>
+						<% } %>
+					<% } else { %>
+						<div class="col-md-12"><p><%= labels['LBL_MENU_NOTIFICATION_NO_RECORD_AVAILABLE'][language] %></p></div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+function clearNotification(){
+	$('.clear-notification-icon').fadeOut('slow');
+	$(".notification-no-records").html("<div class='col-md-12'><p><%= labels['LBL_MENU_NOTIFICATION_NO_RECORD_AVAILABLE'][language] %></p></div>")
+	$.post( "<%=baseURL%>clear-notifications", {}).done(function( data ) {});
+}
+
+</script>

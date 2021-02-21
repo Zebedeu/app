@@ -1,0 +1,227 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<form id="frm-add-user" action="" method="post" enctype="multipart/form-data">
+					<div class="row add-address">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<h3><%= labels['LBL_ADD_FARMER'][language] %></h3>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_NAME'][language] %></label>
+								    <input class="custom_input" type="text" placeholder="" value="" id='name' name="names">
+								    <span class="validation-alert" id='err-name'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %></label>
+								    <input class="custom_input" type="text" id='email' name="email_id"> 
+								    <span class="validation-alert" id='err-email'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_COUNTRY_CODE'][language] %></label>
+								    <select class="form-control mobile_country_code" id="mobile_country_code" name="mobile_country_code" style='height:42px;cursor:pointer;'>
+										<option value="">--- <%= labels['LBL_FARMER_USER_MOBILE_COUNTRY_CODE_PLACEHOLDER'][language] %> ---</option>
+								    </select>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_NUMBER'][language] %></label>
+								    <input class="custom_input" type="text" placeholder="" value="" id='phone_number' name="phone_number"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_NAME'][language] %> </label>
+								    <input class="custom_input" type="text" placeholder="" value="" id='bank_name' name="bank_name">
+								    <span class="validation-alert" id='err-bank-name'></span>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_ACCOUNT_NO'][language] %> </label>
+								    <input class="custom_input farmer_bank_account_no" type="text" placeholder="" value="" id='bank_account_no' name="bank_account_no">
+								    <span class="validation-alert" id='err-bank-account-no'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_LOGIN_SECURITY_NIF'][language] %> </label>
+								    <input class="custom_input" type="text" placeholder="" value="" id='nif' name="nif">
+								    <span class="validation-alert" id='err-nif'></span>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
+								    <input class="custom_input" type="text" placeholder="" value="" id='address' name="address">
+								    <span class="validation-alert" id='err-address'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+								    <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
+										<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-state-id'></span>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+								    <select class="select_plug city_id" id="city_id" name="city_id">
+										<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-city-id'></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PROFILE_PICTURE'][language] %></label>
+								    <div class="input-group">
+									  <div class="custom-file">
+									    <input type="file" class="custom-file-input" id="inputGroupFile01"
+									      aria-describedby="inputGroupFileAddon01" name="images" id="images">
+									    <label class="custom-file-label" for="inputGroupFile01"></label>
+									  </div>
+									</div>
+									<span class="validation-alert" id='err-images'>&nbsp;</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+						 		<a href="javascript:void(0)"><button class="main_btn post-add-now" type='button' onclick="submitPost()"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
+						 		<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+    function validatePost(){
+    	let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
+    	if(!$('#name').val()){
+			errNameFlag = 1;
+			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
+		} else {
+			errNameFlag = 0;
+			$('#err-name').hide();
+		}
+
+		errEmailFlag = validateEmailAddress($('#email').val());
+		if(errEmailFlag > 0){
+			caption = (errEmailFlag == 1) ? "<%= labels['LBL_ENTER_EMAIL'][language] %>" : "<%= labels['LBL_ENTER_CORRECT_EMAIL'][language] %>";
+			$('#err-email').text(caption).show();
+		} else {
+			$('#err-email').hide();
+		}
+
+		if(!$('#address').val()){
+			errAddressFlag = 1;
+			$('#err-address').text("<%= labels['LBL_ENTER_ADDRESS'][language] %>").show();
+		} else {
+			errAddressFlag = 0;
+			$('#err-address').hide();
+		}
+
+		if(!$('#bank_name').val()){
+			errBankNameFlag = 1;
+			$('#err-bank-name').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_NAME'][language] %>").show();
+		} else {
+			errBankNameFlag = 0;
+			$('#err-bank-name').hide();
+		}
+
+		let bankAccountNo = $('#bank_account_no').val().replace(/ /g,"");
+        errBankNoFlag = validateBankAccountNo(bankAccountNo);
+		if(errBankNoFlag){
+            $('#err-bank-account-no').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO'][language] %>").show();
+        } else {
+        	$('#err-bank-account-no').hide();
+        }
+
+		if(!$('#nif').val()){
+			errNIFFlag = 1;
+			$('#err-nif').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_NIF'][language] %>").show();
+		} else {
+			errNIFFlag = 0;
+			$('#err-nif').hide();
+		}
+
+		if(!$('#state_id').val()){
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_ENTER_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
+
+		if(!$('#city_id').val()){
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_ENTER_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
+
+		if(!errNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
+			return true;
+		} else {
+			return false;
+		}
+    }
+
+    function submitPost(){
+		if(validatePost()){
+			$(".post-add-now").attr("disabled", true);
+			$(".lds-facebook").show();
+
+			$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
+				if(result.code == 200){
+	            	$('#frm-add-user').submit();
+	            } else {
+	            	$(".post-add-now").attr("disabled", false);
+					$(".lds-facebook").hide();
+
+	            	showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+					setTimeout(() => {
+						hideAlert()
+					}, 3000);
+	            }
+			});
+		}
+	}
+
+	$(document).ready(function() {
+		getStates('<%=baseURL%>');
+		getMobileCountryCodes('<%=baseURL%>');
+	})
+</script>

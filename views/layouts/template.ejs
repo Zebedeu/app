@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../../../images/logo.png">
+	<%- include('../shared/common_css') %>
+	<script type='text/javascript' src="../../../js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="../../../js/language.js"></script>
+	<script type='text/javascript' src="../../../js/validation.js"></script>
+	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-au.js"></script>
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+<body>
+
+<div class="">
+	<div id="nav-icon" class="menu-button visible-xs">
+		<span class="burger-icon"></span>
+	</div>
+</div>
+	<div class="main_header">
+		<% if(user.user_type == 'producers'){ %>
+			<%- include('../shared/top_nav_producers') %>
+		<% } else if(user.user_type == 'aggregators'){ %>
+			<%- include('../shared/top_nav_aggregators') %>
+		<% } else if(user.user_type == 'transporters'){ %>
+			<%- include('../shared/top_nav_transporters') %>
+		<% } else if(user.user_type == 'trading'){ %>
+			<%- include('../shared/top_nav_trading') %>
+		<% } else { %>
+			<%- include('../shared/top_nav_compradors') %>
+		<% } %>
+	</div> 
+</section>
+
+<%- body %>
+
+<footer class="main-section">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../shared/site_map') %>
+		</div>
+	</div>
+</footer>
+
+<div class="main-section social-media">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../shared/footer') %>
+		</div>
+	</div>
+</div>
+
+<%- include('../shared/common_modal') %>
+<%- include('../shared/common_js') %>
+
+<script>
+jQuery(document).ready(function($) {
+	$('.menu').responsiveMenu({
+		breakpoint: '1200'
+	});
+});
+</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+<script  src="../../../js/script.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#accordion i").click(function(){
+		//slide up all the link lists
+		$("#accordion ul ul").slideUp(200);
+		//slide down the link list below the h3 clicked - only if its closed
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown(200);
+		}
+	})
+
+	$.ajax({url: "<%=baseURL%>get-my-wallet-balance",  success: (result) => {
+    	if(result.code == 404){
+    		window.location.href = '/';
+    	}
+
+		$('.user_wallet_balance').html(result.wallet_balance);
+		$('.total_wallet_balance').removeClass('hide').addClass('show');
+    }});
+})
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function onLoad() {
+  	gapi.load('client:auth2', function() {
+    	gapi.auth2.init();
+  	});
+}
+
+function logOut(login_type) {
+	if(login_type == 'google'){
+		let auth2 = gapi.auth2.getAuthInstance();
+	  	auth2.signOut().then(function () {
+	    	window.location.href = '/logout';
+	  	});
+	} else {
+		window.location.href = '/logout';
+	}
+}
+
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
+</body>
+</html>

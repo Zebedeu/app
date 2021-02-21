@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="../../../css/product-list.css">
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row add-address post-add">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<h3><%= labels['LBL_PRODUCT_ORDER_DETAIL'][language] %></h3>
+				</div>
+
+				<% if(products.length > 0) { %>
+				<div class="col-lg-12 col-sm-12 list-products">
+					<table class="table shopping-cart-wrap">
+						<tbody>
+							<tr>
+								<th scope="col" width="60"><%= labels['LBL_ORDER_ID'][language] %></th>
+								<th scope="col" width="150">
+									<%= labels['LBL_AGGREGATOR_YOUR_ORDER_CLIENT_ID'][language] %></th>
+								<th scope="col" width="100"><%= labels['LBL_SHIPMENT_ID'][language] %> </th>
+								<th scope="col" width="120"><%= labels['LBL_PRICE'][language] %></th>
+								<th scope="col" width="120"><%= labels['LBL_QUANTITY'][language] %></th>
+							</tr>
+							<% for(let i=0; i < products.length; i++) { %>
+							<tr>
+								<td>
+									<h4 class='capitalize'><%= products[i].order_id %></h4>
+								</td>
+								<td>
+									<h4><%= products[i].buyer_info.user_id %></h4>
+								</td>
+								<td>
+									<h4><%= products[i].shipment_id %></h4>
+								</td>
+								<td>
+									<h4 class='capitalize'><%= products[i].unit_price %></h4>
+								</td>
+								<td>
+									<h4><%= products[i].qty %></h4>
+								</td>
+							</tr>
+							<% } %>
+						</tbody>
+					</table>
+				</div>
+				<% }else { %>
+				<div class='row'>
+					<div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'>
+						<p><%= labels['LBL_NO_ORDER_AVAILABLE'][language] %></p>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,122 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="row ">
+			<div class="col-md-12 data-section mt40">
+				<h2>Best Marketplace For Farmers In Angola</h2>
+				<p class="product-p">Sell Spices, Fruits, Vegetables, Fertilizers, Agro Chemicals and other agricultural products.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="white_bg2">
+					<% for(let d=0; d < demands.length; d++) { %>
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="demand_title"><%= demands[d].category_title %> <span>- <%= demands[d].sub_category_title %></span></h2>
+						</div>
+					</div>
+					<div class="row" id="product-list-section">
+						<% if(demands[d]['products'].length > 0){ %>
+							<% for(let i=0; i < demands[d]['products'].length; i++) { %>
+								<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+									<div class="product-data">
+										<% let scale_image = (demands[d]['products'][i].is_highlighted) ? 'product-img-highlight' : 'product-img'; %>
+										<div class="<%= scale_image %>">
+										  <img src="<%= demands[d]['products'][i].images[0] %>" class="pro-image">
+										</div>
+										<div class="product-text">
+											<a href="details/<%= demands[d]['products'][i].product_id %>"><p style='text-transform: uppercase'><%= demands[d]['products'][i].category_title %></p></a>
+											<h5 style='text-transform: capitalize'><%= demands[d]['products'][i].sub_category_title %></h5>
+											<h5 style='text-transform: capitalize'><span>Kz <%= (demands[d]['products'][i].unit_price).toFixed(2) %></span> Units : <%= demands[d]['products'][i].unit_type %></h5>
+											<h6>In Stock : <%= demands[d]['products'][i].unit_value %></h6>
+											<div class="kp_location">
+												<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= demands[d]['products'][i].state_name %></span>
+											</div>
+										</div>
+									</div>	
+								</div>
+							<% } %>
+						<% } else { %>
+							<div class="col-md-12 thankyou">
+								<img src="../../../images/thankyou.png">
+								<p>No matches found</p>
+							</div>
+						<% } %>
+						
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 thankyou" style='margin: -25px 0 30px 0;'>
+				<a href="list"><button class="main_btn">Explore All Products</button></a>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	let category_id = 'all', availability_in_stock = 'yes', availability_forecasted = 'yes', lower_price_range = 0, higher_price_range = "<%= higher_price_range %>", search_product_title = '', search_product_location = '';
+	$(document).ready(() => {
+		$('.list-categories').click(function() {
+			category_id = $(this).attr("category_id");
+		    filterProductItems();
+		})
+
+		$('#in_stock').on('change', function() {
+		    if(this.checked){
+		    	availability_in_stock = 'yes';
+		    } else {
+		    	availability_in_stock = 'no';
+		    }
+
+		    filterProductItems();
+		});
+
+		$('#forecasted').on('change', function() {
+		    if(this.checked){
+		    	availability_forecasted = 'yes';
+		    } else {
+		    	availability_forecasted = 'no';
+		    }
+
+		    filterProductItems();
+		});
+	  	
+	  	let saveResult = function(data) {
+	  		lower_price_range = data.from;
+	  		higher_price_range = data.to;
+
+	  		filterProductItems();
+		};
+
+	  	$(".js-range-slider").ionRangeSlider({
+		    skin: "square",
+		    step: 10,
+		    type: "double",
+		    grid: false,
+		    min: lower_price_range,
+		    max: 1000,
+		    from: 0,
+		    to: higher_price_range,
+		    prefix: "Kz ",
+		    onChange: saveResult,
+		    onFinish: saveResult
+		});
+	});
+
+	function doSearch(){
+		filterProductItems();
+	}
+
+	function filterProductItems(){
+		search_product_title = $('#search-by-product').val();
+		search_product_location = $('#search-by-location').val();
+
+		let url = "filter_product_items?category_id="+category_id+"&availability_in_stock="+availability_in_stock+"&availability_forecasted="+availability_forecasted+"&lower_price_range="+lower_price_range+"&higher_price_range="+higher_price_range+"&search_product_title="+search_product_title+"&search_product_location="+search_product_location;
+		console.log(url);
+		$.ajax({url,  success: function(result) {
+            $('#product-list-section').html(result);
+        }});
+	}
+</script>

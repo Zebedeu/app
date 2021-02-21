@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="../../../css/transaction.css"/>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../shared/breadcrumb') %>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="wallet">
+ 				    <ul>
+					    <div class="">
+						    <li><a href="<%=baseURL%>wallet"><%= labels['LBL_WALLET_MENU_WALLET_BALANCE'][language] %></a></li>
+						    <li><a href="<%=baseURL%>wallet-transactions"><%= labels['LBL_WALLET_MENU_TRANSACTION'][language] %></a></li>
+						    <li class="active"><a href="<%=baseURL%>wallet-withdrawal-requests"><%= labels['LBL_WALLET_MENU_WITHDRAWAL_REQUEST'][language] %></a></li>
+					   	</div>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="white_bg2">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="wallet_balance">
+								<p><%= labels['LBL_WITHDRAWAL_REQUEST_TITLE'][language] %></p>
+							</div>
+							<div class="wallet_filter">
+								<div class="row">
+									<div class="col-md-4">
+										<label class="wallet_label"><%= labels['LBL_WITHDRAWAL_REQUEST_FROM_DATE'][language] %></label>
+										<input type="text" id='from-date' class="search-query form-control date-picker" value="<%= current_date %>">
+									</div>
+									<div class="col-md-4">
+										<label class="wallet_label"><%= labels['LBL_WITHDRAWAL_REQUEST_TO_DATE'][language] %></label>
+										<input type="text" id='to-date' class="search-query form-control date-picker" value="<%= current_date %>">
+									</div>
+
+									<div class="col-md-12 err-date hide">
+										<span class="validation-alert"><%= labels['LBL_WALLET_FROM_DATE_TO_DATE_FILTER'][language] %></span>
+									</div>
+
+									<div class="col-md-12">
+										<button class="withdrwal_btn filte_btn" type="button" onClick='searchByDate()'><%= labels['LBL_WITHDRAWAL_REQUEST_SUBMIT_BUTTON'][language] %></button>
+									</div>
+								</div>
+							</div>
+							<div class="wallet_history">
+								<table width='100%'>
+									<thead>
+										<tr>
+											<th width='18%'><%= labels['LBL_WALLET_DATE'][language] %></th>
+											<th width='25%'><%= labels['LBL_WALLET_REQUEST_ID'][language] %></th>
+											<th width='42%'><%= labels['LBL_WALLET_STATUS'][language] %></th>
+											<th width='15%'><%= labels['LBL_WALLET_AMOUNT'][language] %></th>
+										</tr>
+									</thead>
+									<tbody class='wallet_withdraw_request'>
+										<% if(logs.length > 0){ %>
+											<% for(let i=0; i < logs.length; i++) { %>
+												<tr>
+													<td><%= logs[i]['created_at'] %></td>
+													<td><%= logs[i]['withdraw_request_id'] %></td>
+													<td>
+														<% if(logs[i]['status'] == 'pending'){ %>
+															<%= labels['LBL_WITHDRAWAL_REQUEST_STATUS_PENDING'][language] %>
+														<% } else if(logs[i]['status'] == 'completed'){ %>
+															<%= labels['LBL_WITHDRAWAL_REQUEST_STATUS_COMPLETED'][language] %>
+														<% } else if(logs[i]['status'] == 'cancelled'){ %>
+															<%= labels['LBL_WITHDRAWAL_REQUEST_STATUS_CANCELLED'][language] %>
+														<% } %>
+													</td>
+													<td class="wallet_amount">- Kz <%= logs[i]['amount'] %></td>
+												</tr>
+											<% } %>
+										<% } else { %>
+											<tr><td colspan='4'><%= labels['LBL_WALLET_NO_RECORD_AVAILABLE'][language] %></td></tr>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
+<script>
+	function searchByDate(){
+		if($('#from-date').val() && $('#to-date').val()){
+			$('.err-date').addClass('hide').removeClass('show');
+			$.ajax({url: "<%=baseURL%>wallet-withdrawal-requests?from_date="+$('#from-date').val()+"&to_date="+$('#to-date').val(),  success: (result) => {
+		    	$('.wallet_withdraw_request').html(result);
+		    }});
+			
+		} else {
+			$('.err-date').addClass('show').removeClass('hide');
+		}
+	}
+</script>

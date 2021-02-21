@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="../../../css/wallet.css" />
+<section class="productsdetail">
+     <div class="container">
+          <div class="breadcrumb_card">
+               <%- include('../shared/breadcrumb') %>
+          </div>
+          <div class="row">
+               <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="wallet">
+                         <ul>
+                              <div class="">
+                                   <li class="active"><a
+                                             href="<%=baseURL%>wallet"><%= labels['LBL_WALLET_MENU_WALLET_BALANCE'][language] %></a>
+                                   </li>
+                                   <li><a
+                                             href="<%=baseURL%>wallet-transactions"><%= labels['LBL_TRANSACTIONS_TITLE'][language] %></a>
+                                   </li>
+                                  <!--  <li><a
+                                             href="<%=baseURL%>wallet-withdrawal-requests"><%= labels['LBL_WALLET_MENU_WITHDRAWAL_REQUEST'][language] %></a>
+                                   </li> -->
+                              </div>
+                         </ul>
+                    </div>
+               </div>
+               <div class="col-md-9 col-sm-12 col-xs-12">
+                    <div class="white_bg2">
+                         <div class="row">
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                   <div class="wallet_balance">
+                                        <p><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %></p>
+                                        <h2>Kz <span class='user_wallet_balance'><%= wallet %></span></h2>
+                                        <% if(user.user_type != 'compradors' && user.user_type != 'trading'){ %>
+                                             <h4> <%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> : Kz
+                                             <span class=''><%= lockedAmount %></span></h4>
+                                             <h4> <%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %>
+                                             <span class='text-success' > : Kz <%= parseFloat(wallet) + parseFloat(lockedAmount) %></span></h4>
+                                        <% } %>
+                                        
+                                        <button class="withdrwal_btn " style="margin-bottom: 5%;"
+                                             type="button"><%= labels['LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON'][language] %></button>
+                                        <p class='wallet_withdraw_message' style='display:none;'></p>
+                                   </div>
+                                   
+                                   <!-- <div class="wallet_history">
+                                        <table width='100%'>
+                                             <tr>
+                                                  <th width='10%'><%= labels['LBL_WALLET_DATE'][language] %></th>
+                                                  <th width='10%'><%= labels['LBL_WALLET_TITLE'][language] %></th>
+                                                  <th width='40%'><%= labels['LBL_WALLET_DESCRIPTION'][language] %></th>
+                                                  <th width='20%'><%= labels['LBL_WALLET_AMOUNT'][language] %></th>
+                                                  <th width='20%'><%= labels['LBL_WALLET_REMAINING_BALANCE'][language] %></th>
+                                             </tr>
+                                             <% if(logs.length > 0){ %>
+                                             <% for(let i=0; i < logs.length; i++) { %>
+                                             <tr>
+                                                  <td><%= logs[i]['created_at'] %></td>
+                                                  <td><%= logs[i]['title'] %></td>
+                                                  <td><%= logs[i]['description'] %></td>
+                                                  <td class="wallet_amount"><% if(logs[i]['type'] == 'add'){ %>+
+                                                       <% } else { %> - <% } %>Kz <%= logs[i]['amount'] %></td>
+                                                  <td>Kz <%= logs[i]['remaining_balance'] %></td>
+                                             </tr>
+                                             <% } %>
+                                             <% } else { %>
+                                             <tr>
+                                                  <td colspan='5'>
+                                                       <%= labels['LBL_WALLET_NO_RECORD_AVAILABLE'][language] %></td>
+                                             </tr>
+                                             <% } %>
+                                        </table>
+                                   </div> -->
+
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+<script>
+     let wallet = parseFloat("<%= wallet.toFixed(2) %>");
+     let is_wallet_enable = <%= is_wallet_enable %>;
+     $(document).ready(() => {
+          if (wallet <= 0 || !is_wallet_enable) {
+               $(".withdrwal_btn").attr("disabled", true);
+          }
+
+          $('.withdrwal_btn').on('click', () => {
+               $('.enter-wallet-amount').val('');
+               $("#walletWithdrawModal").modal('show');
+          })
+     })
+
+     function withDrawWalletAmount() {
+          if (!$('.enter-wallet-amount').val()) {
+               $('#err-enter-wallet-amount').text("<%= labels['LBL_WALLET_PROMPT_VALIDATE_ENTER_AMOUNT'][language] %>");
+               return false;
+          } else if (parseFloat($('.enter-wallet-amount').val()) > wallet) {
+               let errMessage = "<%= labels['LBL_WALLET_PROMPT_VALIDATE_RANGE_AMOUNT'][language] %>";
+               errMessage = errMessage.replace("#AMOUNT#", wallet.toFixed(2));
+               $('#err-enter-wallet-amount').text(errMessage);
+               return false;
+          } else {
+               $('#err-enter-wallet-amount').text('');
+               $(".btn-save-wallet-amount").attr("disabled", true);
+               $(".lds-facebook").show();
+
+               $.post("<%=baseURL%>withdrawal-money", { wallet: parseFloat($('.enter-wallet-amount').val()) }).done((result) => {
+                    $(".btn-save-wallet-amount").attr("disabled", false);
+                    $(".lds-facebook").hide();
+                    $("#walletWithdrawModal").modal('hide');
+
+                    $(".user_wallet_balance").text(result.remaining_amount);
+                    $('.wallet_withdraw_message').html(result.message).show();
+                    setTimeout(function () {
+                         $('.wallet_withdraw_message').hide();
+                    }, 20000);
+               });
+          }
+     }
+</script>

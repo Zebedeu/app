@@ -1,0 +1,225 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+		<div class="row add-address">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+		 		<h3><%= labels['LBL_CHECKOUT'][language] %></h3>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<% for(let i=0; i < products.length; i++) { %>
+						<div class="col-lg-12 col-sm-12 my_oderDetails">
+							<div class="col-lg-4 col-md-6 col-sm-12 kp_myorder">
+								<img src="<%= products[i].images[0] %>" class="img-small-size">
+							</div>
+							<div class="col-lg-8 col-md-6 col-sm-12 kp_myorder cartSection">
+								<h2><%= products[i].sub_category_title %></h2>
+								<h3 class='capitalize'><%= products[i].category_title %></h3>
+								<p class="itemNumber"><%= labels['LBL_QTY'][language] %>: <span style="color: #000;"><%= products[i].qty %></span> <%= products[i].unit_plural_title %></p>
+								<p class="itemNumber"><%= labels['LBL_PRICE'][language] %> - Kz <%= (products[i].unit_price).toFixed(2) %> / <%= products[i].unit_type %></p>
+								<p class="itemNumber"><%= labels['LBL_ORDER_TOTAL'][language] %>: <span style="color: #000;">Kz <%= (products[i].qty * products[i].unit_price).toFixed(2) %></span></p>
+							</div>
+						</div>
+					<% } %>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="heading cf addnew">
+						    <a href="javascript:void(0)" class="button btn-cart" onClick="addNewAddress('order')" style="color: #FFF;">+ <%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<% for(let i=0; i < addresses.length; i++) { %>
+						<div class="col-md-6">
+							<div class="my_orders my-order-address">
+								<div class="order_header">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="funkyradio">
+												<div class="funkyradio-primary mar10">
+										            <input type="radio" name="radio" id="radio_<%= addresses[i]['address_id'] %>" class="address_radio">
+										            <label for="radio" onClick="setAddressType('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_USE_THIS'][language] %></label>
+										        </div>	
+									    	</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" id="order_address_list">
+		                            <div class="col-md-12 mb-sm--20">
+		                                <div class="text-block address_">
+		                                    <p class='capitalize'><%= addresses[i]['type'] %> <% if(addresses[i]['name']) { %> - <%= addresses[i]['name'] %> <% } %></p>
+		                                    <address><%= addresses[i]['complete_address'] %>, <%= addresses[i]['locality'] %>, <%= addresses[i]['city_name'] %>, <%= addresses[i]['state_name'] %></address>
+		                                    <% if(addresses[i]['email']){ %>
+		                                    	<h6><%= labels['LBL_EMAIL'][language] %>: <span><%= addresses[i]['email'] %></span></h6>
+		                                    <% } %>
+		                                    
+		                                    <% if(addresses[i]['mobile_country_code'] && addresses[i]['mobile_number']){ %>
+		                                    	<h6><%= labels['LBL_MOBILE_NUMBER'][language] %>: <span><%= addresses[i]['mobile_country_code'] %> <%= addresses[i]['mobile_number'] %></span></h6>
+		                                    <% } %>
+	                                    	
+		                                </div>
+		                            </div>
+		                        </div>
+							</div>
+						</div>
+					<% } %>
+				</div>
+
+				<div class="payment_method">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="title">
+									<h3><%= labels['LBL_PAYMENT_OPTIONS'][language] %></h3>
+								</div>
+								<div class="accordion js-accordion">
+									  <!-- accordion item -->
+									  <div class="accordion__item js-accordion-item active">
+									    <div class="accordion-header js-accordion-header head_"><img src="../../images/card.png"><%= labels['LBL_PAY_WITH_BANK_TRANSFER'][language] %></div>
+									    <div class="accordion-body js-accordion-body">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="search-container">
+													    <p><%= labels['LBL_ACCOUNT_NO'][language] %> : <span id='account_no'></span></p>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="search-container">
+													    <p><%= labels['LBL_CODE'][language] %> : <span id='account_code'></p>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="search-container">
+													    <p><%= labels['LBL_COMPRADOR_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME'][language] %> : <span id='account_company_name'></p>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="search-container">
+														<a href="javascript:void(0)"><button id="order_now" style='display:none' class="button btn-cart" onClick="placeOrder('bank','place_order')"><%= labels['LBL_ORDER_NOW'][language] %></button></a>
+														<a href="javascript:void(0)"><button id="reserve_now" style='display:none' class="button btn-cart" onClick="placeOrder('bank','reserve_order')"><%= labels['LBL_COMPRADOR_CHECKOUT_RESERVE_ORDER'][language] %></button></a>
+														<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+														<p style='color:#F7232C;display:none' id="no_balance"><%= labels['LBL_NO_SUFFICIENT_BALANCE_FOR_PLACE_ORDER'][language] %></p>
+													</div>
+												</div>
+											</div>
+									    </div>
+									  </div>
+									  <!-- end of accordion item -->
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="col-md-4">
+				<div class="cart_">
+					<div class="infoWrap"> 
+						<li class="items odd">
+					        <div class="subtotal cf checkout_total">
+					        	<h3><%= labels['LBL_ORDER_TOTAL'][language] %></h3>
+			   					<ul>
+						      		<li class="totalRow"><span class="label"><%= labels['LBL_SUB_TOTAL'][language] %></span><span class="value">Kz <%= subtotal.toFixed(2) %></span></li>
+						      		<li class="totalRow"><span class="label"><%= labels['LBL_TRANSPORTATION_FEES'][language] %></span><span class="value trans_fees">Kz <%= transportFees.toFixed(2) %></span></li>
+						          	<li class="totalRow hide"><span class="label">Shipping</span><span class="value">Kz 0.00</span></li>
+						            <li class="totalRow hide"><span class="label">Tax</span><span class="value">Kz 0.00</span></li>
+						            <li class="totalRow final"><span class="label"><%= labels['LBL_TOTAL'][language] %></span><span class="value total_fees">Kz <%= (total + transportFees).toFixed(2) %></span></li>
+							    </ul>
+							</div>
+				    	</li>
+				    	
+			     	</div>	
+		     	</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="../../js/accordian.js"></script>
+<script>
+let ajax_address_id = '';
+let transport_fees = parseFloat('<%= transportFees.toFixed(2) %>');
+let total_fees = parseFloat('<%= total.toFixed(2) %>');
+let wallet_balance = parseFloat('<%= wallet.toFixed(2) %>');
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+$(document).ready(function(){
+	$("#accordion i").click(function(){
+		//slide up all the link lists
+		$("#accordion ul ul").slideUp(200);
+		//slide down the link list below the h3 clicked - only if its closed
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown(200);
+		}
+	})
+
+	<% if(addresses.length > 0) { %>
+		setAddressType("<%= addresses[0]['address_id'] %>");
+	<% } %>
+})
+
+function setAddressType(address_id){
+	$.post( "<%=baseURL%>compradors/checkout/transport_fees", { address_id }).done(function( data ) {
+		transport_fees = parseFloat(data.transport_fees);
+		$('.trans_fees').text('Kz '+transport_fees.toFixed(2));
+		$('.total_fees').text('Kz '+(total_fees+transport_fees).toFixed(2));
+	   	ajax_address_id = address_id;
+		$('.address_radio').attr('checked', false);
+		$('#radio_'+address_id).attr('checked', true).button("refresh");
+	  	$('#radio_'+address_id).trigger('click');
+	  	
+	  	let balance = "<%= labels['LBL_NO_SUFFICIENT_BALANCE_FOR_PLACE_ORDER'][language] %>";
+	  	balance = balance.replace("#HRS#", parseInt(data.reserve_order_hrs));
+	  	if(wallet_balance >= total_fees ){
+	  		if(wallet_balance < (total_fees + transport_fees)){
+	  			$("#no_balance").html(balance);
+		  		$("#order_now").hide();
+		  		$("#reserve_now").show();
+		  		$("#no_balance").show();
+		  	}
+		  	else{
+		  		$("#order_now").show();
+		  		$("#reserve_now").hide();
+		  		$("#no_balance").hide();
+		  	}
+		}
+		else{
+			$("#order_now").hide();
+			$("#reserve_now").show();
+			$("#no_balance").show();
+			$("#no_balance").html(balance);
+		}
+	});
+}
+
+function placeOrder(payment_type, type){
+	if(ajax_address_id){
+		$("#order_now").attr("disabled", true);
+		$("#reserve_now").attr("disabled", true);
+		$(".lds-facebook").show();
+		$.post( "<%=baseURL%>compradors/checkout/"+type, { payment_type, address_id: ajax_address_id, transport_fees }).done(function( data ) {
+		    window.location.href = "<%=baseURL%>compradors/thanks/list/"+data.order_id;
+		});
+	} else {
+		showAlert("<%= labels['LBL_PLEASE_ADD_YOUR_ADDRESS'][language] %>", "<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")
+		setTimeout(() => {
+			hideAlert()
+		}, 3000);
+	}
+}
+
+$(document).ready(function(){
+  	$.ajax({url: "<%=baseURL%>compradors/checkout/get-bank-information",  success: function(result) {
+        $('#account_no').text(result.response.account_no);
+        $('#account_code').text(result.response.code);
+        $('#account_company_name').text(result.response.company_name);
+    }});
+});
+</script>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kepya Agromercado Digital</title>
+	<meta property="og:site_name" content="Scotch">
+	<meta property="og:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>">
+	<meta property="og:type" content="website">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>">
+	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: Kz <%= product.unit_price %> / <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>">
+	<meta property="og:image" content="<%=product.images[0]%>">
+	<meta property="fb:app_id" content="1389892087910589">
+	<meta property="fb:admins" content="579622216,709634581">
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+
+	<link rel="shortcut icon" type="image/x-icon" href="../../../images/logo.png">
+	<%- include('../../shared/common_css') %>
+	<link rel="stylesheet" href="../../../css/new_style.css">
+	<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'>
+
+	<script type='text/javascript' src="../../../js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="../../../js/language.js"></script>
+	<script type='text/javascript' src="../../../js/validation.js"></script>
+	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-au.js"></script>
+	<% if(user && user.user_id){ %>
+		<script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb6c3082e55100123f3042&product=sticky-share-buttons"></script>
+	<% } %>
+	<script src="../../../js/ligh-slider.js"></script>
+</head>
+<body>
+
+<div class="">
+	<div id="nav-icon" class="menu-button visible-xs">
+		<span class="burger-icon"></span>
+	</div>
+</div>
+	<div class="main_header">
+		<%- include('../../shared/top_nav_compradors') %>
+	</div>
+</section>
+
+<section class="productsdetail">
+	<div class="container">
+		<% if(user && user.user_id){ %>
+			<div class="breadcrumb_card">
+				<%- include('../../shared/breadcrumb') %>
+			</div>
+		<% } %>
+		<div class="product_card kpproduct_detail">
+		<div class="row">
+			<div class="col-md-5 col-sm-12 col-xs-12">
+				<ul id="lightSlider">
+			        <li>
+			        	<a href="<%= product.images[0] %>" data-fancybox="gallery">
+			            	<img src="<%= product.images[0] %>" style='height:440px;width:440px;'/>
+			        	</a>
+			        </li>
+			        <% for(let i=0; i < product.images.length; i++) { %>
+			        	<li class="thumb">
+				        	<a class="thumb" href="<%= product.images[i] %>" data-fancybox="gallery">
+				            	<img class="thumb" src="<%= product.images[i] %>" style='height:76px;width:76px;'/>
+				        	</a>
+				        </li>
+					<% } %>
+			    </ul>
+			</div>
+			<div style="position: relative;" class="col-md-7 col-sm-12 col-xs-12 details">
+					<!-- <a href="javascript:void(0)" style="position: absolute;right: 0;" id="PriceListCart" data-popover="custom"><img style="width: 37px;" src="../../../images/verified.png"></a>
+					<div class="PriceListCart" style="display: none;">
+                      <p class="quantity">Quality :  Excellent</p>
+                      <p class="quantity">Matching :  Better</p>
+                    </div> -->
+                    
+					<h3 class="product-title"><%= product.sub_category_title %></h3>
+					<h4><%= product.category_title %> &nbsp;
+							<i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span style="font-size: 14px;"><%= product.state_name %></span>
+						</h4>
+					<div class="rating">
+						<p class="pt10"><%= product.description %></p>
+					</div>
+
+					<div class="product_meta"><br>
+							<h4 style="color: #f69624;" class="sku_wrapper"><%= labels['LBL_PRICE'][language] %> : Kz <%= product.unit_price %> / <%= product.unit_type %></h4>
+							<% if(product.product_type == 'forecast'){ %>
+							<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_plural_title %></h5>
+								<h5 style='padding-bottom: 4px;'><%= labels['LBL_DATE_OF_AVAILABILITY'][language] %> : <%= product.harvest_date %></h5>
+							<% } else { %>
+								<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_type %></h5>
+							<% } %>
+							<h5 style='padding-bottom: 3px;'><%= labels['LBL_EXPIRY_DATE'][language] %> : <%= product.expire_date %></h5>
+
+							<h5><%= labels['LBL_COMPRADOR_EXPLORE_DETAILS_CLIENT_ID'][language] %> <span style="background-color: #f69624;color: #fff;position: relative;top: -3px;left: 5px;" class="badge badge-secondary"><%= product.user_id %></span></h5>
+							<h5><%= labels['LBL_COMPRADOR_EXPLORE_DETAILS_PRODUCT_ID'][language] %> <span style="background-color: #f69624;color: #fff;position: relative;top: -3px;left: 5px;" class="badge badge-secondary"><%= product.product_id %></span></h5>
+					</div>
+					<% if(user && user.user_id){ %>
+						<div class="pull-left qty-space">
+							<label class="qty-product-details"><%= labels['LBL_QTY'][language] %> : </label>
+							<div class="custom pull-left">
+								<div class="quantity">
+									<input type="number" id="number" class="count input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'>
+								</div>
+							</div>
+							<span style="position: relative;top: 20px;left: 10px;"><%= product.unit_type %></span>
+						</div>
+
+						<form class="cart" action="" method="post" enctype="multipart/form-data">
+							<a href="javascript:void(0)"><button type="button" name="add-to-cart" value="116" class="add-to-cart-btn button btn-cart" onclick="addToCart('<%= product.product_id %>','add_to_cart')"><%= labels['LBL_ADD_CART'][language] %></button></a>
+							<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+						</form>
+					<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="main-section">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../../shared/site_map') %>
+		</div>
+	</div>
+</footer>
+
+<div class="main-section social-media">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../../shared/footer') %>
+		</div>
+	</div>
+</div>
+
+<%- include('../../shared/common_modal') %>
+<%- include('../../shared/common_js') %>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js'></script>
+<script>
+let minQty = parseInt("<%= product.unit_min_qty %>");
+$(document).ready(() => {
+	let maxQty = parseInt("<%= product.remaining_unit_value %>");
+	$("#number").on("keypress", function(e){
+	    var currentValue = String.fromCharCode(e.which);
+	    var finalValue = $(this).val() + currentValue;
+	    if(finalValue > maxQty){
+	        e.preventDefault();
+	    }
+	});
+
+	$.post( "<%=baseURL%>compradors/explore/save-search", { product_id: "<%= product.product_id %>" }).done(function( data ) {
+		console.log('done');
+	});
+
+	$.ajax({url: "<%=baseURL%>get-my-wallet-balance",  success: (result) => {
+    	if(result.code != 404){
+    		$('.user_wallet_balance').html(result.wallet_balance);
+			$('.total_wallet_balance').removeClass('hide').addClass('show');
+    	}
+    }});
+})
+
+function increaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById('number').value = value;
+}
+
+function decreaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? value = 1 : '';
+  value--;
+  document.getElementById('number').value = value;
+}
+
+function addToCart(id,type){
+	if(!document.getElementById('number').value || parseInt(document.getElementById('number').value) < minQty){
+		showAlert("<%= labels['LBL_COMPRADOR_PRODUCT_DETAILS_MIN_UNIT_QTY'][language] %> <%= product.unit_min_qty %> <%= product.unit_plural_title %>", '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+		setTimeout(() => {
+			hideAlert()
+		}, 3000);
+		return false;
+	}
+
+	$(".add-to-cart-btn").attr("disabled", true);
+	$(".lds-facebook").show();
+
+	$.post( "<%=baseURL%>compradors/explore/cart", { product_id: id, qty: document.getElementById('number').value }).done(function( data ) {
+		if(type == 'buy_now'){
+			window.location.href = "<%=baseURL%>compradors/checkout/list";
+		} else {
+			window.location.href = "<%=baseURL%>compradors/cart/list";
+		}
+	});
+}
+
+let typingTimer;
+let doneTypingInterval = 1000;
+function toggleGetSetFavourite(product_id){
+	if($(".favourite_icon_"+product_id).hasClass("fa fa-heart-o")){
+		ajax_favourite_type = 'set';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart-o");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart");
+	} else {
+		ajax_favourite_type = 'unset';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart-o");
+	}
+
+	clearTimeout(typingTimer);
+	typingTimer = setTimeout(setFavourite, doneTypingInterval);
+}
+
+function setFavourite(){
+	ajax_product_arr = [];
+	$( ".favourite_icon" ).each(function( index ) {
+		let inner_favourite_type = '';
+		if($(this).hasClass("fa fa-heart")){
+			inner_favourite_type = 'set';
+		} else {
+			inner_favourite_type = 'unset';
+		}
+
+		ajax_product_arr.push({
+			product_id: $(this).attr('favourite_product_id'),
+			type: inner_favourite_type
+		});
+	});
+
+	console.log(ajax_product_arr);
+	clearTimeout(typingTimer);
+	let url = "<%=baseURL%>compradors/favourite/set-unset";
+	$.post( url, { product_obj: ajax_product_arr }).done(function( data ) {
+	    console.log('done');
+	});
+}
+
+jQuery(document).ready(function($) {
+	$('.menu').responsiveMenu({
+		breakpoint: '1200'
+	});
+});
+</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+<script  src="../../../js/script.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#accordion i").click(function(){
+		//slide up all the link lists
+		$("#accordion ul ul").slideUp(200);
+		//slide down the link list below the h3 clicked - only if its closed
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown(200);
+		}
+	})
+
+    let is_touch_device = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
+    $('#PriceListCart').popover({
+      html: true,
+      placement: wheretoplace,
+      container: "body",
+      trigger: "hover",
+      title: '<i style="font-size:12px;" class="fa fa-star tick-green" aria-hidden="true"></i> <span style="font-size: 14px; font-weight: bold; line-height: 21px; color: #000;">Ratings</span>',
+      template: getPopoverCustomTemplate('PriceListCart'),
+      content: function() {
+        return $(this).parents().find('.PriceListCart').html();           
+      },
+    }).on('shown.bs.popover', function () {
+        $("body").append('<div id="popover_overlay"></div>');
+    }).on('hidden.bs.popover', function () {
+        $("#popover_overlay").remove();
+    });
+    $(document).on("hover", ".popover .close_popover", function() {
+      $(this).parents(".popover").popover('hide');
+    })
+})
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function onLoad() {
+  	gapi.load('client:auth2', function() {
+    	gapi.auth2.init();
+  	});
+}
+
+function logOut(login_type) {
+	if(login_type == 'google'){
+		let auth2 = gapi.auth2.getAuthInstance();
+	  	auth2.signOut().then(function () {
+	    	window.location.href = '/logout';
+	  	});
+	} else {
+		window.location.href = '/logout';
+	}
+}
+
+function getPopoverCustomTemplate(className) {
+  	return '<div class="popover ' + className + '" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3> <div class="popover-content"></div></div>';
+}
+
+function wheretoplace(){
+    if ($(window).width() > 1024) return 'bottom';
+    if ($(window).width() < 768) return 'top';
+    return 'left';
+}
+
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
+</body>
+</html>

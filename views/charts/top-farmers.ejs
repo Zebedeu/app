@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(()=> {
+		let titles = [], total_orders = [];
+		titles = <%- JSON.stringify(titles)%>;
+		total_orders = <%- JSON.stringify(total_orders)%>;
+		new Chart(document.getElementsByClassName("topFarmers"), {
+		    type: 'bar',
+		    data: {
+		      labels: titles,
+		      datasets: [
+		        {
+		          	label: "<%= labels['LBL_DASHBOARD_TOP_PRODUCTS_ORDERS'][language] %>",
+		          	backgroundColor: '#20897D',
+		          	data: total_orders
+		        }
+		      ]
+		    },
+		    options: []
+		});
+	});
+</script>

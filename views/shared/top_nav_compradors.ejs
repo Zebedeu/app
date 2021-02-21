@@ -1,0 +1,85 @@
+<div class="container custom-container">
+	<div class="row paddy50">
+		<div class="col-md-2">
+			<div class="logo">
+				<a href="<%=baseURL%>compradors/dashboard" title="Freshmart">
+					<img class="img-responsive" src="../../../images/logo.png" alt="Freshmart">
+				</a>
+			</div>
+		</div>
+		<div class="col-md-10 paddy0">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12 cus_width">
+					<ul class="topnav" id="myTopnav">
+						<% if(user && user.user_id){ %>
+							<li class="call"><a href="tel:+244 936206262"><img src="../../../images/telephone.png"> +244 936206262</a></li>				
+							<ul class="nav navbar-nav">		
+	                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= labels['LBL_HI'][language] %> <%= user.name %>
+	                                <b class="caret"></b></a>
+	                                <ul class="dropdown-menu my_account">
+										<li><a class="" href="<%=baseURL%>compradors/user/profile"><%= labels['LBL_YOUR_ACCOUNT'][language] %></a></li>
+										<li><a class="" href="<%=baseURL%>wallet"><%= labels['LBL_COMPRADOR_MENU_YOUR_WALLET'][language] %></a></li>
+										<li><a class="" href="<%=baseURL%>compradors/explore/list"><%= labels['LBL_EXPLORE_PRODUCTS'][language] %></a></li>
+										<li><a class="" href="<%=baseURL%>compradors/user/address"><%= labels['LBL_YOUR_ADDRESSES'][language] %></a></li>
+										<li class='hide'><a class="" href="<%=baseURL%>compradors/demands"><%= labels['LBL_MENU_DEMANDS'][language] %></a></li>
+										<li><a class="" href="javascript:void(0)" onClick="logOut('<%= user.login_type %>')"><%= labels['LBL_LOGOUT'][language] %></a></li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                    <% } %>
+						<li>
+							<div class="row head_bg">
+								<%- include('../shared/inner_language_section') %>
+						    </div>
+						</li>
+					</ul>
+					<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+					   <i class="fa fa-bars"></i>
+					</a>
+				</div>
+			</div>
+			
+			<% if(user && user.user_id){ %>
+				<div class="menu-content overlay">
+					<nav class="menu">
+				    	<ul>
+				    		<li class="dropdown cart header-cart total_wallet_balance hide">
+								<h3 class="header-wallet wallet-top"> 
+									<i class="fa fa-plus-circle wallet-icon enable-cursor" onclick="addAmountInWalletATM('<%=baseURL%>')"></i> 
+									<span class='btn-wallet' onclick="redirectToWallet('<%=baseURL%>')" class="pointer"><%= labels['LBL_AMOUNT_IN_WALLET'][language] %> Kz
+								    <span class="user_wallet_balance">0,00</span></span></h3>
+							</li>
+							<li class="dropdown cart header-cart">
+								<a href="<%=baseURL%>chat" role="button" aria-expanded="false">
+									<img class="cart_ico" src="../../../images/chats2.png">
+								</a>
+							</li>
+							<li class="dropdown cart header-cart">
+								<a href="<%=baseURL%>notification" role="button" aria-expanded="false">
+									<img class="cart_ico" src="../../../images/bell.png"><span class="notification_count">0</span>
+								</a>
+							</li>
+							<li class="dropdown cart header-cart total_cart_products hide">
+						        <a href="<%=baseURL%>compradors/cart/list" role="button" aria-expanded="false"> 
+						          	<img class="cart_ico" src="../../../images/cart.png"><span class="cart_count">0</span>
+						        </a>				     
+						    </li>
+				    	</ul>
+			    	</nav>
+			    </div>
+			<% } %>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+		$.ajax({url: "<%=baseURL%>get-total-cart-products",  success: (result) => {
+			$('.cart_count').text(result);
+			$('.total_cart_products').removeClass('hide').addClass('show');
+	    }});
+	})
+
+	function addAmountInWalletATM(baseURL){
+	    $('#addAmountInWalletATMModal').modal('show');
+	}
+</script>

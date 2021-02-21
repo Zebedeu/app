@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<%- include('shared/common_css') %>
+	<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="js/language.js"></script>
+</head>
+<body>
+
+<section class="login-section text-center">
+	<div class="overlay-position"></div>
+	<div class="login-page">
+		<div class="container">
+			<div class="login-box">
+				<div class="row">
+					<%- include('shared/language_section') %>
+				</div>
+				<img src="images/logo.png">
+				<h1><%= labels['LBL_CHECK_YOUR_EMAIL_PLEASE_CHECK_YOUR_EMAIL'][language] %>. </h1>
+
+				<p class="reset_pass"><%= labels['LBL_CHECK_YOUR_EMAIL_FIRST_LINE_DESCRIPTION'][language] %> <br /> <%= email %>, <%= labels['LBL_CHECK_YOUR_EMAIL_SECOND_LINE_DESCRIPTION'][language] %> <br /> <%= labels['LBL_CHECK_YOUR_EMAIL_THIRD_LINE_DESCRIPTION'][language] %>.</p>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 form">
+						<div class="text-center creat_new"><%= labels['LBL_CHECK_YOUR_EMAIL_ALREADY_DONE'][language] %>? <a href="/"><%= labels['LBL_CHECK_YOUR_EMAIL_BACK_TO_SIGN_IN'][language] %></a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src='js/bootstrap.min.js'></script>
+<script src="js/jquery.notify.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

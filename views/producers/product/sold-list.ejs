@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="../../../css/product-list.css">
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row add-address post-add">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<h3><%= labels['LBL_SOLD_PRODUCT'][language] %></h3>
+				</div>
+
+				<% if(products.length > 0) { %>
+				<div class="col-lg-12 col-sm-12 list-products">
+					<table class="table shopping-cart-wrap">
+						<tbody>
+							<tr>
+								<th scope="col" style="width:350px !important;"><%= labels['LBL_PRODUCT'][language] %>
+								</th>
+								<th scope="col" width="60"><%= labels['LBL_UNIT'][language] %></th>
+								<th scope="col" width="100"><%= labels['LBL_SIZE'][language] %> </th>
+								<th scope="col" width="120"><%= labels['LBL_QUANTITY'][language] %></th>
+								<th scope="col" width="200"><%= labels['LBL_ACTION'][language] %></th>
+							</tr>
+							<% for(let i=0; i < products.length; i++) { %>
+							<tr
+								onclick="window.location = '<%=baseURL%>producers/product/display/<%=products[i].product_id%>'">
+								<td>
+									<figure class="">
+										<div class="img-wrap"><img src="<%= imageUrl+"/"+products[i].images[0] %>"
+												class="img-thumbnail img-sm"></div>
+										<figcaption class="media-body kp_myorder">
+											<h3><%= products[i].sub_category_title %></h3>
+											<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;"
+													class="fa fa-map-marker" aria-hidden="true"></i>
+												<span><%= products[i].location %></span></h4>
+											<h4 style="color: #f69624;" class="sku_wrapper">
+												<%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
+										</figcaption>
+									</figure>
+								</td>
+								<td>
+									<h4 class='capitalize'><%= products[i].unit_type %></h4>
+								</td>
+								<td>
+									<h4><%= products[i].size %></h4>
+								</td>
+								<td>
+									<h4 class='capitalize'><%= products[i].qty %>
+										<%= products[i].unit_type %></h4>
+								</td>
+								<td>
+									<div style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
+										class="">
+										<a href="<%=baseURL%>producers/product/order/<%= products[i].product_id %>"><i
+												style="font-size: 22px;color: #fff;" class="fa fa-eye"></i></a>
+									</div>
+									<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
+										class="">
+										<a href="<%=baseURL%>producers/product/display/<%= products[i].product_id %>"><i
+												style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
+									</div>
+									<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
+										class="">
+										<a href="<%=baseURL%>producers/product/remove/<%= products[i].product_id %>"><i
+												style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
+									</div>
+								</td>
+							</tr>
+							<% } %>
+						</tbody>
+					</table>
+				</div>
+				<% }else { %>
+				<div class='row'>
+					<div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'>
+						<p><%= labels['LBL_NO_PRODUCTS_AVAILABLE'][language] %></p>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	function filterProducts() {
+		let category_id = $('#category_id').val();
+		let type = $('#type').val();
+		let status = $('#status').val();
+		let sort_by_price = $('#sort_by_price').val();
+		let sort_by_qty = $('#sort_by_qty').val();
+
+		$.ajax({
+			url: "<%=baseURL%>producers/product/filter-list?category_id=" + category_id + "&type=" + type + "&status=" + status + "&sort_by_price=" + sort_by_price + "&sort_by_qty=" + sort_by_qty, success: function (result) {
+				$('.list-products').html(result);
+			}
+		});
+	}
+</script>

@@ -1,0 +1,757 @@
+<link rel="stylesheet" type="text/css" href="../../../css/checkout.css">
+<section class="productsdetail">
+     <div class="container">
+          <div class="breadcrumb_card">
+               <%- include('../../shared/breadcrumb') %>
+          </div>
+          <div class="product_card">
+               <div class="row add-address">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                         <h3 style="padding-bottom: 20px;"><%= labels['LBL_CHECKOUT'][language] %></h3>
+                    </div>
+                    <div class="col-md-12 no-items-in-cart">
+                         <% if(products.length > 0) { %>
+                         <form id="msform">
+                              <!-- progressbar -->
+                              <ul id="progressbar">
+                                   <li class="active"><%= labels['LBL_SHOPPING_CART'][language] %></li>
+                                   <li><%= labels['LBL_SHIPPING'][language] %></li>
+                                   <li><%= labels['LBL_REVIEW_AND_PAYMENTS'][language] %></li>
+                                   <li><%= labels['LBL_RESERVED'][language] %></li>
+                                   <li><%= labels['LBL_ORDERED'][language] %></li>
+                                   <li><%= labels['LBL_SHIPPED'][language] %></li>
+                                   <li><%= labels['LBL_TRANSPORTED'][language] %></li>
+                                   <li><%= labels['LBL_DELIVERED'][language] %></li>
+                              </ul>
+                              <fieldset>
+                                   <div class="row">
+                                        <div class="col-md-8">
+                                             <div class="card">
+                                                  <table class="table shopping-cart-wrap">
+                                                       <thead class="text-muted">
+                                                            <tr>
+                                                                 <th scope="col">
+                                                                      <%= labels['LBL_TRADING_CART_LIST_TABLE_PRODUCT'][language] %>
+                                                                 </th>
+                                                                 <th scope="col" width="180">
+                                                                      <%= labels['LBL_TRADING_CART_LIST_TABLE_QUANTITY'][language] %>
+                                                                 </th>
+                                                                 <th scope="col" width="120">
+                                                                      <%= labels['LBL_TRADING_CART_LIST_TABLE_PRICE'][language] %>
+                                                                 </th>
+                                                                 <th scope="col" width="100">
+                                                                      <%= labels['LBL_TOTAL'][language] %></th>
+                                                            </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                            <% for(let i=0; i < products.length; i++) { %>
+                                                            <tr class="my_oderDetails_<%= products[i].product_id %>">
+                                                                 <td>
+                                                                      <figure class="">
+                                                                           <div class="img-wrap"><img
+                                                                                     src="<%= products[i].images[0] %>"
+                                                                                     class="img-thumbnail img-sm"></div>
+                                                                           <figcaption class="media-body kp_myorder">
+                                                                                <h3><%= products[i].sub_category_title %>
+                                                                                </h3>
+                                                                                <h4><%= products[i].category_title %>
+                                                                                     &nbsp; <i style="font-size: 14px;"
+                                                                                          class="fa fa-map-marker"
+                                                                                          aria-hidden="true"></i>
+                                                                                     <span><%= products[i].state_name %></span>
+                                                                                </h4>
+                                                                           </figcaption>
+                                                                      </figure>
+                                                                 </td>
+                                                                 <td>
+                                                                      <div class="">
+                                                                           <div style="margin-top: 12px;width: 120px;display: inline-block;"
+                                                                                class="custom">
+                                                                                <div class="quantity">
+                                                                                     <button
+                                                                                          onclick="decreaseValue('<%= products[i].product_id %>')"
+                                                                                          class="minus decrease items-count"
+                                                                                          type="button"><i
+                                                                                               class="fa fa-minus">&nbsp;</i></button>
+                                                                                     <input type="hidden"
+                                                                                          class="product_price_<%= products[i].product_id %>"
+                                                                                          value="<%= products[i].unit_price %>">
+                                                                                     <input type="hidden"
+                                                                                          class="product_price_qty product_price_qty_<%= products[i].product_id %>"
+                                                                                          value="<%= products[i].unit_price %>_<%= products[i].qty %>_<%= products[i].product_id %>">
+                                                                                     <input type="hidden"
+                                                                                          class="product_min_qty_<%= products[i].product_id %>"
+                                                                                          value="<%= products[i].unit_min_qty %>">
+                                                                                     <input type="hidden"
+                                                                                          class="product_max_qty_<%= products[i].product_id %>"
+                                                                                          value="<%= products[i].remaining_unit_value %>">
+                                                                                     <input type="text"
+                                                                                          class="count input-text qty number_<%= products[i].product_id %>"
+                                                                                          step="1" min="1" max=""
+                                                                                          name="quantity"
+                                                                                          value="<%= products[i].qty %>"
+                                                                                          title="Qty" size="4"
+                                                                                          inputmode="numeric"
+                                                                                          onKeyUp="updateQty('<%= products[i].product_id %>')"
+                                                                                          readonly>
+                                                                                     <button
+                                                                                          onclick="increaseValue('<%= products[i].product_id %>')"
+                                                                                          class="plus increase items-count"
+                                                                                          type="button"><i
+                                                                                               class="fa fa-plus">&nbsp;</i></button>
+                                                                                </div>
+                                                                           </div>
+                                                                           <span
+                                                                                style="position: relative;top: 1px;left: 10px;"><%= products[i].unit_type %></span><br />
+                                                                           <a class="remove_cart"
+                                                                                href="javascript:void(0)"
+                                                                                onclick="removeProduct('<%= products[i].product_id %>')"><%= labels['LBL_TRADING_CART_LIST_TABLE_REMOVE'][language] %></a>
+                                                                      </div>
+                                                                 </td>
+                                                                 <td>
+                                                                      <h4 style="color: #f69624;padding-top: 11px;"
+                                                                           class="sku_wrapper">Kz
+                                                                           <%= products[i].product_unit_price %> /
+                                                                           <%= products[i].unit_type %></h4>
+                                                                 </td>
+                                                                 <td>
+                                                                      <h4 style="color: #f69624;padding-top: 11px;"
+                                                                           class="sku_wrapper">Kz <span
+                                                                                class="item_total_<%= products[i].product_id %>"><%= products[i].item_total %>
+                                                                      </h4>
+                                                                 </td>
+                                                            </tr>
+                                                            <% } %>
+                                                       </tbody>
+                                                  </table>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                             <div style="background-color: #efefef;" class="totals card">
+                                                  <h3
+                                                       style="padding: 15px 20px;margin: 0 !important;font-size: 18px !important;">
+                                                       <%= labels['LBL_ORDER_TOTAL'][language] %></h3>
+                                                  <div class="totals-item">
+                                                       <label><%= labels['LBL_SUB_TOTAL'][language] %></label>
+                                                       <div class="totals-value cart-subtotal" id="cart-subtotal">Kz
+                                                            <%= format_subtotal %></div>
+                                                  </div>
+                                                  <div class="totals-item">
+                                                       <label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
+                                                       <div class="totals-value cart-tax" id="cart-tax"></div>
+                                                  </div>
+                                                  <div class="totals-item hide">
+                                                       <label>Shipping</label>
+                                                       <div class="totals-value" id="cart-shipping">Kz 0.00</div>
+                                                  </div>
+                                                  <hr style="border-color: #cecece;margin: 15px;">
+                                                  <div class="totals-item totals-item-total">
+                                                       <label
+                                                            style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
+                                                       <div style="font-size: 18px;" class="totals-value cart-total"
+                                                            id="cart-total">Kz <%= format_total %></div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <button type="button" style="margin: 20px 15px 20px;"
+                                        class="next button btn-cart"><%= labels['LBL_CONTINUE'][language] %></button>
+                              </fieldset>
+                              <fieldset class="transport-section">
+                                   <div class="row">
+                                        <div class="col-md-12 mb-sm--20">
+                                             <a style="padding-top: 14px;font-size: 16px;color: #000;right: 18px;top: -25px;"
+                                                  href="javascript:void(0);" id="addNewProduct" class="sell_btn">+
+                                                  <%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                             <div class="my_orders">
+
+                                                  <div class="order_header">
+                                                       <div class="row">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                 <h3><%= labels['LBL_DO_YOU_NEED_TRANSPORTATION'][language] %>
+                                                                 </h3>
+                                                                 <div style="display: inline-block;padding: 10px;"
+                                                                      class="funkyradio">
+                                                                      <div class="funkyradio-primary mar10">
+                                                                           <input checked="" type="radio"
+                                                                                name="transport-needed" id="radio13"
+                                                                                class="transport-needed" value='yes'>
+                                                                           <label
+                                                                                for="radio13"><%= labels['LBL_YES'][language] %></label>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div style="display: inline-block;padding: 10px;"
+                                                                      class="funkyradio">
+                                                                      <div class="funkyradio-primary mar10">
+                                                                           <input type="radio" name="transport-needed"
+                                                                                id="radio14" class="transport-needed"
+                                                                                value='no'>
+                                                                           <label
+                                                                                for="radio14"><%= labels['LBL_NO'][language] %></label>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+
+                                        <div id="address-list">
+                                             <div class="col-md-6">
+                                                  <div class="row">
+                                                       <% for(let i=0; i < addresses.length; i++) { %>
+                                                            <div class="col-md-12">
+                                                                 <div class="my_orders">
+                                                                      <div class="order_header">
+                                                                           <div class="row">
+                                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                                     <div class="funkyradio">
+                                                                                          <div class="funkyradio-primary mar10">
+                                                                                               <input <% if(i==0) { %> checked=""
+                                                                                                    <% } %> type="radio"
+                                                                                                    name="address_radio"
+                                                                                                    id="radio_<%= addresses[i]['address_id'] %>"
+                                                                                                    value="<%= addresses[i]['address_id'] %>"
+                                                                                                    class="address_radio">
+                                                                                               <label
+                                                                                                    for="radio_<%= addresses[i]['address_id'] %>"
+                                                                                                    onClick="setAddressType('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_USE_THIS'][language] %></label>
+                                                                                          </div>
+                                                                                     </div>
+                                                                                </div>
+                                                                           </div>
+                                                                      </div>
+                                                                      <div class="row" style="height: 135px;">
+                                                                           <div class="col-md-12 mb-sm--20">
+                                                                                <div class="text-block address_">
+                                                                                     <h4><%= addresses[i]['type'] %>
+                                                                                          <% if(addresses[i]['name']) { %> -
+                                                                                          <%= addresses[i]['name'] %> <% } %></h4>
+                                                                                     <address><%= addresses[i]['complete_address'] %>,
+                                                                                          <%= addresses[i]['locality'] %>,
+                                                                                          <%= addresses[i]['city_name'] %>,
+                                                                                          <%= addresses[i]['state_name'] %></address>
+                                                                                     <% if(addresses[i]['email']){ %>
+                                                                                     <h6><%= labels['LBL_EMAIL'][language] %>:
+                                                                                          <span><%= addresses[i]['email'] %></span>
+                                                                                     </h6>
+                                                                                     <% } %>
+                                                                                     <% if(addresses[i]['mobile_country_code'] && addresses[i]['mobile_number']){ %>
+                                                                                     <h6><%= labels['LBL_MOBILE_NUMBER'][language] %>:
+                                                                                          <span><%= addresses[i]['mobile_country_code'] %>
+                                                                                               <%= addresses[i]['mobile_number'] %></span>
+                                                                                     </h6>
+                                                                                     <% } %>
+                                                                                </div>
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                            <% } %>
+                                                  </div>
+                                             </div>
+                                            
+                                        </div>
+                                   </div>
+                                   <button type="button" style="margin: 20px 0px 20px 15px;"
+                                        class="previous button btn-cart btn-back"
+                                        section="transport"><%= labels['LBL_BACK'][language] %></button>
+                                   <button style="margin:20px 15px 20px; 0px" type="button" class="button btn-cart"
+                                        id="deliverHere"><%= labels['LBL_CONTINUE'][language] %></button>
+                              </fieldset>
+                              <fieldset class="payment-section">
+                                   <div class="payment_method">
+                                        <div class="row">
+                                             <div class="col-md-8">
+                                                  <div class="accordion js-accordion">
+                                                       <div class="accordion__item js-accordion-item">
+                                                            <div class="accordion-header js-accordion-header head_"><img
+                                                                      src="../../../images/wallet.png"><%= labels['LBL_WALLET'][language] %>
+                                                                 <span>(Kz <%= wallet_formatted %>)</span></div>
+                                                            <div class="accordion-body js-accordion-body">
+                                                                 <div class="row">
+                                                                      <div class="col-md-12">
+                                                                           <a href="javascript:void(0)"><button
+                                                                                     id="order_now"
+                                                                                     class="order_now button btn-cart btn-wallet"
+                                                                                     onclick="placeOrder('wallet','place_order')"><%= labels['LBL_ORDER_NOW'][language] %></button></a>
+                                                                           <a href="javascript:void(0)"><button
+                                                                                     id="reserve_now"
+                                                                                     style="display:none"
+                                                                                     class="reserve_now button btn-cart"
+                                                                                     onclick="placeOrder('wallet','reserve_order')"><%= labels['LBL_TRADING_CHECKOUT_RESERVE_ORDER'][language] %></button></a>
+                                                                           <div class="lds-facebook"
+                                                                                style="display:none">
+                                                                                <div></div>
+                                                                                <div></div>
+                                                                                <div></div>
+                                                                           </div>
+                                                                           <p style="color: rgb(247, 35, 44);margin-top: 15px;"
+                                                                                id="wallet-caption"></p>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+
+                                                       <div class="accordion__item js-accordion-item">
+                                                            <div class="accordion-header js-accordion-header head_"><img
+                                                                      src="../../../images/wallet.png"><%= labels['LBL_ATM_REFERENCE'][language] %>
+                                                            </div>
+                                                            <div class="accordion-body js-accordion-body">
+                                                                 <div class="row">
+                                                                      <div class="col-md-12">
+                                                                           <a href="javascript:void(0)"><button
+                                                                                     type="button" name="add-to-cart"
+                                                                                     class="add-to-cart-btn button btn-cart btn-atm-reference"
+                                                                                     onclick="placeOrder('atm_reference','place_order')"><%= labels['LBL_ORDER_NOW'][language] %></button></a>
+
+                                                                           <div class="lds-facebook"
+                                                                                style="display:none">
+                                                                                <div></div>
+                                                                                <div></div>
+                                                                                <div></div>
+                                                                           </div>
+                                                                           <p style="color: rgb(247, 35, 44);margin-top: 15px;"
+                                                                                id="atm-reference-caption"></p>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+
+                                                       <!-- accordion item -->
+                                                       <div class="accordion__item js-accordion-item">
+                                                            <div class="accordion-header js-accordion-header head_"><img
+                                                                      src="../../../images/card.png"><%= labels['LBL_PAYMENT_FROM_THE_BANK'][language] %>
+                                                            </div>
+                                                            <div class="accordion-body js-accordion-body">
+                                                                 <div class="row">
+                                                                      <div class="col-md-12">
+                                                                           <div class="search-container">
+                                                                                <p><%= labels['LBL_ACCOUNT_NO'][language] %>
+                                                                                     : <span id='account_no'></p>
+                                                                           </div>
+                                                                      </div>
+                                                                      <div class="col-md-12">
+                                                                           <div class="search-container">
+                                                                                <p><%= labels['LBL_CODE'][language] %> :
+                                                                                     <span id='account_code'></p>
+                                                                           </div>
+                                                                      </div>
+                                                                      <div class="col-md-12">
+                                                                           <div class="search-container">
+                                                                                <p><%= labels['LBL_TRADING_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME'][language] %>
+                                                                                     : <span
+                                                                                          id="account_company_name"></span>
+                                                                                </p>
+                                                                           </div>
+                                                                      </div>
+                                                                      <div class="col-md-12">
+                                                                           <div class="search-container">
+                                                                                <a href="javascript:void(0)"><button
+                                                                                          type="button"
+                                                                                          name="add-to-cart"
+                                                                                          class="add-to-cart-btn button btn-cart btn-bank"
+                                                                                          onclick="placeOrder('bank','place_order')"><%= labels['LBL_ORDER_NOW'][language] %></button></a>
+
+                                                                                <div class="lds-facebook"
+                                                                                     style="display:none">
+                                                                                     <div></div>
+                                                                                     <div></div>
+                                                                                     <div></div>
+                                                                                </div>
+                                                                                <p style="color: rgb(247, 35, 44);margin-top: 15px;"
+                                                                                     id="payment-from-the-bank-caption">
+                                                                                </p>
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="col-md-4" style="margin-top: 10px;">
+                                                  <div style="background-color: #efefef;" class="totals card">
+                                                       <h3
+                                                            style="padding: 15px 20px;margin: 0 !important;font-size: 18px !important;">
+                                                            <%= labels['LBL_ORDER_TOTAL'][language] %></h3>
+                                                       <div class="totals-item">
+                                                            <label><%= labels['LBL_SUB_TOTAL'][language] %></label>
+                                                            <div class="totals-value cart-subtotal" id="cart-subtotal">
+                                                                 Kz
+                                                                 <%= format_subtotal %></div>
+                                                       </div>
+                                                       <div class="totals-item">
+                                                            <label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
+                                                            <div class="totals-value cart-tax" id="cart-tax">Kz
+                                                                 <%= format_transport_fees %></div>
+                                                       </div>
+                                                       <div class="totals-item hide">
+                                                            <label>Shipping</label>
+                                                            <div class="totals-value" id="cart-shipping">Kz 0.00</div>
+                                                       </div>
+                                                       <hr style="border-color: #cecece;margin: 15px;">
+                                                       <div class="totals-item totals-item-total">
+                                                            <label
+                                                                 style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
+                                                            <div style="font-size: 18px;"
+                                                                 class="totals-value cart-total" id="cart-total">Kz
+                                                                 <%= format_total %></div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <button type="button" style="margin:0 15px 20px;"
+                                        class="previous button btn-cart btn-back"
+                                        section="payment"><%= labels['LBL_BACK'][language] %></button>
+                              </fieldset>
+                         </form>
+                         <% } else { %>
+                         <div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'>
+                              <p><%= labels['LBL_TRADING_EXPLORE_NO_PRODUCTS'][language] %></p>
+                         </div>
+                         <% } %>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+<script src='../../../js/jquery-ui.min.js'></script>
+<script src="../../../js/payment.js"></script>
+<script>
+     let transportNeeded = "yes";
+     let typingTimer;
+     let doneTypingInterval = 300;
+     let transport_fees = parseFloat('<%= transportFees %>');
+     let subtotal = 0, total = 0, ajax_cart_product_arr = [];
+     let product_id = '', product_qty = 0;
+     let products = JSON.parse('<%- JSON.stringify(products) %>');
+     let wallet_balance = parseFloat('<%= wallet %>');
+     let total_fees = parseFloat('<%= total %>');
+     let ajax_address_id = '';
+     function increaseValue(id) {
+          var value = parseInt($('.number_' + id).val());
+          value = isNaN(value) ? 0 : value;
+          value++;
+          if (value > $('.product_max_qty_' + id).val()) {
+               return false;
+          }
+
+          $('.number_' + id).val(value);
+          $('.product_price_qty_' + id).val($('.product_price_' + id).val() + '_' + value + '_' + id);
+          product_id = id;
+          product_qty = value;
+
+          clearTimeout(typingTimer);
+          typingTimer = setTimeout(updateCart, doneTypingInterval);
+     }
+
+     function decreaseValue(id) {
+          let product_min_qty = parseInt($('.product_min_qty_' + id).val());
+          var value = parseInt($('.number_' + id).val());
+          value = isNaN(value) ? 0 : value;
+          value < 1 ? value = 1 : '';
+          value--;
+          if (value < product_min_qty) {
+               return false;
+          }
+          $('.number_' + id).val(value);
+          $('.product_price_qty_' + id).val($('.product_price_' + id).val() + '_' + value + '_' + id);
+
+          product_id = id;
+          product_qty = value;
+
+          clearTimeout(typingTimer);
+          typingTimer = setTimeout(updateCart, doneTypingInterval);
+     }
+
+     function updateQty(id) {
+          return false;
+          $('.product_price_qty_' + id).val(($('.product_price_' + id).val()) + '_' + ($('.number_' + id).val()) + '_' + id);
+
+          clearTimeout(typingTimer);
+          typingTimer = setTimeout(updateCart, doneTypingInterval);
+     }
+
+     function updateCart() {
+          total = 0, subtotal = 0;
+          let cart_product_arr = [];
+          
+          $.each(ajax_cart_product_arr, function (key, val) {
+               if (product_qty && val.qty) {
+                    let productObj = {};
+                    let itemTotal = 0;
+                    if (val.product_id == product_id) {
+                         productObj = {
+                              product_id: val.product_id,
+                              price: val.price,
+                              qty: product_qty
+                         }
+
+                         itemTotal = (val.price * product_qty);
+                         total += itemTotal;
+                         subtotal += itemTotal;
+                    } else {
+                         productObj = {
+                              product_id: val.product_id,
+                              price: val.price,
+                              qty: val.qty
+                         }
+
+                         itemTotal = (val.price * val.qty);
+                         total += itemTotal;
+                         subtotal += itemTotal;
+                    }
+
+                    $('.item_total_' + val.product_id).text(itemTotal.toFixed(2));
+                    cart_product_arr.push(productObj)
+               }
+          });
+
+          ajax_cart_product_arr = [];
+          ajax_cart_product_arr = cart_product_arr;
+          total += transport_fees;
+
+          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
+          $('.cart-total').text('Kz ' + thousands_separators(total));
+          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          manageATMBankOption(total);
+          saveCart();
+     }
+
+     function removeProduct(id) {
+          $('.my_oderDetails_' + id).remove();
+          total = 0, subtotal = 0;
+          let cart_product_arr = [];
+          $.each(ajax_cart_product_arr, function (key, val) {
+               let productObj = {};
+               if (val.product_id != id) {
+                    productObj = {
+                         product_id: val.product_id,
+                         price: val.price,
+                         qty: val.qty
+                    }
+
+                    total += (val.price * val.qty);
+                    subtotal += (val.price * val.qty);
+
+                    cart_product_arr.push(productObj)
+               }
+          });
+
+          ajax_cart_product_arr = [];
+          ajax_cart_product_arr = cart_product_arr;
+
+          if (ajax_cart_product_arr.length > 0) {
+               $('.cart_count').text(ajax_cart_product_arr.length);
+          } else {
+               $('.cart_count').text(ajax_cart_product_arr.length);
+               $('.proceed-to-buy').hide();
+               $('.no-items-in-cart').html("<div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'><p><%= labels['LBL_TRADING_EXPLORE_NO_PRODUCTS'][language] %></p></div>")
+          }
+
+          total += transport_fees;
+          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
+          $('.cart-total').text('Kz ' + thousands_separators(total));
+          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          manageATMBankOption(total);
+          saveCart();
+     }
+
+     function saveCart() {
+          console.log('call saveCart');
+          $.post("<%=baseURL%>trading/cart/update", { product_obj: ajax_cart_product_arr }).done(function (data) {
+               console.log('done');
+          });
+     }
+
+     function loadCart() {
+          console.log('PROD: ',products);
+          $.each(products, function (key, val) {
+               ajax_cart_product_arr.push({
+                    product_id: val.product_id,
+                    price: val.unit_price,
+                    qty: val.qty
+               })
+
+               total += (val.unit_price * val.qty);
+               subtotal += (val.unit_price * val.qty);
+          });
+          console.log('da:',ajax_cart_product_arr);
+
+          total += transport_fees;
+          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
+          $('.cart-total').text('Kz ' + thousands_separators(total));
+          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          manageATMBankOption(total);
+     }
+
+     function setAddressType(address_id) {
+          ajax_address_id = address_id;
+          $.post("<%=baseURL%>trading/checkout/transport_fees", { address_id: (transportNeeded == 'yes' ? address_id : '') }).done(function (data) {
+               transport_fees = ($('input[name=transport-needed]:checked').val() == 'yes') ? parseFloat(data.transport_fees) : 0;
+               setOrder(data.reserve_order_hrs);
+               calculationPrice();
+          });
+     }
+
+     function setOrder(reserve_order_hrs) {
+          let balance = "<%= labels['LBL_NO_SUFFICIENT_BALANCE_FOR_PLACE_ORDER'][language] %>";
+          balance = balance.replace("#HRS#", parseInt(reserve_order_hrs));
+          console.log('wallet_balance : ' + wallet_balance);
+          if (wallet_balance >= total_fees) {
+               if (wallet_balance < (total_fees + transport_fees)) {
+                    $(".no_balance").html(balance);
+                    // $(".order_now").hide();
+                    $(".order_now").attr('disabled', true);
+                    // $(".reserve_now").show();
+                    $(".no_balance").show();
+               }
+               else {
+                    $(".order_now").attr('disabled', false);
+                    // $(".order_now").show();
+                    // $(".reserve_now").hide();
+                    $(".no_balance").hide();
+               }
+          }
+          else {
+               $(".order_now").attr('disabled', true);
+               // $(".order_now").hide();
+               // $(".reserve_now").show();
+               $(".no_balance").show();
+               $(".no_balance").html(balance);
+          }
+     }
+
+     function placeOrder(payment_type, type) {
+          if (payment_type == 'atm_reference') {
+               alert('Payment gateway is under development');
+               return false;
+          }
+
+          $(".order_now_other").attr("disabled", true);
+          $(".order_now").attr("disabled", true);
+          // $(".reserve_now").attr("disabled", true);
+          $(".lds-facebook").show();
+          transport_fees = ($('input[name="transport-needed"]:checked').val() == 'yes') ? transport_fees : 0;
+          $.post("<%=baseURL%>trading/checkout/" + type, { payment_type, address_id: ((transportNeeded == 'yes') ? ajax_address_id : ''), transport_fees }).done(function (data) {
+               window.location.href = "<%=baseURL%>trading/thanks/list/" + data.order_id;
+          });
+     }
+
+     function manageATMBankOption(total_cart_amount) {
+          if (wallet_balance >= total_cart_amount) {
+               $(".btn-atm-reference").attr("disabled", true);
+               $(".btn-bank").attr("disabled", true);
+               $(".btn-wallet").attr("disabled", false);
+          } else {
+               $(".btn-atm-reference").attr("disabled", false);
+               $(".btn-bank").attr("disabled", false);
+               $(".btn-wallet").attr("disabled", true);
+          }
+     }
+
+     $(document).ready(function () {
+          loadCart();
+          if (wallet_balance >= total_fees) {
+               $(".js-accordion-item:eq(0)").addClass("active");
+          } else {
+               $(".js-accordion-item:eq(2)").addClass("active");
+          }
+		<% if (addresses.length > 0) { %>
+               setAddressType("<%= addresses[0]['address_id'] %>");
+		<% } else { %>
+               setAddressType('');
+		<% } %>
+
+		if (performance.navigation.type == 2) {
+               location.reload(true);
+          }
+
+          $.ajax({
+               url: "<%=baseURL%>trading/checkout/get-bank-information", success: function (result) {
+                    $('#account_no').text(result.response.account_no);
+                    $('#account_code').text(result.response.code);
+                    $('#account_company_name').text(result.response.company_name);
+               }
+          });
+
+          $.ajax({
+               url: "<%=baseURL%>trading/checkout/get-payment-captions", success: function (result) {
+                    $('#wallet-caption').text(result.wallet_caption).show();
+                    $('#atm-reference-caption').text(result.atm_reference_caption).show();
+                    $('#payment-from-the-bank-caption').text(result.payment_from_the_bank_caption).show();
+               }
+          });
+
+          $('.btn-back').on('click', function () {
+               $('fieldset').css({ position: 'relative' })
+               if ($(this).attr('section') == 'transport') {
+                    $('.transport-section').hide();
+               } else if ($(this).attr('section') == 'payment') {
+                    $('.payment-section').hide();
+               }
+          })
+     });
+
+     $("#addNewProduct").on("click", function () {
+          console.log("address", "cart");
+          addNewAddress('cart');
+          var address = $("input[name='address_radio']:checked").val();
+          console.log("address", address);
+          setAddressType(address)
+     });
+     var flag = true;
+     $("input[name='transport-needed']").on("click", function () {
+          calculationPrice();
+     })
+     function calculationPrice() {
+          var needTransport = $("input[name='transport-needed']:checked").val();
+          console.log("needTransport", needTransport)
+          if (needTransport == "no") {
+               $('.cart-tax').text('Kz ' + thousands_separators(0));
+               $('.cart-total').text('Kz ' + thousands_separators(subtotal));
+               $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+               manageATMBankOption(subtotal);
+
+               transportNeeded = "no";
+               flag = true;
+               $("input[name='address_radio']").prop("checked", false);
+          } else {
+               $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
+               $('.cart-total').text('Kz ' + thousands_separators(subtotal + transport_fees));
+               $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+               manageATMBankOption(subtotal + transport_fees);
+               transportNeeded = "yes";
+               flag = true;
+               var address = $("input[name='address_radio']:checked");
+               if ((address.length <= 0)) {
+                    $("input[name='address_radio']:first").prop("checked", true);
+               }
+
+          }
+     }
+     $("#deliverHere").on("click", function () {
+          transportNeeded = $("input[name='transport-needed']:checked").val();
+          var address = $("input[name='address_radio']:checked");
+          if ((transportNeeded == "yes" && address.length <= 0)) {
+               showAlert("<%= labels['LBL_PLEASE_ADD_YOUR_ADDRESS'][language] %>", "<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")
+               setTimeout(() => {
+                    hideAlert()
+               }, 3000);
+               flag = false;
+          }
+          if (flag) {
+               flag = false;
+               $(this).addClass("next");
+               $(this).trigger("click");
+          }
+     });
+     $(".accordion__item").on("click", function () {
+          console.log("click on data");
+     });
+</script>

@@ -1,0 +1,34 @@
+<% if(order.status == 'reserved' || order.status == 'waiting' || order.status == 'paid' || order.status == 'packed' || order.status == 'shipped' || order.status == 'delivered'){ %>
+<li class="active">
+     <% } else { %>
+<li>
+     <% } %>
+     <%= labels['LBL_RESERVED'][language] %></li>
+
+<% if(order.status == 'waiting' || order.status == 'paid' || order.status == 'packed' || order.status == 'shipped' || order.status == 'delivered'){ %>
+<li class="active">
+     <% } else { %>
+<li>
+     <% } %>
+     <%= labels['LBL_ORDERED'][language] %></li>
+
+<% if(totalPacked==totalProduct){ %>
+<li class="active">
+     <% } else { %>
+<li>
+     <% } %>
+     <%= labels['LBL_PACKED'][language] %> (<%=totalPacked%>/<%=totalProduct%>)</li>
+
+<% if(totalShipped==totalProduct){%>
+<li class="active">
+     <% } else { %>
+<li>
+     <% } %>
+     <%= labels['LBL_SHIPPED'][language] %> (<%=totalShipped%>/<%=totalProduct%>)</li>
+
+<% if(totalDelivered==totalProduct){ %>
+<li class="active">
+     <% } else { %>
+<li>
+     <% } %>
+     <%= labels['LBL_DELIVERED'][language] %> (<%=totalDelivered%>/<%=totalProduct%>)</li>

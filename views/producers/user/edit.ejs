@@ -1,0 +1,191 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<form id="frm-edit-user" action="<%=baseURL%>producers/user/edit" method="post" enctype="multipart/form-data">
+					<input type="hidden" value="<%= farmer.farmer_id %>" id="farmer_id" name="farmer_id">
+					<div class="row add-address">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<h3><%= labels['LBL_EDIT_USER'][language] %></h3>
+						</div>
+						
+						<div class="col-md-6 col-sm-12 col-xs-12">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_NAME'][language] %></label>
+							    <input class="custom_input" type="text" placeholder="" value="<%= farmer.name %>" id='name' name="name">
+							    <span class="validation-alert" id='err-name'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %></label>
+							    <input class="custom_input" type="text" placeholder="" value="<%= farmer.email %>" id='email' name="email" disabled>
+							    <span class="validation-alert" id='err-email'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PHONE_NUMBER'][language] %></label>
+							    <input class="custom_input" type="text" placeholder="" value="<%= farmer.phone_number %>" id='phone_number' name="phone_number"> 
+							    <span class="validation-alert" id='err-phone-number'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
+							    <input class="custom_input" type="text" placeholder="" value="<%= farmer.address %>" id='address' name="address">
+							    <span class="validation-alert" id='err-address'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+							    <select class="select_plug" id="state_id" name="state_id" onChange="getCity()">
+									<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+									<% for(let i=0; i < states.length; i++) { %>
+										<option value="<%= states[i].state_id %>" <%if (states[i].state_id == farmer.state_id) { %> selected <% } %>>
+											<%= states[i].name %>
+										</option>
+									<% } %>
+								</select>
+								<span class="validation-alert" id='err-state-id'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+							    <select class="select_plug" id="city_id" name="city_id">
+									<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+									<% for(let i=0; i < cities.length; i++) { %>
+										<option value="<%= cities[i].city_id %>" <%if (cities[i].city_id == farmer.city_id) { %> selected <% } %>>
+											<%= cities[i].name %>
+										</option>
+									<% } %>
+								</select>
+								<span class="validation-alert" id='err-city-id'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PROFILE_PICTURE'][language] %></label>
+							    <div class="input-group">
+								  <div class="custom-file">
+								    <input type="file" class="custom-file-input" id="inputGroupFile01"
+								      aria-describedby="inputGroupFileAddon01" name="images" id="images">
+								    <label class="custom-file-label" for="inputGroupFile01"></label>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<% if(farmer.photo) { %>
+							<div class="col-md-12 col-sm-12 col-xs-12" id="profile_photo_section">
+								<div class="col-md-3 col-sm-12 col-xs-12" id="section_location">
+									<button type="button" class="close_noti close" aria-label="Close" onclick="removeProfileImage('<%= farmer.photo %>')"><span aria-hidden="true">×</span></button>
+									<img class="pro-img-list" src="<%= farmer.photo %>">
+								</div>
+							</div>
+						<% } %>
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<a href="javascript:void(0)"><button class="main_btn" type='button' onclick="submitPost()"><%= labels['LBL_SAVE_CHANGES'][language] %></button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+    function getCity(){
+    	if($('#state_id').val()){
+    		$.ajax({url: "<%=baseURL%>get_city?state_id="+$('#state_id').val(),  success: function(result) {
+	            $('#city_id').html(result.response)
+	        }});
+    	} else {
+			$('#city_id').html("<option value=''>--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>")
+    	}
+    }
+
+    function removeProfileImage(file){
+    	$.ajax({url: "<%=baseURL%>remove-profile-image?file="+file+"&farmer_id="+$('#farmer_id').val(),  success: function(result) {
+    	console.log(result);
+    		if(result.code == 200){
+    			$('#profile_photo_section').remove();
+    		}
+
+    		showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+    		setTimeout(() => {
+				hideAlert()
+			}, 3000);
+        }});
+    }
+
+    function validatePost(){
+    	let errNameFlag = 0, errEmailFlag = 0, errPhoneNumberFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
+    	
+    	if(!$('#name').val()){
+			errNameFlag = 1;
+			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
+		} else {
+			errNameFlag = 0;
+			$('#err-name').hide();
+		}
+
+		errEmailFlag = validateEmailAddress($('#email').val());
+		if(errEmailFlag > 0){
+			caption = (errEmailFlag == 1) ? "<%= labels['LBL_ENTER_EMAIL'][language] %>" : "<%= labels['LBL_ENTER_CORRECT_EMAIL'][language] %>";
+			$('#err-email').text(caption).show();
+		} else {
+			$('#err-email').hide();
+		}
+
+		if(!$('#phone_number').val()){
+			errPhoneNumberFlag = 1;
+			$('#err-phone-number').text("<%= labels['LBL_ENTER_PHONE_NUMBER'][language] %>").show();
+		} else {
+			errPhoneNumberFlag = 0;
+			$('#err-phone-number').hide();
+		}
+
+		if(!$('#address').val()){
+			errAddressFlag = 1;
+			$('#err-address').text("<%= labels['LBL_ENTER_ADDRESS'][language] %>").show();
+		} else {
+			errAddressFlag = 0;
+			$('#err-address').hide();
+		}
+
+		if(!$('#state_id').val()){
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_ENTER_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
+
+		if(!$('#city_id').val()){
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_ENTER_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
+
+		if(!errNameFlag && !errEmailFlag && !errPhoneNumberFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
+			return true;
+		} else {
+			return false;
+		}
+    }
+
+    function submitPost(){
+		if(validatePost()){
+			$('#frm-edit-user').submit();
+		}
+	}
+</script>

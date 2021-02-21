@@ -1,0 +1,334 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<form id="frm-add-product" action="" method="post" enctype="multipart/form-data">
+					<input type='hidden' class='min_unit_qty'>
+					<input type='hidden' class='min_unit_qty_error'>
+					<input type='hidden' id="lower_price_range" name="lower_price_range" value="0">
+					<input type='hidden' id="higher_price_range" name="higher_price_range" value="0">
+					<div class="row add-address">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<h3><%= labels['LBL_TRADING_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE'][language] %></h3>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_category">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_CATEGORY'][language] %></label>
+									<select class="select_plug product_category category_id" id="product_category"
+										name="product_category" onChange="getProducts('<%=baseURL%>')">
+										<option value="">--- <%= labels['LBL_SELECT_CATEGORY'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-product-category'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_title">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_TITLE'][language] %></label>
+									<select class="select_plug title sub_category_id" id="title" name="title">
+										<option value="">--- <%= labels['LBL_SELECT_TITLE'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-title'></span>
+								</div>
+							</div>
+						</div>
+						<% for(let i=0; i < languages.length; i++) { %>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %>
+										[<%= languages[i]['code'] %>]</label>
+									<textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>"
+										name="description_<%= languages[i]['code'] %>"></textarea>
+									<span class="validation-alert"
+										id='err-description_<%= languages[i]['code'] %>'></span>
+								</div>
+							</div>
+						</div>
+						<% } %>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_REQUIRED_STOCK'][language] %></label>
+									<input class="custom_input" type="number" placeholder="" value="" min="1"
+										id="unit_value" name="unit_value" oninput="validity.valid||(value='');">
+									<span class="validation-alert" id='err-unit-value'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
+									<select class="select_plug units_id" id="unit" name="unit"
+										onChange="getMaxPriceRange('<%=baseURL%>')">
+										<option value="">--- <%= labels['LBL_SELECT_UNIT'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-unit'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_MAX_PRICE'][language] %></label>
+									<div class="cd-filter-block">
+										<div class="cd-filter-content cd-filters list">
+											<input type="text" class="js-range-slider" name="my_range" value="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_ESTIMATED_DATE'][language] %></label>
+									<input class="custom_input date-picker" type="text" placeholder="" value=""
+										name="expire_date" id="expire_date" readonly>
+									<span class="validation-alert" id='err-expire-date'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<div class="search-container">
+									<label
+										class="my-1 mr-2"><%= labels['LBL_TRADING_DEMAND_PERIOD'][language] %></label>
+									<select class="select_plug period" id="period" name="period">
+										<option value="none">---
+											<%= labels['LBL_TRADING_DEMAND_SELECT_PERIOD'][language] %> ---</option>
+										<option value="every_week">
+											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_WEEK'][language] %></option>
+										<option value="every_twice_week">
+											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_TWICE_WEEK'][language] %>
+										</option>
+										<option value="every_month">
+											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_MONTH'][language] %></option>
+										<option value="every_2_months">
+											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_2_MONTHS'][language] %>
+										</option>
+										<option value="every_3_months">
+											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_3_MONTHS'][language] %>
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+									<select class="select_plug state_id" id="state_id" name="state_id"
+										onchange="getCities('<%=baseURL%>')">
+										<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-state-id'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+									<select class="select_plug city_id" id="city_id" name="city_id">
+										<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-city-id'></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12" id="section_location">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_LOCATION'][language] %> </label>
+									<input class="custom_input" type="text" placeholder="" value="" id="location"
+										name="location">
+									<span class="validation-alert" id='err-location'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12" id="section_city_id">
+								<div class="search-container">
+									<label
+										class="my-1 mr-2"><%= labels['LBL_TRADING_DEMAND_WHERE_TO_DELIVER'][language] %></label>
+									<select class="select_plug where_to_deliver_id" id="where_to_deliver_id"
+										name="where_to_deliver_id">
+										<option value="">---
+											<%= labels['LBL_TRADING_DEMAND_WHERE_TO_DELIVER_SELECT_ADDRESS'][language] %>
+											---</option>
+									</select>
+									<span class="validation-alert" id='err-where-to-deliver'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row" id="btn-add-new-address">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<a href="javascript:void(0);" id="addNewProduct"
+									style="color: blue;text-decoration:underline;">+
+									<%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<button type="button" class="main_btn post-add-now"
+									onclick="submitPost()"><%= labels['LBL_TRADING_ADD_NEW_DEMAND_SUBMIT_BUTTON'][language] %></button>
+								<div class="lds-facebook" style="display:none">
+									<div></div>
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	function validatePost() {
+		let errCategoryFlag = 0, errTitleFlag = 0, errDescriptionFlag = 0, errUnitFlag = 0, errUnitValueFlag = 0, errStateFlag = 0, errCityFlag = 0, errExpireDateFlag = 0, errLocationFlag = 0, errWhereToDeliverFlag = 0;
+		let languages = JSON.parse('<%- JSON.stringify(languages) %>');
+
+		if (!$('#product_category').val()) {
+			errCategoryFlag = 1;
+			$('#err-product-category').text("<%= labels['LBL_SELECT_CATEGORY_VALIDATION'][language] %>").show();
+		} else {
+			errCategoryFlag = 0;
+			$('#err-product-category').hide();
+		}
+
+		if (!$('#title').val()) {
+			errTitleFlag = 1;
+			$('#err-title').text("<%= labels['LBL_ENTER_TITLE'][language] %>").show();
+		} else {
+			errTitleFlag = 0;
+			$('#err-title').hide();
+		}
+
+		let isDescription = 0, languageCode = '';
+		languages.forEach((value, index) => {
+			languageCode = value.code;
+			if ($('#description_' + value.code).val()) {
+				isDescription = 1;
+			}
+		});
+
+		if (!isDescription) {
+			errDescriptionFlag = 1;
+			$('#err-description_' + languageCode).text("<%= labels['LBL_ENTER_DESCRIPTION'][language] %>").show();
+		} else {
+			$('#err-description_' + languageCode).hide();
+		}
+
+		if (!$('#unit').val()) {
+			errUnitFlag = 1;
+			$('#err-unit').text("<%= labels['LBL_SELECT_UNIT'][language] %>").show();
+		} else {
+			errUnitFlag = 0;
+			$('#err-unit').hide();
+		}
+
+		if (!$('#unit_value').val()) {
+			errUnitValueFlag = 1;
+			$('#err-unit-value').text("<%= labels['LBL_ENTER_REQUIRED_STOCK'][language] %>").show();
+		} else {
+			errUnitValueFlag = 0;
+			$('#err-unit-value').hide();
+		}
+
+		if (!$('#expire_date').val()) {
+			errExpireDateFlag = 1;
+			$('#err-expire-date').text("<%= labels['LBL_SELECT_ESTIMATED_DATE'][language] %>").show();
+		} else {
+			errExpireDateFlag = 0;
+			$('#err-expire-date').hide();
+		}
+
+		if (!$('#state_id').val()) {
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
+
+		if (!$('#city_id').val()) {
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
+
+		if (!$('#location').val()) {
+			errLocationFlag = 1;
+			$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
+		} else {
+			errLocationFlag = 0;
+			$('#err-location').hide();
+		}
+
+		if (!$('#where_to_deliver_id').val()) {
+			errWhereToDeliverFlag = 1;
+			$('#err-where-to-deliver').text("<%= labels['LBL_TRADING_DEMAND_VALIDATE_WHERE_TO_DELIVER'][language] %>").show();
+			$('#btn-add-new-address').show();
+		} else {
+			errWhereToDeliverFlag = 0;
+			$('#err-where-to-deliver').hide();
+			$('#btn-add-new-address').hide();
+		}
+
+		if (!errCategoryFlag && !errTitleFlag && !errDescriptionFlag && !errUnitFlag && !errUnitValueFlag && !errStateFlag && !errCityFlag && !errLocationFlag && !errWhereToDeliverFlag) {
+			if (parseInt($('#unit_value').val()) < parseInt($('.min_unit_qty').val())) {
+				$('#err-unit-value').text($('.min_unit_qty_error').val()).show();
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	function submitPost() {
+		if (validatePost()) {
+			$(".post-add-now").attr("disabled", true);
+			$(".lds-facebook").show();
+			$('#frm-add-product').submit()
+		}
+	}
+
+	$(document).ready(function () {
+
+		getWhereToDeliver('<%=baseURL%>');
+		getCategories('<%=baseURL%>');
+		getUnits('<%=baseURL%>');
+		getStates('<%=baseURL%>');
+
+		let maxPriceRange = 0;
+		let saveResult = function (data) {
+			$('#lower_price_range').val(0);
+			$('#higher_price_range').val(data.from);
+		};
+
+		$(".js-range-slider").ionRangeSlider({
+			skin: "square",
+			step: 10,
+			type: "single",
+			grid: false,
+			min: 0,
+			max: maxPriceRange,
+			from: 0,
+			prefix: "Kz ",
+			onLoad: saveResult,
+			onChange: saveResult,
+			onFinish: saveResult
+		});
+	})
+	$("#addNewProduct").on("click", function () {
+		addNewAddress('product');
+	});
+</script>

@@ -1,0 +1,33 @@
+<div id="top_destinations"></div>
+
+<script>
+	$(document).ready(function(){
+		let top_most_destinations_arr = JSON.parse('<%- JSON.stringify(top_destinations_arr) %>');
+		Highcharts.chart('top_destinations', {
+		    chart: {
+		        plotBackgroundColor: null,
+		        plotBorderWidth: null,
+		        plotShadow: false,
+		        type: 'pie'
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            dataLabels: {
+		                enabled: true,
+		                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		                connectorColor: 'silver'
+		            }
+		        }
+		    },
+		    series: [{
+		        name: 'Share',
+		        data: top_most_destinations_arr
+		    }]
+		});
+	});
+</script>

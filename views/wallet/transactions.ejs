@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="../../../css/transaction.css"/>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../shared/breadcrumb') %>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="wallet">
+ 				    <ul>
+					    <div class="">
+						    <li><a href="<%=baseURL%>wallet"><%= labels['LBL_WALLET_MENU_WALLET_BALANCE'][language] %></a></li>
+						    <li class="active"><a href="<%=baseURL%>wallet-transactions"><%= labels['LBL_TRANSACTIONS_TITLE'][language] %></a></li>
+						    <!-- <li><a href="<%=baseURL%>wallet-withdrawal-requests"><%= labels['LBL_WALLET_MENU_WITHDRAWAL_REQUEST'][language] %></a></li> -->
+					   	</div>
+					  </ul>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="white_bg2">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="wallet_balance">
+								<p><%= labels['LBL_TRANSACTIONS_TITLE'][language] %></p>
+							</div>
+							<div class="wallet_filter">
+								<div class="row">
+									<div class="col-md-4">
+										<label class="wallet_label"><%= labels['LBL_TRANSACTIONS_FROM_DATE'][language] %></label>
+										<input type="text" id='from-date' class="search-query form-control date-picker" value="<%= current_date %>">
+									</div>
+									<div class="col-md-4">
+										<label class="wallet_label"><%= labels['LBL_TRANSACTIONS_TO_DATE'][language] %></label>
+										<input type="text" id='to-date' class="search-query form-control date-picker" value="<%= current_date %>">
+									</div>
+									<div class="col-md-12 err-date hide">
+										<span class="validation-alert"><%= labels['LBL_WALLET_FROM_DATE_TO_DATE_FILTER'][language] %></span>
+									</div>
+									
+									<div class="col-md-12">
+										<button class="withdrwal_btn filte_btn" type="button" onClick='searchByDate()'><%= labels['LBL_TRANSACTIONS_SUBMIT_BUTTON'][language] %></button>
+									</div>
+								</div>
+							</div>
+							<div class="wallet_history">
+								<table width='100%'>
+									<thead>
+										<tr>
+											<th width='10%'><%= labels['LBL_WALLET_DATE'][language] %></th>
+											<!-- <th width='10%'><%= labels['LBL_WALLET_TITLE'][language] %></th> -->
+											<th width='40%'><%= labels['LBL_WALLET_DESCRIPTION'][language] %></th>
+											<th width='20%'><%= labels['LBL_WALLET_AMOUNT'][language] %></th>
+											<th width='20%'><%= labels['LBL_WALLET_REMAINING_BALANCE'][language] %></th>
+										</tr>
+									</thead>
+									<tbody class='wallet_transactions'>
+							
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
+<script>
+	function searchByDate(){
+		if($('#from-date').val() && $('#to-date').val()){
+			$('.err-date').addClass('hide').removeClass('show');
+			$.ajax({url: "<%=baseURL%>wallet-transactions?from_date="+$('#from-date').val()+"&to_date="+$('#to-date').val(),  success: (result) => {
+		    	$('.wallet_transactions').html(result);
+		    }});
+			
+		} else {
+			$('.err-date').addClass('show').removeClass('hide');
+		}
+	}
+</script>

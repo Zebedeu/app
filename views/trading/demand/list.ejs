@@ -1,0 +1,59 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="row ">
+			<div class="col-md-12 data-section mt40">
+				<h2><%= labels['LBL_BEST_MARKET_PLACE'][language] %></h2>
+				<p class="product-p"><%= labels['LBL_BEST_MARKET_PLACE'][language] %></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="white_bg2">
+					<% for(let d=0; d < demands.length; d++) { %>
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="demand_title"><%= demands[d].category_title %> <span>- <%= demands[d].sub_category_title %></span></h2>
+						</div>
+					</div>
+					<div class="row" id="product-list-section">
+						<% if(demands[d]['products'].length > 0){ %>
+							<% for(let i=0; i < demands[d]['products'].length; i++) { %>
+								<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+									<div class="product-data">
+										<% let scale_image = (demands[d]['products'][i].is_highlighted) ? 'product-img-highlight' : 'product-img'; %>
+										<div class="<%= scale_image %>" onClick="goToDetails('<%= demands[d]['products'][i].product_id %>')">
+										  <img src="<%= demands[d]['products'][i].images[0] %>" class="pro-image">
+										</div>
+										<div class="product-text">
+											<a href="<%=baseURL%>trading/explore/details/<%= demands[d]['products'][i].product_id %>"><p><%= demands[d]['products'][i].sub_category_title %></p></a>
+											<h5 class='capitalize'><%= demands[d]['products'][i].category_title %></h5>
+											<h5 class='capitalize'><span>Kz <%= (demands[d]['products'][i].unit_price).toFixed(2) %> / <%= demands[d]['products'][i].unit_type %></span></h5>
+											<h6 class='capitalize'><%= labels['LBL_QUANTITY'][language] %> : <%= demands[d]['products'][i].remaining_unit_value %> <%= (demands[d]['products'][i]['remaining_unit_value'] > 1) ? demands[d]['products'][i]['unit_plural_title'] : demands[d]['products'][i]['unit_type'] %></h6>
+											<div class="kp_location">
+												<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= demands[d]['products'][i].state_name %></span>
+											</div>
+										</div>
+									</div>	
+								</div>
+							<% } %>
+						<% } else { %>
+							<div class="col-md-12 thankyou">
+								<img src="../../../images/thankyou.png">
+								<p><%= labels['LBL_NO_MATCHES_FOUND'][language] %></p>
+							</div>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	function goToDetails(product_id){
+		window.location.href = "<%=baseURL%>trading/explore/details/"+product_id;
+	}
+</script>

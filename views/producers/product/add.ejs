@@ -1,0 +1,352 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<form id="frm-add-product" action="" method="post" enctype="multipart/form-data">
+					<input type='hidden' class='min_unit_qty'>
+					<input type='hidden' class='min_unit_qty_error'>
+
+					<div class="row add-address">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<h3><%= labels['LBL_POST_FORECAST_OR_PRODUCTS'][language] %></h3>
+						</div>
+					</div>
+					<div class="row">	
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_expiry_date">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_HARVEST_DATE'][language] %></label>
+							    <div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd" style='position: relative;border-collapse: separate;display: initial;'>
+								    <input class="custom_input date-picker" type="text" id="harvest_date" name="harvest_date" readonly/>
+								    <span class="input-group-addon" style='display:none'></span>
+								</div>
+								<span class="validation-alert" id='err-harvest-date'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_category">
+						 	<div class="search-container">
+						       	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_CATEGORY'][language] %> </label>
+								<select class="select_plug product_category category_id" id="product_category" name="product_category" onChange="getProducts('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_CATEGORY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-product-category'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_title">
+						 	<div class="search-container">
+						       	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_TITLE'][language] %> </label>
+								<select class="select_plug title sub_category_id" id="title" name="title" onChange="getVerities('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_TITLE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-title'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_variety_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_VARIETY'][language] %></label>
+							    <select class="select_plug product_variety_id" id="product_variety_id" name="product_variety_id">
+									<option value="">--- <%= labels['LBL_SELECT_VARIETY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-product-variety-id'></span>
+							</div>
+						</div>
+					</div>
+					<% for(let i=0; i < languages.length; i++) { %>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %> [<%= languages[i]['code'] %>]</label>
+								    <textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>" name="description_<%= languages[i]['code'] %>" placeholder="<%= labels['LBL_PRODUCT_DESCRIPTION_1'][language] %>"    ></textarea>
+								    <span class="validation-alert" id='err-description_<%= languages[i]['code'] %>'></span>
+								</div>
+							</div>
+						</div>
+					<% } %>
+					<div class="row">
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_VALUE'][language] %></label>
+							    <input class="custom_input" type="number" placeholder="" value="" min="1" max="95230" id="unit_value" name="unit_value" onkeyup="calculateTotalPrice()" oninput="validity.valid||(value='');">
+							    <span class="validation-alert" id='err-unit-value'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
+							    <select class="select_plug units_id" id="unit" name="unit" onchange="getMinQty('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_UNIT'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-unit'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_price">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_PRICE'][language] %></label>
+							    <input class="custom_input farmer_currency_number" type="number" placeholder="" value="" min="1" name="unit_price" id="unit_price" onkeyup="calculateTotalPrice()">
+							    <span class="validation-alert" id='err-unit-price'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_total_unit_price">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_TOTAL_UNIT_PRICE'][language] %></label>
+							    <input class="custom_input txt-disabled farmer_currency_number" type="text" placeholder="" value="" name="total_unit_price" id="total_unit_price" readonly> 
+							    <span class="validation-alert" id='err-total-unit-price'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_size">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_SIZE'][language] %></label>
+							    <select class="select_plug size_id" id="size" name="size">
+									<option value="">--- <%= labels['LBL_SELECT_SIZE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-size'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+							    <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-state-id'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+							    <select class="select_plug city_id" id="city_id" name="city_id">
+									<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-city-id'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_location">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_LOCATION'][language] %> </label>
+							    <input class="custom_input" type="text" placeholder="" value="" id="location" name="location">
+							    <span class="validation-alert" id='err-location'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_IMAGES'][language] %></label>
+							    <div class="input-group">
+								  <div class="custom-file">
+								    <input type="file" class="custom-file-input" id="inputGroupFile01"
+								      aria-describedby="inputGroupFileAddon01" name="images" id="images" multiple>
+								    <label class="custom-file-label" for="inputGroupFile01"></label>
+								  </div>
+								</div>
+								<span class="validation-alert" id='img_err'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<button type="button" class="main_btn post-add-now" onclick="submitPost()"><%= labels['LBL_POST_ADD_NOW'][language] %></button>
+					 		<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+						</div>
+					</div>
+				<form>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	function validatePost(){
+		let errHarvestDateFlag = 0, errCategoryFlag = 0, errTitleFlag = 0, errDescriptionFlag = 0, errVarietyFlag = 0, errUnitFlag = 0, errUnitValueFlag = 0, errSizeFlag = 0, errUnitPriceFlag = 0, errTotalUnitPriceFlag = 0, errStateFlag = 0, errCityFlag = 0, errLocationFlag = 0;
+		let languages = JSON.parse('<%- JSON.stringify(languages) %>');
+		
+		if(!$('#product_category').val()){
+			errCategoryFlag = 1;
+			$('#err-product-category').text("<%= labels['LBL_SELECT_CATEGORY_VALIDATION'][language] %>").show();
+		} else {
+			errCategoryFlag = 0;
+			$('#err-product-category').hide();
+		}
+
+		if(!$('#title').val()){
+			errTitleFlag = 1;
+			$('#err-title').text("<%= labels['LBL_ENTER_TITLE'][language] %>").show();
+		} else {
+			errTitleFlag = 0;
+			$('#err-title').hide();
+		}
+
+		let isDescription = 0, languageCode = '';
+		languages.forEach((value, index) => {
+			languageCode = value.code;
+		  	if($('#description_'+value.code).val()){
+				isDescription = 1;
+			}
+		});
+
+		if(!isDescription){
+			errDescriptionFlag = 1;
+			$('#err-description_'+languageCode).text("<%= labels['LBL_ENTER_DESCRIPTION'][language] %>").show();
+		} else {
+			$('#err-description_'+languageCode).hide();
+		}
+
+		if(!$('#product_variety_id').val()){
+			errVarietyFlag = 1;
+			$('#err-product-variety-id').text("<%= labels['LBL_SELECT_VARIETY_VALIDATION'][language] %>").show();
+		} else {
+			errVarietyFlag = 0;
+			$('#err-product-variety-id').hide();
+		}
+
+		if(!$('#unit').val()){
+			errUnitFlag = 1;
+			$('#err-unit').text("<%= labels['LBL_SELECT_UNIT'][language] %>").show();
+		} else {
+			errUnitFlag = 0;
+			$('#err-unit').hide();
+		}
+
+		if(!$('#unit_value').val()){
+			errUnitValueFlag = 1;
+			$('#err-unit-value').text("<%= labels['LBL_ENTER_UNIT'][language] %>").show();
+		} else {
+			errUnitValueFlag = 0;
+			$('#err-unit-value').hide();
+		}
+
+		if(!$('#size').val()){
+			errSizeFlag = 1;
+			$('#err-size').text("<%= labels['LBL_SELECT_SIZE_VALIDATION'][language] %>").show();
+		} else {
+			errSizeFlag = 0;
+			$('#err-size').hide();
+		}
+
+		if(!$('#unit_price').val()){
+			errUnitPriceFlag = 1;
+			$('#err-unit-price').text("<%= labels['LBL_ENTER_UNIT_PRICE'][language] %>").show();
+		} else {
+			errUnitPriceFlag = 0;
+			$('#err-unit-price').hide();
+		}
+
+		if(!$('#total_unit_price').val()){
+			errTotalUnitPriceFlag = 1;
+			$('#err-total-unit-price').text("<%= labels['LBL_ENTER_TOTAL_UNIT_PRICE'][language] %>").show();
+		} else {
+			errTotalUnitPriceFlag = 0;
+			$('#err-total-unit-price').hide();
+		}
+
+		if(!$('#state_id').val()){
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
+
+		if(!$('#city_id').val()){
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
+
+		if(!$('#location').val()){
+			errLocationFlag = 1;
+			$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
+		} else {
+			errLocationFlag = 0;
+			$('#err-location').hide();
+		}
+
+		if(!$('#harvest_date').val()){
+			errHarvestDateFlag = 1;
+			$('#err-harvest-date').text("<%= labels['LBL_ENTER_HARVEST'][language] %>").show();
+		} else {
+			errHarvestDateFlag = 0;
+			$('#err-harvest-date').hide();
+		}
+			
+		if(!errHarvestDateFlag && !errCategoryFlag && !errTitleFlag && !errDescriptionFlag && !errVarietyFlag && !errUnitFlag && !errUnitValueFlag && !errSizeFlag && !errUnitPriceFlag && !errTotalUnitPriceFlag && !errStateFlag && !errCityFlag && !errLocationFlag){
+			
+			if(parseInt($('#unit_value').val()) < parseInt($('.min_unit_qty').val())){
+				$('#err-unit-value').text($('.min_unit_qty_error').val()).show();
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	function submitPost(){
+		if(validatePost()){
+			$(".post-add-now").attr("disabled", true);
+			$(".lds-facebook").show();
+			$('#frm-add-product').submit()
+		}
+	}
+
+	$( document ).ready(function() {
+		getStates('<%=baseURL%>');
+		getCategories('<%=baseURL%>');
+		getUnits('<%=baseURL%>');
+		getSizes('<%=baseURL%>');
+
+    	$('.img').on('change', function(){
+		   if($(this).val() != '')
+		   {
+		   var count_of = $(this).get(0).files.length;
+		   
+		   for (var i = 0; i < $(this).get(0).files.length; ++i)
+		   {
+		       var img =$(this).get(0).files[i].name;
+		       var img_file_size=$(this).get(0).files[i].size;
+		       if(img_file_size<10485760)
+		       {
+		          var img_ext = img.split('.').pop().toLowerCase();
+		          if($.inArray(img_ext,['jpg','jpeg','pdf','png'])===-1)
+		          {
+		             od_error = 'Yes';
+		             $('#img_err').html("<span class='text-danger'>File ("+img+") type not allowed.</span>");
+		          }
+		          else
+		          {
+		             $('#img_err').html("");
+		          }
+		       }
+		       else
+		       {
+		          od_error = 'Yes';
+		          $('#img_err').html("<span class='text-danger'>File("+img+") size is too big.</span>");
+		       }    
+		    }  
+		 }
+		 else
+		 {
+		   od_error = 'Yes';
+		   $('#img_err').html("<span class='text-danger'>Upload documents</span>");
+		 }
+		});
+	});
+</script>

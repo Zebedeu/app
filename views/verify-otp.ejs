@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<%- include('shared/common_css') %>
+	<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="js/language.js"></script>
+	<script type='text/javascript' src="js/common.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+<body>
+<section class="login-section text-center">
+	<div class="overlay-position"></div>
+	<div class="login-page">
+		<div class="container">
+			<div class="login-box">
+				<div class="row">
+					<%- include('shared/language_section') %>
+				</div>
+				
+				<img src="images/logo.png">
+				<h1><%= labels['LBL_VERIFY_OTP_TITLE'][language] %></h1>
+				<p><%= labels['LBL_VERIFY_OTP_DESCRIPTION'][language] %></p>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 form">
+						<form id="frm-sign-in" action="/" method="post">
+							<input type="hidden" id="mobile_country_code" name="mobile_country_code" class="form-control" value="<%= mobile_country_code %>">
+							<input type="hidden" id="phone_number" name="phone_number" class="form-control" value="<%= phone_number %>">
+							<div class="form-group">
+							    <input type="number" id="txt-otp" name="otp" class="form-control" placeholder="<%= labels['LBL_VERIFY_OTP_OTP_PLACEHOLDER'][language] %>" required="">
+							    <span class="validation-alert" id='err-otp'></span>
+							</div>
+							<div class="text-center creat_new">
+								<a href="javascript:void(0);" class='resent-otp' onclick="sendOTP()"><%= labels['LBL_VERIFY_OTP_RESEND_OTP'][language] %></a>
+								<p style="display: none;font-size: 15px;" class='resent-otp-in'>Resend OTP In <span id="timer"></span></p>
+							</div>
+							<button type="button" class="btn btn-default" onclick="submitOTP()"><%= labels['LBL_VERIFY_OTP_BUTTON'][language] %></button>
+							<div class="text-center creat_new"><a href="/"><%= labels['LBL_VERIFY_OTP_SIGN_IN'][language] %></a></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src='js/bootstrap.min.js'></script>
+<script src="js/jquery.notify.min.js"></script>
+<script src='js/validation.js'></script>
+<script type="text/javascript">
+	let timerOn = true;
+	function validateOTP(){
+		if(!$('#txt-otp').val()){
+			$('#err-otp').text("<%= labels['LBL_VERIFY_OTP_VALIDATE_BLANK_OTP'][language] %>").show();
+			return false;
+		} else {
+			$('#err-otp').hide();
+			return true;
+		}
+	}
+
+	function submitOTP(){
+		if(validateOTP()){
+			verifyOTP({ mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val(), otp: $('#txt-otp').val() });
+		}
+	}
+
+	function sendOTP(){
+		$('.resent-otp').hide();
+		$('.resent-otp-in').show();
+		timer(59);
+		
+		$.post('send-otp', { mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((response) => {
+			showAlert(response.message, "<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>");
+			setTimeout(() => {
+				hideAlert()
+			}, 3000);
+		});
+	}
+
+	function timer(remaining) {
+		var m = Math.floor(remaining / 60);
+		var s = remaining % 60;
+		  
+		m = m < 10 ? '0' + m : m;
+		s = s < 10 ? '0' + s : s;
+		document.getElementById('timer').innerHTML = m + ':' + s;
+		remaining -= 1;
+		  
+		if(remaining >= 0 && timerOn) {
+		    setTimeout(function() {
+		        timer(remaining);
+		    }, 1000);
+		    return;
+		}
+
+		if(!timerOn) {
+		    // Do validate stuff here
+		    return;
+		}
+		  
+		// Do timeout stuff here
+		$('.resent-otp-in').hide();
+		$('.resent-otp').show();
+	}
+
+	function verifyOTP(obj){
+		$.post('submit-verify-otp', obj).done((response) => {
+			if(parseInt(response.code) == 200){
+				window.location.href = '<%=baseURL%>welcome';
+			} else {
+				showAlert(response.message, "<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>");
+				setTimeout(() => {
+					hideAlert()
+				}, 3000);
+			}
+		});
+	}
+</script>
+</body>
+</html>
+
+
+message, url, title

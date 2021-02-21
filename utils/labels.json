@@ -1,0 +1,3821 @@
+{
+	"LBL_SIGN_IN": {
+		"EN": "Sign In",
+		"PT": "Iniciar Sessão"
+	},
+	"LBL_EMAIL": {
+		"EN": "Email",
+		"PT": "o email"
+	},
+	"LBL_PASSWORD": {
+		"EN": "Password",
+		"PT": "Password"
+	},
+	"LBL_REMEMBER_ME": {
+		"EN": "Remember Me",
+		"PT": "Guardar os meus dados"
+	},
+	"LBL_FORGOT_PASSWORD": {
+		"EN": "Forgot Password",
+		"PT": "Esqueceu a Password"
+	},
+	"LBL_SIGN_IN_WITH_GOOGLE": {
+		"EN": "Sign In with Google",
+		"PT": "Entrar com o Google"
+	},
+	"LBL_SIGN_IN_WITH_FACEBOOK": {
+		"EN": "Sign In with Facebook",
+		"PT": "Entrar com o Facebook"
+	},
+	"LBL_DONT_HAVE_AN_ACCOUNT": {
+		"EN": "Don’t Have an Account",
+		"PT": "Ainda não tem uma conta"
+	},
+	"LBL_SIGN_UP_FOR_FREE": {
+		"EN": "Sign up for free",
+		"PT": "Criar Conta"
+	},
+	"LBL_FORGOT_PASSWORD_FIRST_CAPTION": {
+		"EN": "Enter your email address and we’ll send you a link to reset your password",
+		"PT": "Digite o seu email e enviaremos um link para redefinir a sua password"
+	},
+	"LBL_SEND_PASSWORD_RESET_LINK": {
+		"EN": "Send password reset link",
+		"PT": "Enviar link de redefinição de password"
+	},
+	"LBL_ALREADY_DONE": {
+		"EN": "Already Done",
+		"PT": "Já feito"
+	},
+	"LBL_BACK_TO_SIGN_IN": {
+		"EN": "Back to Sign In",
+		"PT": "Voltar para o login"
+	},
+	"LBL_PLEASE_CHECK_YOUR_EMAIL": {
+		"EN": "Please Check Your Email",
+		"PT": "Por favor verifique seu email"
+	},
+	"LBL_FP_WE_SENT_AN_EMAIL": {
+		"EN": "We sent an email to",
+		"PT": "Enviamos um email para"
+	},
+	"LBL_FP_WHICH_CONTAINS": {
+		"EN": "Which contains a",
+		"PT": "Que contém um"
+	},
+	"LBL_FP_LINK_TO_RESET_PASSWORD": {
+		"EN": "link to reset your Kepya password",
+		"PT": "link para redefinir a sua password do Kepya"
+	},
+	"LBL_SAVE": {
+		"EN": "Save",
+		"PT": "Guardar Alterações"
+	},
+	"LBL_ENTER_NEW_PASSWORD": {
+		"EN": "Enter a new password",
+		"PT": "Insira uma nova password"
+	},
+	"LBL_ENTER_NEW_PASSWORD_FOR": {
+		"EN": "Enter a new password for",
+		"PT": "Digite uma nova password para"
+	},
+	"LBL_PASSWORD_CHANGED": {
+		"EN": "Your Kepya password has been sucessfully reset",
+		"PT": "A sua password do Kepya foi redefinida com sucesso"
+	},
+	"LBL_TO_YOUR_ACCOUNT": {
+		"EN": "to your account",
+		"PT": "para as minha conta"
+	},
+	"LBL_REGISTER_TO_GET_BENEFITS": {
+		"EN": "Register to Get Benefits",
+		"PT": "Registe-se para obter benefícios"
+	},
+	"LBL_PRODUCERS": {
+		"EN": "Producer",
+		"PT": "Produtor"
+	},
+	"LBL_SIGN_UP_PRODUCERS_DESCRIPTION": {
+		"EN": "Improve buying option and expand the seller network.",
+		"PT": "Acesso simples ao mercado para escoar a produção."
+	},
+	"LBL_AGGREGATORS": {
+		"EN": "Aggregator",
+		"PT": "Agregador"
+	},
+	"LBL_SIGN_UP_AGGREGATORS_DESCRIPTION": {
+		"EN": "Improve selling option and expand the buyers network.",
+		"PT": "A oportunidade de terem o próprio emprego a assessorar os agricultores da comunidade"
+	},
+	"LBL_COMPRADORS": {
+		"EN": "Buyer",
+		"PT": "Comprador"
+	},
+	"LBL_TRADING": {
+		"EN": "Trading",
+		"PT": "Comercial"
+	},
+	"LBL_SIGN_UP_COMPRADORS_DESCRIPTION": {
+		"EN": "Discover prospective packaging opportunities within eco system.",
+		"PT": "Um mercado mais amplo, com mais qualidade e melhores preços"
+	},
+	"LBL_SIGN_UP_TRADING_DESCRIPTION": {
+		"EN": "Discover prospective packaging opportunities within eco system.",
+		"PT": "Um mercado mais amplo, com mais qualidade e melhores preços"
+	},
+	"LBL_TRANSPORTERS": {
+		"EN": "Transporter",
+		"PT": "Transportador"
+	},
+	"LBL_SIGN_UP_TRANSPORTERS_DESCRIPTION": {
+		"EN": "Shared Economy on local transportation.",
+		"PT": "Acesso a fretes por todo o país."
+	},
+	"LBL_CREATE_ACCOUNT": {
+		"EN": "Create Account",
+		"PT": "Criar Conta"
+	},
+	"LBL_FULL_NAME": {
+		"EN": "Full Name",
+		"PT": "Primeiro e último nome"
+	},
+	"LBL_EMAIL_ADDRESS": {
+		"EN": "Email ",
+		"PT": "O email"
+	},
+	"LBL_SELECT_PROVINCE": {
+		"EN": "Select Province",
+		"PT": "Província"
+	},
+	"LBL_PHONE_NUMBER": {
+		"EN": "Phone Number",
+		"PT": "Número de telefone"
+	},
+	"LBL_CONFIRM_PASSWORD": {
+		"EN": "Confirm Password",
+		"PT": "Confirme a password"
+	},
+	"LBL_SIGN_UP_CREATING_AN_ACCOUNT": {
+		"EN": "By creating an account, you agree to the",
+		"PT": "Ao criar uma conta, você concorda com os"
+	},
+	"LBL_TERMS_OF_SERVICE": {
+		"EN": "Terms of Service.",
+		"PT": "Termos e condições."
+	},
+	"LBL_SIGN_UP_WITH_GOOGLE": {
+		"EN": "Sign Up with Google",
+		"PT": "Criar conta com o google"
+	},
+	"LBL_SIGN_UP_WITH_FACEBOOK": {
+		"EN": "Sign Up with Facebook",
+		"PT": "Inscreva-se com o Facebook"
+	},
+	"LBL_ALREADY_HAVE_AN_ACCOUNT": {
+		"EN": "Already Have an Account",
+		"PT": "Já tem uma conta"
+	},
+	"LBL_YOUR_ACCOUNT": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_POST_FORECAST_OR_PRODUCTS": {
+		"EN": "Post product",
+		"PT": "Publicar produto"
+	},
+	"LBL_POST_FORECAST": {
+		"EN": "Post Forecast",
+		"PT": "Publicar pedido"
+	},
+	"LBL_EXPLORE_PRODUCTS": {
+		"EN": "Explore Products",
+		"PT": "Explorar produtos"
+	},
+	"LBL_EXPLORE_LATEST_PRODUCT": {
+		"EN": "Explore latest product",
+		"PT": "Explore o produto mais recente"
+	},
+	"LBL_MANAGE_USERS": {
+		"EN": "Manage Users",
+		"PT": "Gerir Produtores"
+	},
+	"LBL_YOUR_USERS": {
+		"EN": "Your users",
+		"PT": "Os produtores na minha carteira"
+	},
+	"LBL_YOUR_ORDERS": {
+		"EN": "Your Orders",
+		"PT": "As minhas encomendas"
+	},
+	"LBL_YOUR_ORDERS_DESCRIPTION": {
+		"EN": "Track, order list, or buy things again",
+		"PT": "Gerir reservas de produtos a serem enviados em breve."
+	},
+	"LBL_YOUR_ADDRESSES": {
+		"EN": "Your Addresses",
+		"PT": "Os meus endereços"
+	},
+	"LBL_YOUR_ADDRESSES_DESCRIPTION": {
+		"EN": "Edit addresses for orders",
+		"PT": "Editar os meus endereços para receber ou enviar produtos"
+	},
+	"LBL_LOGIN_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_LOGIN_SECURITY_DESCRIPTION": {
+		"EN": "Edit login, name, and mobile number",
+		"PT": "Editar credenciais, nome e número de telefone."
+	},
+	"LBL_RECOMMEDED_BASED_ON_YOUR_ACTIVITY": {
+		"EN": "Recommended based on your activity",
+		"PT": "Recomendado com base na sua atividade"
+	},
+	"LBL_ALL_RIGHTS_RESERVED": {
+		"EN": "All rights reserved.",
+		"PT": "Todos os direitos reservados."
+	},
+	"LBL_INFORMATION": {
+		"EN": "Information",
+		"PT": "Acesso Rápido"
+	},
+	"LBL_ABOUT_US": {
+		"EN": "About Us",
+		"PT": "Sobre nós"
+	},
+	"LBL_CONTACT_US": {
+		"EN": "Contact Us",
+		"PT": "Contacte-nos"
+	},
+	"LBL_TERMS_AND_CONDITION": {
+		"EN": "Terms and Condition",
+		"PT": "Termos e Condições"
+	},
+	"LBL_PRIVACY_POLICY": {
+		"EN": "Privacy Policy",
+		"PT": "Política de Privacidade"
+	},
+	"LBL_HELP": {
+		"EN": "Help",
+		"PT": "Perguntas Frequentes"
+	},
+	"LBL_CATEGORY": {
+		"EN": "Category",
+		"PT": "Categoria"
+	},
+	"LBL_COST_ANALYZER": {
+		"EN": "Cost Analyzer",
+		"PT": "Analisador de Custo"
+	},
+	"LBL_BLOG": {
+		"EN": "Blog",
+		"PT": "Blog"
+	},
+	"LBL_HOME": {
+		"EN": "Home",
+		"PT": "Início"
+	},
+	"LBL_EMPTY_PRODUCTS": {
+		"EN": "Empty Products",
+		"PT": "Adicionar produtos"
+	},
+	"LBL_LIST_PRODUCTS": {
+		"EN": "List Products",
+		"PT": "As minhas encomendas"
+	},
+	"LBL_POST_ADD_NOW": {
+		"EN": "Add",
+		"PT": "Adicionar Produtos"
+	},
+	"LBL_ADD_NEW_PRODUCT": {
+		"EN": "Add New Product",
+		"PT": "Adicionar novo produto"
+	},
+	"LBL_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_PRODUCT_CATEGORY": {
+		"EN": "Product Category",
+		"PT": "Categoria do produto"
+	},
+	"LBL_SELECT_CATEGORY": {
+		"EN": "Select Category",
+		"PT": "Categoria"
+	},
+	"LBL_PRODUCT_TITLE": {
+		"EN": "Product Title",
+		"PT": "Produto"
+	},
+	"LBL_SELECT_TITLE": {
+		"EN": "Select Title",
+		"PT": "Produto"
+	},
+	"LBL_PRODUCT_DESCRIPTION": {
+		"EN": "Product Description",
+		"PT": "Descrição do produto"
+	},
+	"LBL_PRODUCT_VARIETY": {
+		"EN": "Product Variety",
+		"PT": "Variedade do produto"
+	},
+	"LBL_SELECT_VARIETY": {
+		"EN": "Select Variety",
+		"PT": "Variedade"
+	},
+	"LBL_GRADE": {
+		"EN": "Grade",
+		"PT": "Grau"
+	},
+	"LBL_SELECT_GRADE": {
+		"EN": "Select Grade",
+		"PT": "Calibre"
+	},
+	"LBL_UNIT": {
+		"EN": "Unit",
+		"PT": "Unidade"
+	},
+	"LBL_SELECT_UNIT": {
+		"EN": "Select unit",
+		"PT": "Unidade"
+	},
+	"LBL_UNIT_VALUE": {
+		"EN": "Unit Quantity",
+		"PT": "Quantidade de unidade"
+	},
+	"LBL_SIZE": {
+		"EN": "Size",
+		"PT": "Calibre"
+	},
+	"LBL_SELECT_SIZE": {
+		"EN": "Size",
+		"PT": "Calibre"
+	},
+	"LBL_IMAGES": {
+		"EN": "Images",
+		"PT": "Imagens"
+	},
+	"LBL_UNIT_PRICE": {
+		"EN": "Unit Price",
+		"PT": "Preço unitário"
+	},
+	"LBL_TOTAL_UNIT_PRICE": {
+		"EN": "Expected earnings",
+		"PT": "Previsão de receita"
+	},
+	"LBL_EXPIRY_FORECAST_DATE": {
+		"EN": "Expiry / Forecast Date",
+		"PT": "Data de validade / previsão"
+	},
+	"LBL_STATE": {
+		"EN": "Province",
+		"PT": "Província"
+	},
+	"LBL_SELECT_STATE": {
+		"EN": "State",
+		"PT": "Província"
+	},
+	"LBL_CITY": {
+		"EN": "City",
+		"PT": "Município"
+	},
+	"LBL_SELECT_CITY": {
+		"EN": "City",
+		"PT": "Município"
+	},
+	"LBL_LOCATION": {
+		"EN": "Location",
+		"PT": "Localidade"
+	},
+	"LBL_AVAILABLE_OR_FORECASTED": {
+		"EN": "Available or Forecasted",
+		"PT": "Disponível/Previsto"
+	},
+	"LBL_MY_PRODUCTS": {
+		"EN": "My Products",
+		"PT": "Os meus produtos"
+	},
+	"LBL_EDIT_PRODUCT": {
+		"EN": "Edit Product",
+		"PT": "Editar produto"
+	},
+	"LBL_SAVE_CHANGES": {
+		"EN": "Save Changes",
+		"PT": "Salvar alterações"
+	},
+	"LBL_ADD_NEW_PRODUCTS": {
+		"EN": "Add new products",
+		"PT": "Publicar produtos"
+	},
+	"LBL_PHOTO": {
+		"EN": "Photo",
+		"PT": "foto"
+	},
+	"LBL_TITLE": {
+		"EN": "Title",
+		"PT": "Título"
+	},
+	"LBL_PRICE": {
+		"EN": "Price",
+		"PT": "Preço por Kg"
+	},
+	"LBL_AMOUNT_IN_WALLET": {
+		"EN": "Amount in wallet",
+		"PT": "Valor na carteira"
+	},
+	"LBL_SOLD": {
+		"EN": "Sold",
+		"PT": "Vendida"
+	},
+	"LBL_NOT_SOLD": {
+		"EN": "Not Sold",
+		"PT": "Não vendido"
+	},
+	"LBL_AVAILABLE": {
+		"EN": "Available",
+		"PT": "acessível"
+	},
+	"LBL_TO_BE_HARVESTED": {
+		"EN": "To be harvested",
+		"PT": "Para ser colhido"
+	},
+	"LBL_NO_PRODUCTS_AVAILABLE": {
+		"EN": "No products available",
+		"PT": "Não há produtos disponíveis"
+	},
+	"LBL_ORDERS_TO_BE_SHIPPED_SOON": {
+		"EN": "Orders to be shipped soon",
+		"PT": "Ordens de compra"
+	},
+	"LBL_ORDER_ID": {
+		"EN": "Order ID",
+		"PT": "ID da encomenda"
+	},
+	"LBL_CLIENT_NAME": {
+		"EN": "Client Name",
+		"PT": "Nome do cliente"
+	},
+	"LBL_TOTAL_ITEMS": {
+		"EN": "Total Items",
+		"PT": "Quantidade"
+	},
+	"LBL_DELIVERED_ON": {
+		"EN": "Delivered on",
+		"PT": "Data de envio"
+	},
+	"LBL_TOTAL_AMOUNT": {
+		"EN": "Total Amount",
+		"PT": "Valor total"
+	},
+	"LBL_STATUS": {
+		"EN": "Status",
+		"PT": "Estado"
+	},
+	"LBL_MESSAGES": {
+		"EN": "Messages",
+		"PT": "Mensagens"
+	},
+	"LBL_NO_ORDERS_AVAILABLE": {
+		"EN": "No orders available",
+		"PT": "Nenhuma reserva feita"
+	},
+	"LBL_ADDED_VALUE_SERVICES": {
+		"EN": "Added value services",
+		"PT": "Serviços de valor agregado"
+	},
+	"LBL_METEO": {
+		"EN": "Meteo",
+		"PT": "tempo"
+	},
+	"LBL_ANALYTICS": {
+		"EN": "Analytics",
+		"PT": "Analytics"
+	},
+	"LBL_SATELLITE_YIELDS": {
+		"EN": "Satellite yields",
+		"PT": "Rendimentos por satélite"
+	},
+	"LBL_MICROCREDIT": {
+		"EN": "Microcredit",
+		"PT": "Microcrédito"
+	},
+	"LBL_ETC": {
+		"EN": "ETC",
+		"PT": "ETC"
+	},
+	"LBL_USERS_LIST": {
+		"EN": "Users List",
+		"PT": "Lista de Usuários"
+	},
+	"LBL_ADD_NEW_USER": {
+		"EN": "Add New User",
+		"PT": "Adicionar novo usuário"
+	},
+	"LBL_EDIT_USER": {
+		"EN": "Edit User",
+		"PT": "Editar usuário"
+	},
+	"LBL_ADD_USER_NOW": {
+		"EN": "Add User Now",
+		"PT": "Adicionar usuário agora"
+	},
+	"LBL_ADD_USER": {
+		"EN": "Add User",
+		"PT": "Adicionar usuário"
+	},
+	"LBL_NAME": {
+		"EN": "Name",
+		"PT": "Primeiro e último nome"
+	},
+	"LBL_PROFILE_PICTURE": {
+		"EN": "Profile Picture",
+		"PT": "Foto do perfil"
+	},
+	"LBL_ADDRESS": {
+		"EN": "Address",
+		"PT": "Endereço"
+	},
+	"LBL_ORDER_DETAILS": {
+		"EN": "Order Details",
+		"PT": "Detalhes"
+	},
+	"LBL_QUANTITY": {
+		"EN": "Qty",
+		"PT": "Qtde"
+	},
+	"LBL_ORDERED_ON": {
+		"EN": "Ordered On",
+		"PT": "Encomendado em"
+	},
+	"LBL_ORDER_TOTAL": {
+		"EN": "Order Total",
+		"PT": "Total da encomenda"
+	},
+	"LBL_MANAGE_ADDRESSES": {
+		"EN": "Manage Addresses",
+		"PT": "Gerir Endereços"
+	},
+	"LBL_MOBILE_NUMBER": {
+		"EN": "Mobile number",
+		"PT": "Número de telefone"
+	},
+	"LBL_ADD_NEW_ADDRESS": {
+		"EN": "Add New Address",
+		"PT": "Adicionar novo endereço"
+	},
+	"LBL_EDIT": {
+		"EN": "Edit",
+		"PT": "Editar"
+	},
+	"LBL_DELETE": {
+		"EN": "Delete",
+		"PT": "Excluir"
+	},
+	"LBL_ADDRESS_DETAILS": {
+		"EN": "Address Details",
+		"PT": "Detalhes do endereço"
+	},
+	"LBL_PIN_CODE": {
+		"EN": "Zip Code",
+		"PT": "Código da Área"
+	},
+	"LBL_LOCALITY": {
+		"EN": "Locality",
+		"PT": "Localidade"
+	},
+	"LBL_COMPLETE_ADDRESS": {
+		"EN": "Complete Address",
+		"PT": "Endereço completo"
+	},
+	"LBL_CITY_DISTRICT": {
+		"EN": "City/District",
+		"PT": "Município"
+	},
+	"LBL_YOUR_DETAILS": {
+		"EN": "Your Details",
+		"PT": "Seus detalhes"
+	},
+	"LBL_TYPE_OF_ADDRESS": {
+		"EN": "Type of Address",
+		"PT": "Tipo de Endereço"
+	},
+	"LBL_OFFICE_COMMERCIAL": {
+		"EN": "Office/Commercial",
+		"PT": "Escritório / Comercial"
+	},
+	"LBL_DONE": {
+		"EN": "Done",
+		"PT": "Voltar ao Início"
+	},
+	"LBL_LIST_FORCAST": {
+		"EN": "List Forcasts",
+		"PT": "Listar previsoes"
+	},
+	"LBL_ADD_NEW_FORCAST": {
+		"EN": "Add New Forcast",
+		"PT": "Adicionar nova previsão"
+	},
+	"LBL_EMPTY_FORCAST": {
+		"EN": "Empty Forcasts",
+		"PT": "Previsões vazias"
+	},
+	"LBL_EDIT_FORCAST": {
+		"EN": "Edit Forcasts",
+		"PT": "Editar previsoes"
+	},
+	"LBL_ADD_PRODUCES": {
+		"EN": "Producer",
+		"PT": "Produtor"
+	},
+	"LBL_SELECT_PRODUCES": {
+		"EN": "Producer",
+		"PT": "Produtor"
+	},
+	"LBL_FORECAST_DATE": {
+		"EN": "Forcast Date",
+		"PT": "Data de Anulação"
+	},
+	"LBL_SHIPPING_ADDRESS": {
+		"EN": "Shipping Address",
+		"PT": "endereço de entrega"
+	},
+	"LBL_SHIPPING": {
+		"EN": "Shipping",
+		"PT": "Envio"
+	},
+	"LBL_ORDER_SUMMERY": {
+		"EN": "Order Summary",
+		"PT": "resumo do pedido"
+	},
+	"LBL_TOTAL": {
+		"EN": "Total",
+		"PT": "Total"
+	},
+	"LBL_TOTAL_ITEM_PREPARED": {
+		"EN": "Your item has been prepared",
+		"PT": "Seu item foi preparado"
+	},
+	"LBL_ITEM_SUB_TOTAL": {
+		"EN": "Item(s) Subtotal",
+		"PT": "Item (s) Subtotal"
+	},
+	"LBL_POSTED_FORECAST": {
+		"EN": "Posted Forcast",
+		"PT": "Previsão publicada"
+	},
+	"LBL_UNITS": {
+		"EN": "Units",
+		"PT": "Unidades"
+	},
+	"LBL_VARIETY": {
+		"EN": "Variety",
+		"PT": "Variedade"
+	},
+	"LBL_FORCAST_DATE": {
+		"EN": "Forecast Date",
+		"PT": "Data de Anulação"
+	},
+	"LBL_MANAGE_ACCOUNT": {
+		"EN": "Manage Account",
+		"PT": "Gerenciar conta"
+	},
+	"LBL_SWITCH_ACCOUNT": {
+		"EN": "Switch Account",
+		"PT": "Mudar de conta"
+	},
+	"LBL_SELECT_ID": {
+		"EN": "Select ID",
+		"PT": "ID"
+	},
+	"LBL_LOGOUT": {
+		"EN": "Logout",
+		"PT": "Sair"
+	},
+	"LBL_POST_DEMAND": {
+		"EN": "Post your Demand",
+		"PT": "Publicar necessidades"
+	},
+	"LBL_FAV_LIST": {
+		"EN": "Your Favourite List",
+		"PT": "Lista de favoritos"
+	},
+	"LBL_YOUR_IDEA": {
+		"EN": "Products that I buy frequently",
+		"PT": "Produtos que eu compro com mais frequência"
+	},
+	"LBL_EXPLORE_PRODUCT": {
+		"EN": "Explore All Products",
+		"PT": "Explorar todos os produtos"
+	},
+	"LBL_BUY_AGAIN": {
+		"EN": "Buy it Again",
+		"PT": "Comprar de novo"
+	},
+	"LBL_PRODUCT_REVIEW": {
+		"EN": "Write a product review",
+		"PT": "Escreva uma análise do produto"
+	},
+	"LBL_INVOICE": {
+		"EN": "Invoice",
+		"PT": "Fatura"
+	},
+	"LBL_PRINT": {
+		"EN": "Print",
+		"PT": "Impressão"
+	},
+	"LBL_DOWNLOAD_PDF": {
+		"EN": "Download as PDF",
+		"PT": "Download em PDF"
+	},
+	"LBL_LIST_DEMAND": {
+		"EN": "List Demands",
+		"PT": "Lista de demandas"
+	},
+	"LBL_EMPTY_DEMAND": {
+		"EN": "Empty Demands",
+		"PT": "Demandas vazias"
+	},
+	"LBL_POST_YOUR_DEMAND": {
+		"EN": "POST YOUR DEMAND",
+		"PT": "Gerir e publicar as necessidades pontuais e recorrentes de produtos"
+	},
+	"LBL_ADD_NEW_DEMAND": {
+		"EN": "Add New Demand",
+		"PT": "Adicionar pedido"
+	},
+	"LBL_KILOGRAM": {
+		"EN": "Kilogram",
+		"PT": "Quilograma"
+	},
+	"LBL_LITRE": {
+		"EN": "Litre",
+		"PT": "Litro"
+	},
+	"LBL_POUND": {
+		"EN": "Pound",
+		"PT": "Libra"
+	},
+	"LBL_INCH": {
+		"EN": "Inch",
+		"PT": "Polegada"
+	},
+	"LBL_METER": {
+		"EN": "Meters",
+		"PT": "Metros"
+	},
+	"LBL_REQUIRED_STOCK": {
+		"EN": "Required Stock",
+		"PT": "Quantidade necessária"
+	},
+	"LBL_MAX_PRICE": {
+		"EN": "Maximum Price Range per Kg",
+		"PT": "Preço máximo por Kg"
+	},
+	"LBL_ESTIMATED_DATE": {
+		"EN": "Estimated Date",
+		"PT": "Data estimada"
+	},
+	"LBL_EDIT_DEMAND": {
+		"EN": "Edit Demand",
+		"PT": "Editar demanda"
+	},
+	"LBL_POSTED_DEMAND": {
+		"EN": "Posted Demands",
+		"PT": "Demandas publicadas"
+	},
+	"LBL_MAX_PRICE_KZ": {
+		"EN": "Maximum Price - Kz",
+		"PT": "Preço Máximo - Kz"
+	},
+	"LBL_EXPLORE": {
+		"EN": "Explore",
+		"PT": "Explorar"
+	},
+	"LBL_PRODUCT_DETAILS": {
+		"EN": "Product Details",
+		"PT": "Detalhes do produto"
+	},
+	"LBL_BEST_MARKET_PLACE": {
+		"EN": "Best Marketplace For Farmers In Angola",
+		"PT": "O Agromercado Digital de Angola"
+	},
+	"LBL_SELL_SPICES_FRUITS": {
+		"EN": "Sell Spices, Fruits, Vegetables, Fertilizers, Agro Chemicals and other agricultural products.",
+		"PT": "Aproximar para crescer."
+	},
+	"LBL_IN_STOCK": {
+		"EN": "In Stock",
+		"PT": "Disponível"
+	},
+	"LBL_NO_MATCHES_FOUND": {
+		"EN": "No matches found",
+		"PT": "Nenhuma equivalência encontrada"
+	},
+	"LBL_CATEGORIES": {
+		"EN": "Categories",
+		"PT": "Categorias"
+	},
+	"LBL_PRODUCT": {
+		"EN": "Product",
+		"PT": "Produtos"
+	},
+	"LBL_AREA": {
+		"EN": "Area",
+		"PT": "Área"
+	},
+	"LBL_AVAILABILITY_STATUS": {
+		"EN": "Availability Status",
+		"PT": "Estado de disponibilidade"
+	},
+	"LBL_FORECAST": {
+		"EN": "Forecasted",
+		"PT": "Prevista"
+	},
+	"LBL_BUY_NOW": {
+		"EN": "Buy Now",
+		"PT": "Compre Agora"
+	},
+	"LBL_ADD_CART": {
+		"EN": "Add To Cart",
+		"PT": "Adicionar ao carrinho"
+	},
+	"LBL_CART": {
+		"EN": "Cart",
+		"PT": "Carrinho"
+	},
+	"LBL_DESCRIPTION": {
+		"EN": "Description",
+		"PT": "Descrição"
+	},
+	"LBL_REVIEW": {
+		"EN": "Reviews",
+		"PT": "Comentários"
+	},
+	"LBL_ALL": {
+		"EN": "All",
+		"PT": "Todos"
+	},
+	"LBL_LIST_FAVOURITE": {
+		"EN": "List Favourites",
+		"PT": "Favoritos da lista"
+	},
+	"LBL_FAVOURITE_LIST": {
+		"EN": "Favourite list",
+		"PT": "Lista de favoritos"
+	},
+	"LBL_PRICE_KZ": {
+		"EN": "Price - Kz",
+		"PT": "Preço - Kz"
+	},
+	"LBL_AVAILABLE_STOCK": {
+		"EN": "Available Stock",
+		"PT": "Estoque disponível"
+	},
+	"LBL_NOTIFY_ME": {
+		"EN": "Notify Me",
+		"PT": "Me avise"
+	},
+	"LBL_PRODUCT_OUT_OF_STOCK": {
+		"EN": "The Product is currently out of stock. Enter your email address below and we will notify you as soon as the product is available.",
+		"PT": "O produto está atualmente fora de stock. Digite o seu email abaixo e nós notificá-lo-emos assim que o produto estiver disponível."
+	},
+	"LBL_LOGIN_AND_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_ENTER_EMAIL": {
+		"EN": "Enter email address",
+		"PT": "Insira o email"
+	},
+	"LBL_ENTER_CORRECT_EMAIL": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o email correcto"
+	},
+	"LBL_ENTER_PASSWORD": {
+		"EN": "Enter password",
+		"PT": "Digite a password"
+	},
+	"LBL_ENTER_CORRECT_PASSWORD": {
+		"EN": "Password must be min 8 letters, with at least a symbol, upper and lower case letters and a number",
+		"PT": "A password deve ter no mínimo 8 letras, com pelo menos um símbolo, letras maiúsculas e minúsculas e um número"
+	},
+	"LBL_SELECT_CATEGORY_VALIDATION": {
+		"EN": "Category",
+		"PT": "Categoria"
+	},
+	"LBL_ENTER_TITLE": {
+		"EN": "Enter title",
+		"PT": "Digite o título"
+	},
+	"LBL_ENTER_DESCRIPTION": {
+		"EN": "Enter description",
+		"PT": "Digite a descrição"
+	},
+	"LBL_SELECT_VARIETY_VALIDATION": {
+		"EN": "Variety",
+		"PT": "Variedade"
+	},
+	"LBL_SELECT_GRADE_VALIDATION": {
+		"EN": "Grade",
+		"PT": "Calibre"
+	},
+	"LBL_ENTER_UNIT": {
+		"EN": "Enter unit value",
+		"PT": "Digite o valor da unidade"
+	},
+	"LBL_SELECT_SIZE_VALIDATION": {
+		"EN": "Size",
+		"PT": "Tamanho"
+	},
+	"LBL_ENTER_UNIT_PRICE": {
+		"EN": "Enter unit price",
+		"PT": "Digite o preço unitário"
+	},
+	"LBL_ENTER_TOTAL_UNIT_PRICE": {
+		"EN": "Enter total unit price",
+		"PT": "Digite o preço unitário total"
+	},
+	"LBL_SELECT_STATE_VALIDATION": {
+		"EN": "State",
+		"PT": "Província"
+	},
+	"LBL_SELECT_CITY_VALIDATION": {
+		"EN": "City",
+		"PT": "Município"
+	},
+	"LBL_ENTER_LOCATION": {
+		"EN": "Enter location",
+		"PT": "Digite a localização"
+	},
+	"LBL_ENTER_EXPIRY": {
+		"EN": "Enter expiry / forecast date",
+		"PT": "Digite a data de validade / previsão"
+	},
+	"LBL_ENTER_NAME_VALIDATION": {
+		"EN": "Enter name",
+		"PT": "Insira o nome"
+	},
+	"LBL_ENTER_PHONE_NUMBER": {
+		"EN": "Enter phone number",
+		"PT": "Digite o número de telefone"
+	},
+	"LBL_ENTER_ADDRESS": {
+		"EN": "Enter address",
+		"PT": "Insira o endereço"
+	},
+	"LBL_ENTER_STATE_VALIDATION": {
+		"EN": "Enter state",
+		"PT": "Digite o estado"
+	},
+	"LBL_ENTER_CITY_VALIDATION": {
+		"EN": "Enter city",
+		"PT": "Digite a cidade"
+	},
+	"LBL_SELECT_PRODUCER": {
+		"EN": "Producer",
+		"PT": "Produtor"
+	},
+	"LBL_ENTER_FORECAST": {
+		"EN": "Enter forecast date",
+		"PT": "Digite a data prevista"
+	},
+	"LBL_ENTER_REQUIRED_STOCK": {
+		"EN": "Enter required stock",
+		"PT": "Insira o estoque necessário"
+	},
+	"LBL_SELECT_ESTIMATED_DATE": {
+		"EN": "Select estimated date",
+		"PT": "Data estimada de colheita"
+	},
+	"LBL_ADD_REVIEW": {
+		"EN": "Reviews added successfully",
+		"PT": "Comentários adicionados com sucesso"
+	},
+	"LBL_EMAIL_ID_EXIST": {
+		"EN": "Email id already exist",
+		"PT": "Esse email já existe"
+	},
+	"LBL_SESSION_EXPIRED": {
+		"EN": "Session expired",
+		"PT": "Sessão expirada"
+	},
+	"LBL_ADDRESS_DELETED": {
+		"EN": "Address deleted successfully",
+		"PT": "Endereço excluído com sucesso"
+	},
+	"LBL_ADDRESS_UPDATED": {
+		"EN": "Address updated successfully",
+		"PT": "Endereço atualizado com sucesso"
+	},
+	"LBL_ADDRESS_NOT_EXIST": {
+		"EN": "Address not exist",
+		"PT": "Endereço não existe"
+	},
+	"LBL_NEW_ADDRESS_ADDED": {
+		"EN": "New address added successfully",
+		"PT": "Novo endereço adicionado com sucesso"
+	},
+	"LBL_EMAIL_EXIST": {
+		"EN": "Email id already exists",
+		"PT": "O ID do email já existe"
+	},
+	"LBL_PROFILE_UPDATED": {
+		"EN": "Profile updated successfully",
+		"PT": "Perfil atualizado com sucesso"
+	},
+	"LBL_SOMETHING_WRONG": {
+		"EN": "Something wrong while deleting user profile photo",
+		"PT": "Ocorreu um erro ao excluir a foto do perfil do usuário"
+	},
+	"LBL_USER_PROFILE": {
+		"EN": "User profile photo deleted successfully",
+		"PT": "Foto do perfil do usuário excluída com sucesso"
+	},
+	"LBL_PRODUCT_EXIST": {
+		"EN": "Product not exist",
+		"PT": "O produto não existe"
+	},
+	"LBL_SOMETHING_WENT_WRONG": {
+		"EN": "Something wrong while deleting product image",
+		"PT": "Algo errado ao excluir a imagem do produto"
+	},
+	"LBL_EMAIL_ID_NOT_EXIST": {
+		"EN": "Email id not exists",
+		"PT": "Esse email não existe"
+	},
+	"LBL_INVALID_PASSWORD": {
+		"EN": "Your password is invalid",
+		"PT": "A sua password é invalida"
+	},
+	"LBL_PRODUCT_IMAGE_DELETED": {
+		"EN": "Product image deleted successfully",
+		"PT": "Imagem do produto excluída com sucesso"
+	},
+	"LBL_YOUR_ACCOUNT_INACTIVE": {
+		"EN": "Your account is inactive, Please contact to administrator",
+		"PT": "Sua conta está inativa. Entre em contato com o administrador"
+	},
+	"LBL_YOUR_SOCIAL_ACCOUNT": {
+		"EN": "Your social account not exists",
+		"PT": "Sua conta social não existe"
+	},
+	"LBL_PARAMETER_MISSING": {
+		"EN": "There are one or more parameters missing",
+		"PT": "Faltam um ou mais parâmetros"
+	},
+	"LBL_FORGOT_PASSWORD_VALIDATION": {
+		"EN": "Forgot password link sent to your registered email address",
+		"PT": "Esqueceu o link da password enviada para o seu email registado"
+	},
+	"LBL_INVALID_OTP": {
+		"EN": "Invalid OTP",
+		"PT": "OTP inválido"
+	},
+	"LBL_PASSWORD_CHANGED_VALIDATION": {
+		"EN": "Password changed successfully",
+		"PT": "Password alterada com sucesso"
+	},
+	"LBL_FARMER_EXIST": {
+		"EN": "Farmer not exist",
+		"PT": "Agricultor não existe"
+	},
+	"LBL_FULL_NAME_VALIDATION": {
+		"EN": "Enter full name",
+		"PT": "Digite o nome completo"
+	},
+	"LBL_CORRECT_NAME": {
+		"EN": "Enter correct full name",
+		"PT": "Escreva o nome completo"
+	},
+	"LBL_CONFORM_PASSWORD": {
+		"EN": "Confirm password",
+		"PT": "Confirmar a password"
+	},"LBL_CONFIRM_ORDER": {
+		"EN": "Do you confirm that you received your product? ",
+		"PT": "Confirma que recebeu o produto?"
+	},"LBL_CONFIRM_ORDER_TRUE": {
+		"EN": "Yes",
+		"PT": "Sim"
+	},
+	"LBL_CONFIRM_ORDER_FALSE": {
+		"EN": "No",
+		"PT": "Não"
+	},
+	"LBL_PASSWORD_AND_CONFORM": {
+		"EN": "Password and confirm password must be same",
+		"PT": "A password digitada e a de confirmação devem ser iguais"
+	},
+	"LBL_VALIDATE_ENTER_PIN_CODE": {
+		"EN": "Enter pin code",
+		"PT": "Digite o código PIN"
+	},
+	"LBL_VALIDATE_ENTER_LOCALITY": {
+		"EN": "Enter locality",
+		"PT": "Digite a localidade"
+	},
+	"LBL_VALIDATE_ENTER_CITY_DISTRICT": {
+		"EN": "Enter city / district",
+		"PT": "Digite a cidade / distrito"
+	},
+	"LBL_VALIDATE_ENTER_COMPLETE_ADDRESS": {
+		"EN": "Enter complete address",
+		"PT": "Digite o endereço completo"
+	},
+	"LBL_VALIDATE_ENTER_MOBILE_NUMBER": {
+		"EN": "Enter mobile number",
+		"PT": "Digite o número do celular"
+	},
+	"LBL_TODAYS_FORECASTED_PRODUCTS": {
+		"EN": "Today's Forecasted Products",
+		"PT": "Produtos previstos de hoje"
+	},
+	"LBL_NOTE_TODAYS_FORECASTED_PRODUCTS": {
+		"EN": "Note: Here are the list of today's forecasted products, You can change price",
+		"PT": "Nota: Aqui está a lista dos produtos previstos de hoje. Você pode alterar o preço"
+	},
+	"LBL_FORECASTED_DATE": {
+		"EN": "Forecasted Date",
+		"PT": "Data prevista"
+	},
+	"LBL_SEARCH_PRODUCT": {
+		"EN": "Search Product",
+		"PT": "Pesquisar produto"
+	},
+	"LBL_CUSTOMER_REVIEWS": {
+		"EN": "customer reviews",
+		"PT": "Opinião dos consumidores"
+	},
+	"LBL_SHOPPING_CART": {
+		"EN": "Shopping Cart",
+		"PT": "Carrinho de compras"
+	},
+	"LBL_PROCEED_TO_BUY": {
+		"EN": "Proceed to Buy",
+		"PT": "Avançar para a compra"
+	},
+	"LBL_CHECKOUT": {
+		"EN": "Checkout",
+		"PT": "Verificação de saída"
+	},
+	"LBL_QTY": {
+		"EN": "QTY",
+		"PT": "Quantidade"
+	},
+	"LBL_USE_THIS": {
+		"EN": "Use this",
+		"PT": "Usa isto"
+	},
+	"LBL_PAYMENT_OPTIONS": {
+		"EN": "Payment Options",
+		"PT": "Opções de pagamento"
+	},
+	"LBL_ORDER_NOW": {
+		"EN": "Order Now",
+		"PT": "Pedir agora"
+	},
+	"LBL_ENTER_CVV": {
+		"EN": "Enter CVV",
+		"PT": "Digite CVV"
+	},
+	"LBL_CREDIT_DEBIT_ATM_CARD": {
+		"EN": "Credit / Debit / ATM Card",
+		"PT": "Cartão de Crédito / Débito / Caixa Eletrônico"
+	},
+	"LBL_FULL_NAME_APPEAR_ON_CARD": {
+		"EN": "Full Name as Appears on the Card",
+		"PT": "Nome completo conforme o BI"
+	},
+	"LBL_ENTER_CARD_NUMBER": {
+		"EN": "Enter Card Number",
+		"PT": "Digite o número do cartão"
+	},
+	"LBL_EXPIRATION": {
+		"EN": "Expiration",
+		"PT": "Expiração"
+	},
+	"LBL_WALLET": {
+		"EN": "Wallet",
+		"PT": "Carteira"
+	},
+	"LBL_ADD_FORECAST": {
+		"EN": "Forecast",
+		"PT": "Previsão"
+	},
+	"LBL_ADD_A": {
+		"EN": "A",
+		"PT": "UMA"
+	},
+	"LBL_ADD_B": {
+		"EN": "B",
+		"PT": "B"
+	},
+	"LBL_ADD_C": {
+		"EN": "C",
+		"PT": "C"
+	},
+	"LBL_ADD_D": {
+		"EN": "D",
+		"PT": "D"
+	},
+	"LBL_ADD_OTHER": {
+		"EN": "Other",
+		"PT": "De outross"
+	},
+	"LBL_SMALL": {
+		"EN": "Small",
+		"PT": "Pequena"
+	},
+	"LBL_MEDIUM": {
+		"EN": "Medium",
+		"PT": "Média"
+	},
+	"LBL_LARGE": {
+		"EN": "Large",
+		"PT": "ampla"
+	},
+	"LBL_AVAILABLE_STOCK_STATUS": {
+		"EN": "Availability Status - Stock",
+		"PT": "Estado de disponibilidade - Stock"
+	},
+	"LBL_BUYER": {
+		"EN": "buyer",
+		"PT": "comprador"
+	},
+	"LBL_PAY_WITH_BANK_TRANSFER": {
+		"EN": "Pay with bank transfer",
+		"PT": "Pagar com transferência bancária"
+	},
+	"LBL_BANK_INFORMATION": {
+		"EN": "Bank Information",
+		"PT": "Informação bancária"
+	},
+	"LBL_ORDER_PLACED": {
+		"EN": "Your order id is : #ORDER_ID#, We are waiting for the payment and for the shipping, we will contact you shortly",
+		"PT": "O ID do seu pedido é: #ORDER_ID#, estamos aguardando o pagamento, entraremos em contato em breve"
+	},
+	"LBL_THANK_YOU_FOR_SHOPPING_WITH_US": {
+		"EN": "THANK YOU FOR SHOPPING WITH US",
+		"PT": "OBRIGADO POR COMPRAR CONOSCO"
+	},
+	"LBL_CONTINUE_SHOPPING": {
+		"EN": "Continue shopping",
+		"PT": "Continue comprando"
+	},
+	"LBL_CLOSE": {
+		"EN": "Close",
+		"PT": "Fechar"
+	},
+	"LBL_ACCOUNT_NO": {
+		"EN": "IBAN",
+		"PT": "IBAN"
+	},
+	"LBL_CODE": {
+		"EN": "Bank",
+		"PT": "Banco"
+	},
+	"LBL_TRANSFER_MONEY": {
+		"EN": "You have to transfer money into this account",
+		"PT": "Para carregar a sua carteira, transfira o valor para a seguinte conta:"
+	},
+	"LBL_PAY_FOR_ORDER": {
+		"EN": "Pay for order",
+		"PT": "Pagar pelo pedido"
+	},
+	"LBL_PAY_FOR_TRANSPORT": {
+		"EN": "Pay for transport",
+		"PT": "Pagar pelo transporte"
+	},
+	"LBL_PLEASE_ADD_YOUR_ADDRESS": {
+		"EN": "Please add your address",
+		"PT": "Adicione seu endereço"
+	},
+	"LBL_MESSAGE": {
+		"EN": "Message",
+		"PT": "Mensagem"
+	},
+	"LBL_NO_SUFFICIENT_BALANCE_FOR_PLACE_ORDER": {
+		"EN": "Your account doesn't have enough funds to complete the purchase.  We can put the product on hold for #HRS# hours while you charge your account.",
+		"PT": "Sua conta não possui fundos suficientes para concluir a compra. Podemos colocar o produto em espera por #HRS# horas enquanto você cobra sua conta."
+	},
+	"LBL_UNIT_TYPE": {
+		"EN": "Unit Type",
+		"PT": "Tipo de unidade"
+	},
+	"LBL_ACTIVE_WITHIN_24_HOURS": {
+		"EN": "Our support team will verify your product information and then it will be active within 24 to 48 hours",
+		"PT": "A equipa Kepya verificará as informações do produto. Caso este seja aprovado ficará activo em breve"
+	},
+	"LBL_RECENTLY_NOT_ANY_ADD": {
+		"EN": "Recently you don't have any Add",
+		"PT": "Não adicionou produtos recentemente"
+	},
+	"LBL_BTN_POST_ADD_NOE": {
+		"EN": "Add product",
+		"PT": "Adicionar produto"
+	},
+	"LBL_SUB_TOTAL": {
+		"EN": "Subtotal",
+		"PT": "Subtotal"
+	},
+	"LBL_TRANSPORTATION_FEES": {
+		"EN": "Transportation Fees",
+		"PT": "Taxas de transporte"
+	},
+	"LBL_PHONE_NO_EXIST": {
+		"EN": "Phone number already exist",
+		"PT": "O número de telefone já existe"
+	},
+	"LBL_OTP": {
+		"EN": "OTP",
+		"PT": "OTP"
+	},
+	"LBL_ENTER_OTP": {
+		"EN": "Enter otp",
+		"PT": "Digite otp"
+	},
+	"LBL_VERIFY_OTP": {
+		"EN": "Verify OTP",
+		"PT": " Verificar OTP"
+	},
+	"LBL_CANCEL_BTN": {
+		"EN": "Cancel Order",
+		"PT": "Cancelar encomenda"
+	},
+	"LBL_NO_SUFFICIENT_TRNSPORATION_BALANCE_FOR_PLACE_ORDER": {
+		"EN": "You have not sufficient balance for the transporation",
+		"PT": "Você não possui saldo suficiente para o transporte"
+	},
+	"LBL_TRANSPORTER": {
+		"EN": "Transporter",
+		"PT": "Transportadore"
+	},
+	"LBL_WE_ARE_LAUNCHING_SOON": {
+		"EN": "We are launching soon",
+		"PT": "Estamos lançando em breve"
+	},
+	"LBL_HI": {
+		"EN": "Hi",
+		"PT": "Olá"
+	},
+	"LBL_TYPE_CODE_YOU_RECEIVED": {
+		"EN": "Type the code you have received",
+		"PT": "Digite o código que você recebeu"
+	},
+	"LBL_PRODUCT_ID": {
+		"EN": "Product ID",
+		"PT": "ID do produto"
+	},
+	"LBL_REVIEW_FOR": {
+		"EN": "review for",
+		"PT": "revisão para"
+	},
+	"LBL_TOP_PRODUCERS": {
+		"EN": "Top Producers",
+		"PT": "Principais Produtores"
+	},
+	"LBL_TOP_DESTINATIONS": {
+		"EN": "Top Destinations",
+		"PT": "Principais destinos"
+	},
+	"LBL_TOP_PRODUCTS": {
+		"EN": "Top Products",
+		"PT": "Principais produtos"
+	},
+	"LBL_AVERAGE_RATINGS": {
+		"EN": "Average Ratings",
+		"PT": "Pontuação média"
+	},
+	"LBL_PRODUCT_IMAGE_DIMENSION_MESSAGE": {
+		"EN": "Image dimension should be 500px * 500px",
+		"PT": "A dimensão da imagem deve ser 500px * 500px"
+	},
+	"LBL_LIST_OF_BIDDERS": {
+		"EN": "List of Bidders",
+		"PT": "Lista de Licitantes"
+	},
+	"LBL_BID_TYPE": {
+		"EN": "Bid Type",
+		"PT": "Tipo de lance"
+	},
+	"LBL_BID_AMOUNT": {
+		"EN": "Bid Amount",
+		"PT": "Valor do lance"
+	},
+	"LBL_ACTION": {
+		"EN": "Action",
+		"PT": "Acção"
+	},
+	"LBL_NO_BIDDERS_AVAILABLE": {
+		"EN": "No bidders available",
+		"PT": "Nenhum licitante disponível"
+	},
+	"LBL_FIXED_BID": {
+		"EN": "Fixed Bid",
+		"PT": "Lance fixo"
+	},
+	"LBL_PRICE_PER_KM": {
+		"EN": "Price Per KM",
+		"PT": "Preço por KM"
+	},
+	"LBL_ACCEPT": {
+		"EN": "Accept",
+		"PT": "Aceitar"
+	},
+	"LBL_REJECT": {
+		"EN": "Reject",
+		"PT": "Rejeitar"
+	},
+	"LBL_ACCEPTED_BY_TRANSPORTER": {
+		"EN": "Accepted by transporter",
+		"PT": "Aceito pelo transportador"
+	},
+	"LBL_HARVEST_DATE": {
+		"EN": "Harvest date",
+		"PT": "Data de colheita"
+	},
+	"LBL_ENTER_HARVEST": {
+		"EN": "Enter harvest date",
+		"PT": "Digite a data da colheita"
+	},
+	"LBL_EXPIRY_DATE": {
+		"EN": "Expiry Date",
+		"PT": "Data de validade"
+	},
+	"LBL_ENTER_EXPIRY_DATE": {
+		"EN": "Enter expiry date",
+		"PT": "Digite a data de validade"
+	},
+	"LBL_DATE_OF_AVAILABILITY": {
+		"EN": "Date of availability",
+		"PT": "Data de disponibilidade"
+	},
+	"LBL_CLEAR_ALL": {
+		"EN": "Clear All",
+		"PT": "Limpar tudo"
+	},
+	"LBL_PRODUCER_DASHBOARD_MY_PRODUCTS_ALREADY_SOLD": {
+		"EN": "Sold portion",
+		"PT": "Proporção vendida"
+	},
+	"LBL_PRODUCER_DASHBOARD_MY_PRODUCTS_TO_SELL": {
+		"EN": "Portion to sell",
+		"PT": "Proporção por vender"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_MY_PRODUCTS_ALREADY_SOLD": {
+		"EN": "Already Sold",
+		"PT": "Já vendido"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_MY_PRODUCTS_TO_SELL": {
+		"EN": "Portion to sell",
+		"PT": "Proporção por vender"
+	},
+	"LBL_USER_PROFILE_OLD_PASSWORD": {
+		"EN": "Old Password",
+		"PT": "Senha Antiga"
+	},
+	"LBL_USER_PROFILE_NEW_PASSWORD": {
+		"EN": "New Password",
+		"PT": "Nova senha"
+	},
+	"LBL_USER_PROFILE_CONFIRM_NEW_PASSWORD": {
+		"EN": "Confirm New Password",
+		"PT": "Confirme a nova senha"
+	},
+	"LBL_ENTER_USER_PROFILE_OLD_PASSWORD": {
+		"EN": "Please enter old password",
+		"PT": "Digite a senha antiga"
+	},
+	"LBL_ENTER_USER_PROFILE_NEW_PASSWORD": {
+		"EN": "Please enter new password",
+		"PT": "Digite uma nova senha"
+	},
+	"LBL_ENTER_USER_PROFILE_CONFIRM_NEW_PASSWORD": {
+		"EN": "Please enter confirm new password",
+		"PT": "Digite confirmar nova senha"
+	},
+	"LBL_ENTER_USER_PROFILE_MATCH_PASSWORD": {
+		"EN": "Password and confirm password must be same",
+		"PT": "A senha e a confirmação da senha devem ser iguais"
+	},
+	"LBL_USER_PROFILE_INVALID_OLD_PASSWORD": {
+		"EN": "Your old password is invalid",
+		"PT": "Sua senha antiga é inválida"
+	},
+	"LBL_COMPRADOR_EXPLORE_NO_PRODUCTS": {
+		"EN": "No products available",
+		"PT": "Nenhum produto disponível"
+	},
+	"LBL_TRADING_EXPLORE_NO_PRODUCTS": {
+		"EN": "No products available",
+		"PT": "Nenhum produto disponível"
+	},
+	"LBL_PRODUCER_USER_BANK_NAME": {
+		"EN": "Bank name",
+		"PT": "nome do banco"
+	},
+	"LBL_PRODUCER_USER_BANK_ACCOUNT_NO": {
+		"EN": "Bank account no",
+		"PT": "Número da conta bancária"
+	},
+	"LBL_COMPRADOR_CART_LIST_ITEM_TOTAL": {
+		"EN": "Item Total",
+		"PT": "Total de itens"
+	},
+	"LBL_TRADING_CART_LIST_ITEM_TOTAL": {
+		"EN": "Item Total",
+		"PT": "Total de itens"
+	},
+	"LBL_PRODUCER_DASHBOARD_ORDER_SHIPPED_SOON_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ORDER_SHIPPED_SOON_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_MY_ACCOUNT_SITE_FOOTER": {
+		"EN": "© 2020 Kepya - AGRO MARKETPLACE, SA. All rights reserved.",
+		"PT": "© 2020 Kepya - AGRO MARKETPLACE, SA. Todos os direitos reservados"
+	},
+	"LBL_SIGN_IN_EMAIL": {
+		"EN": "Email",
+		"PT": "Email"
+	},
+	"LBL_SIGN_IN_PASSWORD": {
+		"EN": "Password",
+		"PT": "Password"
+	},
+	"LBL_SIGN_IN_REMEMBER_ME": {
+		"EN": "Remember Me",
+		"PT": "Guardas os meus dados"
+	},
+	"LBL_SIGN_IN_FORGOT_PASSWORD": {
+		"EN": "Forgot Password",
+		"PT": "Esqueceu-se da password"
+	},
+	"LBL_SIGN_IN_BUTTON": {
+		"EN": "Sign In",
+		"PT": "Entrar"
+	},
+	"LBL_SIGN_IN_WITH_GOOGLE_BUTTON": {
+		"EN": "Sign In with Google",
+		"PT": "Faça login com o Google"
+	},
+	"LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT": {
+		"EN": "Don’t Have an Account",
+		"PT": "Não possui uma conta"
+	},
+	"LBL_SIGN_IN_SIGN_UP_FOR_FREE": {
+		"EN": "Sign up for free",
+		"PT": "Criar Conta"
+	},
+	"LBL_SIGN_UP_REGISTER_TO_GET_BENEFITS": {
+		"EN": "Register to Get Benefits",
+		"PT": "Uma rede com benefícios para todos!"
+	},
+	"LBL_SIGN_UP_BENEFIT_PRODUCERS": {
+		"EN": "Producers",
+		"PT": "Produtores"
+	},
+	"LBL_SIGN_UP_BENEFIT_PRODUCERS_DESCRIPTION": {
+		"EN": "Improve buying option and expand the seller network.",
+		"PT": "Um canal para escoar produtos do campo"
+	},
+	"LBL_SIGN_UP_BENEFIT_AGGREGATORS": {
+		"EN": "Aggregators",
+		"PT": "Agregadores"
+	},
+	"LBL_SIGN_UP_BENEFIT_AGGREGATORS_DESCRIPTION": {
+		"EN": "Improve selling option and expand the buyers network.",
+		"PT": "A oportunidade de terem o próprio emprego a assessoriar os agricultores da comunidade"
+	},
+	"LBL_SIGN_UP_BENEFIT_COMPRADORS": {
+		"EN": "Compradors",
+		"PT": "Compradores"
+	},
+	"LBL_SIGN_UP_BENEFIT_COMPRADORS_DESCRIPTION": {
+		"EN": "Discover prospective packaging opportunities within eco system.",
+		"PT": "Um mercado mais amplo, com mais qualidade e melhores preços"
+	},
+	"LBL_SIGN_UP_BENEFIT_TRADING": {
+		"EN": "Trading",
+		"PT": "Comercial"
+	},
+	"LBL_SIGN_UP_BENEFIT_TRADING_DESCRIPTION": {
+		"EN": "Discover prospective packaging opportunities within eco system.",
+		"PT": "Um mercado mais amplo, com mais qualidade e melhores preços"
+	},
+	"LBL_SIGN_UP_BENEFIT_TRANSPORTERS": {
+		"EN": "Transporters",
+		"PT": "Transportadores"
+	},
+	"LBL_SIGN_UP_BENEFIT_TRANSPORTERS_DESCRIPTION": {
+		"EN": "Shared Economy on local transportation.",
+		"PT": "Acesso a fretes por todo país"
+	},
+	"LBL_SIGN_UP_CREATE_ACCOUNT": {
+		"EN": "Create Account",
+		"PT": "Criar Conta"
+	},
+	"LBL_SIGN_UP_FULL_NAME": {
+		"EN": "Full Name",
+		"PT": "Nome completo"
+	},
+	"LBL_SIGN_UP_EMAIL": {
+		"EN": "Email",
+		"PT": "Email"
+	},
+	"LBL_SIGN_UP_SELECT_PROVINCE": {
+		"EN": "Select Province",
+		"PT": "Selecionar Província"
+	},
+	"LBL_SIGN_UP_SELECT_CITY": {
+		"EN": "Select City",
+		"PT": "Selecione a cidade"
+	},
+	"LBL_SIGN_UP_PHONE_NUMBER": {
+		"EN": "Mobile number",
+		"PT": "Número de telefone"
+	},
+	"LBL_SIGN_UP_PASSWORD": {
+		"EN": "Password",
+		"PT": "Senha"
+	},
+	"LBL_SIGN_UP_CONFIRM_PASSWORD": {
+		"EN": "Confirm Password",
+		"PT": "Confirme a password"
+	},
+	"LBL_SIGN_UP_USER_PRODUCERS": {
+		"EN": "Producers",
+		"PT": "Produtores"
+	},
+	"LBL_SIGN_UP_USER_AGGREGATORS": {
+		"EN": "Aggregators",
+		"PT": "Agregadores"
+	},
+	"LBL_SIGN_UP_USER_COMPRADORS": {
+		"EN": "Compradors",
+		"PT": "Compradores"
+	},
+	"LBL_SIGN_UP_USER_TRADING": {
+		"EN": "Commercial",
+		"PT": "Comercial"
+	},
+	"LBL_SIGN_UP_USER_TRANSPORTERS": {
+		"EN": "Transporters",
+		"PT": "Transportadores"
+	},
+	"LBL_SIGN_UP_TERMS_CREATING_AN_ACCOUNT": {
+		"EN": "By creating an account, you agree to the",
+		"PT": "Ao criar uma conta, você concorda com os"
+	},
+	"LBL_SIGN_UP_TERMS_OF_SERVICE": {
+		"EN": "Terms of Service.",
+		"PT": "Termos de serviço."
+	},
+	"LBL_SIGN_UP_FOR_FREE_BUTTON": {
+		"EN": "Sign up for free",
+		"PT": "Criar Conta"
+	},
+	"LBL_SIGN_UP_WITH_GOOGLE_BUTTON": {
+		"EN": "Sign Up with Google",
+		"PT": "Criar conta com o Google"
+	},
+	"LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT": {
+		"EN": "Already Have an Account",
+		"PT": "Já tem uma conta"
+	},
+	"LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN": {
+		"EN": "Sign In",
+		"PT": "Entrar"
+	},
+	"LBL_SIGN_IN_VALIDATE_BLANK_EMAIL": {
+		"EN": "Enter email address",
+		"PT": "Insira o endereço de e-mail"
+	},
+	"LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o endereço de e-mail correto"
+	},
+	"LBL_SIGN_IN_VALIDATE_BLANK_PASSWORD": {
+		"EN": "Enter password",
+		"PT": "Digite a senha"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_FULL_NAME": {
+		"EN": "Enter full name",
+		"PT": "Digite o nome completo"
+	},
+	"LBL_SIGN_UP_VALIDATE_FORMAT_FULL_NAME": {
+		"EN": "Enter correct full name",
+		"PT": "Digite o nome completo correto"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_EMAIL": {
+		"EN": "Enter email address",
+		"PT": "Insira o endereço de e-mail"
+	},
+	"LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o endereço de e-mail correto"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_PROVINCE": {
+		"EN": "Select province",
+		"PT": "Selecionar província"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_CITY": {
+		"EN": "Select city",
+		"PT": "Selecione a cidade"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_MOBILE_NO": {
+		"EN": "Enter mobile number",
+		"PT": "Digite o número do celular"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_PASSWORD": {
+		"EN": "Enter password",
+		"PT": "Digite a senha"
+	},
+	"LBL_SIGN_UP_VALIDATE_BLANK_CONFIRM_PASSWORD": {
+		"EN": "Enter confirm password",
+		"PT": "Digite confirmar senha"
+	},
+	"LBL_SIGN_UP_VALIDATE_MATCH_PASSWORD_CONFIRM_PASSWORD": {
+		"EN": "Password and confirm password must be same",
+		"PT": "A senha e a senha de confirmação devem ser iguais"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_NAME": {
+		"EN": "Enter your name",
+		"PT": "Digite seu nome"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_EMAIL": {
+		"EN": "Enter your email",
+		"PT": "Digite seu e-mail"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_MOBILE_NUMBER": {
+		"EN": "Enter your mobile number",
+		"PT": "Digite seu número de celular"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
+		"EN": "Enter your bank name",
+		"PT": "Digite o nome do seu banco"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
+		"EN": "Enter your correct bank account no",
+		"PT": "Digite sua conta bancária correta no"
+	},
+	"LBL_FORGOT_PASSWORD_TITLE": {
+		"EN": "Enter your email address and we'll send you a link to reset your password",
+		"PT": "Digite o seu email e enviaremos um link para redefinir a sua password"
+	},
+	"LBL_FORGOT_PASSWORD_EMAIL": {
+		"EN": "Email",
+		"PT": "O email"
+	},
+	"LBL_FORGOT_PASSWORD_SEND_PASSWORD_RESET_LINK": {
+		"EN": "Send password reset link",
+		"PT": "Enviar link de redefinição de senha"
+	},
+	"LBL_FORGOT_PASSWORD_ALREADY_DONE": {
+		"EN": "Already Done",
+		"PT": "Já feito"
+	},
+	"LBL_FORGOT_PASSWORD_BACK_TO_SIGN_IN": {
+		"EN": "Back to Sign In",
+		"PT": "Voltar para o login"
+	},
+	"LBL_FORGOT_PASSWORD_VALIDATE_BLANK_EMAIL": {
+		"EN": "Enter email address",
+		"PT": "Insira o endereço de e-mail"
+	},
+	"LBL_FORGOT_PASSWORD_VALIDATE_FORMAT_EMAIL": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o endereço de e-mail correto"
+	},
+	"LBL_CHECK_YOUR_EMAIL_PLEASE_CHECK_YOUR_EMAIL": {
+		"EN": "Please Check Your Email",
+		"PT": "Por favor verifique seu email"
+	},
+	"LBL_CHECK_YOUR_EMAIL_FIRST_LINE_DESCRIPTION": {
+		"EN": "We sent an email to",
+		"PT": "Enviamos um email para"
+	},
+	"LBL_CHECK_YOUR_EMAIL_SECOND_LINE_DESCRIPTION": {
+		"EN": "Which contains a",
+		"PT": "Que contém um"
+	},
+	"LBL_CHECK_YOUR_EMAIL_THIRD_LINE_DESCRIPTION": {
+		"EN": "link to reset your Kepya password",
+		"PT": "link para redefinir sua senha do Kepya"
+	},
+	"LBL_CHECK_YOUR_EMAIL_ALREADY_DONE": {
+		"EN": "Already Done",
+		"PT": "Já feito"
+	},
+	"LBL_CHECK_YOUR_EMAIL_BACK_TO_SIGN_IN": {
+		"EN": "Back to Sign In",
+		"PT": "Voltar para o login"
+	},
+	"LBL_RESET_PASSWORD_ENTER_A_NEW_PASSWORD_FOR": {
+		"EN": "Enter a new password for",
+		"PT": "Digite uma nova senha para"
+	},
+	"LBL_RESET_PASSWORD_ENTER_A_NEW_PASSWORD": {
+		"EN": "Password",
+		"PT": "Senha"
+	},
+	"LBL_RESET_PASSWORD_VALIDATE_BLANK_PASSWORD": {
+		"EN": "Enter password",
+		"PT": "Digite a senha"
+	},
+	"LBL_RESET_PASSWORD_SAVE": {
+		"EN": "Save",
+		"PT": "Salve"
+	},
+	"LBL_PASSWORD_CHANGED_DESCRIPTION": {
+		"EN": "Your Kepya password has been sucessfully reset",
+		"PT": "Sua senha do Kepya foi redefinida com sucesso"
+	},
+	"LBL_PASSWORD_CHANGED_SIGN_IN": {
+		"EN": "Sign In",
+		"PT": "Entrar"
+	},
+	"LBL_PASSWORD_CHANGED_TO_YOUR_ACCOUNT": {
+		"EN": "to your account",
+		"PT": "para a minha conta"
+	},
+	"LBL_VERIFY_OTP_TITLE": {
+		"EN": "Verify OTP",
+		"PT": "Verificar OTP"
+	},
+	"LBL_VERIFY_OTP_DESCRIPTION": {
+		"EN": "Type the code you have received",
+		"PT": "Digite o código que você recebeu"
+	},
+	"LBL_VERIFY_OTP_OTP_PLACEHOLDER": {
+		"EN": "OTP",
+		"PT": "OTP"
+	},
+	"LBL_VERIFY_OTP_BUTTON": {
+		"EN": "OTP",
+		"PT": "OTP"
+	},
+	"LBL_VERIFY_OTP_SIGN_IN": {
+		"EN": "Sign In",
+		"PT": "Entrar"
+	},
+	"LBL_VERIFY_OTP_VALIDATE_BLANK_OTP": {
+		"EN": "Enter otp",
+		"PT": "Digite otp"
+	},
+	"LBL_PRODUCER_DASHBOARD_POST_FORECAST_OR_PRODUCTS": {
+		"EN": "Post Forecast or Products",
+		"PT": "Publicar produtos"
+	},
+	"LBL_PRODUCER_DASHBOARD_POST_FORECAST_OR_PRODUCTS_DESCRIPTION": {
+		"EN": "Post Forecast",
+		"PT": "Publicar um produto ou uma previsão de colheita"
+	},
+	"LBL_PRODUCER_DASHBOARD_YOUR_ORDERS": {
+		"EN": "My orders",
+		"PT": "As minhas vendas"
+	},
+	"LBL_PRODUCER_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
+		"EN": "Track my products' orders",
+		"PT": "Acompanhar as encomendas dos meus produtos"
+	},
+	"LBL_PRODUCER_DASHBOARD_LOGIN_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_PRODUCER_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
+		"EN": "Edit my account details",
+		"PT": "Editar a informação da minha conta"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST": {
+		"EN": "Post Forecast",
+		"PT": "Publicar Produtos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION": {
+		"EN": "Post Forecast",
+		"PT": "Publicar Produtos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS": {
+		"EN": "Manage Farmer",
+		"PT": "Gerir Agricultores"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION": {
+		"EN": "Your users",
+		"PT": "Seus usuários"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS": {
+		"EN": "Your Orders",
+		"PT": "Seus pedidos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
+		"EN": "Track, order list, or buy things again",
+		"PT": "Acompanhe, faça uma lista de pedidos ou compre coisas novamente"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_LOGIN_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
+		"EN": "Edit login, name, and mobile number",
+		"PT": "Editar login, nome e número de celular"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
+		"EN": "Your Orders",
+		"PT": "As minhas encomendas"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
+		"EN": "Track, order list, or buy things again",
+		"PT": "Acompanhar o meu histórico de compras"
+	},
+	"LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND": {
+		"EN": "Post Forecast",
+		"PT": "Publicar pedido"
+	},
+	"LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND_DESCRIPTION": {
+		"EN": "Post your Demand",
+		"PT": "Fazer um pedido pontual ou recorrente de produtos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS": {
+		"EN": "Explore Products",
+		"PT": "Explorar produtos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS_DESCRIPTION": {
+		"EN": "Explore All Products",
+		"PT": "Explorar todos os produtos disponíveis no mercado KEPYA"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST": {
+		"EN": "My Favourite Products",
+		"PT": "Os meus favoritos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST_DESCRIPTION": {
+		"EN": "Your idea lists, or buy things",
+		"PT": "Sua ideia lista ou compra coisas"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES": {
+		"EN": "Your Addresses",
+		"PT": "As minhas moradas"
+	},
+	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
+		"EN": "Edit addresses for orders",
+		"PT": "Criar e gerir as minhas moradas de entrega"
+	},
+	"LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
+		"EN": "Edit login, name, and mobile number",
+		"PT": "Editar os meus dados pessoais"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_ORDERS": {
+		"EN": "Your Orders",
+		"PT": "As minhas encomendas"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
+		"EN": "Track, order list, or buy things again",
+		"PT": "Acompanhar o meu histórico de compras"
+	},
+	"LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND": {
+		"EN": "Post Forecast",
+		"PT": "Publicar pedido"
+	},
+	"LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND_DESCRIPTION": {
+		"EN": "Post your Demand",
+		"PT": "Fazer um pedido pontual ou recorrente de produtos"
+	},
+	"LBL_TRADING_DASHBOARD_EXPLORE_PRODUCTS": {
+		"EN": "Explore Products",
+		"PT": "Explorar produtos"
+	},
+	"LBL_TRADING_DASHBOARD_EXPLORE_PRODUCTS_DESCRIPTION": {
+		"EN": "Explore All Products",
+		"PT": "Explorar todos os produtos disponíveis no mercado KEPYA"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_FAVOURITE_LIST": {
+		"EN": "My Favourite Products",
+		"PT": "Os meus favoritos"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_FAVOURITE_LIST_DESCRIPTION": {
+		"EN": "Your idea lists, or buy things",
+		"PT": "Sua ideia lista ou compra coisas"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES": {
+		"EN": "Your Addresses",
+		"PT": "As minhas moradas"
+	},
+	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
+		"EN": "Edit addresses for orders",
+		"PT": "Criar e gerir as minhas moradas de entrega"
+	},
+	"LBL_TRADING_DASHBOARD_LOGIN_SECURITY": {
+		"EN": "My account",
+		"PT": "A minha conta"
+	},
+	"LBL_TRADING_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
+		"EN": "Edit login, name, and mobile number",
+		"PT": "Editar os meus dados pessoais"
+	},
+	"LBL_PRODUCER_YOUR_ORDER_EMPTY": {
+		"EN": "Recently you don't have any orders",
+		"PT": "Recentemente, você não tem pedidos"
+	},
+	"LBL_AGGREGATOR_YOUR_ORDER_EMPTY": {
+		"EN": "Recently you don't have any orders",
+		"PT": "Recentemente, você não tem pedidos"
+	},
+	"LBL_COMPRADOR_YOUR_ORDER_EMPTY": {
+		"EN": "Recently you don't have any orders",
+		"PT": "Recentemente, você não tem pedidos"
+	},
+	"LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE": {
+		"EN": "Post your demand",
+		"PT": "Adicionar pedido"
+	},
+	"LBL_COMPRADOR_ADD_NEW_DEMAND_SUBMIT_BUTTON": {
+		"EN": "Post demand",
+		"PT": "Submeter pedido"
+	},
+	"LBL_TRADING_YOUR_ORDER_EMPTY": {
+		"EN": "Recently you don't have any orders",
+		"PT": "Recentemente, você não tem pedidos"
+	},
+	"LBL_TRADING_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE": {
+		"EN": "Post your demand",
+		"PT": "Adicionar pedido"
+	},
+	"LBL_TRADING_ADD_NEW_DEMAND_SUBMIT_BUTTON": {
+		"EN": "Post demand",
+		"PT": "Submeter pedido"
+	},
+	"LBL_APPROVED": {
+		"EN": "Approved",
+		"PT": "Aprovado"
+	},
+	"LBL_NOT_APPROVED": {
+		"EN": "Not approved",
+		"PT": "Não aprovado"
+	},
+	"LBL_KILOGRAMS": {
+		"EN": "Kilograms",
+		"PT": "Quilogramas"
+	},
+	"LBL_PRODUCT_REVIEW_ADD_A_REVIEW": {
+		"EN": "Add a review",
+		"PT": "Adicionar um comentário"
+	},
+	"LBL_PRODUCT_REVIEW_YOUR_EMAIL_ADDRESS_WILL_NOT_BE_PUBLISHED": {
+		"EN": "Your email address will not be published",
+		"PT": "seu endereço de e-mail não será publicado"
+	},
+	"LBL_PRODUCT_REVIEW_REQUIRED_FIELDS_ARE_MARKED": {
+		"EN": "Required fields are marked",
+		"PT": "Os campos obrigatórios estão marcados"
+	},
+	"LBL_PRODUCT_REVIEW_YOUR_REVIEW": {
+		"EN": "Your review",
+		"PT": "Sua revisão"
+	},
+	"LBL_PRODUCT_REVIEW_NAME": {
+		"EN": "Name",
+		"PT": "Nome"
+	},
+	"LBL_PRODUCT_REVIEW_EMAIL": {
+		"EN": "Email",
+		"PT": "O email"
+	},
+	"LBL_PRODUCT_REVIEW_VALIDATE_COMMENT": {
+		"EN": "Enter comment",
+		"PT": "Introduzir comentário"
+	},
+	"LBL_PRODUCT_REVIEW_VALIDATE_NAME": {
+		"EN": "Enter name",
+		"PT": "Insira o nome"
+	},
+	"LBL_PRODUCT_REVIEW_VALIDATE_EMAIL": {
+		"EN": "Enter email address",
+		"PT": "Insira o endereço de e-mail"
+	},
+	"LBL_PRODUCT_REVIEW_VALIDATE_CORRECT_EMAIL": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o endereço de e-mail correto"
+	},
+	"LBL_PRODUCT_REVIEW_SUBMIT": {
+		"EN": "Submit",
+		"PT": "Enviar"
+	},
+	"LBL_PRODUCER_DASHBOARD_LIST_PRODUCTS_TITLE": {
+		"EN": "My products",
+		"PT": "Os meus produtos"
+	},
+	"LBL_PRODUCER_DASHBOARD_LIST_PRODUCTS_DESCRIPTION": {
+		"EN": "Check my products and future harvests list",
+		"PT": "Ver a minha lista de produtos e previsões de colheita"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE": {
+		"EN": "Manage Products",
+		"PT": "Gerir Produtos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_DESCRIPTION": {
+		"EN": "Manage Products",
+		"PT": "Gerenciar Produtos"
+	},
+	"LBL_PRODUCER_PRODUCT_MIN_UNIT_QTY": {
+		"EN": "Minimum qty should be greater than or equal to ",
+		"PT": "A quantidade mínima deve ser maior ou igual a "
+	},
+	"LBL_AGGREGATOR_PRODUCT_MIN_UNIT_QTY": {
+		"EN": "Minimum qty should be greater than or equal to ",
+		"PT": "A quantidade mínima deve ser maior ou igual a "
+	},
+	"LBL_COMPRADOR_PRODUCT_MIN_UNIT_QTY": {
+		"EN": "Minimum required stock should be greater than or equal to ",
+		"PT": "O estoque mínimo necessário deve ser maior ou igual a "
+	},
+	"LBL_COMPRADOR_PRODUCT_DETAILS_MIN_UNIT_QTY": {
+		"EN": "Qunatity should be greater than or equal to ",
+		"PT": "A quantidade deve ser maior ou igual a "
+	},
+	"LBL_TRADING_PRODUCT_MIN_UNIT_QTY": {
+		"EN": "Minimum required stock should be greater than or equal to ",
+		"PT": "O estoque mínimo necessário deve ser maior ou igual a "
+	},
+	"LBL_TRADING_PRODUCT_DETAILS_MIN_UNIT_QTY": {
+		"EN": "Qunatity should be greater than or equal to ",
+		"PT": "A quantidade deve ser maior ou igual a "
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_NIF": {
+		"EN": "NIF",
+		"PT": "NIF"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_NIF": {
+		"EN": "Enter your NIF",
+		"PT": "Digite seu NIF"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_ADDRESS": {
+		"EN": "Address",
+		"PT": "Endereço"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_ADDRESS": {
+		"EN": "Enter your address",
+		"PT": "Digite seu endereço"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_GPS_LOCATION_YOUR_LOCATION": {
+		"EN": "Your location",
+		"PT": "Sua localização"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_NIF": {
+		"EN": "NIF",
+		"PT": "NIF"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_VALIDATE_NIF": {
+		"EN": "Enter your NIF",
+		"PT": "Digite seu NIF"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_ADDRESS": {
+		"EN": "Address",
+		"PT": "Endereço"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_VALIDATE_ADDRESS": {
+		"EN": "Enter your address",
+		"PT": "Digite seu endereço"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_GPS_LOCATION_YOUR_LOCATION": {
+		"EN": "Your location",
+		"PT": "Sua localização"
+	},
+	"LBL_ENTER_ADDRESS_TYPE": {
+		"EN": "Enter address type",
+		"PT": "Digite o tipo de endereço"
+	},
+	"LBL_ORDERED": {
+		"EN": "Ordered",
+		"PT": "Encomendado"
+	},
+	"LBL_PACKED": {
+		"EN": "Packed",
+		"PT": "Embalado"
+	},
+	"LBL_SHIPPED": {
+		"EN": "Shipped",
+		"PT": "Preparado"
+	},
+	"LBL_DELIVERED": {
+		"EN": "Delivered",
+		"PT": "Entregue"
+	},
+	"LBL_COMPRADOR_MENU_YOUR_WALLET": {
+		"EN": "Your Wallet",
+		"PT": "Sua carteira"
+	},
+	"LBL_TRADING_MENU_YOUR_WALLET": {
+		"EN": "Your Wallet",
+		"PT": "Sua carteira"
+	},
+	"LBL_PRODUCER_MENU_YOUR_WALLET": {
+		"EN": "Your Wallet",
+		"PT": "Sua carteira"
+	},
+	"LBL_AGGREGATOR_MENU_YOUR_WALLET": {
+		"EN": "Your Wallet",
+		"PT": "Sua carteira"
+	},
+	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_TITLE": {
+		"EN": "Order",
+		"PT": "Ordem"
+	},
+	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION": {
+		"EN": "Deducted Kz #AMOUNT# from your wallet for order #ORDER_ID#",
+		"PT": "Kz #AMOUNT# deduzido da sua carteira para o pedido #ORDER_ID#"
+	},
+	"LBL_TRADING_WALLET_DEDUCT_FOR_ORDER_TITLE": {
+		"EN": "Order",
+		"PT": "Ordem"
+	},
+	"LBL_TRADING_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION": {
+		"EN": "Deducted Kz #AMOUNT# from your wallet for order #ORDER_ID#",
+		"PT": "Kz #AMOUNT# deduzido da sua carteira para o pedido #ORDER_ID#"
+	},
+	"LBL_PRODUCER_WALLET_ADD_FOR_ORDER_TITLE": {
+		"EN": "Order",
+		"PT": "Ordem"
+	},
+	"LBL_PRODUCER_WALLET_ADD_FOR_ORDER_DESCRIPTION": {
+		"EN": "Added Kz #AMOUNT# in your wallet for order #ORDER_ID#",
+		"PT": "Kz #AMOUNT# adicionados em sua carteira para o pedido #ORDER_ID#"
+	},
+	"LBL_AGGREGATOR_WALLET_ADD_FOR_ORDER_TITLE": {
+		"EN": "Order",
+		"PT": "Ordem"
+	},
+	"LBL_AGGREGATOR_WALLET_ADD_FOR_ORDER_DESCRIPTION": {
+		"EN": "Added Kz #AMOUNT# in your wallet for order #ORDER_ID#",
+		"PT": "Kz #AMOUNT# adicionados em sua carteira para o pedido #ORDER_ID#"
+	},
+	"LBL_COMPRADOR_WALLET_ADD_CREDIT_TITLE": {
+		"EN": "Credit",
+		"PT": "Crédito"
+	},
+	"LBL_COMPRADOR_WALLET_ADD_CREDIT_TITLE_DESCRIPTION": {
+		"EN": "Added Kz #AMOUNT# credits in your wallet by #USER#",
+		"PT": "Adicionados Kz #AMOUNT# créditos em sua carteira por #USER#"
+	},
+	"LBL_TRADING_WALLET_ADD_CREDIT_TITLE": {
+		"EN": "Credit",
+		"PT": "Crédito"
+	},
+	"LBL_TRADING_WALLET_ADD_CREDIT_TITLE_DESCRIPTION": {
+		"EN": "Added Kz #AMOUNT# credits in your wallet by #USER#",
+		"PT": "Adicionados Kz #AMOUNT# créditos em sua carteira por #USER#"
+	},
+	"LBL_WALLET_BREADCRUMB_TRANSACTION": {
+		"EN": "Transactions",
+		"PT": "Transacções"
+	},
+	"LBL_WALLET_BREADCRUMB_WITHDRAWAL_REQUESTS": {
+		"EN": "Withdrawal Requests",
+		"PT": "Retirar valores"
+	},
+	"LBL_WALLET_WITHDRAWAL_MONEY_MESSAGE": {
+		"EN": "This operation is now pending the approval of kepya support team. Once this is approved the amount requested will be transferred to your following bank account - #BANK_INFO#",
+		"PT": "Esta operação está aguardando a aprovação da equipe de suporte kepya. Depois que isso for aprovado, o valor solicitado será transferido para sua seguinte conta bancária - #BANK_INFO#"
+	},
+	"LBL_WALLET_FROM_DATE_TO_DATE_FILTER": {
+		"EN": "Please select from date and to date",
+		"PT": "Por favor, selecione a data e a data"
+	},
+	"LBL_WALLET_NO_RECORD_AVAILABLE": {
+		"EN": "No record available",
+		"PT": "Nenhum registo disponível"
+	},
+	"LBL_WALLET_DATE": {
+		"EN": "Date",
+		"PT": "Data"
+	},
+	"LBL_WALLET_TITLE": {
+		"EN": "Title",
+		"PT": "Título"
+	},
+	"LBL_WALLET_DESCRIPTION": {
+		"EN": "Description",
+		"PT": "Descrição"
+	},
+	"LBL_WALLET_AMOUNT": {
+		"EN": "Amount",
+		"PT": "Montante"
+	},
+	"LBL_WALLET_REQUEST_ID": {
+		"EN": "Request ID",
+		"PT": "Identificação do Pedido"
+	},
+	"LBL_WALLET_STATUS": {
+		"EN": "Status",
+		"PT": "Status"
+	},
+	"LBL_WALLET_MENU_WALLET_BALANCE": {
+		"EN": "Wallet Balance",
+		"PT": "Consultar saldo"
+	},
+	"LBL_WALLET_MENU_TRANSACTION": {
+		"EN": "Transactions",
+		"PT": "Transacções"
+	},
+	"LBL_WALLET_MENU_WITHDRAWAL_REQUEST": {
+		"EN": "Withdrawal Requests",
+		"PT": "Pedidos de retirada"
+	},
+	"LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE": {
+		"EN": "Recent Transactions",
+		"PT": "Saldo Disponível"
+	},
+	"LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON": {
+		"EN": "Withdrawal Money",
+		"PT": "Retirada de dinheiro"
+	},
+	"LBL_TRANSACTIONS_TITLE": {
+		"EN": "Transactions statement",
+		"PT": "Histórico de transacções"
+	},
+	"LBL_TRANSACTIONS_FROM_DATE": {
+		"EN": "From Date",
+		"PT": "Desde"
+	},
+	"LBL_TRANSACTIONS_TO_DATE": {
+		"EN": "To Date",
+		"PT": "Até"
+	},
+	"LBL_TRANSACTIONS_SUBMIT_BUTTON": {
+		"EN": "Submit",
+		"PT": "Consultar"
+	},
+	"LBL_WITHDRAWAL_REQUEST_TITLE": {
+		"EN": "Withdrawal Requests",
+		"PT": "Pedidos de retirada"
+	},
+	"LBL_WITHDRAWAL_REQUEST_FROM_DATE": {
+		"EN": "From Date",
+		"PT": "Desde"
+	},
+	"LBL_WITHDRAWAL_REQUEST_TO_DATE": {
+		"EN": "To Date",
+		"PT": "Até"
+	},
+	"LBL_WITHDRAWAL_REQUEST_SUBMIT_BUTTON": {
+		"EN": "Submit",
+		"PT": "Enviar"
+	},
+	"LBL_WITHDRAWAL_REQUEST_STATUS_PENDING": {
+		"EN": "Pending",
+		"PT": "Pendente"
+	},
+	"LBL_WITHDRAWAL_REQUEST_STATUS_COMPLETED": {
+		"EN": "Completed",
+		"PT": "Concluída"
+	},
+	"LBL_WITHDRAWAL_REQUEST_STATUS_CANCELLED": {
+		"EN": "Cancelled",
+		"PT": "Concluída"
+	},
+	"LBL_COMPRADOR_USER_BANK_NAME": {
+		"EN": "Bank name",
+		"PT": "nome do banco"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
+		"EN": "Enter your bank name",
+		"PT": "Digite o nome do seu banco"
+	},
+	"LBL_COMPRADOR_USER_BANK_ACCOUNT_NO": {
+		"EN": "Bank account no",
+		"PT": "Número da conta bancária"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
+		"EN": "Enter your correct bank account no",
+		"PT": "Digite sua conta bancária correta no"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_NIF": {
+		"EN": "NIF",
+		"PT": "NIF"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_NIF": {
+		"EN": "Enter your NIF",
+		"PT": "Digite seu NIF"
+	},
+	"LBL_TRADING_USER_BANK_NAME": {
+		"EN": "Bank name",
+		"PT": "nome do banco"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
+		"EN": "Enter your bank name",
+		"PT": "Digite o nome do seu banco"
+	},
+	"LBL_TRADING_USER_BANK_ACCOUNT_NO": {
+		"EN": "Bank account no",
+		"PT": "Número da conta bancária"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
+		"EN": "Enter your correct bank account no",
+		"PT": "Digite sua conta bancária correta no"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_NIF": {
+		"EN": "NIF",
+		"PT": "NIF"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_NIF": {
+		"EN": "Enter your NIF",
+		"PT": "Digite seu NIF"
+	},
+	"LBL_BANK_ACCOUNT_COMPANY": {
+		"EN": "Company",
+		"PT": "Compagnie"
+	},
+	"LBL_PRODUCER_BANK_ACCOUNT_TOP_TITLE": {
+		"EN": "You have to transfer money into this account",
+		"PT": "Você precisa transferir dinheiro para esta conta"
+	},
+	"LBL_AGGREGATOR_BANK_ACCOUNT_TOP_TITLE": {
+		"EN": "You have to transfer money into this account",
+		"PT": "Você precisa transferir dinheiro para esta conta"
+	},
+	"LBL_WALLET_PROMPT_HEADER": {
+		"EN": "Message",
+		"PT": "mensagem"
+	},
+	"LBL_WALLET_PROMPT_ENTER_AMOUNT": {
+		"EN": "Enter amount",
+		"PT": "Digite o valor"
+	},
+	"LBL_WALLET_PROMPT_VALIDATE_ENTER_AMOUNT": {
+		"EN": "Enter amount",
+		"PT": "Digite o valor"
+	},
+	"LBL_WALLET_PROMPT_VALIDATE_RANGE_AMOUNT": {
+		"EN": "Amount must be less than or equal Kz #AMOUNT#",
+		"PT": "O valor deve ser menor ou igual a Kz #AMOUNT#"
+	},
+	"LBL_MENU_NOTIFICATION": {
+		"EN": "Notifications",
+		"PT": "Notificações"
+	},
+	"LBL_BREADCRUMB_NOTIFICATION_TITLE": {
+		"EN": "Notifications",
+		"PT": "Notificações"
+	},
+	"LBL_NOTIFICATION_TITLE": {
+		"EN": "Notifications",
+		"PT": "Notificações"
+	},
+	"LBL_MENU_NOTIFICATION_NO_RECORD_AVAILABLE": {
+		"EN": "No record available",
+		"PT": "Nenhum registo disponível"
+	},
+	"LBL_SIGN_UP_WELCOME_MESSAGE": {
+		"EN": "Welcome to Kepya, your registration is successful",
+		"PT": "Bem-vindo à Kepya, seu registro foi bem-sucedido"
+	},
+	"LBL_SIGN_UP_WELCOME_BUTTON_SIGN_IN": {
+		"EN": "Back to Sign In",
+		"PT": "Voltar para o login"
+	},
+	"LBL_FARMER_USER_MOBILE_COUNTRY_CODE": {
+		"EN": "Mobile country code",
+		"PT": "Código do país móvel"
+	},
+	"LBL_FARMER_USER_MOBILE_COUNTRY_CODE_PLACEHOLDER": {
+		"EN": "Select Mobile Country Code",
+		"PT": "Selecione o código do país para celular"
+	},
+	"LBL_FARMER_USER_MOBILE_NUMBER": {
+		"EN": "Mobile number",
+		"PT": "Número de celular"
+	},
+	"LBL_FARMER_USER_BANK_NAME": {
+		"EN": "Bank name",
+		"PT": "nome do banco"
+	},
+	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
+		"EN": "Enter your bank name",
+		"PT": "Digite o nome do seu banco"
+	},
+	"LBL_FARMER_USER_BANK_ACCOUNT_NO": {
+		"EN": "Bank account no",
+		"PT": "Número da conta bancária"
+	},
+	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
+		"EN": "Enter your correct bank account no",
+		"PT": "Digite sua conta bancária correta no"
+	},
+	"LBL_FARMER_LOGIN_SECURITY_NIF": {
+		"EN": "NIF",
+		"PT": "NIF"
+	},
+	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_NIF": {
+		"EN": "Enter your NIF",
+		"PT": "Digite seu NIF"
+	},
+	"LBL_FARMER_MOBILE_NO_EXIST": {
+		"EN": "Mobile number already exist",
+		"PT": "O número de celular já existe"
+	},
+	"LBL_MENU_DEMANDS": {
+		"EN": "List Demands",
+		"PT": "Lista de demandas"
+	},
+	"LBL_BREADCRUMB_DEMANDS": {
+		"EN": "List Demands",
+		"PT": "Lista de demandas"
+	},
+	"LBL_SIGN_UP_FIRST_NAME": {
+		"EN": "First name",
+		"PT": "Primeiro nome"
+	},
+	"LBL_SIGN_UP_VALIDATE_FIRST_NAME": {
+		"EN": "Enter first name",
+		"PT": "Introduza o primeiro nome"
+	},
+	"LBL_SIGN_UP_LAST_NAME": {
+		"EN": "Last name",
+		"PT": "Último nome"
+	},
+	"LBL_SIGN_UP_VALIDATE_LAST_NAME": {
+		"EN": "Enter last name",
+		"PT": "Insira o último nome"
+	},
+	"LBL_SIGN_UP_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_SIGN_UP_TYPE_INDIVIDUAL": {
+		"EN": "Individual",
+		"PT": "Individual"
+	},
+	"LBL_SIGN_UP_TYPE_COMPANY": {
+		"EN": "Company",
+		"PT": "Companhia"
+	},
+	"LBL_SIGN_UP_TYPE_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_SIGN_UP_TYPE_VALIDATE_COMPANY_NAME": {
+		"EN": "Enter company name",
+		"PT": "Digite o nome da empresa"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_FIRST_NAME": {
+		"EN": "First name",
+		"PT": "Primeiro nome"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_FIRST_NAME": {
+		"EN": "Enter your first name",
+		"PT": "Digite seu primeiro nome"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_LAST_NAME": {
+		"EN": "Last name",
+		"PT": "Último nome"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_LAST_NAME": {
+		"EN": "Enter your last name",
+		"PT": "Digite seu sobrenome"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_FIRST_NAME": {
+		"EN": "First name",
+		"PT": "Primeiro nome"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_VALIDATE_FIRST_NAME": {
+		"EN": "Enter your first name",
+		"PT": "Digite seu primeiro nome"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_LAST_NAME": {
+		"EN": "Last name",
+		"PT": "Último nome"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_VALIDATE_LAST_NAME": {
+		"EN": "Enter your last name",
+		"PT": "Digite seu sobrenome"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_FIRST_NAME": {
+		"EN": "First name",
+		"PT": "Primeiro nome"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_FIRST_NAME": {
+		"EN": "Enter your first name",
+		"PT": "Digite seu primeiro nome"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_LAST_NAME": {
+		"EN": "Last name",
+		"PT": "Último nome"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_LAST_NAME": {
+		"EN": "Enter your last name",
+		"PT": "Digite seu sobrenome"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_FIRST_NAME": {
+		"EN": "First name",
+		"PT": "Primeiro nome"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_FIRST_NAME": {
+		"EN": "Enter your first name",
+		"PT": "Digite seu primeiro nome"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_LAST_NAME": {
+		"EN": "Last name",
+		"PT": "Último nome"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_LAST_NAME": {
+		"EN": "Enter your last name",
+		"PT": "Digite seu sobrenome"
+	},
+	"LBL_RESET_PASSWORD_ENTER_A_NEW_CONFIRM_PASSWORD": {
+		"EN": "Confirm password",
+		"PT": "Confirme a Senha"
+	},
+	"LBL_COMPRADOR_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_TRADING_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_PRODUCER_YOUR_ORDER_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_AGGREGATOR_YOUR_ORDER_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_COMPRADOR_CHECKOUT_RESERVE_ORDER": {
+		"EN": "Reserve Order",
+		"PT": "Ordem de reserva"
+	},
+	"LBL_TRADING_CHECKOUT_RESERVE_ORDER": {
+		"EN": "Reserve Order",
+		"PT": "Ordem de reserva"
+	},
+	"LBL_VERIFY_OTP_RESEND_OTP": {
+		"EN": "Resend OTP",
+		"PT": "Reenviar OTP"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS": {
+		"EN": "Ongoing Sales",
+		"PT": "Vendas em Andamento"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
+		"EN": "Order ID",
+		"PT": "ID do pedido"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
+		"EN": "Ordered date",
+		"PT": "Data do pedido"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE": {
+		"EN": "Shipped date",
+		"PT": "Data de envio"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_TOTAL_ITEMS": {
+		"EN": "Total items",
+		"PT": "Total de itens"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT": {
+		"EN": "Total Amount",
+		"PT": "Valor total"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_STATUS": {
+		"EN": "Status",
+		"PT": "Estado"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS": {
+		"EN": "No orders available",
+		"PT": "Nenhum pedido disponível"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS": {
+		"EN": "Ongoing Sales",
+		"PT": "Vendas em andamento"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
+		"EN": "Order ID",
+		"PT": "ID do pedido"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
+		"EN": "Ordered date",
+		"PT": "Data do pedido"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE": {
+		"EN": "Shipped date",
+		"PT": "Data de envio"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_TOTAL_ITEMS": {
+		"EN": "Total items",
+		"PT": "Total de itens"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT": {
+		"EN": "Total Amount",
+		"PT": "Valor total"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_STATUS": {
+		"EN": "Status",
+		"PT": "Estado"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS": {
+		"EN": "No orders available",
+		"PT": "Nenhum pedido disponível"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS": {
+		"EN": "Ongoing Orders",
+		"PT": "Pedidos em andamento"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
+		"EN": "Order ID",
+		"PT": "ID do pedido"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
+		"EN": "Ordered date",
+		"PT": "Data do pedido"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE": {
+		"EN": "Shipped date",
+		"PT": "Data de envio"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_TOTAL_ITEMS": {
+		"EN": "Total items",
+		"PT": "Total de itens"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT": {
+		"EN": "Total Amount",
+		"PT": "Valor total"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_STATUS": {
+		"EN": "Status",
+		"PT": "Estado"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS": {
+		"EN": "No orders available",
+		"PT": "Nenhum pedido disponível"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS": {
+		"EN": "Recently viewed products",
+		"PT": "Produtos vistos recentemente"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_TITLE": {
+		"EN": "Title",
+		"PT": "Título"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_CATEGORY": {
+		"EN": "Category",
+		"PT": "Categoria"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_UNIT_PRICE": {
+		"EN": "Unit Price",
+		"PT": "Preço unitário"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_QTY": {
+		"EN": "QTY",
+		"PT": "QTY"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_LOCATION": {
+		"EN": "Location",
+		"PT": "Localização"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_NO_PRODUCTS": {
+		"EN": "No products available",
+		"PT": "Nenhum produto disponível"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS": {
+		"EN": "Ongoing Orders",
+		"PT": "Pedidos em andamento"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
+		"EN": "Order ID",
+		"PT": "ID do pedido"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
+		"EN": "Ordered date",
+		"PT": "Data do pedido"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE": {
+		"EN": "Shipped date",
+		"PT": "Data de envio"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_TOTAL_ITEMS": {
+		"EN": "Total items",
+		"PT": "Total de itens"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT": {
+		"EN": "Total Amount",
+		"PT": "Valor total"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_STATUS": {
+		"EN": "Status",
+		"PT": "Estado"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_NO_ORDERS": {
+		"EN": "No orders available",
+		"PT": "Nenhum pedido disponível"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS": {
+		"EN": "Recently viewed products",
+		"PT": "Produtos vistos recentemente"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_TITLE": {
+		"EN": "Title",
+		"PT": "Título"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_CATEGORY": {
+		"EN": "Category",
+		"PT": "Categoria"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_UNIT_PRICE": {
+		"EN": "Unit Price",
+		"PT": "Preço unitário"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_QTY": {
+		"EN": "QTY",
+		"PT": "QTY"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_LOCATION": {
+		"EN": "Location",
+		"PT": "Localização"
+	},
+	"LBL_TRADING_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_NO_PRODUCTS": {
+		"EN": "No products available",
+		"PT": "Nenhum produto disponível"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOTAL_ORDERS": {
+		"EN": "Total Orders",
+		"PT": "Total de pedidos"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOTAL_OPEN_ORDERS": {
+		"EN": "Open",
+		"PT": "Abertos"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOTAL_COMPLETED_ORDERS": {
+		"EN": "Completed",
+		"PT": "Concluídos"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOTAL_CANCELLED_ORDERS": {
+		"EN": "Cancelled",
+		"PT": "Cancelados"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOTAL_ORDERS": {
+		"EN": "Total Orders",
+		"PT": "Total de pedidos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOTAL_OPEN_ORDERS": {
+		"EN": "Open",
+		"PT": "Abertos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOTAL_COMPLETED_ORDERS": {
+		"EN": "Completed",
+		"PT": "Concluídos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOTAL_CANCELLED_ORDERS": {
+		"EN": "Cancelled",
+		"PT": "Cancelados"
+	},
+	"LBL_COMPRADOR_DASHBOARD_TOTAL_ORDERS": {
+		"EN": "Total Orders",
+		"PT": "Total de pedidos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_TrOTAL_OPEN_ORDERS": {
+		"EN": "Open",
+		"PT": "Abertos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_TOTAL_COMPLETED_ORDERS": {
+		"EN": "Completed",
+		"PT": "Concluídos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_TOTAL_CANCELLED_ORDERS": {
+		"EN": "Cancelled",
+		"PT": "Cancelados"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS": {
+		"EN": "Statistics",
+		"PT": "Estatisticas"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE": {
+		"EN": "Total Purchase",
+		"PT": "Compra total"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS": {
+		"EN": "Total Product Views",
+		"PT": "Total de visualizações do produto"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS": {
+		"EN": "Total Favourite Products",
+		"PT": "Total de produtos favoritos"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS": {
+		"EN": "Total Active Demands",
+		"PT": "Total de demandas ativas"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS": {
+		"EN": "Total Expired Demands",
+		"PT": "Demandas Expiradas Totais"
+	},
+	"LBL_COMPRADOR_DASHBOARD_RECOMMENDED_PRODUCTS": {
+		"EN": "Recommended Products",
+		"PT": "produtos recomendados"
+	},
+	"LBL_TRADING_DASHBOARD_TOTAL_ORDERS": {
+		"EN": "Total Orders",
+		"PT": "Total de pedidos"
+	},
+	"LBL_TRADING_DASHBOARD_TrOTAL_OPEN_ORDERS": {
+		"EN": "Open",
+		"PT": "Abertos"
+	},
+	"LBL_TRADING_DASHBOARD_TOTAL_COMPLETED_ORDERS": {
+		"EN": "Completed",
+		"PT": "Concluídos"
+	},
+	"LBL_TRADING_DASHBOARD_TOTAL_CANCELLED_ORDERS": {
+		"EN": "Cancelled",
+		"PT": "Cancelados"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS": {
+		"EN": "Statistics",
+		"PT": "Estatisticas"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_PURCHASE": {
+		"EN": "Total Purchase",
+		"PT": "Compra total"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS": {
+		"EN": "Total Product Views",
+		"PT": "Total de visualizações do produto"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS": {
+		"EN": "Total Favourite Products",
+		"PT": "Total de produtos favoritos"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS": {
+		"EN": "Total Active Demands",
+		"PT": "Total de demandas ativas"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS": {
+		"EN": "Total Expired Demands",
+		"PT": "Demandas Expiradas Totais"
+	},
+	"LBL_TRADING_DASHBOARD_RECOMMENDED_PRODUCTS": {
+		"EN": "Recommended Products",
+		"PT": "produtos recomendados"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS": {
+		"EN": "Statistics",
+		"PT": "Estatísticas"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_SALES": {
+		"EN": "Total Sales",
+		"PT": "Vendas totais"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS": {
+		"EN": "Total Product Views",
+		"PT": "Visualizações dos meus produtos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_COMPRADOR_FAVOURITE_LIST": {
+		"EN": "Buyer’s Favourite List",
+		"PT": "Produtos Favoritos dos Compradores"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TRADING_FAVOURITE_LIST": {
+		"EN": "Trading’s Favourite List",
+		"PT": "Produtos Favoritos dos Compradores trading"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_SOLD_PRODUCTS": {
+		"EN": "Total Sold Products",
+		"PT": "Total de produtos vendidos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_UNSOLD_PRODUCTS": {
+		"EN": "Total Unsold Products",
+		"PT": "Total de produtos não vendidos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_ACTIVE_PRODUCTS": {
+		"EN": "Total Active Products",
+		"PT": "Total de produtos activos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_INACTIVE_PRODUCTS": {
+		"EN": "Total Inactive Products",
+		"PT": "Total de produtos inactivos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_EXPIRED_PRODUCTS": {
+		"EN": "Total Expired Products",
+		"PT": "Total de produtos vencidos"
+	},
+	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_RATE_REVIEWS": {
+		"EN": "Rate & Reviews",
+		"PT": "Pontuações e Comentários"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS": {
+		"EN": "Statistics",
+		"PT": "Estatisticas"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_SALES": {
+		"EN": "Total Sales",
+		"PT": "Vendas totais"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS": {
+		"EN": "Total Product Views",
+		"PT": "Visualizações dos meus produtos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_COMPRADOR_FAVOURITE_LIST": {
+		"EN": "Buyer's Favourite List",
+		"PT": "Favoritos dos Compradores"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TRADING_FAVOURITE_LIST": {
+		"EN": "Trading's Favourite List",
+		"PT": "Favoritos dos Compradores comerciais"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_SOLD_PRODUCTS": {
+		"EN": "Total Sold Products",
+		"PT": "Total de produtos vendidos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_UNSOLD_PRODUCTS": {
+		"EN": "Total Unsold Products",
+		"PT": "Total de produtos não vendidos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_PRODUCTS": {
+		"EN": "Total Active Products",
+		"PT": "Total de produtos activos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_INACTIVE_PRODUCTS": {
+		"EN": "Total Inactive Products",
+		"PT": "Total de produtos inactivos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_PRODUCTS": {
+		"EN": "Total Expired Products",
+		"PT": "Total de produtos vencidos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_RATE_REVIEWS": {
+		"EN": "Total Rate & Reviews",
+		"PT": "Pontuações e Comentários"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOP_PRODUCTS": {
+		"EN": "Top Products",
+		"PT": "Produtos mais vendidos"
+	},
+	"LBL_DASHBOARD_TOP_PRODUCTS_ORDERS": {
+		"EN": "Number of orders",
+		"PT": "Número de encomendas"
+	},
+	"LBL_PRODUCER_DASHBOARD_TOP_DESTINATIONS": {
+		"EN": "Top Destinations",
+		"PT": "Principais destinos"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOP_PRODUCTS": {
+		"EN": "Top Products (No of orders)",
+		"PT": "Principais produtos (sem pedidos)"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOP_DESTINATIONS": {
+		"EN": "Top Destinations (No of orders)",
+		"PT": "Principais destinos (sem pedidos)"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_TOP_FARMERS": {
+		"EN": "Top Farmers (No of orders)",
+		"PT": "Principais agricultores (número de pedidos)"
+	},
+	"LBL_PRODUCER_DASHBOARD_CHART_EARNINGS": {
+		"EN": "Sales amounts (Kz)",
+		"PT": "Vendas em valores (Kz)"
+	},
+	"LBL_PRODUCER_DASHBOARD_CHART_SALES": {
+		"EN": "Sales quantity",
+		"PT": "Vendas em quantidade"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_CHART_EARNINGS": {
+		"EN": "Sales amounts (Kz)",
+		"PT": "Vendas em valores (Kz)"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_CHART_SALES": {
+		"EN": "Sales (Qty)",
+		"PT": "Vendas (quantidade)"
+	},
+	"LBL_DASHBOARD_EARNINGS_AMOUNT": {
+		"EN": "Sales (Kz)",
+		"PT": "Vendas (Kz)"
+	},
+	"LBL_COMPRADOR_DASHBOARD_CHART_OUTWARDS": {
+		"EN": "Outward (Amounts in Kz)",
+		"PT": "Saída (valores em Kz)"
+	},
+	"LBL_COMPRADOR_DASHBOARD_CHART_PURCHASE": {
+		"EN": "Purchase (Qty)",
+		"PT": "Compra (quantidade)"
+	},
+	"LBL_TRADING_DASHBOARD_CHART_OUTWARDS": {
+		"EN": "Outward (Amounts in Kz)",
+		"PT": "Saída (valores em Kz)"
+	},
+	"LBL_TRADING_DASHBOARD_CHART_PURCHASE": {
+		"EN": "Purchase (Qty)",
+		"PT": "Compra (quantidade)"
+	},
+	"LBL_JAN": {
+		"EN": "Jan",
+		"PT": "Jan"
+	},
+	"LBL_FEB": {
+		"EN": "Feb",
+		"PT": "Fevereiro"
+	},
+	"LBL_MAR": {
+		"EN": "Mar",
+		"PT": "Mar"
+	},
+	"LBL_APR": {
+		"EN": "Apr",
+		"PT": "Abr"
+	},
+	"LBL_MAY": {
+		"EN": "May",
+		"PT": "Maio"
+	},
+	"LBL_JUN": {
+		"EN": "Jun",
+		"PT": "Jun"
+	},
+	"LBL_JUL": {
+		"EN": "Jul",
+		"PT": "Jul"
+	},
+	"LBL_AUG": {
+		"EN": "Aug",
+		"PT": "Agosto"
+	},
+	"LBL_SEP": {
+		"EN": "Sep",
+		"PT": "Set"
+	},
+	"LBL_OCT": {
+		"EN": "Oct",
+		"PT": "Out"
+	},
+	"LBL_NOV": {
+		"EN": "Nov",
+		"PT": "Nov"
+	},
+	"LBL_DEC": {
+		"EN": "Dec",
+		"PT": "Dez"
+	},
+	"LBL_DASHBOARD_OUTWARDS_AMOUNT": {
+		"EN": "Amount",
+		"PT": "Montante"
+	},
+	"LBL_DASHBOARD_PURCHASE_QTY": {
+		"EN": "Qty",
+		"PT": "Qtde"
+	},
+	"LBL_COMPRADOR_DASHBOARD_MATCH_PRODUCTS": {
+		"EN": "Match Products",
+		"PT": "Produtos de correspondência"
+	},
+	"LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS": {
+		"EN": "Total Purchase Products",
+		"PT": "Total de produtos comprados"
+	},
+	"LBL_TRADING_DASHBOARD_MATCH_PRODUCTS": {
+		"EN": "Match Products",
+		"PT": "Produtos de correspondência"
+	},
+	"LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS": {
+		"EN": "Total Purchase Products",
+		"PT": "Total de produtos comprados"
+	},
+	"LBL_OTP_SENT_SUCCESSFULLY": {
+		"EN": "OTP sent successfully",
+		"PT": "OTP enviado com sucesso"
+	},
+	"LBL_OTP_SENT_FAILURE": {
+		"EN": "OTP sending failed",
+		"PT": "Falha no envio do OTP"
+	},
+	"LBL_PRODUCER_YOUR_ORDER_WAITING_FOR_PAYMENT": {
+		"EN": "Waiting for payment",
+		"PT": "À espera de pagamento"
+	},
+	"LBL_AGGREGATOR_YOUR_ORDER_WAITING_FOR_PAYMENT": {
+		"EN": "Waiting for payment",
+		"PT": "À espera de pagamento"
+	},
+	"LBL_COMPRADOR_YOUR_ORDER_WAITING_FOR_PAYMENT": {
+		"EN": "Waiting for payment",
+		"PT": "À espera de pagamento"
+	},
+	"LBL_TRADING_YOUR_ORDER_WAITING_FOR_PAYMENT": {
+		"EN": "Waiting for payment",
+		"PT": "À espera de pagamento"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_COMPANY_NIF": {
+		"EN": "Company NIF",
+		"PT": "NIF da empresa"
+	},
+	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_COMPANY_NIF": {
+		"EN": "Enter your company NIF",
+		"PT": "Insira o NIF da sua empresa"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_COMPANY_NIF": {
+		"EN": "Company NIF",
+		"PT": "NIF da empresa"
+	},
+	"LBL_AGGREGATOR_LOGIN_SECURITY_VALIDATE_COMPANY_NIF": {
+		"EN": "Enter your company NIF",
+		"PT": "Insira o NIF da sua empresa"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_COMPANY_NIF": {
+		"EN": "Company NIF",
+		"PT": "NIF da empresa"
+	},
+	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_COMPANY_NIF": {
+		"EN": "Enter your company NIF",
+		"PT": "Insira o NIF da sua empresa"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_COMPANY_NIF": {
+		"EN": "Company NIF",
+		"PT": "NIF da empresa"
+	},
+	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_COMPANY_NIF": {
+		"EN": "Enter your company NIF",
+		"PT": "Insira o NIF da sua empresa"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_CITY": {
+		"EN": "City",
+		"PT": "Cidade"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_PROVINCE": {
+		"EN": "Select your province",
+		"PT": "Selecione sua província"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_PROVINCE": {
+		"EN": "Province",
+		"PT": "Província"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_USER_ID": {
+		"EN": "User ID",
+		"PT": "ID do usuário"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_USER_TYPE": {
+		"EN": "User type",
+		"PT": "Tipo de usuário"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_USER_ID": {
+		"EN": "User ID",
+		"PT": "ID do usuário"
+	},
+	"LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_CITY": {
+		"EN": "Select your city",
+		"PT": "Selecione sua cidade"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_USER_TYPE": {
+		"EN": "User type",
+		"PT": "Tipo de usuário"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_PROVINCE": {
+		"EN": "Province",
+		"PT": "Província"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_PROVINCE": {
+		"EN": "Select your province",
+		"PT": "Selecione sua província"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_CITY": {
+		"EN": "City",
+		"PT": "Cidade"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_CITY": {
+		"EN": "Select your city",
+		"PT": "Selecione sua cidade"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_USER_ID": {
+		"EN": "User ID",
+		"PT": "ID do usuário"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_USER_TYPE": {
+		"EN": "User type",
+		"PT": "Tipo de usuário"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_PROVINCE": {
+		"EN": "Province",
+		"PT": "Província"
+	},
+	"LBL_COMPRADOR_YOUR_ACCOUNT_CITY": {
+		"EN": "City",
+		"PT": "Cidade"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_USER_ID": {
+		"EN": "User ID",
+		"PT": "ID do usuário"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_USER_TYPE": {
+		"EN": "User type",
+		"PT": "Tipo de usuário"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_TYPE": {
+		"EN": "Type",
+		"PT": "Tipo"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_COMPANY_NAME": {
+		"EN": "Company name",
+		"PT": "Nome da empresa"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_PROVINCE": {
+		"EN": "Province",
+		"PT": "Província"
+	},
+	"LBL_TRADING_YOUR_ACCOUNT_CITY": {
+		"EN": "City",
+		"PT": "Cidade"
+	},
+	"LBL_RESERVED": {
+		"EN": "Reserved",
+		"PT": "Reservada"
+	},
+	"LBL_PRODUCER_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
+		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
+		"PT": "Nota: seu perfil está incompleto, #CLICK_HERE# para completar seu perfil"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
+		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
+		"PT": "Nota: seu perfil está incompleto, #CLICK_HERE# para completar seu perfil"
+	},
+	"LBL_COMPRADOR_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
+		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
+		"PT": "Nota: seu perfil está incompleto, #CLICK_HERE# para completar seu perfil"
+	},
+	"LBL_COMPRADOR_DEMAND_SELECT_PERIOD": {
+		"EN": "Select Period",
+		"PT": "Selecionar período"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD": {
+		"EN": "Period",
+		"PT": "Período"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_WEEK": {
+		"EN": "Every Week",
+		"PT": "Toda semana"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_TWICE_WEEK": {
+		"EN": "Every Twice Week",
+		"PT": "A cada duas vezes por semana"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTH": {
+		"EN": "Every Month",
+		"PT": "Todo mês"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_2_MONTHS": {
+		"EN": "Every 2 Months",
+		"PT": "A cada 2 meses"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_3_MONTHS": {
+		"EN": "Every 3 Months",
+		"PT": "A cada 3 meses"
+	},
+	"LBL_COMPRADOR_DEMAND_WHERE_TO_DELIVER": {
+		"EN": "Where to deliver",
+		"PT": "Onde entregar"
+	},
+	"LBL_COMPRADOR_DEMAND_WHERE_TO_DELIVER_SELECT_ADDRESS": {
+		"EN": "Select Where to deliver",
+		"PT": "Selecione Onde entregar"
+	},
+	"LBL_COMPRADOR_DEMAND_VALIDATE_WHERE_TO_DELIVER": {
+		"EN": "Select Where to deliver",
+		"PT": "Selecione Onde entregar"
+	},
+	"LBL_COMPRADOR_CART_LIST_ORDER_TOTAL": {
+		"EN": "Order Total",
+		"PT": "total de pedidos"
+	},
+	"LBL_COMPRADOR_CART_LIST_TABLE_PRODUCT": {
+		"EN": "Product",
+		"PT": "produtos"
+	},
+	"LBL_COMPRADOR_CART_LIST_TABLE_QUANTITY": {
+		"EN": "Quantity",
+		"PT": "Quantidade"
+	},
+	"LBL_COMPRADOR_CART_LIST_TABLE_PRICE": {
+		"EN": "Price",
+		"PT": "Preço"
+	},
+	"LBL_COMPRADOR_CART_LIST_TABLE_REMOVE": {
+		"EN": "Remove Item",
+		"PT": "Remover item"
+	},
+	"LBL_COMPRADOR_EXPLORE_DETAILS_PRODUCT_ID": {
+		"EN": "Product ID",
+		"PT": "ID do produto"
+	},
+	"LBL_COMPRADOR_EXPLORE_DETAILS_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_TRADING_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
+		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
+		"PT": "Nota: seu perfil está incompleto, #CLICK_HERE# para completar seu perfil"
+	},
+	"LBL_TRADING_DEMAND_SELECT_PERIOD": {
+		"EN": "Select Period",
+		"PT": "Selecionar período"
+	},
+	"LBL_TRADING_DEMAND_PERIOD": {
+		"EN": "Period",
+		"PT": "Período"
+	},
+	"LBL_TRADING_DEMAND_PERIOD_EVERY_WEEK": {
+		"EN": "Every Week",
+		"PT": "Toda semana"
+	},
+	"LBL_TRADING_DEMAND_PERIOD_EVERY_TWICE_WEEK": {
+		"EN": "Every Twice Week",
+		"PT": "A cada duas vezes por semana"
+	},
+	"LBL_TRADING_DEMAND_PERIOD_EVERY_MONTH": {
+		"EN": "Every Month",
+		"PT": "Todo mês"
+	},
+	"LBL_TRADING_DEMAND_PERIOD_EVERY_2_MONTHS": {
+		"EN": "Every 2 Months",
+		"PT": "A cada 2 meses"
+	},
+	"LBL_TRADING_DEMAND_PERIOD_EVERY_3_MONTHS": {
+		"EN": "Every 3 Months",
+		"PT": "A cada 3 meses"
+	},
+	"LBL_TRADING_DEMAND_WHERE_TO_DELIVER": {
+		"EN": "Where to deliver",
+		"PT": "Onde entregar"
+	},
+	"LBL_TRADING_DEMAND_WHERE_TO_DELIVER_SELECT_ADDRESS": {
+		"EN": "Select Where to deliver",
+		"PT": "Selecione Onde entregar"
+	},
+	"LBL_TRADING_DEMAND_VALIDATE_WHERE_TO_DELIVER": {
+		"EN": "Select Where to deliver",
+		"PT": "Selecione Onde entregar"
+	},
+	"LBL_TRADING_CART_LIST_ORDER_TOTAL": {
+		"EN": "Order Total",
+		"PT": "total de pedidos"
+	},
+	"LBL_TRADING_CART_LIST_TABLE_PRODUCT": {
+		"EN": "Product",
+		"PT": "produtos"
+	},
+	"LBL_TRADING_CART_LIST_TABLE_QUANTITY": {
+		"EN": "Quantity",
+		"PT": "Quantidade"
+	},
+	"LBL_TRADING_CART_LIST_TABLE_PRICE": {
+		"EN": "Price",
+		"PT": "Preço"
+	},
+	"LBL_TRADING_CART_LIST_TABLE_REMOVE": {
+		"EN": "Remove Item",
+		"PT": "Remover item"
+	},
+	"LBL_TRADING_EXPLORE_DETAILS_PRODUCT_ID": {
+		"EN": "Product ID",
+		"PT": "ID do produto"
+	},
+	"LBL_TRADING_EXPLORE_DETAILS_CLIENT_ID": {
+		"EN": "Client ID",
+		"PT": "ID do Cliente"
+	},
+	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS": {
+		"EN": "Destination address",
+		"PT": "Endereço de destino"
+	},
+	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS": {
+		"EN": "Destination address",
+		"PT": "Endereço de destino"
+	},
+	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS": {
+		"EN": "Destination address",
+		"PT": "Endereço de destino"
+	},
+	"LBL_TRADING_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS": {
+		"EN": "Destination address",
+		"PT": "Endereço de destino"
+	},
+	"LBL_SELLER_ID": {
+		"EN": "Seller ID",
+		"PT": "ID do vendedor"
+	},
+	"LBL_BUYER_ID": {
+		"EN": "Buyer ID",
+		"PT": "ID do comprador"
+	},
+	"LBL_TRADING_ID": {
+		"EN": "Trading ID",
+		"PT": "ID do comprador comercial"
+	},
+	"LBL_REVIEW_AND_PAYMENTS": {
+		"EN": "Reviews & Payments",
+		"PT": "Pagamento"
+	},
+	"LBL_TRANSPORTED": {
+		"EN": "Transported",
+		"PT": "Em Trasporte"
+	},
+	"LBL_CHAT": {
+		"EN": "Chat",
+		"PT": "Dialogar com a Kepya"
+	},
+	"LBL_DO_YOU_NEED_TRANSPORTATION": {
+		"EN": "Do you need transportation?",
+		"PT": "Você precisa de transporte?"
+	},
+	"LBL_YES": {
+		"EN": "Yes",
+		"PT": "sim"
+	},
+	"LBL_NO": {
+		"EN": "No",
+		"PT": "Não"
+	},
+	"LBL_DELIVER_HERE": {
+		"EN": "Deliver Here",
+		"PT": "Entregar aqui"
+	},
+	"LBL_ATM_REFERENCE": {
+		"EN": "ATM Reference",
+		"PT": "Referência ATM"
+	},
+	"LBL_PAYMENT_FROM_THE_BANK": {
+		"EN": "Payment from the bank",
+		"PT": "Pagamento do banco"
+	},
+	"LBL_RATINGS": {
+		"EN": "Ratings",
+		"PT": "Avaliações"
+	},
+	"LBL_PRODUCT_RATING": {
+		"EN": "Product Rating",
+		"PT": "Classificação do produto"
+	},
+	"LBL_BAD": {
+		"EN": "Bad",
+		"PT": "Ruim"
+	},
+	"LBL_REGULAR": {
+		"EN": "Regular",
+		"PT": "Regular"
+	},
+	"LBL_EXCELLENT": {
+		"EN": "Excellent",
+		"PT": "Excelente"
+	},
+	"LBL_TRANSPORTER_RATING": {
+		"EN": "Transporter Rating",
+		"PT": "Classificação do transportador"
+	},
+	"LBL_DELIVERY_ON_TIME": {
+		"EN": "Delivery on Time",
+		"PT": "Entrega pontual"
+	},
+	"LBL_LATER": {
+		"EN": "Later",
+		"PT": "Mais tarde"
+	},
+	"LBL_ON_TIME": {
+		"EN": "On Time",
+		"PT": "Na hora"
+	},
+	"LBL_FASTER": {
+		"EN": "Faster",
+		"PT": "Mais rápido"
+	},
+	"LBL_SUBMIT": {
+		"EN": "Submit",
+		"PT": "Enviar"
+	},
+	"LBL_RATED": {
+		"EN": "Thank you for rated",
+		"PT": "Obrigado pela classificação"
+	},
+	"LBL_CONFIRM": {
+		"EN": "Thank you for confirming transaction",
+		"PT": "Obrigado por confirmar transação"
+	},
+	"LBL_FROM_DATE_TO_DATE": {
+		"EN": "To date must be greater or equal to from date",
+		"PT": "Até a data deve ser maior ou igual à data"
+	},
+	"LBL_EXPIRED": {
+		"EN": "Expired",
+		"PT": "Expirada"
+	},
+	"LBL_OUT_OF_STOCK": {
+		"EN": "Out of stock",
+		"PT": "Fora de estoque"
+	},
+	"LBL_SORT_BY_PRICE": {
+		"EN": "Sort by Price",
+		"PT": "Ordenar por Preço"
+	},
+	"LBL_MIN": {
+		"EN": "Min",
+		"PT": "Mín"
+	},
+	"LBL_MAX": {
+		"EN": "Max",
+		"PT": "Máx"
+	},
+	"LBL_SORT_BY_QTY": {
+		"EN": "Sort by QTY",
+		"PT": "Ordenar por quantidade"
+	},
+	"LBL_APPLY": {
+		"EN": "Apply",
+		"PT": "Seleccionar"
+	},
+	"LBL_REFERENCE_CODE": {
+		"EN": "Reference code",
+		"PT": "Código de referência"
+	},
+	"LBL_ALL_CHATS": {
+		"EN": "All Chats",
+		"PT": "Todos os bate-papos"
+	},
+	"LBL_TYPE_A_MESSAGE": {
+		"EN": "Type a message",
+		"PT": "Digite uma mensagem"
+	},
+	"LBL_DELETE_CHAT": {
+		"EN": "Delete Chat",
+		"PT": "Excluir bate-papo"
+	},
+	"LBL_TIME_LEFT": {
+		"EN": "Time left",
+		"PT": "Tempo restante"
+	},
+	"LBL_ENTITY_ID": {
+		"EN": "Entity ID",
+		"PT": "ID da entidade"
+	},
+	"LBL_DAYS": {
+		"EN": "Days",
+		"PT": "Dias"
+	},
+	"LBL_ATM_REFERENCE_ORDER_PLACED": {
+		"EN": "Your order id : #ORDER_ID#, Entity ID : #ENTITY_ID#, Reference Code : #REFERENCE_CODE#, Amount: #AMOUNT#, We are waiting for the payment and for the shipping, we will contact you shortly",
+		"PT": "O ID do seu pedido: #ORDER_ID#, ID da entidade: #ENTITY_ID#, Código de referência: #REFERENCE_CODE#, Montante: #AMOUNT#, Estamos aguardando o pagamento e a remessa, entraremos em contato em breve"
+	},
+	"LBL_WALLET_ORDER_PLACED": {
+		"EN": "Your order id is : #ORDER_ID#, For the shipping, we will contact you shortly",
+		"PT": "O código do seu pedido é: #ORDER_ID#, para o envio, entraremos em contato em breve"
+	},
+	"LBL_DASHBOARD_SALES_QTY": {
+		"EN": "Quantity",
+		"PT": "Quantidade"
+	},
+	"LBL_SOLD_PRODUCT": {
+		"EN": "Sold Product List",
+		"PT": "Lista de produtos vendidos"
+	},
+	"LBL_UNSOLD_PRODUCT": {
+		"EN": "Unsold Product List",
+		"PT": "Lista de produtos não vendidos"
+	},
+	"LBL_SHIPMENT_ID": {
+		"EN": "Shipment ID",
+		"PT": "ID da Remessa"
+	},
+	"LBL_SHIPMENT_STATUS": {
+		"EN": "Shipment Status",
+		"PT": "Status de envio"
+	},
+	"LBL_WALLET_LOCKED_AMOUNT": {
+		"EN": "Locked Amount",
+		"PT": "Montante bloqueado"
+	},
+	"LBL_WAITING": {
+		"EN": "Waiting",
+		"PT": "Esperando"
+	},
+	"LBL_TRANSPORTATION_NOT_NEEDED": {
+		"EN": "Tranportation not needed",
+		"PT": "Transporte não necessário"
+	},
+	"LBL_WALLET_REMAINING_BALANCE": {
+		"EN": "Remaining Balance",
+		"PT": "Saldo Final"
+	},
+	"LBL_CONTINUE": {
+		"EN": "Continue",
+		"PT": "Continuar"
+	},
+	"LBL_BACK": {
+		"EN": "Back",
+		"PT": "Regressar"
+	},
+	"LBL_PRODUCT_ORDER_DETAIL": {
+		"EN": "Product Order Detail",
+		"PT": "Detalhes do Produto"
+	},
+
+	"LBL_PRODUCT_DETAIL": {
+		"EN": "Product Detail",
+		"PT": "Detalhes do Produto"
+	},
+	"LBL_NO_ORDER_AVAILABLE": {
+		"EN": "No order available",
+		"PT": "Nenhum pedido disponível"
+	},
+	"LBL_ADD_AMOUNT_MODAL_LOAD_YOUR_ACCOUNT": {
+		"EN": "Load your account",
+		"PT": "Carregue minha conta"
+	},
+	"LBL_ADD_AMOUNT_MODAL_GENERATE_REFERENCE": {
+		"EN": "Generate reference",
+		"PT": "Gerar Referência"
+	},
+	"LBL_ADD_AMOUNT_MODAL_ENTER_AMOUNT": {
+		"EN": "Enter amount",
+		"PT": "Insira o valor"
+	},
+	"LBL_VALIDATE_ADD_AMOUNT_MODAL_ENTER_AMOUNT": {
+		"EN": "Enter amount",
+		"PT": "Insira o valor"
+	},
+	"LBL_WALLET_ATM_REFERENCE_GENERATED_SUCCESSFULLY": {
+		"EN": "ATM reference generated successfully",
+		"PT": "Referência ATM gerada com sucesso"
+	},
+	"LBL_ADDRESS_KEPYA": {
+		"EN": "New Life Urban District, 34th Street, House No. 425",
+		"PT": "Urbanização Nova Vida, Rua 34, Casa nº 425"
+	},
+	"LBL_PRODUCT_DESCRIPTION_1": {
+		"EN": "Product features / Packaging conditions / Have you harvested or not?",
+		"PT": "Carateristicas do produto / Condições de embalagem / Já colheu ou não?"
+	},
+	"LBL_ADD_FARMER": {
+		"EN": "Add Farmer",
+		"PT": "Adicionar Agricultor"
+	},
+	"LBL_FARMER_LIST": {
+		"EN": "Farmes List",
+		"PT": "Lista de Agricultores"
+	},
+	"EDIT_FARMER": {
+		"EN": "Edit Farmer",
+		"PT": "Editar dados do Agricultor"
+	},
+	"LBL_AGGREGATOR_PUBLISH_PRODUCTS": {
+		"EN": "Post product",
+		"PT": "Publicar produto"
+	},
+	"LBL_AMOUNT_IN_WALLET_TRADING": {
+		"EN": "Amount in wallet",
+		"PT": "Valor na carteira"
+	},
+	"LBL_LIST_PRODUCTS_AGGREGATOR": {
+		"EN": "List Products",
+		"PT": "Listar Produtos"
+	},
+	"LBL_LIST_PRODUCTS_AGGREGATOR_1": {
+		"EN": "Published Products",
+		"PT": "Produtos Publicados"
+	},
+	"LBL_WALLET_ACCOUNT_BALANCE": {
+		"EN": "Account Balance",
+		"PT": "Saldo Contabilistico"
+	},
+	"LBL_PAID": {
+		"EN": "Paid",
+		"PT": "Pago"
+	}
+}

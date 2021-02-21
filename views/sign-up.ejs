@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<%- include('shared/common_css') %>
+	<script type='text/javascript' src="js/language.js"></script>
+	<script type='text/javascript' src="js/common.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<script>
+	  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+	    console.log('statusChangeCallback');
+	    console.log(response);                   // The current login status of the person.
+	    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+	      testAPI();  
+	    } else {                                 // Not logged into your webpage or we are unable to tell.
+	      document.getElementById('status').innerHTML = 'Please log ' +
+	        'into this webpage.';
+	    }
+	  }
+
+
+	  function checkLoginState() {        // Called when a person is finished with the Login Button.
+	    FB.getLoginStatus(function(response) {  // See the onlogin handler
+	      statusChangeCallback(response);
+	    });
+	  }
+
+
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '532238720696419',
+	      cookie     : true,                     // Enable cookies to allow the server to access the session.
+	      xfbml      : true,                     // Parse social plugins on this webpage.
+	      version    : 'v5.0'           // Use this Graph API version for this call.
+	    });
+
+
+	    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+	      statusChangeCallback(response);        // Returns the login status.
+	    });
+	  };
+
+	  
+	  (function(d, s, id) {               // Load the SDK asynchronously
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "https://connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+	 
+	  function testAPI() {                // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+	    FB.api('/me', function(response) {
+	    	onFacebookSignUp({ id: response.id, name: response.name, email: (response.email || '')});
+	    });
+	  }
+
+	</script>
+</head>
+<body>
+<section class="login-section text-center">
+	<div class="row">
+		<div class="col-md-6 col-sm-12 kp_registerSet">
+			    <h1><%= labels['LBL_SIGN_UP_REGISTER_TO_GET_BENEFITS'][language] %></h1>
+			
+				<div class="col-lg-12 kp_registerSetImg ">
+					<div class="kp_registerImgSet">
+						<img src="images/vegetables.png">
+					</div>
+					<div class=" kp_registerDescribe producers">
+						<h3><%= labels['LBL_SIGN_UP_BENEFIT_PRODUCERS'][language] %></h3>
+						<p><%= labels['LBL_SIGN_UP_BENEFIT_PRODUCERS_DESCRIPTION'][language] %></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-lg-12 kp_registerSetImg ">
+					<div class="kp_registerImgSet">
+						<img src="images/market.png">
+					</div>
+					<div class="kp_registerDescribe aggregators">
+						<h3><%= labels['LBL_SIGN_UP_BENEFIT_AGGREGATORS'][language] %></h3>
+						<p><%= labels['LBL_SIGN_UP_BENEFIT_AGGREGATORS_DESCRIPTION'][language] %></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-lg-12 kp_registerSetImg ">
+					<div class="kp_registerImgSet">
+						<img src="images/package.png">
+					</div>
+					<div class=" kp_registerDescribe compradors">
+						<h3><%= labels['LBL_SIGN_UP_BENEFIT_COMPRADORS'][language] %></h3>
+						<p><%= labels['LBL_SIGN_UP_BENEFIT_COMPRADORS_DESCRIPTION'][language] %></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-lg-12  kp_registerSetImg ">
+					<div class="kp_registerImgSet">
+						<img src="images/delivery-truck.png">
+					</div>
+					<div class=" kp_registerDescribe transporters">
+						<h3><%= labels['LBL_SIGN_UP_BENEFIT_TRANSPORTERS'][language] %></h3>
+						<p><%= labels['LBL_SIGN_UP_BENEFIT_TRANSPORTERS_DESCRIPTION'][language] %></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+		</div>
+		<div class="col-md-6 col-sm-12 form">
+			<div class="login-page">
+					<div class="login-box">
+						<div class="row">
+							<%- include('shared/language_section') %>
+						</div>
+						<form id="frm-sign-up" action="" method="post">
+							<img src="images/logo.png">
+							<h1><%= labels['LBL_SIGN_UP_CREATE_ACCOUNT'][language] %></h1>
+							<div class="row">
+								<div class="col-md-6 col-sm-12 padding-left">
+									<div class="search-container form-group">
+									    <input type="text" id="txt-firstname" name="first_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_FIRST_NAME'][language] %>" required="">
+									    <span class="validation-alert" id='err-firstname'></span>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 padding-left">
+									<div class="search-container form-group">
+									    <input type="text" id="txt-lastname" name="last_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_LAST_NAME'][language] %>" required="">
+									    <span class="validation-alert" id='err-lastname'></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-sm-12 padding-left">
+									<select class="form-control reg-txt-province" placeholder="Type" id="txt-type" name="type" onchange="getType()">
+								    	<option value="individual" selected><%= labels['LBL_SIGN_UP_TYPE_INDIVIDUAL'][language] %></option>
+										<option value="company"><%= labels['LBL_SIGN_UP_TYPE_COMPANY'][language] %></option>
+								    </select>
+								    <span class="validation-alert" id='err-type'></span>
+								</div>
+								<div class="col-md-6 col-sm-12 padding-left company_name hide">
+									<div class="search-container form-group">
+									    <input type="text" id="txt-company-name" name="company_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_TYPE_COMPANY_NAME'][language] %>" required="">
+									    <span class="validation-alert" id='err-company-name'></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-sm-12 padding-right">
+									<div class="search-container form-group">
+									    <input type="text" id="txt-email-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_EMAIL'][language] %>" required="">
+									    <span class="validation-alert" id='err-email-address'></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-sm-12 padding-left">
+									<div class="form-group">
+									    <select class="form-control reg-txt-province state_id" placeholder="Province" id="txt-province" name="province" onchange="getCities('<%=baseURL%>')">
+									    	<option value="">--- <%= labels['LBL_SIGN_UP_SELECT_PROVINCE'][language] %> ---</option>
+											<% for(let i=0; i < states.length; i++) { %>
+												<option value="<%= states[i].state_id %>">
+													<%= states[i].name %>
+												</option>
+											<% } %>
+									    </select>
+									    <span class="validation-alert" id='err-province'></span>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 padding-left">
+									<div class="form-group">							
+									    <select class="form-control reg-txt-city city_id" id="txt-city" name="city">
+									    	<option value="">--- <%= labels['LBL_SIGN_UP_SELECT_CITY'][language] %> ---</option>
+									    </select>
+									    <span class="validation-alert" id='err-city'></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div  class="col-md-3 col-sm-12 padding-right">
+									<div class="search-container form-group">
+										<select class="form-control" id="mobile_country_code" name="mobile_country_code">
+											<% for(let i=0; i < mobile_country_codes.length; i++) { %>
+												<option value="<%= mobile_country_codes[i]['code'] %>" <% if(mobile_country_codes[i]['code'] == '+244'){ %>selected<% } %>><%= mobile_country_codes[i]['code'] %></option>
+											<% } %>
+									    </select>
+									</div>
+								</div>
+								<div class="col-md-9 col-sm-12 padding-right">
+									<div class="search-container form-group">
+									    <input type="text" id="txt-phone-number" name='phone_number' class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
+									    <span class="validation-alert" id='err-phone-number'></span>
+									</div>
+								</div>
+							</div>								
+							
+							<div class="row">
+								<div class="col-md-6 col-sm-12 padding-left">
+									<div class="search-container form-group">
+									    <input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PASSWORD'][language] %>" required="">
+									    <span class="validation-alert" id='err-password'></span>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 padding-right">
+									<div class="search-container form-group">
+									    <input type="password" id="txt-confirm-password" name="confirm_password" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_CONFIRM_PASSWORD'][language] %>" required="">
+									    <span class="validation-alert" id='err-confirm-password'></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-sm-12 padding-left">
+									<div class="control-group">
+									    <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_PRODUCERS'][language] %>
+									      <input type="radio" name="users" checked="checked" value="producers" onchange="loadCMS('producers')"/>
+									      <div class="control__indicator"></div>
+									    </label>
+									    <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_AGGREGATORS'][language] %>
+									      <input type="radio" name="users" value="aggregators" onchange="loadCMS('aggregators')"/>
+									      <div class="control__indicator"></div>
+									    </label>
+									    <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_COMPRADORS'][language] %>
+									      <input type="radio" name="users" value="compradors" onchange="loadCMS('compradors')"/>
+									      <div class="control__indicator"></div>
+									    </label>
+									    <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_TRANSPORTERS'][language] %>
+									      <input type="radio" name="users" value="transporters" onchange="loadCMS('transporters')"/>
+									      <div class="control__indicator"></div>
+									    </label>
+									</div>
+								</div>
+							</div>
+							<div class="forgot-pw row">
+							  	<div class="col-md-12 col-sm-12 col-xs-12">
+							  		<label class="terms_"><%= labels['LBL_SIGN_UP_TERMS_CREATING_AN_ACCOUNT'][language] %> <a href="javascript:void(0);" onClick="showTermsOfService('<%= language %>')"><%= labels['LBL_SIGN_UP_TERMS_OF_SERVICE'][language] %></a></label>
+							  	</div>
+							</div>
+							<button type="button" class="btn btn-default" onclick="submitSignUp()"><%= labels['LBL_SIGN_UP_FOR_FREE_BUTTON'][language] %></button>
+
+							<a href="javascript:void(0)" class="google btn" id="google-sign-up">
+								<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %>
+							</a>
+							
+							<div class="text-center creat_new"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT'][language] %>? <a href="/"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN'][language] %></a></div>
+							
+							<div class="g-signin2 hide" data-onsuccess="onSocialSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div>
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title sign-up-terms-title"><%= tc_title %></h4>
+        </div>
+        <div class="modal-body terms-model sign-up-terms-description">
+        	<%- tc_description %>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+<script src='js/bootstrap.min.js'></script>
+<script src="js/jquery.notify.min.js"></script>
+<script src='js/validation.js'></script>
+<script type="text/javascript">
+	let name = '', emailAddress = '', province = '', phoneNumber = '', password = '', confirmPassword = '', caption = '';
+	let errFirstNameFlag = 0, errLastNameFlag = 0, errCompanyNameFlag = 0, errEmailAddressFlag = 0, errProvince = 0, errCity = 0, errPhoneNumber = 0, errPassword = 0, errConfirmPassword = 0;
+	
+	function loadCMS(user_type){
+		let url = "<%=baseURL%>get-cms?user_type="+user_type;
+		$.get(url, ( data ) => {
+			$('.sign-up-terms-title').text(data.title);
+	        $('.sign-up-terms-description').html(data.description);
+	    });
+	}
+
+	function showTermsOfService(language){
+		$('#myModal').modal('show');
+	}
+
+	function getType(){
+		if($('#txt-type').val() == 'individual'){
+			$('.company_name').addClass('hide').removeClass('show');
+		} else {
+			$('.company_name').addClass('show').removeClass('hide');
+		}
+	}
+
+	function validateSignUp(){
+		if(!$('#txt-firstname').val()){
+			errFirstNameFlag = 1;
+			$('#err-firstname').text("<%= labels['LBL_SIGN_UP_VALIDATE_FIRST_NAME'][language] %>").show();
+		} else {
+			errFirstNameFlag = 0;
+			$('#err-firstname').hide();
+		}
+
+		if(!$('#txt-lastname').val()){
+			errLastNameFlag = 1;
+			$('#err-lastname').text("<%= labels['LBL_SIGN_UP_VALIDATE_LAST_NAME'][language] %>").show();
+		} else {
+			errLastNameFlag = 0;
+			$('#err-lastname').hide();
+		}
+
+		if($('#txt-type').val() == 'company'){
+			if(!$('#txt-company-name').val()){
+				errCompanyNameFlag = 1;
+				$('#err-company-name').text("<%= labels['LBL_SIGN_UP_TYPE_VALIDATE_COMPANY_NAME'][language] %>").show();
+			} else {
+				errCompanyNameFlag = 0;
+				$('#err-company-name').hide();
+			}
+		} else {
+			errCompanyNameFlag = 0;
+			$('#err-company-name').hide();
+		}
+
+		errEmailAddressFlag = validateEmailAddress($('#txt-email-address').val());
+		if(errEmailAddressFlag > 0){
+			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL'][language] %>";
+			$('#err-email-address').text(caption).show();
+		} else {
+			$('#err-email-address').hide();
+		}
+
+		if(!$('#txt-province').val()){
+			errProvince = 1;
+			$('#err-province').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_PROVINCE'][language] %>").show();
+		} else {
+			errProvince = 0;
+			$('#err-province').hide();
+		}
+
+		if(!$('#txt-city').val()){
+			errCity = 1;
+			$('#err-city').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_CITY'][language] %>").show();
+		} else {
+			errCity = 0;
+			$('#err-city').hide();
+		}
+
+		if(!$('#txt-phone-number').val()){
+			errPhoneNumber = 1;
+			$('#err-phone-number').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_MOBILE_NO'][language] %>").show();
+		} else {
+			errPhoneNumber = 0;
+			$('#err-phone-number').hide();
+		}
+
+		if(!$('#txt-password').val()){
+			errPassword = 1;
+			$('#err-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_PASSWORD'][language] %>").show();
+		} else {
+			errPassword = 0;
+			$('#err-password').hide();
+		}
+
+		if(!$('#txt-confirm-password').val()){
+			errConfirmPassword = 1;
+			$('#err-confirm-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_CONFIRM_PASSWORD'][language] %>").show();
+		} else if($('#txt-password').val() != $('#txt-confirm-password').val()) {
+			errConfirmPassword = 1;
+			$('#err-confirm-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_MATCH_PASSWORD_CONFIRM_PASSWORD'][language] %>").show();
+		} else {
+			errConfirmPassword = 0;
+			$('#err-confirm-password').hide();
+		}
+
+		if(!errFirstNameFlag && !errLastNameFlag && !errCompanyNameFlag && !errEmailAddressFlag && !errProvince && !errPhoneNumber && !errPassword && !errConfirmPassword){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function submitSignUp(){
+		if(validateSignUp()){
+			signUp({ type: 'email', email: $('#txt-email-address').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#txt-phone-number').val() });
+		}
+	}
+
+	function signUp(obj){
+		$.post('check-email-exist', obj).done((response) => {
+			if(parseInt(response.code) == 200 && obj.type == 'email'){
+				if(obj.type == 'email'){
+					$('#frm-sign-up').submit()
+				} else {
+					window.location.href = response.user_type+"/dashboard";
+				}
+			} else if(parseInt(response.code) == 410){
+				window.location.href = "/verify-otp?mobile_country_code="+response.user_info.mobile_country_code+'&phone_number='+response.user_info.phone_number;
+			} else if((parseInt(response.code) == 200 || parseInt(response.code) == 409) && (obj.type == 'google' || obj.type == 'facebook')) {
+				window.location.href = response.user_type+"/dashboard";
+			} else {
+				if(obj.type == 'google'){
+					var auth2 = gapi.auth2.getAuthInstance();
+				  	auth2.signOut().then(function () {});
+				}
+				
+				showAlert(response.message);
+				setTimeout(() => {
+					hideAlert()
+				}, 3000);
+			}
+		});
+	}
+
+	function onSocialSignUp(googleUser) {
+		let profile = googleUser.getBasicProfile();
+		signUp({ type: 'google', social_id: profile.getId(), name: profile.getName(), email: profile.getEmail(), user_type: $('input[name=users]:checked').val() });
+	}
+
+	function onFacebookSignUp(obj) {
+		signUp({ type: 'facebook', social_id: obj.id, name: obj.name, email: obj.email, user_type: $('input[name=users]:checked').val() });
+	}
+
+	function showAlert(message){
+		notify({
+            type: "error",
+            title: "<%= labels['LBL_MESSAGE'][language] %>",
+			 theme: "dark-theme",
+			 position: {
+                x: "right",
+                y: "top"
+            },
+            icon: '<img src="images/paper_plane.png" />',
+            message: message
+        });
+	}
+
+	function hideAlert(){
+		$( ".notify-close-btn" ).trigger( "click" );
+	}
+
+	$(document).ready(function(){
+	  	$('#google-sign-up').click('on', function(){
+	  		$('.abcRioButton').trigger('click');
+	  	})
+	});
+</script>
+</body>
+</html>

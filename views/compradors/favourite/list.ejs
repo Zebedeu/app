@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="../../../css/product.css">
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row add-address post-add">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+			 		<h3><%= labels['LBL_FAVOURITE_LIST'][language] %></h3>
+				</div>
+
+				<% for(let i=0; i < products.length; i++) { %>
+					<% if(products[i]['remaining_unit_value'] >= products[i]['min_qty']){ %>
+						<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+							<div class="product-data">
+								<div class="product-img">
+								  	<img src="<%= products[i]['images'][0] %>" alt="Avatar" class="pro-image img-size">
+								</div>
+								<div class="product-text">
+									<a href="<%=baseURL%>compradors/explore/details/<%= products[i]['product_id'] %>"><h3 class="pro_title_"><%= products[i]['sub_category_title'] %></h3></a>
+									<h4><%= products[i]['category_title'] %> / <%= labels['LBL_QUANTITY'][language] %> : <%= products[i]['remaining_unit_qty'] %> <%= products[i]['unit_type'] %></h4>
+									<h4 style="color: #f69624;" class="sku_wrapper pro-bottom">Kz <%= products[i]['unit_price'] %> / <%= products[i]['unit_type'] %></h4>
+									<div class="kp_location">
+										<i class="fa fa-map-marker" aria-hidden="true"></i> <span class='pro-location'><%= products[i].state_name %></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% } %>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>

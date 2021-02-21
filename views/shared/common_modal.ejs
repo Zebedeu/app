@@ -1,0 +1,640 @@
+<div class="modal fade in" id="walletWithdrawModal" role="dialog">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_WALLET_PROMPT_HEADER'][language] %></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span
+                                             class='profile_label'><%= labels['LBL_WALLET_PROMPT_ENTER_AMOUNT'][language] %></span>:*</label>
+                                   <input class="custom_input enter-wallet-amount" type="number" min="1"
+                                        oninput="validity.valid||(value='');">
+                                   <span class="validation-alert" id='err-enter-wallet-amount'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);" onClick='withDrawWalletAmount("<%=baseURL%>")'><button
+                                        style="margin: 5px 0;"
+                                        class="button btn-cart btn-save-wallet-amount"><%= labels['LBL_SAVE'][language] %></button></a>
+                              <div class="lds-facebook" style="display:none">
+                                   <div></div>
+                                   <div></div>
+                                   <div></div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="modal fade in" id="editUserInfoModal" role="dialog">
+     <input type='hidden' class="profile_type">
+     <input type='hidden' class="profile_type_error">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span class='profile_label'>Name</span>:*</label>
+                                   <input class="custom_input profile_value your_account_details" type="text"
+                                        placeholder="" value="" id="autocomplete">
+                                   <span class="validation-alert" id='err-profile-field'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);"
+                                   onClick='setUserInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
+                                        style="margin: 5px 0;"
+                                        class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="modal fade in" id="editUserStateCityInfoModal" role="dialog">
+     <input type='hidden' class="profile_type">
+     <input type='hidden' class="profile_type_error">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span class='profile_label'></span>:*</label>
+                                   <select class="select_plug enable-cursor state_city_id" id="state_city_id"
+                                        name="state_city_id">
+
+                                   </select>
+                                   <span class="validation-alert" id='err-profile-state-city-field'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);"
+                                   onClick='setUserStateCityInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
+                                        style="margin: 5px 0;"
+                                        class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="modal fade in" id="editUserInfoPasswordModal" role="dialog">
+     <input type='hidden' class="profile_type">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span
+                                             class='profile_label_old_password'><%= labels['LBL_USER_PROFILE_OLD_PASSWORD'][language] %></span>:*</label>
+                                   <input class="custom_input profile_value_old_password" type="password" placeholder=""
+                                        value="">
+                                   <span class="validation-alert" id='err-old-password'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span
+                                             class='profile_label_new_password'><%= labels['LBL_USER_PROFILE_NEW_PASSWORD'][language] %></span>:*</label>
+                                   <input class="custom_input profile_value_new_password" type="password" placeholder=""
+                                        value="">
+                                   <span class="validation-alert" id='err-new-password'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <label class="my-1 mr-2"><span
+                                             class='profile_label_confirm_password'><%= labels['LBL_USER_PROFILE_CONFIRM_NEW_PASSWORD'][language] %></span>:*</label>
+                                   <input class="custom_input profile_value_confirm_new_password" type="password"
+                                        placeholder="" value="">
+                                   <span class="validation-alert" id='err-confirm-password'></span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);"
+                                   onClick='setUserPasswordInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>", "<%= labels['LBL_ENTER_USER_PROFILE_OLD_PASSWORD'][language] %>", "<%= labels['LBL_ENTER_USER_PROFILE_NEW_PASSWORD'][language] %>", "<%= labels['LBL_ENTER_USER_PROFILE_CONFIRM_NEW_PASSWORD'][language] %>", "<%= labels['LBL_ENTER_USER_PROFILE_MATCH_PASSWORD'][language] %>")'><button
+                                        class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+</div>
+
+<div class="modal fade in" id="addAmountInWalletModal" role="dialog">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">
+                         <% if(user.user_type == 'producers'){ %>
+                         <%= labels['LBL_PRODUCER_BANK_ACCOUNT_TOP_TITLE'][language] %> <span class='profile_title'>
+                              <% } else if(user.user_type == 'aggregators'){ %>
+                              <%= labels['LBL_AGGREGATOR_BANK_ACCOUNT_TOP_TITLE'][language] %> <span
+                                   class='profile_title'>
+                                   <% } else { %>
+                                   <%= labels['LBL_TRANSFER_MONEY'][language] %> <span class='profile_title'>
+                                        <% } %>
+                    </h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <div class="row">
+                                        <div class="col-md-12">
+                                             <div class="search-container">
+                                                  <p><%= labels['LBL_ACCOUNT_NO'][language] %> : <span
+                                                            id="wallet_account_no"></span></p>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <div class="search-container">
+                                                  <p><%= labels['LBL_CODE'][language] %> : <span
+                                                            id="wallet_iban"></span></p>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <div class="search-container">
+                                                  <p><%= labels['LBL_BANK_ACCOUNT_COMPANY'][language] %> : <span
+                                                            id="wallet_company"></span></p>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);"><button style="margin: 20px 0;" class="button btn-cart"
+                                        data-dismiss="modal"><%= labels['LBL_CLOSE'][language] %></button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="modal fade in" id="addAmountInWalletATMModal" role="dialog">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">
+                         <%= labels['LBL_ADD_AMOUNT_MODAL_LOAD_YOUR_ACCOUNT'][language] %> <span class='profile_title'>
+                    </h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <div class="row">
+                                        <p>
+                                             <%= labels['LBL_ADD_AMOUNT_MODAL_ENTER_AMOUNT'][language] %> : 
+                                             <input class="custom_input txt-disabled farmer_currency_number" type="number" placeholder="" value="" name="load_amount" id="load_amount" autofocus="autofocus"> 
+                                             <span class="validation-alert" id='err-total-load-amount'></span>
+                                        </p>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);">
+                                   <button class="button btn-cart" type='button'
+                                 
+                                   onclick="generateReference('<%=baseURL%>','<%= labels['LBL_VALIDATE_ADD_AMOUNT_MODAL_ENTER_AMOUNT'][language] %>','<%= labels['LBL_MESSAGE'][language] %>','<%= labels['LBL_WALLET_ATM_REFERENCE_GENERATED_SUCCESSFULLY'][language] %>')">
+                                   
+                                   <%= labels['LBL_ADD_AMOUNT_MODAL_GENERATE_REFERENCE'][language] %>
+                              </button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="modal fade in" id="addressModal" role="dialog">
+     <input class="custom_input" type="hidden" id='address-mode-type' value="add">
+     <input class="custom_input" type="hidden" id='address-id' value="">
+     <input class="custom_input" type="hidden" id='address-from' value="address">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_ADD_NEW_ADDRESS'][language] %></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <h3><%= labels['LBL_ADDRESS_DETAILS'][language] %></h3>
+                              <div class="row">
+                                   <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="search-container">
+                                             <label
+                                                  class="my-1 mr-2"><%= labels['LBL_TYPE_OF_ADDRESS'][language] %>*</label>
+                                             <input class="custom_input" type="text" placeholder="" value=""
+                                                  id='address-type'>
+                                             <span class="validation-alert" id='err-address-type'></span>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="row">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %>*</label>
+                                             <input class="custom_input" type="text" placeholder="" value=""
+                                                  id='address-complete-address'>
+                                             <span class="validation-alert" id='err-address-complete-address'></span>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_LOCALITY'][language] %>*</label>
+                                             <input class="custom_input" type="text" placeholder="" value=""
+                                                  id='address-locality'>
+                                             <span class="validation-alert" id='err-address-locality'></span>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="row">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %>*</label>
+                                             <select class="form-control selectbox" id="address-state" name="state_id"
+                                                  onchange="getCity(this.value)">
+                                             </select>
+                                             <span class="validation-alert" id='err-address-state'></span>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %>*</label>
+                                             <select class="form-control selectbox" id="address-city-district"
+                                                  name="city_id">
+                                             </select>
+                                             <span class="validation-alert" id='err-address-city-district'></span>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="row">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_NAME'][language] %></label>
+                                             <input class="custom_input" type="text" placeholder="" value=""
+                                                  id='address-name'>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"
+                                                  style='width: 100%;'><%= labels['LBL_MOBILE_NUMBER'][language] %></label>
+                                             <select class="form-control selectbox" id="address-mobile-country-code"
+                                                  name="mobile_country_code"
+                                                  style="float: left;width: 30% !important;margin-right: 5px;">
+                                             </select>
+                                             <input class="custom_input" type="text" placeholder=""
+                                                  id='address-mobile-number' style='float: left;width: 67%;'>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="row">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="search-container">
+                                             <label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %></label>
+                                             <input class="custom_input" type="email" placeholder="" value=""
+                                                  id='address-email'>
+                                        </div>
+                                   </div>
+                                   
+                              </div>
+
+                              <div class="row">
+                                   <div class="col-md-12 align_center">
+                                        <a href="javascript:void(0);" onClick="submitAddress()"><button
+                                                  style="margin: 20px 0;"
+                                                  class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <div class="modal fade in" id="addReviewModal" role="dialog">
+          <div class="modal-dialog">
+
+               <!-- Modal content-->
+               <div class="modal-content ">
+                    <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal">×</button>
+                         <h4 class="modal-title"><%= labels['LBL_PRODUCT_REVIEW_ADD_A_REVIEW'][language] %> </h4>
+                    </div>
+                    <div class="modal-body terms-model">
+                         <div class="comment-respond">
+                              <form action="" method="post" id="commentform" class="comment-form">
+                                   <p class="comment-notes"><span
+                                             id="email-notes"><%= labels['LBL_PRODUCT_REVIEW_YOUR_EMAIL_ADDRESS_WILL_NOT_BE_PUBLISHED'][language] %>.</span>
+                                        <%= labels['LBL_PRODUCT_REVIEW_REQUIRED_FIELDS_ARE_MARKED'][language] %> <span
+                                             class="required">*</span>
+                                   </p>
+
+                                   <div class="stars review-stars" style='cursor:pointer;'>
+                                        <span class="review-fa-stars fa fa-star" no="1" onclick='selectStar(1)'></span>
+                                        <span class="review-fa-stars fa fa-star" no="2" onclick='selectStar(2)'></span>
+                                        <span class="review-fa-stars fa fa-star" no="3" onclick='selectStar(3)'></span>
+                                        <span class="review-fa-stars fa fa-star" no="4" onclick='selectStar(4)'></span>
+                                        <span class="review-fa-stars fa fa-star" no="5" onclick='selectStar(5)'></span>
+                                   </div>
+                                   <br>
+
+                                   <p class="comment-form-comment"><label
+                                             for="comment"><%= labels['LBL_PRODUCT_REVIEW_YOUR_REVIEW'][language] %>&nbsp;<span
+                                                  class="required">*</span></label>
+                                        <textarea id="comment" name="comment" cols="45" rows="8" required=""></textarea>
+                                        <span class="validation-alert" id='err-comment'></span>
+                                   </p>
+                                   <p class="comment-form-author"><label
+                                             for="author"><%= labels['LBL_PRODUCT_REVIEW_NAME'][language] %>&nbsp;<span
+                                                  class="required">*</span></label>
+                                        <input id="name" name="name" type="text" value="" size="30" required="">
+                                        <span class="validation-alert" id='err-name'></span>
+                                   </p>
+                                   <p class="comment-form-email"><label
+                                             for="email"><%= labels['LBL_PRODUCT_REVIEW_EMAIL'][language] %>&nbsp;<span
+                                                  class="required">*</span></label>
+                                        <input id="email" name="email" type="email" value="" size="30" required="">
+                                        <span class="validation-alert" id='err-email'></span>
+                                   </p>
+
+                                   <button type="button" name="Submit"
+                                        class="button btn-cart single_add_to_cart_button button alt"
+                                        onClick='addReview("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>","<%= labels['LBL_PRODUCT_REVIEW_VALIDATE_COMMENT'][language] %>","<%= labels['LBL_PRODUCT_REVIEW_VALIDATE_NAME'][language] %>","<%= labels['LBL_PRODUCT_REVIEW_VALIDATE_EMAIL'][language] %>","<%= labels['LBL_PRODUCT_REVIEW_VALIDATE_CORRECT_EMAIL'][language] %>")'><%= labels['LBL_PRODUCT_REVIEW_SUBMIT'][language] %></button>
+                              </form>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <script>
+
+          function addNewAddress(from) {
+               $('#addressModal').modal('show');
+               $('#address-from').val(from);
+               $('#address-mode-type').val('add');
+               $.get("<%=baseURL%>get-user-profile", function (data, status) {
+                    $('#address-mobile-number').val(data.phone_number);
+                    $('#address-email').val(data.email);
+                    $('#address-name').val(data.name);
+
+                    getState(data);
+                    getMobileCountryCode(data);
+               });
+          }
+
+          function getMobileCountryCode(data) {
+               $.get("<%=baseURL%>get-mobile-country-code", function (payload, status) {
+                    var div_data = Array();
+                    for (j = 0; j < payload.length; j++) {
+                         if (payload[j].code == data.mobile_country_code) {
+                              div_data[j] = "<option value='" + payload[j].code + "' selected>" + payload[j].code + "</option>";
+                         }
+                         else {
+                              div_data[j] = "<option value='" + payload[j].code + "'>" + payload[j].code + "</option>";
+                         }
+                    }
+                    if (div_data.length == 0) {
+                         div_data = "";
+                    }
+
+                    $('#address-mobile-country-code').html(div_data);
+               });
+          }
+
+          function getState(data, callCity) {
+               $.get("<%=baseURL%>get-state", function (payload, status) {
+                    var div_data = Array();
+                    for (j = 0; j < payload.length; j++) {
+                         if (payload[j].state_id == data.state_id) {
+                              div_data[j] = "<option value='" + payload[j].state_id + "' selected>" + payload[j].name + "</option>";
+                         }
+                         else {
+                              div_data[j] = "<option value='" + payload[j].state_id + "'>" + payload[j].name + "</option>";
+                         }
+                    }
+                    if (div_data.length == 0) {
+                         div_data = "";
+                    }
+                    if (callCity == undefined) {
+                         getCity(data.state_id, data.city_id);
+                    }
+                    $('#address-state').html(div_data);
+               });
+          }
+
+          function getCity(value, city_id) {
+               $.post('<%=baseURL%>get-city', { state_id: value }).done((response) => {
+                    var div_data = Array();
+                    for (j = 0; j < response.length; j++) {
+                         if (response[j].city_id == city_id) {
+                              div_data[j] = "<option value='" + response[j].city_id + "' selected>" + response[j].name + "</option>";
+                         }
+                         else {
+                              div_data[j] = "<option value='" + response[j].city_id + "'>" + response[j].name + "</option>";
+                         }
+                    }
+                    if (div_data.length == 0) {
+                         div_data = "<option value=''><%= labels['LBL_SELECT_CITY'][language] %></option>";
+                    }
+                    $('#address-city-district').html(div_data);
+               });
+          }
+
+          function editAddress(address_id) {
+               $('#address-id').val(address_id);
+               $.get("<%=baseURL%>get_user_address?address_id=" + address_id).done(function (response) {
+                    if (response.code == 404) {
+                         showAlert(response.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                         setTimeout(() => {
+                              hideAlert()
+                         }, 3000);
+                    } else {
+                         getState({ state_id: response.data.state }, 'No_call');
+                         getCity(response.data.state, response.data.city_district);
+                         $('#address-locality').val(response.data.locality);
+                         $('#address-name').val(response.data.name);
+                         $('#address-complete-address').val(response.data.complete_address);
+                         $('#address-mobile-country-code').val(response.data.mobile_country_code);
+                         $('#address-mobile-number').val(response.data.mobile_number);
+                         $('#address-email').val(response.data.email);
+                         $('#address-type').val(response.data.type);
+                         $('#address-mode-type').val('edit');
+
+                         $('#addressModal').modal('show');
+                         getMobileCountryCode(response.data)
+                    }
+               });
+          }
+
+          function removeAddress(address_id) {
+               $.post("<%=baseURL%>remove_address", { address_id }).done(function (response) {
+                    if (response.code == 200) {
+                         $('#address_list').html(response.data);
+                    } else {
+                         window.location.href = '<%=baseURL%>';
+                    }
+
+                    showAlert(response.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                    setTimeout(() => {
+                         hideAlert()
+                    }, 3000);
+               });
+          }
+
+          function submitAddress() {
+               if (validateAddress()) {
+                    $('#addressModal').modal('hide');
+                    if ($('#address-mode-type').val() == 'add') {
+                         $('#address-mode-type').val('add');
+                         var form = $('#address-from').val();
+                         $.post("<%=baseURL%>add_address", { form: form, locality: $('#address-locality').val(), city_district: $('#address-city-district').val(), state: $('#address-state').val(), name: $('#address-name').val() || '', complete_address: $('#address-complete-address').val(), mobile_country_code: $('#address-mobile-country-code').val() || '', mobile_number: $('#address-mobile-number').val() || '', email: $('#address-email').val() || '', type: $('#address-type').val() }).done(function (response) {
+                              if (response.code == 200) {
+
+                                   $('#address-pin-code').val('');
+                                   $('#address-locality').val('');
+                                   $('#address-city-district').val('');
+                                   $('#address-state').val('');
+                                   $('#address-name').val('');
+                                   $('#address-complete-address').val('');
+                                   $('#address-mobile-number').val('');
+                                   $('#address-email').val('');
+                                   if ($('#address-from').val() == 'product') {
+                                        getWhereToDeliver('<%=baseURL%>');
+                                   } else if ($('#address-from').val() == 'cart') {
+                                        $("#address-list").html(response.data)
+                                        var address = $("input[name='address_radio']:checked").val();
+                                        console.log("address", address);
+                                        setAddressType(address)
+                                   }
+                                   else {
+                                        $('#address_list').html(response.data);
+                                        showAlert(response.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                                   }
+                                   setTimeout(() => {
+                                        if ($('#address-from').val() == 'order') {
+                                             window.location.href = '<%=baseURL%>compradors/checkout/list';
+                                        } else {
+                                             hideAlert()
+                                        }
+                                   }, 3000);
+                              } else {
+                                   window.location.href = '<%=baseURL%>';
+                              }
+                         });
+                    } else {
+                         $('#address-mode-type').val('edit');
+                         $.post("<%=baseURL%>edit_address", { address_id: $('#address-id').val(), locality: $('#address-locality').val(), city_district: $('#address-city-district').val(), state: $('#address-state').val(), name: $('#address-name').val() || '', complete_address: $('#address-complete-address').val(), mobile_country_code: $('#address-mobile-country-code').val() || '', mobile_number: $('#address-mobile-number').val(), email: $('#address-email').val() || '', type: $('#address-type').val() }).done(function (response) {
+                              if (response.code == 200) {
+                                   $('#address_list').html(response.data);
+                                   $('#address-locality').val('');
+                                   $('#address-city-district').val('');
+                                   $('#address-state').val('');
+                                   $('#address-name').val('');
+                                   $('#address-complete-address').val('');
+                                   $('#address-mobile-number').val('');
+                                   $('#address-email').val('');
+
+                                   showAlert(response.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                                   setTimeout(() => {
+                                        hideAlert()
+                                   }, 3000);
+                              } else {
+                                   window.location.href = '<%=baseURL%>';
+                              }
+                         });
+                    }
+               }
+          }
+
+          function validateAddress() {
+               let errLocalityFlag = 0, errCityDistrictFlag = 0, errStateFlag = 0, errCompleteAddressFlag = 0, errAddressTypeFlag = 0;
+               if (!$('#address-locality').val()) {
+                    errLocalityFlag = 1;
+                    $('#err-address-locality').text("<%= labels['LBL_VALIDATE_ENTER_LOCALITY'][language] %>").show();
+               } else {
+                    errLocalityFlag = 0;
+                    $('#err-address-locality').hide();
+               }
+
+               if (!$('#address-city-district').val()) {
+                    errCityDistrictFlag = 1;
+                    $('#err-address-city-district').text("<%= labels['LBL_SELECT_CITY'][language] %>").show();
+               } else {
+                    errCityDistrictFlag = 0;
+                    $('#err-address-city-district').hide();
+               }
+
+               if (!$('#address-state').val()) {
+                    errStateFlag = 1;
+                    $('#err-address-state').text("<%= labels['LBL_ENTER_STATE_VALIDATION'][language] %>").show();
+               } else {
+                    errStateFlag = 0;
+                    $('#err-address-state').hide();
+               }
+
+               if (!$('#address-complete-address').val()) {
+                    errCompleteAddressFlag = 1;
+                    $('#err-address-complete-address').text("<%= labels['LBL_VALIDATE_ENTER_COMPLETE_ADDRESS'][language] %>").show();
+               } else {
+                    errCompleteAddressFlag = 0;
+                    $('#err-address-complete-address').hide();
+               }
+
+               if (!$('#address-type').val()) {
+                    errAddressTypeFlag = 1;
+                    $('#err-address-type').text("<%= labels['LBL_ENTER_ADDRESS_TYPE'][language] %>").show();
+               } else {
+                    errAddressTypeFlag = 0;
+                    $('#err-address-type').hide();
+               }
+
+               if (!errLocalityFlag && !errCityDistrictFlag && !errStateFlag && !errCompleteAddressFlag && !errAddressTypeFlag) {
+                    return true;
+               } else {
+                    return false;
+               }
+          }
+     </script>
