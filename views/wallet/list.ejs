@@ -27,18 +27,70 @@
                          <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                    <div class="wallet_balance">
-                                        <p><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %></p>
-                                        <h2>Kz <span class='user_wallet_balance'><%= wallet %></span></h2>
-                                        <% if(user.user_type != 'compradors' && user.user_type != 'trading'){ %>
-                                             <h4> <%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> : Kz
-                                             <span class=''><%= lockedAmount %></span></h4>
-                                             <h4> <%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %>
-                                             <span class='text-success' > : Kz <%= parseFloat(wallet) + parseFloat(lockedAmount) %></span></h4>
-                                        <% } %>
+                                        <!-- <p><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %></p>
+                                        <b class=" col-md-5" style="margin: 1% 0 2% 30%; color: red;" >Kz <span class='user_wallet_balance'><%= wallet %></span></b> -->
+
+                                        <div class="col-md-8">
+                                             <div class="row">
+                                                  <div class="col-md-12">
+                                                       <div class="pull-left" style="font-size: 1.5em; margin-bottom: 5%;">
+                                                            <b ><%= labels['LBL_WALLET_ACCOUNT_BALANCE_TEXT'][language] %></b>
+                                                       </div>
+                                                       <div class=" col-md-12 panel-badge pull-left" style="margin: 0 0 0 30%;" >
+                                                            <span class=" pull-left"><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %> 
+                                                            </span><b class="pull-right" style="background: #fff; color: #252932; font-weight: 800;"><%= wallet %> Kz</b>
+                                                            <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                   
+                                                       </div>
+                                                       <% if(user.user_type != 'compradors' && user.user_type != 'trading'){ %>
+                                                            <!-- <h4> <%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> : Kz
+                                                            <span class=''><%= lockedAmount %></span></h4> -->
+                                                            <!-- <h4> <%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %>
+                                                            <span class='text-success' > : Kz <%= parseFloat(wallet) + parseFloat(lockedAmount) %></span></h4> -->
+               
+                                                           
+                                                               <div class=" col-md-12 panel-badge pull-left" style="margin: 0 0 0 30%;" >
+                                                                <span class=" pull-left"><%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> </span><span class="pull-right" style="background: #fff; color: rgb(243, 4, 4);"> <%= lockedAmount %> Kz</span>
+                                                                <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                                                            </div>
+               
+                                                            <div class="col-md-12 panel-badge pull-left" style="margin: 1% 0 0% 30%;" >
+                                                                 <span class="pull-left"><%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %></span> <span style=" color: #252932;" class=" pull-right" style="background: #fff; color: #000;"> <%= parseFloat(wallet) + parseFloat(lockedAmount) %> Kz</span>
+                                                                 <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                                                            </div>
+               
+                                                            <!-- <ul class="nav nav-pills nav-stacked col-md-5" style="margin-left: 30%;">
+                                                                 <li role="presentation" class="active"><a href="#">
+                                                                      <span class="badge pull-right">
+                                                                           <span class="glyphicon glyphicon-usd"></span>
+                                                                      </span> </a>
+                                                                 </li>
+                                                           
+                                                                 <li class="active"><a href="#"><span class="badge pull-right">
+                                                                      <span class="glyphicon glyphicon-usd"></span/span> <%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %></a>
+                                                                 </li>
+                                                             </ul>
+               
+                                                             <div class="card-bottom pt-3 px-3 mb-2">
+                                                                 <div class="d-flex flex-row justify-content-between text-align-center">
+                                                                     <div class="d-flex flex-column"><span>Balance amount</span>
+                                                                         <p>&euro; <span class="text-white">88,989</span></p>
+                                                                     </div> <button class="btn btn-secondary"><i class="fas fa-arrow-right text-white"></i></button>
+                                                                 </div>
+                                                             </div> -->
+                                                       <% } %>
+                                                       <div class="col-md-12 panel-badge pull-left" style="margin: 1% 0 0% 30%;" >
+
+                                                       <button class="withdrwal_btn  pull-right" style="margin: 2%  0 5% 0%; font-weight: 800;"
+                                                       type="button"><%= labels['LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON'][language] %></button>
+                                                  <p class='wallet_withdraw_message' style='display:none;'></p>
+                                                  </div>
                                         
-                                        <button class="withdrwal_btn " style="margin-bottom: 5%;"
-                                             type="button"><%= labels['LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON'][language] %></button>
-                                        <p class='wallet_withdraw_message' style='display:none;'></p>
+
+                                                  </div>
+                                             </div>
+                                        </div>
+                                       
                                    </div>
                                    
                                    <!-- <div class="wallet_history">
@@ -78,7 +130,7 @@
      </div>
 </section>
 <script>
-     let wallet = parseFloat("<%= wallet.toFixed(2) %>");
+     let wallet = parseFloat("<%= wallet %>");
      let is_wallet_enable = <%= is_wallet_enable %>;
      $(document).ready(() => {
           if (wallet <= 0 || !is_wallet_enable) {

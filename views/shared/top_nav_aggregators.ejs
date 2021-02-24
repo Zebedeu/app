@@ -42,11 +42,11 @@
 			    		<li class="dropdown cart header-cart total_wallet_balance hide">
 							<h3 class="header-wallet wallet-top"> <i class="fa fa-plus-circle wallet-icon enable-cursor" onclick="addAmountInWallet('<%=baseURL%>')"></i> <span class='btn-wallet' onclick="redirectToWallet('<%=baseURL%>')" class="pointer"><%= labels['LBL_AMOUNT_IN_WALLET'][language] %> Kz <span class="user_wallet_balance">0,00</span></span></h3>
 						</li>
-						<li class="dropdown cart header-cart">
+						<!-- <li class="dropdown cart header-cart">
 							<a href="<%=baseURL%>chat" role="button" aria-expanded="false">
 								<img class="cart_ico" src="../../../images/chats2.png">
 							</a>
-						</li>
+						</li> -->
 						<li class="dropdown cart header-cart">
 							<a href="<%=baseURL%>notification" role="button" aria-expanded="false">
 								<img class="cart_ico" src="../../../images/bell.png"><span class="notification_count">0</span>
@@ -60,7 +60,7 @@
 </div>
 
 <script>
-	function addAmountInWalletATM(baseURL){
+	function addAmountInWallet(baseURL){
 	    $('#addAmountInWalletModal').modal('show');
 	}
 

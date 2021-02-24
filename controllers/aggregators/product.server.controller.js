@@ -843,7 +843,7 @@ exports.order = function (req, res) {
 				products: products,
 				labels,
 				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_FARMER_LIST'][(req.session.language || config.default_language_code)] + "</li>",
+				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || config.default_language_code)] + "</li>",
 				messages: req.flash('error') || req.flash('info'),
 				messages: req.flash('info'),
 			});

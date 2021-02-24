@@ -5,7 +5,7 @@
 	},
 	"LBL_EMAIL": {
 		"EN": "Email",
-		"PT": "o email"
+		"PT": "Email"
 	},
 	"LBL_PASSWORD": {
 		"EN": "Password",
@@ -340,8 +340,8 @@
 		"PT": "Unidade"
 	},
 	"LBL_UNIT_VALUE": {
-		"EN": "Unit Quantity",
-		"PT": "Quantidade de unidade"
+		"EN": "Quantity",
+		"PT": "Quantidade"
 	},
 	"LBL_SIZE": {
 		"EN": "Size",
@@ -597,7 +597,7 @@
 	},
 	"LBL_TYPE_OF_ADDRESS": {
 		"EN": "Type of Address",
-		"PT": "Tipo de Endereço"
+		"PT": "Estabelecimento"
 	},
 	"LBL_OFFICE_COMMERCIAL": {
 		"EN": "Office/Commercial",
@@ -1053,7 +1053,7 @@
 	},
 	"LBL_YOUR_ACCOUNT_INACTIVE": {
 		"EN": "Your account is inactive, Please contact to administrator",
-		"PT": "Sua conta está inativa. Entre em contato com o administrador"
+		"PT": "Sua conta está inativa. Entre em contacto com o administrador"
 	},
 	"LBL_YOUR_SOCIAL_ACCOUNT": {
 		"EN": "Your social account not exists",
@@ -1251,7 +1251,7 @@
 	},
 	"LBL_ORDER_PLACED": {
 		"EN": "Your order id is : #ORDER_ID#, We are waiting for the payment and for the shipping, we will contact you shortly",
-		"PT": "O ID do seu pedido é: #ORDER_ID#, estamos aguardando o pagamento, entraremos em contato em breve"
+		"PT": "O ID do seu pedido é: #ORDER_ID#, estamos aguardando o pagamento, entraremos em contacto em breve"
 	},
 	"LBL_THANK_YOU_FOR_SHOPPING_WITH_US": {
 		"EN": "THANK YOU FOR SHOPPING WITH US",
@@ -1259,7 +1259,7 @@
 	},
 	"LBL_CONTINUE_SHOPPING": {
 		"EN": "Continue shopping",
-		"PT": "Continue comprando"
+		"PT": "Comprar mais produto"
 	},
 	"LBL_CLOSE": {
 		"EN": "Close",
@@ -1511,7 +1511,7 @@
 	},
 	"LBL_PRODUCER_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "nome do banco"
+		"PT": "Nome do banco"
 	},
 	"LBL_PRODUCER_USER_BANK_ACCOUNT_NO": {
 		"EN": "Bank account no",
@@ -1751,7 +1751,7 @@
 	},
 	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_MOBILE_NUMBER": {
 		"EN": "Enter your mobile number",
-		"PT": "Digite seu número de celular"
+		"PT": "Digite seu número de telefone"
 	},
 	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -1919,7 +1919,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
 		"EN": "Edit login, name, and mobile number",
-		"PT": "Editar login, nome e número de celular"
+		"PT": "Editar login, nome e número de telefone"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
 		"EN": "Your Orders",
@@ -2206,20 +2206,20 @@
 		"PT": "Entregue"
 	},
 	"LBL_COMPRADOR_MENU_YOUR_WALLET": {
-		"EN": "Your Wallet",
-		"PT": "Sua carteira"
+		"EN": "My Wallet",
+		"PT": "A minha carteira"
 	},
 	"LBL_TRADING_MENU_YOUR_WALLET": {
-		"EN": "Your Wallet",
-		"PT": "Sua carteira"
+		"EN": "My Wallet",
+		"PT": "A minha carteira"
 	},
 	"LBL_PRODUCER_MENU_YOUR_WALLET": {
-		"EN": "Your Wallet",
-		"PT": "Sua carteira"
+		"EN": "My Wallet",
+		"PT": "A minha carteira"
 	},
 	"LBL_AGGREGATOR_MENU_YOUR_WALLET": {
 		"EN": "Your Wallet",
-		"PT": "Sua carteira"
+		"PT": "A minha carteira"
 	},
 	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_TITLE": {
 		"EN": "Order",
@@ -2331,7 +2331,12 @@
 	},
 	"LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON": {
 		"EN": "Withdrawal Money",
-		"PT": "Retirada de dinheiro"
+		"PT": "Levantar dinheiro"
+	},
+
+	"LBL_WALLET_ACCOUNT_BALANCE_TEXT": {
+		"EN": "Account balance",
+		"PT": "Saldo da conta"
 	},
 	"LBL_TRANSACTIONS_TITLE": {
 		"EN": "Transactions statement",
@@ -2379,7 +2384,7 @@
 	},
 	"LBL_COMPRADOR_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "nome do banco"
+		"PT": "Nome do banco"
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -2403,7 +2408,7 @@
 	},
 	"LBL_TRADING_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "nome do banco"
+		"PT": "Nome do banco"
 	},
 	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -2487,11 +2492,11 @@
 	},
 	"LBL_FARMER_USER_MOBILE_NUMBER": {
 		"EN": "Mobile number",
-		"PT": "Número de celular"
+		"PT": "Número de telefone"
 	},
 	"LBL_FARMER_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "nome do banco"
+		"PT": "Nome do banco"
 	},
 	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -2515,7 +2520,7 @@
 	},
 	"LBL_FARMER_MOBILE_NO_EXIST": {
 		"EN": "Mobile number already exist",
-		"PT": "O número de celular já existe"
+		"PT": "O número de telefone já existe"
 	},
 	"LBL_MENU_DEMANDS": {
 		"EN": "List Demands",
@@ -2923,7 +2928,7 @@
 	},
 	"LBL_COMPRADOR_DASHBOARD_RECOMMENDED_PRODUCTS": {
 		"EN": "Recommended Products",
-		"PT": "produtos recomendados"
+		"PT": "Produtos recomendados"
 	},
 	"LBL_TRADING_DASHBOARD_TOTAL_ORDERS": {
 		"EN": "Total Orders",
@@ -3691,11 +3696,11 @@
 	},
 	"LBL_ATM_REFERENCE_ORDER_PLACED": {
 		"EN": "Your order id : #ORDER_ID#, Entity ID : #ENTITY_ID#, Reference Code : #REFERENCE_CODE#, Amount: #AMOUNT#, We are waiting for the payment and for the shipping, we will contact you shortly",
-		"PT": "O ID do seu pedido: #ORDER_ID#, ID da entidade: #ENTITY_ID#, Código de referência: #REFERENCE_CODE#, Montante: #AMOUNT#, Estamos aguardando o pagamento e a remessa, entraremos em contato em breve"
+		"PT": "O ID do seu pedido: #ORDER_ID#, ID da entidade: #ENTITY_ID#, Código de referência: #REFERENCE_CODE#, Montante: #AMOUNT#, Estamos aguardando o pagamento e a remessa, entraremos em contacto em breve"
 	},
 	"LBL_WALLET_ORDER_PLACED": {
 		"EN": "Your order id is : #ORDER_ID#, For the shipping, we will contact you shortly",
-		"PT": "O código do seu pedido é: #ORDER_ID#, para o envio, entraremos em contato em breve"
+		"PT": "O código do seu pedido é: #ORDER_ID#, para o envio, entraremos em contacto em breve"
 	},
 	"LBL_DASHBOARD_SALES_QTY": {
 		"EN": "Quantity",
@@ -3817,5 +3822,75 @@
 	"LBL_PAID": {
 		"EN": "Paid",
 		"PT": "Pago"
+	},
+	
+"LBL_TABLE_PROCESSING":{
+    "EN": "Processing...",
+    "PT": "A processar..."
+},  
+"LBL_TABLE_MENU":{
+    "EN": "Show _MENU_ entries",
+    "PT": "Mostrar _MENU_ registos"
+},  
+"LBL_TABLE_ZERO_RECORDS":{
+    "EN": "No matching records found",
+    "PT": "Não foram encontrados resultados"
+},  
+"LBL_TABLE_INFO":{
+    "EN": "Showing _START_ to _END_ of _TOTAL_ entries",
+    "PT": "Mostrando de _START_ até _END_ de _TOTAL_ registos"
+},  
+"LBL_TABLE_INFO_EMPTY":{
+    "EN": "Showing 0 to 0 of 0 entries",
+    "PT": "Mostrando de 0 até 0 de 0 registos"
+},  
+"LBL_TABLE_INFO_FILTERED":{ 
+    "EN": "(filtered from _MAX_ total entries)",
+    "PT": "(filtrado de _MAX_ registos no total)"
+},  
+"LBL_TABLE_INFO_POST_FIX":{
+    "EN": "",
+    "PT": ""
+},  
+"LBL_TABLE_SEARCH":{
+    "EN": "Search:",
+    "PT": "Procurar:"
+},  
+"LBL_TABLE_URL":{
+    "EN": "",
+    "PT": ""
+},  
+"LBL_TABLE_FIRST":{
+    "EN": "FIRST",
+    "PT": "Primeiro"
+},  
+"LBL_TABLE_PREVIOUS":{
+    "EN": "Previous",
+    "PT": "Anterior"
+},  
+"LBL_TABLE_NEXT":{
+    "EN": "Next",
+    "PT": "Seguinte"
+},  
+"LBL_TABLE_LAST":{
+    "EN": "LAST",
+    "PT": "Último"
+},
+"LBL_TABLE_PDF_FOOTER_CREATED_DATE":{
+    "EN": "Created on: ",
+    "PT": "Criado em: "
+},    
+	"LBL_AGGREGATOR_DASHBOARD_ADD_FARMER": {
+		"EN": "Add Farmer",
+		"PT": "Adicionar Agricultor"
+	},
+	"LBL_NAME_RESPONSIBLE": {
+		"EN": "Responsible Name",
+		"PT": "Nome do Responsável"
+	},
+
+	"LBL_CLEAR_ALL_NOTIFICATION": {
+		"EN": "Remove all",
+		"PT": "Limpar todas"
 	}
 }

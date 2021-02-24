@@ -128,7 +128,7 @@ exports.get_ongoing_orders = function (req, res) {
 
 				ordered_date = convert_date(element.created_at, req.session.language);
 				shipped_date = convert_date(element.delivery_at, req.session.language);
-
+console.log(index)
 				let className = '';
 				if (index % 2 != 0) {
 					className = 'tbl-row-color';
@@ -141,7 +141,7 @@ exports.get_ongoing_orders = function (req, res) {
 
 
 				tbl_ongoing_orders += 
-				    "<tr class='" + className + "' onClick=orderDetails('" + config.base_url + "','producers','" + element.order_id + "')><td>" + element.order_id + "</td><td>" + 
+				    "<tr><td class=' column_order_table" + className + "' onClick=orderDetails('" + config.base_url + "','producers','" + element.order_id + "')>" + element.order_id + "</td><td>" + 
 					element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + 
 					shipped_date + "</td><td>" + 
 					address + "</td><td>Kz " +

@@ -543,3 +543,14 @@ exports.clearNotifications = (req, res) => {
 		res.send({ code: 200 })
 	});
 }
+
+
+exports.deleteNotifiy = function(req, res) {
+	console.log(req.params.id)
+	Notification_log.remove({ user_id: req.session.user_id }, { notification_log_id: req.params.id }, (err, logs) => {
+		logs = JSON.parse(JSON.stringify(logs));
+		console.log(logs)
+		res.send({ code: 200 })
+
+	})
+};

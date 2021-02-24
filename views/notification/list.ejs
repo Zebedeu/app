@@ -12,7 +12,9 @@
 				<div class="notification-no-records">
 					<% if(logs.length > 0){ %>
 						<div class="col-md-6 col-sm-6 col-xs-6 clear-notification-icon" onclick='clearNotification()'>
-					 		<i class="fa fa-trash bin"></i>
+							<div style="color: #fff; background-color: #aa1a2b;padding: 10px;width: auto;height: 39px; margin: 2%;"  class="btn pull-right">
+								<%= labels['LBL_CLEAR_ALL_NOTIFICATION'][language] %>
+							</div>
 						</div>
 						<% for(let i=0; i < logs.length; i++) { %>
 							<div class="col-md-12">
@@ -23,11 +25,9 @@
 												<p><%= logs[i]['title'] %></p>
 											</div>
 											<div class="col-md-2 col-sm-2 col-xs-2" >
-												<form id="delete-notify">
-													<input type="hidden" name="id" class="id-<%= logs[i]['notification_log_id'] %>" value="<%= logs[i]['notification_log_id'] %>">
-													<!-- <i id="clicke-me" class="fa fa-trash bin"></i> -->
-
-												</form>
+												<a href="<%=baseURL%>notification/remove/<%= logs[i]['notification_log_id'] %>">
+													<i id="clicke-me" class="fa fa-trash fa-2x bin_min"></i>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -41,17 +41,7 @@
 			                        </div>
 								</div>
 							</div>
-							<script>
-
-							$(document).ready(function() {
-								$('#clicke-me').on("click", function(e) {
-									e.preventDefault();
-									var id = $(".id-<%= logs[i]['notification_log_id'] %>").val();
-									$.post( "<%=baseURL%>note/"+ id, {}).done(function( data ) {});
-						  
-								});
-							  });
-						  </script>
+			
 						<% } %>
 					<% } else { %>
 						<div class="col-md-12"><p><%= labels['LBL_MENU_NOTIFICATION_NO_RECORD_AVAILABLE'][language] %></p></div>
@@ -67,5 +57,6 @@ function clearNotification(){
 	$(".notification-no-records").html("<div class='col-md-12'><p><%= labels['LBL_MENU_NOTIFICATION_NO_RECORD_AVAILABLE'][language] %></p></div>")
 	$.post( "<%=baseURL%>clear-notifications", {}).done(function( data ) {});
 }
+
 
 </script>

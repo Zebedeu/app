@@ -43,7 +43,7 @@ exports.get_ongoing_orders = function (req, res) {
 					address = element.address_info.locality + ', ' + element.address_info.city_district + ', ' + element.address_info.state;
 				
 				element.address_info.locality + ', ' + element.address_info.city_district + ', ' + element.address_info.state
-				tbl_ongoing_orders += "<tr class='" + className + "' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')><td>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + element.status + "</td></tr>";
+				tbl_ongoing_orders += "<tr><td class='column_order_table " + className + "' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + element.status + "</td></tr>";
 			})
 		} else {
 			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";

@@ -15,7 +15,7 @@ exports.list = function(req, res) {
 		_.each(logs, (element, index, list) => {
 			logs[index]['title'] = element.title[req.session.language || config.default_language_code];
 			logs[index]['description'] = element.description[req.session.language || config.default_language_code];
-			logs[index]['created_at'] = moment(element.created_at).format('Do MMM YYYY, hh:mm A');
+			logs[index]['created_at'] = moment(element.created_at).format('YYYY/MM/DD, h:m ');
 		})
 
 		res.render('notification/list', {
@@ -35,13 +35,10 @@ exports.list = function(req, res) {
 	}).sort({ created_at:-1 }).limit(10)
 };
 
-exports.deleteNotifiy = function(req, res) {
-	
-	NotificationLog.find({ user_id: req.session.user_id }, { _id: 0, notification_log_id: 1, title: 1, description: 1, created_at: 1 }, (err, logs) => {
-		logs = JSON.parse(JSON.stringify(logs));
-		
-		console.log(logs)
+exports.remove = function(req, res) {
 
-
-	}).sort({ created_at:-1 }).limit(1)
+	NotificationLog.remove({ notification_log_id: req.params.notification_log_id }, (err, response) => {
+		return res.redirect(config.base_url+'notification');
+	})
 };
+

@@ -61,7 +61,7 @@ exports.list = function (req, res) {
                          },
                          logs,
                          labels,
-                         wallet: singleUser.wallet,
+                         wallet: separators(singleUser.wallet),
                          lockedAmount: separators(lockAmountSum),
                          is_wallet_enable: (singleUser.bank_name && singleUser.bank_account_no) ? true : false,
                          breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + path + "/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_WALLET'][(req.session.language || config.default_language_code)] + "</li>",
