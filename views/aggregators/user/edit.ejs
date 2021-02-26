@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_COUNTRY_CODE'][language] %></label>
 								    <select class="form-control mobile_country_code" id="mobile_country_code" name="mobile_country_code" style='height:42px;cursor:pointer;'>
@@ -36,18 +36,70 @@
 								    </select>
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_NUMBER'][language] %></label>
 								    <input class="custom_input" type="text" placeholder="" id='phone_number' name="phone_number" value="<%= farmer.phone_number %>"> 
 								</div>
 							</div>
+
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<div class="search-container">
+								   <label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
+								   <input class="custom_input" type="text" placeholder="" value="<%= farmer.address %>" id='address' name="address">
+								   <span class="validation-alert" id='err-address'></span>
+							   </div>
+						   </div>
+
+							
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_NAME'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" id='bank_name' name="bank_name" value="<%= farmer.bank_name %>">
+									<select class="custom_input form-control " id="bank_name" name="bank_name" style='height:42px;cursor:pointer;'>
+										<option value="">- <%= labels['LBL_PRODUCER_USER_SELECT_BANK_NAME'][language] %> -</option>
+							
+										<option value="BFA"
+											<% if( farmer.bank_name  == 'BFA'){ %>selected<% } %>>
+											Banco de Fomento Angola, S.A
+										</option>
+										<option value="BPC"
+											<% if( farmer.bank_name  == 'BPC'){ %>selected<% } %>>
+											Banco de Poupança e Crédito, S.A
+										</option>
+										<option value="SOL"
+											<% if( farmer.bank_name  == 'SOL'){ %>selected<% } %>>
+											Banco Sol, S.A.
+										</option>
+										<option value="SBA"
+											<% if( farmer.bank_name  == 'SBA'){ %>selected<% } %>>
+											Standard Bank Angola
+										</option>
+										<option value="BCI"
+											<% if( farmer.bank_name  == 'BCI'){ %>selected<% } %>>
+											Banco de Desenvolvimento de Angola, S.A
+										</option>
+										<option value="BMA"
+											<% if( farmer.bank_name  == 'BMA'){ %>selected<% } %>>
+											Banco Millennium Angola, S.A.
+										</option>
+										<option value="BAI"
+											<% if( farmer.bank_name  == 'BAI'){ %>selected<% } %>>
+											Banco Angolano de Investimentos, S.A
+										</option>
+										<option value="BIC"
+											<% if( farmer.bank_name  == 'BIC'){ %>selected<% } %>>
+											Banco BIC, S.A
+										</option>
+										<option value="BCGA"
+											<% if( farmer.bank_name  == 'BCGA'){ %>selected<% } %>>
+											Banco Caixa Geral Totta de Angola, S.A
+										</option>
+
+			
+									</select>
+
 								    <span class="validation-alert" id='err-bank-name'></span>
 								</div>
 							</div>
@@ -55,46 +107,40 @@
 							<div class="col-md-6 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_ACCOUNT_NO'][language] %> </label>
-								    <input class="custom_input farmer_bank_account_no" type="text" placeholder="" id='bank_account_no' name="bank_account_no" value="<%= farmer.bank_account_no %>">
+								    <input class="custom_input farmer_bank_account_no_edit" type="text" placeholder="" id='bank_account_no' name="bank_account_no" value="<%= farmer.bank_account_no %>">
 								    <span class="validation-alert" id='err-bank-account-no'></span>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_LOGIN_SECURITY_NIF'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" id='nif' name="nif" value="<%= farmer.nif %>">
+								    <input class="custom_input farmer_nif_number" type="text" placeholder="" id='nif' name="nif" value="<%= farmer.nif %>">
 								    <span class="validation-alert" id='err-nif'></span>
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" value="<%= farmer.address %>" id='address' name="address">
-								    <span class="validation-alert" id='err-address'></span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
-								    <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-state-id'></span>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
-								    <select class="select_plug city_id" id="city_id" name="city_id">
-										<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-city-id'></span>
-								</div>
-							</div>
+
+							<div class="col-md-3 col-sm-12 col-xs-12" id="section_state_id">
+								<div class="search-container">
+								   <label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+								   <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
+									   <option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+								   </select>
+								   <span class="validation-alert" id='err-state-id'></span>
+							   </div>
+						   </div>
+
+						   <div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+							<div class="search-container">
+							   <label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+							   <select class="select_plug city_id" id="city_id" name="city_id">
+								   <option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+							   </select>
+							   <span class="validation-alert" id='err-city-id'></span>
+						   </div>
+					   </div>
+							
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
@@ -174,6 +220,7 @@
 			$('#err-bank-name').hide();
 		}
 
+
 		let bankAccountNo = $('#bank_account_no').val().replace(/ /g,"");
         errBankNoFlag = validateBankAccountNo(bankAccountNo);
 		if(errBankNoFlag){
@@ -181,7 +228,7 @@
         } else {
         	$('#err-bank-account-no').hide();
         }
-
+	
 		if(!$('#nif').val()){
 			errNIFFlag = 1;
 			$('#err-nif').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_NIF'][language] %>").show();
@@ -189,7 +236,7 @@
 			errNIFFlag = 0;
 			$('#err-nif').hide();
 		}
-
+		
 		if(!$('#address').val()){
 			errAddressFlag = 1;
 			$('#err-address').text("<%= labels['LBL_ENTER_ADDRESS'][language] %>").show();

@@ -8,26 +8,34 @@
 				<form id="frm-add-user" action="" method="post" enctype="multipart/form-data">
 					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-					 		<h3><%= labels['LBL_ADD_FARMER'][language] %></h3>
+							<h3>
+								<%= labels['LBL_ADD_FARMER'][language] %>
+							</h3>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_NAME'][language] %></label>
-								    <input class="custom_input" type="text" placeholder="" value="" id='name' name="names">
-								    <span class="validation-alert" id='err-name'></span>
+								<div class="search-container">
+									<label class="my-1 mr-2">
+										<%= labels['LBL_NAME'][language] %>
+									</label>
+									<input class="custom_input" type="text" placeholder="" value="" id='name'
+										name="names">
+									<span class="validation-alert" id='err-name'></span>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %></label>
-								    <input class="custom_input" type="text" id='email' name="email_id"> 
-								    <span class="validation-alert" id='err-email'></span>
+								<div class="search-container">
+									<label class="my-1 mr-2">
+										<%= labels['LBL_EMAIL'][language] %>
+									</label>
+									<input class="custom_input" type="text" id='email' name="email_id">
+									<span class="validation-alert" id='err-email'></span>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+
+							<div class="col-md-2 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_COUNTRY_CODE'][language] %></label>
 								    <select class="form-control mobile_country_code" id="mobile_country_code" name="mobile_country_code" style='height:42px;cursor:pointer;'>
@@ -35,79 +43,104 @@
 								    </select>
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-4 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_MOBILE_NUMBER'][language] %></label>
 								    <input class="custom_input" type="text" placeholder="" value="" id='phone_number' name="phone_number"> 
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_NAME'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" value="" id='bank_name' name="bank_name">
-								    <span class="validation-alert" id='err-bank-name'></span>
+
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_ACCOUNT_NO'][language] %> </label>
-								    <input class="custom_input farmer_bank_account_no" type="text" placeholder="" value="" id='bank_account_no' name="bank_account_no">
-								    <span class="validation-alert" id='err-bank-account-no'></span>
+								<div class="search-container">
+								   <label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
+								   <input class="custom_input" type="text" placeholder="" value="" id='address' name="address">
+								   <span class="validation-alert" id='err-address'></span>
+							   </div>
+						   </div>
+
+						
+						</div>
+							<div class="row">
+								<div class="col-md-6 col-sm-12 col-xs-12">
+									<div class="search-container">
+										<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_NAME'][language] %> </label>
+										<!-- <input class="custom_input" type="text" placeholder="" value="" id='bank_name' name="bank_name"> -->
+										<select class="form-control " id="bank_name" name="bank_name" style='height:42px;cursor:pointer;'>
+											<option value="">- <%= labels['LBL_PRODUCER_USER_SELECT_BANK_NAME'][language] %> -</option>
+											<option value="BFA"> Banco de Fomento Angola, S.A</option>
+											<option value="BPC">Banco de Poupança e Crédito, S.A</option>
+											<option value="SOL">Banco Sol, S.A.</option>
+											<option value="SBA">Standard Bank Angola, S.A</option>
+											<option value="BCI">Banco de Desenvolvimento de Angola, S.A</option>
+											<option value="BMA">Banco Millennium Angola, S.A</option>
+											<option value="BAI">Banco Angolano de Investimentos, S.A</option>
+											<option value="BIC">Banco BIC, S.A</option>
+											<option value="BCGA">Banco Caixa Geral Totta de Angola, S.A</option>
+
+				
+										</select>
+										<span class="validation-alert" id='err-bank-name'></span>
+									</div>
+								</div>
+
+
+								<div class="col-md-6 col-sm-12 col-xs-12">
+									<div class="search-container">
+										<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_ACCOUNT_NO'][language] %> </label>
+										<div class="input-group col-md-12 col-sm-12 col-xs-12">
+											<span class="input-group-addon" id="basic-addon1">AO06</span>
+											<input type="text" class="form-control custom_input farmer_bank_account_no" placeholder="" value="" id='bank_account_no' name="bank_account_no" aria-describedby="basic-addon1">
+										</div>
+										<span class="validation-alert" id='err-bank-account-no'></span>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+
+
+							<div class="col-md-3 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_LOGIN_SECURITY_NIF'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" value="" id='nif' name="nif">
+								    <input class="custom_input farmer_nif_number" type="text" placeholder="" value="" id='nif' name="nif" >
 								    <span class="validation-alert" id='err-nif'></span>
 								</div>
 							</div>
-
-							<div class="col-md-6 col-sm-12 col-xs-12">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_ADDRESS'][language] %> </label>
-								    <input class="custom_input" type="text" placeholder="" value="" id='address' name="address">
-								    <span class="validation-alert" id='err-address'></span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
-								    <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-state-id'></span>
-								</div>
-							</div>
-
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
-								    <select class="select_plug city_id" id="city_id" name="city_id">
+							<div class="col-md-3 col-sm-12 col-xs-12" id="section_state_id">
+								<div class="search-container">
+								   <label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+								   <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
+									   <option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+								   </select>
+								   <span class="validation-alert" id='err-state-id'></span>
+							   </div>
+						   </div>
+							
+						   <div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+								<div class="search-container">
+									<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+									<select class="select_plug city_id" id="city_id" name="city_id">
 										<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
 									</select>
 									<span class="validation-alert" id='err-city-id'></span>
 								</div>
-							</div>
+					   		</div>
+
 						</div>
 
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
-						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_PROFILE_PICTURE'][language] %></label>
-								    <div class="input-group">
-									  <div class="custom-file">
-									    <input type="file" class="custom-file-input" id="inputGroupFile01"
-									      aria-describedby="inputGroupFileAddon01" name="images" id="images">
-									    <label class="custom-file-label" for="inputGroupFile01"></label>
-									  </div>
+								<div class="search-container">
+									<label class="my-1 mr-2">
+										<%= labels['LBL_PROFILE_PICTURE'][language] %>
+									</label>
+									<div class="input-group">
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" id="inputGroupFile01"
+												aria-describedby="inputGroupFileAddon01" name="images" id="images">
+											<label class="custom-file-label" for="inputGroupFile01"></label>
+										</div>
 									</div>
 									<span class="validation-alert" id='err-images'>&nbsp;</span>
 								</div>
@@ -115,20 +148,31 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-						 		<a href="javascript:void(0)"><button class="main_btn post-add-now" type='button' onclick="submitPost()"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
-						 		<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+								<a href="javascript:void(0)"><button class="main_btn post-add-now" type='button'
+										onclick="submitPost()">
+										<%= labels['LBL_ADD_FARMER'][language] %>
+									</button></a>
+								<div class="lds-facebook" style="display:none">
+									<div></div>
+									<div></div>
+									<div></div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
-    function validatePost(){
-    	let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
-    	if(!$('#name').val()){
+	function validatePost() {
+		let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
+		if (!$('#name').val()) {
 			errNameFlag = 1;
 			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
 		} else {
@@ -137,14 +181,14 @@
 		}
 
 		errEmailFlag = validateEmailAddress($('#email').val());
-		if(errEmailFlag > 0){
+		if (errEmailFlag > 0) {
 			caption = (errEmailFlag == 1) ? "<%= labels['LBL_ENTER_EMAIL'][language] %>" : "<%= labels['LBL_ENTER_CORRECT_EMAIL'][language] %>";
 			$('#err-email').text(caption).show();
 		} else {
 			$('#err-email').hide();
 		}
 
-		if(!$('#address').val()){
+		if (!$('#address').val()) {
 			errAddressFlag = 1;
 			$('#err-address').text("<%= labels['LBL_ENTER_ADDRESS'][language] %>").show();
 		} else {
@@ -152,7 +196,7 @@
 			$('#err-address').hide();
 		}
 
-		if(!$('#bank_name').val()){
+		if (!$('#bank_name').val()) {
 			errBankNameFlag = 1;
 			$('#err-bank-name').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_NAME'][language] %>").show();
 		} else {
@@ -160,16 +204,18 @@
 			$('#err-bank-name').hide();
 		}
 
+
 		let bankAccountNo = $('#bank_account_no').val().replace(/ /g,"");
-        errBankNoFlag = validateBankAccountNo(bankAccountNo);
+        errBankNoFlag = validateBankAccountNo("AO06"+bankAccountNo);
 		if(errBankNoFlag){
             $('#err-bank-account-no').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO'][language] %>").show();
         } else {
         	$('#err-bank-account-no').hide();
         }
-
+	
 		if(!$('#nif').val()){
-			errNIFFlag = 1;
+
+errNIFFlag = 1;
 			$('#err-nif').text("<%= labels['LBL_FARMER_LOGIN_SECURITY_VALIDATE_NIF'][language] %>").show();
 		} else {
 			errNIFFlag = 0;
@@ -184,7 +230,7 @@
 			$('#err-state-id').hide();
 		}
 
-		if(!$('#city_id').val()){
+		if (!$('#city_id').val()) {
 			errCityFlag = 1;
 			$('#err-city-id').text("<%= labels['LBL_ENTER_CITY_VALIDATION'][language] %>").show();
 		} else {
@@ -192,36 +238,66 @@
 			$('#err-city-id').hide();
 		}
 
-		if(!errNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
+		if (!errNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag) {
 			return true;
 		} else {
 			return false;
 		}
-    }
+	}
 
-    function submitPost(){
-		if(validatePost()){
+	function submitPost() {
+		if (validatePost()) {
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-
-			$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
-				if(result.code == 200){
-	            	$('#frm-add-user').submit();
-	            } else {
-	            	$(".post-add-now").attr("disabled", false);
-					$(".lds-facebook").hide();
-
-	            	showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
-					setTimeout(() => {
-						hideAlert()
-					}, 3000);
-	            }
-			});
+			notificacao();
 		}
 	}
 
-	$(document).ready(function() {
-		getStates('<%=baseURL%>');
-		getMobileCountryCodes('<%=baseURL%>');
+	function notificacao() {
+		$.confirm({
+			title: 'Adicionar Produtor',
+			icon: 'fa fa-check',
+			content: 'Produtor adicionado com sucesso!',
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'btn',
+					action: function () {
+						$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
+							if (result.code == 200) {
+								$('#frm-add-user').submit();
+							} else {
+								$(".post-add-now").attr("disabled", false);
+								$(".lds-facebook").hide();
+
+								showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+								setTimeout(() => {
+									hideAlert()
+								}, 3000);
+							}
+						});
+					}
+				}
+			}
+		});
+	}
+
+	$(document).ready(function () {
+
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(1|)?(\d{2})(\d{3})(\d{5})$/)
+  if (match) {
+    var intlCode = (match[1] ? '+1 ' : '')
+    console.log([intlCode, '(', match[2], ') ', match[3], '-', match[4]].join(''))
+  }
+  return null
+}
+formatPhoneNumber('+12345678900')
+    getStates('<%=baseURL%>');
+	getMobileCountryCodes('<%=baseURL%>');
+	
 	})
 </script>

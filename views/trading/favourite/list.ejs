@@ -20,7 +20,7 @@
 								<div class="product-text">
 									<a href="<%=baseURL%>trading/explore/details/<%= products[i]['product_id'] %>"><h3 class="pro_title_"><%= products[i]['sub_category_title'] %></h3></a>
 									<h4><%= products[i]['category_title'] %> / <%= labels['LBL_QUANTITY'][language] %> : <%= products[i]['remaining_unit_qty'] %> <%= products[i]['unit_type'] %></h4>
-									<h4 style="color: #f69624;" class="sku_wrapper pro-bottom">Kz <%= products[i]['unit_price'] %> / <%= products[i]['unit_type'] %></h4>
+									<h4 style="color: #f69624;" class="sku_wrapper pro-bottom"><%= products[i]['unit_price'] %> / <%= products[i]['unit_type'] %> Kz</h4>
 									<div class="kp_location">
 										<i class="fa fa-map-marker" aria-hidden="true"></i> <span class='pro-location'><%= products[i].state_name %></span>
 									</div>

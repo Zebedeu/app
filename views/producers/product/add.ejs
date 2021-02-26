@@ -170,6 +170,10 @@
 		</div>
 	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
 	function validatePost(){
 		let errHarvestDateFlag = 0, errCategoryFlag = 0, errTitleFlag = 0, errDescriptionFlag = 0, errVarietyFlag = 0, errUnitFlag = 0, errUnitValueFlag = 0, errSizeFlag = 0, errUnitPriceFlag = 0, errTotalUnitPriceFlag = 0, errStateFlag = 0, errCityFlag = 0, errLocationFlag = 0;
@@ -182,7 +186,6 @@
 			errCategoryFlag = 0;
 			$('#err-product-category').hide();
 		}
-
 		if(!$('#title').val()){
 			errTitleFlag = 1;
 			$('#err-title').text("<%= labels['LBL_ENTER_TITLE'][language] %>").show();
@@ -190,7 +193,6 @@
 			errTitleFlag = 0;
 			$('#err-title').hide();
 		}
-
 		let isDescription = 0, languageCode = '';
 		languages.forEach((value, index) => {
 			languageCode = value.code;
@@ -198,14 +200,12 @@
 				isDescription = 1;
 			}
 		});
-
 		if(!isDescription){
 			errDescriptionFlag = 1;
 			$('#err-description_'+languageCode).text("<%= labels['LBL_ENTER_DESCRIPTION'][language] %>").show();
 		} else {
 			$('#err-description_'+languageCode).hide();
 		}
-
 		if(!$('#product_variety_id').val()){
 			errVarietyFlag = 1;
 			$('#err-product-variety-id').text("<%= labels['LBL_SELECT_VARIETY_VALIDATION'][language] %>").show();
@@ -213,7 +213,6 @@
 			errVarietyFlag = 0;
 			$('#err-product-variety-id').hide();
 		}
-
 		if(!$('#unit').val()){
 			errUnitFlag = 1;
 			$('#err-unit').text("<%= labels['LBL_SELECT_UNIT'][language] %>").show();
@@ -221,7 +220,6 @@
 			errUnitFlag = 0;
 			$('#err-unit').hide();
 		}
-
 		if(!$('#unit_value').val()){
 			errUnitValueFlag = 1;
 			$('#err-unit-value').text("<%= labels['LBL_ENTER_UNIT'][language] %>").show();
@@ -229,7 +227,6 @@
 			errUnitValueFlag = 0;
 			$('#err-unit-value').hide();
 		}
-
 		if(!$('#size').val()){
 			errSizeFlag = 1;
 			$('#err-size').text("<%= labels['LBL_SELECT_SIZE_VALIDATION'][language] %>").show();
@@ -237,7 +234,6 @@
 			errSizeFlag = 0;
 			$('#err-size').hide();
 		}
-
 		if(!$('#unit_price').val()){
 			errUnitPriceFlag = 1;
 			$('#err-unit-price').text("<%= labels['LBL_ENTER_UNIT_PRICE'][language] %>").show();
@@ -245,7 +241,6 @@
 			errUnitPriceFlag = 0;
 			$('#err-unit-price').hide();
 		}
-
 		if(!$('#total_unit_price').val()){
 			errTotalUnitPriceFlag = 1;
 			$('#err-total-unit-price').text("<%= labels['LBL_ENTER_TOTAL_UNIT_PRICE'][language] %>").show();
@@ -253,7 +248,6 @@
 			errTotalUnitPriceFlag = 0;
 			$('#err-total-unit-price').hide();
 		}
-
 		if(!$('#state_id').val()){
 			errStateFlag = 1;
 			$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
@@ -261,7 +255,6 @@
 			errStateFlag = 0;
 			$('#err-state-id').hide();
 		}
-
 		if(!$('#city_id').val()){
 			errCityFlag = 1;
 			$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
@@ -269,7 +262,6 @@
 			errCityFlag = 0;
 			$('#err-city-id').hide();
 		}
-
 		if(!$('#location').val()){
 			errLocationFlag = 1;
 			$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
@@ -277,7 +269,6 @@
 			errLocationFlag = 0;
 			$('#err-location').hide();
 		}
-
 		if(!$('#harvest_date').val()){
 			errHarvestDateFlag = 1;
 			$('#err-harvest-date').text("<%= labels['LBL_ENTER_HARVEST'][language] %>").show();
@@ -299,21 +290,38 @@
 		}
 	}
 
-	function submitPost(){
+	function notificacao() {
+		$.confirm({
+			title: 'Publicar Produto',
+			icon: 'fa fa-check',
+			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'btn',
+					action: function () {
+						$('#frm-add-product').submit();
+					}
+				}
+			}
+		});
+	}
 
+	function submitPost(){
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			$('#frm-add-product').submit()
+			notificacao();
 		}
 	}
-
+	
 	$( document ).ready(function() {
 		getStates('<%=baseURL%>');
 		getCategories('<%=baseURL%>');
 		getUnits('<%=baseURL%>');
 		getSizes('<%=baseURL%>');
-
     	$('.img').on('change', function(){
 		   if($(this).val() != '')
 		   {

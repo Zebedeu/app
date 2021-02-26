@@ -49,11 +49,25 @@ exports.totalSales = function(req, res) {
 					className = 'tbl-row-color';
 				}
 
-				tbl_sales_orders+= "<tr class='"+className+"' onClick=orderDetails('"+config.base_url+"','aggregators','"+element.order_id+"')><td>"+element.order_id+"</td><td>"+element.buyer_info.user_id+"</td><td>"+ordered_date+"</td><td>"+shipped_date+"</td><td>"+(element.address_info.locality+', '+element.address_info.city_district+', '+element.address_info.state)+"</td><td>Kz "+separators(userProductsSum)+"</td><td style='text-transform:capitalize;'>"+element.status+"</td></tr>";
+				_status ="";
+				if (element.status == 'paid') {
+					_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
+				}else if (element.status == 'packed') {
+					_status = (element.status == 'packed') ? labels['LBL_PACKED'][(req.session.language || config.default_language_code)] : labels['LBL_PACKED'][(req.session.language || config.default_language_code)];
+				}else if (element.status == 'shipped') {
+					_status = (element.status == 'shipped') ? labels['LBL_SHIPPED'][(req.session.language || config.default_language_code)] : labels['LBL_SHIPPED'][(req.session.language || config.default_language_code)];
+				}else if (element.status == 'delivered') {
+					_status = (element.status == 'delivered') ? labels['LBL_DELIVERED'][(req.session.language || config.default_language_code)] : labels['LBL_DELIVERED'][(req.session.language || config.default_language_code)];
+				}else if (element.status == 'waiting') {
+					_status = (element.status == 'waiting') ? labels['LBL_WAITING'][(req.session.language || config.default_language_code)] : labels['LBL_WAITING'][(req.session.language || config.default_language_code)];
+				}
+
+				tbl_sales_orders+= "<tr class='"+className+"' onClick=orderDetails('"+config.base_url+"','aggregators','"+element.order_id+"')><td>"+element.order_id+"</td><td>"+element.buyer_info.user_id+"</td><td>"+ordered_date+"</td><td>"+shipped_date+"</td><td>"+(element.address_info.locality+', '+element.address_info.city_district+', '+element.address_info.state)+"</td><td>Kz "+separators(userProductsSum)+"</td><td style='text-transform:capitalize;'>"+_status+"</td></tr>";
+
 			})
 
 			className = (!className) ? 'tbl-row-color' : '';
-			tbl_sales_orders+= "<tr class='"+className+"' ><td colspan='5'>&nbsp;</td><td colspan='2'>Kz "+separators(total)+"</td></tr>";
+			tbl_sales_orders+= "<tr class='"+className+"' ><td colspan='5'>&nbsp;</td><td colspan='2'>"+separators(total)+" Kz</td></tr>";
 		} else {
 			tbl_sales_orders+= "<tr><td colspan='7'>"+(labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')])+"</td></tr>";
 		}

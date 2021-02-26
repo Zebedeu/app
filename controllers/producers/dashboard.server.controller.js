@@ -85,7 +85,7 @@ exports.get_my_products = (req, res) => {
 				to_sell = ((element.remaining_unit_value * 100) / element.unit_value) + '%';
 				already_sold = (100 - ((element.remaining_unit_value * 100) / element.unit_value)) + '%';
 
-				my_products_str += '<tr onClick=productDetails("' + element.product_id + '")><td>' + element.product_id + '</td><td>' + element.sub_category_title + '</td><td>' + element.category_title + '</td><td>' + ((element.reviews.length > 0) ? (total_ratings / element.reviews.length).toFixed(2) : 0) + '</td><td>' + already_sold + '</td><td>' + to_sell + '</td><td>Kz ' + element.unit_price.toFixed(2) + '</td></tr>';
+				my_products_str += '<tr onClick=productDetails("' + element.product_id + '")><td>' + element.product_id + '</td><td>' + element.sub_category_title + '</td><td>' + element.category_title + '</td><td>' + ((element.reviews.length > 0) ? (total_ratings / element.reviews.length).toFixed(2) : 0) + '</td><td>' + already_sold + '</td><td>' + to_sell + '</td><td>' + element.unit_price.toFixed(2) + ' Kz</td></tr>';
 			})
 		} else {
 			my_products_str = "<tr><td colspan='7'>" + labels['LBL_NO_PRODUCTS_AVAILABLE'][req.session.language] + "</td></tr>";
@@ -144,8 +144,8 @@ console.log(index)
 				    "<tr><td class=' column_order_table" + className + "' onClick=orderDetails('" + config.base_url + "','producers','" + element.order_id + "')>" + element.order_id + "</td><td>" + 
 					element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + 
 					shipped_date + "</td><td>" + 
-					address + "</td><td>Kz " +
-					separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>"+
+					address + "</td><td>" +
+					separators(userProductsSum) + " Kz</td><td style='text-transform:capitalize;'>"+
 					_status + "</td></tr>";
 			})
 		} else {

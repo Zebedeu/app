@@ -4,12 +4,14 @@
 			<%- include('../../shared/breadcrumb') %>
 		</div>
 		<div class="product_card">
-			<a href="add" style="float: right; margin-right:10px; margin-top: 20px;"><button class="main_btn"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
+			<a href="add" style="float: right; margin-right:60px; margin-top: 20px;"><button class="main_btn"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
 			<div class="row add-address post-add">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 			 		<h3><%= labels['LBL_FARMER_LIST'][language] %></h3>
 				</div>
+				
 				<% for(let i=0; i < farmers.length; i++) { %>
+				    <% let name = farmers[i]['name'] %>
 					<div class="col-lg-12 col-sm-12 my_oderDetails">
 						<div class="col-lg-3 col-md-6 col-sm-12 kp_myorder">
 							<img src="<%= farmers[i]['photo'] %>" class="img-farmer-size">
@@ -30,7 +32,8 @@
 							<a href="<%=baseURL%>aggregators/user/display/<%= farmers[i].farmer_id %>"><i class="fa fa-edit"></i></a>
 						</div>
 						<div class="delete_ico">
-							<a href="<%=baseURL%>aggregators/user/remove/<%= farmers[i].farmer_id %>"><i class="fa fa-trash"></i></a>
+							<a onclick="notificacao('<%=name%>','<%= farmers[i].farmer_id %>')"
+								href="#"><i  class="fa fa-trash"></i></a>
 						</div>
 					</div>
 				<% } %>
@@ -38,3 +41,36 @@
 		</div>
 	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+	function notificacao(farmers, farmer_id) {
+			$.confirm({
+			title: 'Desejas remover o produtor ?',
+			content: farmers,
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Sim',
+					btnClass: 'btn',
+					action: function () {
+						$.ajax({
+							url: "<%=baseURL%>aggregators/user/remove/" + farmer_id,
+							success: function (result) {
+								setInterval('location.reload()', 5000);
+							},
+							error: function () {
+								location.reload(true);
+							}
+						});
+					}
+				},
+				close: function () {
+				}
+			}
+		});
+	}
+</script>

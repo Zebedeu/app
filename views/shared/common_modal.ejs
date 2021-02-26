@@ -484,8 +484,11 @@
           }
 
           function editAddress(address_id) {
-               $('#address-id').val(address_id);
-               $.get("<%=baseURL%>get_user_address?address_id=" + address_id).done(function (response) {
+
+
+               $.get('<%=baseURL%>get_user_address?address_id=' + address_id, {}).done(function (response) {
+
+                    console.log('<%=baseURL%>get_user_address?address_id=')
                     if (response.code == 404) {
                          showAlert(response.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
                          setTimeout(() => {

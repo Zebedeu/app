@@ -30,7 +30,7 @@
 										<div class="product-text">
 											<a href="<%=baseURL%>trading/explore/details/<%= demands[d]['products'][i].product_id %>"><p><%= demands[d]['products'][i].sub_category_title %></p></a>
 											<h5 class='capitalize'><%= demands[d]['products'][i].category_title %></h5>
-											<h5 class='capitalize'><span>Kz <%= (demands[d]['products'][i].unit_price).toFixed(2) %> / <%= demands[d]['products'][i].unit_type %></span></h5>
+											<h5 class='capitalize'><span><%= (demands[d]['products'][i].unit_price).toFixed(2) %> Kz / <%= demands[d]['products'][i].unit_type %></span></h5>
 											<h6 class='capitalize'><%= labels['LBL_QUANTITY'][language] %> : <%= demands[d]['products'][i].remaining_unit_value %> <%= (demands[d]['products'][i]['remaining_unit_value'] > 1) ? demands[d]['products'][i]['unit_plural_title'] : demands[d]['products'][i]['unit_type'] %></h6>
 											<div class="kp_location">
 												<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= demands[d]['products'][i].state_name %></span>

@@ -100,8 +100,7 @@ exports.checkProfileStatus = (req, res) => {
 			if (!profile) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -112,57 +111,57 @@ exports.checkProfileStatus = (req, res) => {
 
 			let isProfileComplete = false,
 				caption = '';
-				if (req.session.user_type == 'compradors') {
-					if (
-						profile.first_name &&
-						profile.last_name &&
-						profile.email &&
-						profile.bank_name &&
-						profile.bank_account_no &&
-						profile.nif
-					) {
-						isProfileComplete = true;
-					} else {
-						caption =
-							labels[
-							'LBL_COMPRADOR_DASHBOARD_PROFILE_INCOMPLETE_CAPTION'
-							][req.session.language];
-						caption = caption.replace(
-							'#CLICK_HERE#',
-							"<a href='" +
-							config.base_url +
-							req.session.user_type +
-							'/user/profile' +
-							"'>Click here</a>"
-						);
-						isProfileComplete = false;
-					}
-				} else if (req.session.user_type == 'trading') {
-					if (
-						profile.first_name &&
-						profile.last_name &&
-						profile.email &&
-						profile.bank_name &&
-						profile.bank_account_no &&
-						profile.nif
-					) {
-						isProfileComplete = true;
-					} else {
-						caption =
-							labels[
-							'LBL_TRADING_DASHBOARD_PROFILE_INCOMPLETE_CAPTION'
-							][req.session.language];
-						caption = caption.replace(
-							'#CLICK_HERE#',
-							"<a href='" +
-							config.base_url +
-							req.session.user_type +
-							'/user/profile' +
-							"'>Click here</a>"
-						);
-						isProfileComplete = false;
-					}
+			if (req.session.user_type == 'compradors') {
+				if (
+					profile.first_name &&
+					profile.last_name &&
+					profile.email &&
+					profile.bank_name &&
+					profile.bank_account_no &&
+					profile.nif
+				) {
+					isProfileComplete = true;
 				} else {
+					caption =
+						labels[
+						'LBL_COMPRADOR_DASHBOARD_PROFILE_INCOMPLETE_CAPTION'
+						][req.session.language];
+					caption = caption.replace(
+						'#CLICK_HERE#',
+						"<a href='" +
+						config.base_url +
+						req.session.user_type +
+						'/user/profile' +
+						"'>Click here</a>"
+					);
+					isProfileComplete = false;
+				}
+			} else if (req.session.user_type == 'trading') {
+				if (
+					profile.first_name &&
+					profile.last_name &&
+					profile.email &&
+					profile.bank_name &&
+					profile.bank_account_no &&
+					profile.nif
+				) {
+					isProfileComplete = true;
+				} else {
+					caption =
+						labels[
+						'LBL_TRADING_DASHBOARD_PROFILE_INCOMPLETE_CAPTION'
+						][req.session.language];
+					caption = caption.replace(
+						'#CLICK_HERE#',
+						"<a href='" +
+						config.base_url +
+						req.session.user_type +
+						'/user/profile' +
+						"'>Click here</a>"
+					);
+					isProfileComplete = false;
+				}
+			} else {
 				if (
 					profile.first_name &&
 					profile.last_name &&
@@ -232,8 +231,7 @@ exports.getMyWalletBalance = (req, res) => {
 			if (!singleUser) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -282,8 +280,7 @@ exports.updatePassword = (req, res) => {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -298,8 +295,7 @@ exports.updatePassword = (req, res) => {
 					if (req.body.old_password != decPin) {
 						res.send({
 							code: 402,
-							message: `${
-								labels[
+							message: `${labels[
 								'LBL_USER_PROFILE_INVALID_OLD_PASSWORD'
 								][
 								req.session.language ||
@@ -319,8 +315,7 @@ exports.updatePassword = (req, res) => {
 								function (err, response) {
 									res.send({
 										code: 200,
-										message: `${
-											labels[
+										message: `${labels[
 											'LBL_PASSWORD_CHANGED_VALIDATION'
 											][
 											req.session
@@ -362,8 +357,7 @@ exports.addProductReview = async (req, res) => {
 				function (err, response) {
 					res.send({
 						code: 200,
-						message: `${
-							labels['LBL_ADD_REVIEW'][
+						message: `${labels['LBL_ADD_REVIEW'][
 							req.session.language ||
 							config.default_language_code
 							]
@@ -416,8 +410,7 @@ exports.checkFarmerEmailExist = async (req, res) => {
 					) {
 						res.send({
 							code: 409,
-							message: `${
-								labels['LBL_FARMER_MOBILE_NO_EXIST'][
+							message: `${labels['LBL_FARMER_MOBILE_NO_EXIST'][
 								req.session.language ||
 								config.default_language_code
 								]
@@ -426,8 +419,7 @@ exports.checkFarmerEmailExist = async (req, res) => {
 					} else {
 						res.send({
 							code: 409,
-							message: `${
-								labels['LBL_EMAIL_ID_EXIST'][
+							message: `${labels['LBL_EMAIL_ID_EXIST'][
 								req.session.language ||
 								config.default_language_code
 								]
@@ -464,8 +456,7 @@ exports.checkFarmerEmailExist = async (req, res) => {
 				if (response) {
 					res.send({
 						code: 409,
-						message: `${
-							labels['LBL_FARMER_MOBILE_NO_EXIST'][
+						message: `${labels['LBL_FARMER_MOBILE_NO_EXIST'][
 							req.session.language ||
 							config.default_language_code
 							]
@@ -488,8 +479,7 @@ exports.removeAddress = async (req, res) => {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -550,8 +540,7 @@ exports.removeAddress = async (req, res) => {
 
 					res.send({
 						code: 200,
-						message: `${
-							labels['LBL_ADDRESS_DELETED'][
+						message: `${labels['LBL_ADDRESS_DELETED'][
 							req.session.language ||
 							config.default_language_code
 							]
@@ -573,8 +562,7 @@ exports.editAddress = async (req, res) => {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -725,8 +713,7 @@ exports.editAddress = async (req, res) => {
 
 									res.send({
 										code: 200,
-										message: `${
-											labels[
+										message: `${labels[
 											'LBL_ADDRESS_UPDATED'
 											][
 											req.session
@@ -762,8 +749,7 @@ exports.displayAddress = async (req, res) => {
 			if (_.isEmpty(columnAndValues)) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_ADDRESS_NOT_EXIST'][
+					message: `${labels['LBL_ADDRESS_NOT_EXIST'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -792,8 +778,7 @@ exports.getUserAddress = async (req, res) => {
 			if (_.isEmpty(columnAndValues)) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_ADDRESS_NOT_EXIST'][
+					message: `${labels['LBL_ADDRESS_NOT_EXIST'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -816,8 +801,7 @@ exports.addAddress = async (req, res) => {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_SESSION_EXPIRED'][
+					message: `${labels['LBL_SESSION_EXPIRED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -919,8 +903,7 @@ exports.addAddress = async (req, res) => {
 									);
 									res.send({
 										code: 200,
-										message: `${
-											labels[
+										message: `${labels[
 											'LBL_NEW_ADDRESS_ADDED'
 											][
 											req.session
@@ -958,8 +941,7 @@ exports.saveGPSLocation = async (req, res) => {
 			(err, response) => {
 				res.send({
 					code: 200,
-					message: `${
-						labels['LBL_PROFILE_UPDATED'][
+					message: `${labels['LBL_PROFILE_UPDATED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -1007,8 +989,7 @@ exports.updateProfile = async (req, res) => {
 	if (!flag) {
 		res.send({
 			code: 409,
-			message: `${
-				labels['LBL_EMAIL_EXIST'][
+			message: `${labels['LBL_EMAIL_EXIST'][
 				req.session.language || config.default_language_code
 				]
 				}`,
@@ -1021,8 +1002,7 @@ exports.updateProfile = async (req, res) => {
 			(err, response) => {
 				res.send({
 					code: 200,
-					message: `${
-						labels['LBL_PROFILE_UPDATED'][
+					message: `${labels['LBL_PROFILE_UPDATED'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -1050,29 +1030,25 @@ exports.getMinUnitQty = function (req, res) {
 		(err, response) => {
 			let errQty = '';
 			if (req.session.user_type == 'aggregators') {
-				errQty = `${
-					labels['LBL_AGGREGATOR_PRODUCT_MIN_UNIT_QTY'][
+				errQty = `${labels['LBL_AGGREGATOR_PRODUCT_MIN_UNIT_QTY'][
 					req.session.language ||
 					config.default_language_code
 					]
 					}`;
 			} else if (req.session.user_type == 'compradors') {
-				errQty = `${
-					labels['LBL_COMPRADOR_PRODUCT_MIN_UNIT_QTY'][
+				errQty = `${labels['LBL_COMPRADOR_PRODUCT_MIN_UNIT_QTY'][
 					req.session.language ||
 					config.default_language_code
 					]
 					}`;
 			} else if (req.session.user_type == 'trading') {
-				errQty = `${
-					labels['LBL_TRADING_PRODUCT_MIN_UNIT_QTY'][
+				errQty = `${labels['LBL_TRADING_PRODUCT_MIN_UNIT_QTY'][
 					req.session.language ||
 					config.default_language_code
 					]
 					}`;
 			} else {
-				errQty = `${
-					labels['LBL_PRODUCER_PRODUCT_MIN_UNIT_QTY'][
+				errQty = `${labels['LBL_PRODUCER_PRODUCT_MIN_UNIT_QTY'][
 					req.session.language ||
 					config.default_language_code
 					]
@@ -1223,12 +1199,13 @@ exports.getCities = function (req, res) {
 };
 
 exports.get_producer = function (req, res) {
-	let farmerStr =
+	/*let farmerStr =
 		"<option value=''>--- " +
 		labels['LBL_SELECT_PRODUCES'][
 		req.session.language || config.default_language_code
 		] +
-		' ---</option>';
+		' ---</option>';*/
+	let farmerStr = "";
 	Farmer.find(
 		{ status: 'active', user_id: req.session.user_id },
 		{ _id: 0, farmer_id: 1, name: 1 },
@@ -1238,6 +1215,14 @@ exports.get_producer = function (req, res) {
 					.name[req.session.language || config.default_language_code];
 			});
 
+            if(!farmers){
+				farmerStr =
+				"<option value=''>--- " +
+				labels['LBL_SELECT_PRODUCES'][
+				req.session.language || config.default_language_code
+				] +
+				' ---</option>';
+			}
 			_.each(farmers, (element, index, list) => {
 				if (req.query.producer_id == element.farmer_id) {
 					farmerStr +=
@@ -1500,8 +1485,7 @@ exports.removeProfileImage = function (req, res) {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_FARMER_EXIST'][
+					message: `${labels['LBL_FARMER_EXIST'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -1519,8 +1503,7 @@ exports.removeProfileImage = function (req, res) {
 					if (error) {
 						res.send({
 							code: 404,
-							message: `${
-								labels['LBL_SOMETHING_WRONG'][
+							message: `${labels['LBL_SOMETHING_WRONG'][
 								req.session.language ||
 								config.default_language_code
 								]
@@ -1533,8 +1516,7 @@ exports.removeProfileImage = function (req, res) {
 							function (err, response) {
 								res.send({
 									code: 200,
-									message: `${
-										labels['LBL_USER_PROFILE'][
+									message: `${labels['LBL_USER_PROFILE'][
 										req.session.language ||
 										config.default_language_code
 										]
@@ -1557,8 +1539,7 @@ exports.removeProductImage = function (req, res) {
 			if (!response) {
 				res.send({
 					code: 404,
-					message: `${
-						labels['LBL_PRODUCT_EXIST'][
+					message: `${labels['LBL_PRODUCT_EXIST'][
 						req.session.language ||
 						config.default_language_code
 						]
@@ -1581,8 +1562,7 @@ exports.removeProductImage = function (req, res) {
 					if (error) {
 						res.send({
 							code: 404,
-							message: `${
-								labels['LBL_SOMETHING_WENT_WRONG'][
+							message: `${labels['LBL_SOMETHING_WENT_WRONG'][
 								req.session.language ||
 								config.default_language_code
 								]
@@ -1595,8 +1575,7 @@ exports.removeProductImage = function (req, res) {
 							function (err, response) {
 								res.send({
 									code: 200,
-									message: `${
-										labels[
+									message: `${labels[
 										'LBL_PRODUCT_IMAGE_DELETED'
 										][
 										req.session.language ||

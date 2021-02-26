@@ -110,14 +110,14 @@
                                                                  </td>
                                                                  <td>
                                                                       <h4 style="color: #f69624;padding-top: 11px;"
-                                                                           class="sku_wrapper">Kz
-                                                                           <%= products[i].product_unit_price %> /
+                                                                           class="sku_wrapper">
+                                                                           <%= products[i].product_unit_price %> Kz /
                                                                            <%= products[i].unit_type %></h4>
                                                                  </td>
                                                                  <td>
                                                                       <h4 style="color: #f69624;padding-top: 11px;"
-                                                                           class="sku_wrapper">Kz <span
-                                                                                class="item_total_<%= products[i].product_id %>"><%= products[i].item_total %>
+                                                                           class="sku_wrapper"><span
+                                                                                class="item_total_<%= products[i].product_id %>"><%= products[i].item_total %> Kz
                                                                       </h4>
                                                                  </td>
                                                             </tr>
@@ -133,8 +133,8 @@
                                                        <%= labels['LBL_ORDER_TOTAL'][language] %></h3>
                                                   <div class="totals-item">
                                                        <label><%= labels['LBL_SUB_TOTAL'][language] %></label>
-                                                       <div class="totals-value cart-subtotal" id="cart-subtotal">Kz
-                                                            <%= format_subtotal %></div>
+                                                       <div class="totals-value cart-subtotal" id="cart-subtotal">
+                                                            <%= format_subtotal %> Kz</div>
                                                   </div>
                                                   <div class="totals-item">
                                                        <label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
@@ -149,7 +149,7 @@
                                                        <label
                                                             style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
                                                        <div style="font-size: 18px;" class="totals-value cart-total"
-                                                            id="cart-total">Kz <%= format_total %></div>
+                                                            id="cart-total"><%= format_total %> Kz</div>
                                                   </div>
                                              </div>
                                         </div>
@@ -271,7 +271,7 @@
                                                        <div class="accordion__item js-accordion-item">
                                                             <div class="accordion-header js-accordion-header head_"><img
                                                                       src="../../../images/wallet.png"><%= labels['LBL_WALLET'][language] %>
-                                                                 <span>(Kz <%= wallet_formatted %>)</span></div>
+                                                                 <span>(<%= wallet_formatted %> Kz)</span></div>
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
                                                                       <div class="col-md-12">
@@ -381,13 +381,13 @@
                                                        <div class="totals-item">
                                                             <label><%= labels['LBL_SUB_TOTAL'][language] %></label>
                                                             <div class="totals-value cart-subtotal" id="cart-subtotal">
-                                                                 Kz
-                                                                 <%= format_subtotal %></div>
+                                                                 
+                                                                 <%= format_subtotal %> Kz</div>
                                                        </div>
                                                        <div class="totals-item">
                                                             <label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
-                                                            <div class="totals-value cart-tax" id="cart-tax">Kz
-                                                                 <%= format_transport_fees %></div>
+                                                            <div class="totals-value cart-tax" id="cart-tax">
+                                                                 <%= format_transport_fees %> Kz</div>
                                                        </div>
                                                        <div class="totals-item hide">
                                                             <label>Shipping</label>
@@ -398,8 +398,8 @@
                                                             <label
                                                                  style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
                                                             <div style="font-size: 18px;"
-                                                                 class="totals-value cart-total" id="cart-total">Kz
-                                                                 <%= format_total %></div>
+                                                                 class="totals-value cart-total" id="cart-total">
+                                                                 <%= format_total %> Kz</div>
                                                        </div>
                                                   </div>
                                              </div>
@@ -516,9 +516,9 @@
           ajax_cart_product_arr = cart_product_arr;
           total += transport_fees;
 
-          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
-          $('.cart-total').text('Kz ' + thousands_separators(total));
-          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          $('.cart-tax').text('' + thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text('' + thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text('' + thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
           saveCart();
      }
@@ -555,9 +555,9 @@
           }
 
           total += transport_fees;
-          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
-          $('.cart-total').text('Kz ' + thousands_separators(total));
-          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text( + thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
           saveCart();
      }
@@ -584,9 +584,9 @@
           console.log('da:',ajax_cart_product_arr);
 
           total += transport_fees;
-          $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
-          $('.cart-total').text('Kz ' + thousands_separators(total));
-          $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+          $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text( + thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
      }
 
@@ -713,18 +713,18 @@
           var needTransport = $("input[name='transport-needed']:checked").val();
           console.log("needTransport", needTransport)
           if (needTransport == "no") {
-               $('.cart-tax').text('Kz ' + thousands_separators(0));
-               $('.cart-total').text('Kz ' + thousands_separators(subtotal));
-               $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+               $('.cart-tax').text( + thousands_separators(0)+ ' Kz');
+               $('.cart-total').text( + thousands_separators(subtotal)+ ' Kz');
+               $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
                manageATMBankOption(subtotal);
 
                transportNeeded = "no";
                flag = true;
                $("input[name='address_radio']").prop("checked", false);
           } else {
-               $('.cart-tax').text('Kz ' + thousands_separators(transport_fees));
-               $('.cart-total').text('Kz ' + thousands_separators(subtotal + transport_fees));
-               $('.cart-subtotal').text('Kz ' + thousands_separators(subtotal));
+               $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
+               $('.cart-total').text( + thousands_separators(subtotal + transport_fees)+ ' Kz');
+               $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
                manageATMBankOption(subtotal + transport_fees);
                transportNeeded = "yes";
                flag = true;

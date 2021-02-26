@@ -63,7 +63,14 @@
 		</li>
 	</div>
 </ul>
-<section class="products">
+
+<div class="col-md-12  text-center" >
+	<div class="float-container">
+		<button  style="margin-top: 1.4%;" type="button" class="btn-wallet" data-toggle="collapse" data-target="#chart-event">Ver / Ocultar grafico</button>
+	</div>
+</div>
+
+	<section id="chart-event" class="collapse products">
 	<div class="container">
 		<div class="row">
 			<div style="padding:0;" class="col-md-3">
@@ -194,7 +201,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="box dash_bg pb20">
-									<h4>SALES (QTY)</h4>
+									<h4><%= labels['LBL_AGGREGATOR_DASHBOARD_CHART_SALES'][language] %></h4>
 									<div class="starter-stats">
 										<div class="clear"></div>
 										<div class="gains">
@@ -205,7 +212,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="box dash_bg pb20">
-									<h4>TOP PRODUCTS (NO OF ORDERS)</h4>
+									<h4><%= labels['LBL_AGGREGATOR_DASHBOARD_TOP_PRODUCTS'][language] %></h4>
 									<div class="starter-stats">
 										<div class="clear"></div>
 										<div class="gains">
@@ -216,7 +223,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="box dash_bg pb20">
-									<h4>TOP DESTINATIONS (NO OF ORDERS)</h4>
+									<h4><%= labels['LBL_AGGREGATOR_DASHBOARD_TOP_DESTINATIONS'][language] %></h4>
 									<div class="starter-stats">
 										<div class="clear"></div>
 										<div class="gains">
@@ -227,7 +234,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="box dash_bg pb20">
-									<h4>TOP FARMERS (NO OF ORDERS)</h4>
+									<h4><%= labels['LBL_AGGREGATOR_DASHBOARD_TOP_FARMERS'][language] %></h4>
 									<div class="starter-stats">
 										<div class="clear"></div>
 										<div class="gains">
@@ -386,7 +393,8 @@
 
 		$.ajax({
 			url: "<%=baseURL%>statistics/total", success: (result) => {
-				$('.total-sales').text(result.response.total_sales);
+			//	$('.total-sales').text(result.response.total_sales);
+				$('.total-sales').text(result.response.total_sold_products);
 				$('.total-product-views').text(result.response.total_product_views);
 				$('.total-favourite-list').text(result.response.total_favourite_list);
 				$('.total-sold-products').text(result.response.total_sold_products);

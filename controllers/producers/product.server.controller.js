@@ -577,7 +577,7 @@ const unsoldList = async (req, res) => {
 const addResponse = (req, res, columnAndValues) => {
 	let productObj = new Product(columnAndValues);
 	productObj.save((err, response) => {
-		return res.redirect('list');
+		return res.redirect('order/' + response.product_id);
 	})
 };
 
@@ -753,6 +753,7 @@ const remove = (req, res) => {
 			})
 
 			s3Handler.deleteMultipleFiles(fileArr, config.aws.bucketName, (error, res) => { });
+			//return true;
 			return res.redirect(config.base_url + 'producers/product/list');
 		})
 	})
@@ -964,78 +965,77 @@ const order = function (req, res) {
 				return;
 			}
 			//console.log("orders", orders);
-			if( orders.length === 0){
-				
-					Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, producer_id: 1, product_type: 1, description: 1, category_id: 1, sub_category_id: 1, product_variety_id: 1, unit_type: 1, unit_value: 1, size: 1, unit_price: 1, total_unit_price: 1, images: 1, location: 1, state_id: 1, city_id: 1, harvest_date: 1 }, (err, product) => {
-						if (!product) {
-							return res.redirect('list');
-						}
-						
-						product = JSON.parse(JSON.stringify(product));
-						product.harvest_date = moment(product.harvest_date).format('YYYY-MM-DD');
-						product.total_unit_price = separators(product.total_unit_price);
-						_.each(product.images, (element, index, list) => {
-							product.images[index] = ((element) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element : '../../../images/forcast.png');
-						})
-			
-						Language.find({ status: 'active', code: (req.session.language || config.default_language_code) }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {
-							res.render('producers/product/publish', {
-								user: {
-									user_id: req.session.user_id,
-									name: req.session.name,
-									user_type: req.session.user_type,
-									login_type: req.session.login_type
-								},
-								product: product,
-								languages,
-								labels,
-								language: req.session.language || config.default_language_code,
-								breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "producers/product/list'>" + labels['LBL_LIST_PRODUCTS'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || config.default_language_code)] + "</li>",
-								messages: req.flash('error') || req.flash('info'),
-								messages: req.flash('info'),
-			
-							})
-						}).sort({ order_number: 1 })
+			if (orders.length === 0) {
+
+				Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, producer_id: 1, product_type: 1, description: 1, category_id: 1, sub_category_id: 1, product_variety_id: 1, unit_type: 1, unit_value: 1, size: 1, unit_price: 1, total_unit_price: 1, images: 1, location: 1, state_id: 1, city_id: 1, harvest_date: 1 }, (err, product) => {
+					if (!product) {
+						return res.redirect('list');
+					}
+
+					product = JSON.parse(JSON.stringify(product));
+					product.harvest_date = moment(product.harvest_date).format('YYYY-MM-DD');
+					product.total_unit_price = separators(product.total_unit_price);
+					_.each(product.images, (element, index, list) => {
+						product.images[index] = ((element) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element : '../../../images/forcast.png');
 					})
-				
-				console.log(" vasio");
-			
-			}	else { 
-			let products = []
-			_.each(orders, data => {
-				data.products = JSON.parse(JSON.stringify(data.products));
-				_.each(data.products, singleProduct => {
-					singleProduct.buyer_info = data.buyer_info
-					singleProduct.order_id = data.order_id
-					singleProduct.user_info.type = (singleProduct.user_info.type).slice(0, -1)
-					singleProduct.total = singleProduct.unit_price * singleProduct.qty
-					singleProduct.unit_price = "Kz " + separatorsWD(singleProduct.unit_price)
-					singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
-					singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
-					singleProduct.delivery_at = data.delivery_at
-					singleProduct.payment_status = data.payment_status
-					// singleProduct.address_info = data.address_info.locality + ", " + data.address_info.city_district + " " + data.address_info.state
+
+					Language.find({ status: 'active', code: (req.session.language || config.default_language_code) }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {
+						res.render('producers/product/publish', {
+							user: {
+								user_id: req.session.user_id,
+								name: req.session.name,
+								user_type: req.session.user_type,
+								login_type: req.session.login_type
+							},
+							product: product,
+							languages,
+							labels,
+							language: req.session.language || config.default_language_code,
+							breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "producers/product/list'>" + labels['LBL_LIST_PRODUCTS'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || config.default_language_code)] + "</li>",
+							messages: req.flash('error') || req.flash('info'),
+							messages: req.flash('info'),
+
+						})
+					}).sort({ order_number: 1 })
 				})
-				products.push(_.where(data.products, { product_id: req.params.id }))
-			})
-			products = _.flatten(products)
-			// console.log("products", products);
-			// return false;
-			res.render('producers/product/product_order', {
-				user: {
-					user_id: req.session.user_id,
-					name: req.session.name,
-					user_type: req.session.user_type,
-					login_type: req.session.login_type
-				},
-				products: products,
-				labels,
-				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_ORDER_DETAIL'][(req.session.language || config.default_language_code)] + "</li>",
-				messages: req.flash('error') || req.flash('info'),
-				messages: req.flash('info'),
-			});
-			}	
+
+
+			} else {
+				let products = []
+				_.each(orders, data => {
+					data.products = JSON.parse(JSON.stringify(data.products));
+					_.each(data.products, singleProduct => {
+						singleProduct.buyer_info = data.buyer_info
+						singleProduct.order_id = data.order_id
+						singleProduct.user_info.type = (singleProduct.user_info.type).slice(0, -1)
+						singleProduct.total = singleProduct.unit_price * singleProduct.qty
+						singleProduct.unit_price = "Kz " + separatorsWD(singleProduct.unit_price)
+						singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
+						singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
+						singleProduct.delivery_at = data.delivery_at
+						singleProduct.payment_status = data.payment_status
+						// singleProduct.address_info = data.address_info.locality + ", " + data.address_info.city_district + " " + data.address_info.state
+					})
+					products.push(_.where(data.products, { product_id: req.params.id }))
+				})
+				products = _.flatten(products)
+				// console.log("products", products);
+				// return false;
+				res.render('producers/product/product_order', {
+					user: {
+						user_id: req.session.user_id,
+						name: req.session.name,
+						user_type: req.session.user_type,
+						login_type: req.session.login_type
+					},
+					products: products,
+					labels,
+					language: req.session.language || config.default_language_code,
+					breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_ORDER_DETAIL'][(req.session.language || config.default_language_code)] + "</li>",
+					messages: req.flash('error') || req.flash('info'),
+					messages: req.flash('info'),
+				});
+			}
 		});
 	} else {
 		return res.redirect('list');

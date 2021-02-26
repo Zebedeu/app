@@ -41,11 +41,11 @@ exports.totalPurchase = function(req, res) {
 				}
 				total+= element.total;
 
-				tbl_purchase_orders+= "<tr class='"+className+"' onClick=orderDetails('"+config.base_url+"','compradors','"+element.order_id+"')><td>"+element.order_id+"</td><td>"+ordered_date+"</td><td>"+shipped_date+"</td><td>"+(element.address_info.locality+', '+element.address_info.city_district+', '+element.address_info.state)+"</td><td>Kz "+separators(element.total)+"</td><td style='text-transform:capitalize;'>"+element.status+"</td></tr>";
+				tbl_purchase_orders+= "<tr class='"+className+"' onClick=orderDetails('"+config.base_url+"','compradors','"+element.order_id+"')><td>"+element.order_id+"</td><td>"+ordered_date+"</td><td>"+shipped_date+"</td><td>"+(element.address_info.locality+', '+element.address_info.city_district+', '+element.address_info.state)+"</td><td>"+separators(element.total)+" Kz</td><td style='text-transform:capitalize;'>"+element.status+"</td></tr>";
 			})
 
 			className = (!className) ? 'tbl-row-color' : '';
-			tbl_purchase_orders+= "<tr class='"+className+"' ><td colspan='4'>&nbsp;</td><td colspan='2'>Kz "+separators(total)+"</td></tr>";
+			tbl_purchase_orders+= "<tr class='"+className+"' ><td colspan='4'>&nbsp;</td><td colspan='2'>"+separators(total)+" Kz</td></tr>";
 		} else {
 			tbl_purchase_orders+= "<tr><td colspan='6'>"+(labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')])+"</td></tr>";
 		}

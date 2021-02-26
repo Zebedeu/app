@@ -68,8 +68,8 @@
 		"PT": "link para redefinir a sua password do Kepya"
 	},
 	"LBL_SAVE": {
-		"EN": "Save",
-		"PT": "Guardar Alterações"
+		"EN": "Submit an order",
+		"PT": "Submeter o pedido"
 	},
 	"LBL_ENTER_NEW_PASSWORD": {
 		"EN": "Enter a new password",
@@ -281,7 +281,7 @@
 	},
 	"LBL_LIST_PRODUCTS": {
 		"EN": "List Products",
-		"PT": "As minhas encomendas"
+		"PT": "Lista de Produtos"
 	},
 	"LBL_POST_ADD_NOW": {
 		"EN": "Add",
@@ -473,7 +473,7 @@
 	},
 	"LBL_MESSAGES": {
 		"EN": "Messages",
-		"PT": "Mensagens"
+		"PT": "O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!"
 	},
 	"LBL_NO_ORDERS_AVAILABLE": {
 		"EN": "No orders available",
@@ -628,7 +628,7 @@
 		"PT": "Produtor"
 	},
 	"LBL_SELECT_PRODUCES": {
-		"EN": "Producer",
+		"EN": "Select Producer",
 		"PT": "Produtor"
 	},
 	"LBL_FORECAST_DATE": {
@@ -1090,10 +1090,12 @@
 	"LBL_CONFORM_PASSWORD": {
 		"EN": "Confirm password",
 		"PT": "Confirmar a password"
-	},"LBL_CONFIRM_ORDER": {
+	},
+	"LBL_CONFIRM_ORDER": {
 		"EN": "Do you confirm that you received your product? ",
 		"PT": "Confirma que recebeu o produto?"
-	},"LBL_CONFIRM_ORDER_TRUE": {
+	},
+	"LBL_CONFIRM_ORDER_TRUE": {
 		"EN": "Yes",
 		"PT": "Sim"
 	},
@@ -1513,9 +1515,14 @@
 		"EN": "Bank name",
 		"PT": "Nome do banco"
 	},
+
+	"LBL_PRODUCER_USER_SELECT_BANK_NAME": {
+		"EN": "Select Bank name",
+		"PT": "Seleciona o nome do banco"
+	},
 	"LBL_PRODUCER_USER_BANK_ACCOUNT_NO": {
 		"EN": "Bank account no",
-		"PT": "Número da conta bancária"
+		"PT": "Número do IBAN"
 	},
 	"LBL_COMPRADOR_CART_LIST_ITEM_TOTAL": {
 		"EN": "Item Total",
@@ -1758,8 +1765,8 @@
 		"PT": "Digite o nome do seu banco"
 	},
 	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
-		"EN": "Enter your correct bank account no",
-		"PT": "Digite sua conta bancária correta no"
+		"EN": "Enter your correct IBAN no",
+		"PT": "Digite seu IBAN correto "
 	},
 	"LBL_FORGOT_PASSWORD_TITLE": {
 		"EN": "Enter your email address and we'll send you a link to reset your password",
@@ -1827,7 +1834,7 @@
 	},
 	"LBL_RESET_PASSWORD_SAVE": {
 		"EN": "Save",
-		"PT": "Salve"
+		"PT": "Salvar"
 	},
 	"LBL_PASSWORD_CHANGED_DESCRIPTION": {
 		"EN": "Your Kepya password has been sucessfully reset",
@@ -1899,7 +1906,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS": {
 		"EN": "Manage Farmer",
-		"PT": "Gerir Agricultores"
+		"PT": "Gerir Productor"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION": {
 		"EN": "Your users",
@@ -2018,16 +2025,16 @@
 		"PT": "Editar os meus dados pessoais"
 	},
 	"LBL_PRODUCER_YOUR_ORDER_EMPTY": {
-		"EN": "Recently you don't have any orders",
-		"PT": "Recentemente, você não tem pedidos"
+		"EN": "Recently you don't have any LBL_SELECT_PRODUCESorders",
+		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_AGGREGATOR_YOUR_ORDER_EMPTY": {
 		"EN": "Recently you don't have any orders",
-		"PT": "Recentemente, você não tem pedidos"
+		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_COMPRADOR_YOUR_ORDER_EMPTY": {
 		"EN": "Recently you don't have any orders",
-		"PT": "Recentemente, você não tem pedidos"
+		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE": {
 		"EN": "Post your demand",
@@ -2227,7 +2234,7 @@
 	},
 	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION": {
 		"EN": "Deducted Kz #AMOUNT# from your wallet for order #ORDER_ID#",
-		"PT": "Kz #AMOUNT# deduzido da sua carteira para o pedido #ORDER_ID#"
+		"PT": "#AMOUNT# Kz deduzido da sua carteira para o pedido #ORDER_ID#"
 	},
 	"LBL_TRADING_WALLET_DEDUCT_FOR_ORDER_TITLE": {
 		"EN": "Order",
@@ -2235,7 +2242,7 @@
 	},
 	"LBL_TRADING_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION": {
 		"EN": "Deducted Kz #AMOUNT# from your wallet for order #ORDER_ID#",
-		"PT": "Kz #AMOUNT# deduzido da sua carteira para o pedido #ORDER_ID#"
+		"PT": "#AMOUNT# Kz deduzido da sua carteira para o pedido #ORDER_ID#"
 	},
 	"LBL_PRODUCER_WALLET_ADD_FOR_ORDER_TITLE": {
 		"EN": "Order",
@@ -2243,7 +2250,7 @@
 	},
 	"LBL_PRODUCER_WALLET_ADD_FOR_ORDER_DESCRIPTION": {
 		"EN": "Added Kz #AMOUNT# in your wallet for order #ORDER_ID#",
-		"PT": "Kz #AMOUNT# adicionados em sua carteira para o pedido #ORDER_ID#"
+		"PT": " #AMOUNT# Kz adicionados em sua carteira para o pedido #ORDER_ID#"
 	},
 	"LBL_AGGREGATOR_WALLET_ADD_FOR_ORDER_TITLE": {
 		"EN": "Order",
@@ -2251,7 +2258,7 @@
 	},
 	"LBL_AGGREGATOR_WALLET_ADD_FOR_ORDER_DESCRIPTION": {
 		"EN": "Added Kz #AMOUNT# in your wallet for order #ORDER_ID#",
-		"PT": "Kz #AMOUNT# adicionados em sua carteira para o pedido #ORDER_ID#"
+		"PT": " #AMOUNT# Kz adicionados em sua carteira para o pedido #ORDER_ID#"
 	},
 	"LBL_COMPRADOR_WALLET_ADD_CREDIT_TITLE": {
 		"EN": "Credit",
@@ -2259,7 +2266,7 @@
 	},
 	"LBL_COMPRADOR_WALLET_ADD_CREDIT_TITLE_DESCRIPTION": {
 		"EN": "Added Kz #AMOUNT# credits in your wallet by #USER#",
-		"PT": "Adicionados Kz #AMOUNT# créditos em sua carteira por #USER#"
+		"PT": "Adicionados #AMOUNT# Kz créditos em sua carteira por #USER#"
 	},
 	"LBL_TRADING_WALLET_ADD_CREDIT_TITLE": {
 		"EN": "Credit",
@@ -2267,7 +2274,7 @@
 	},
 	"LBL_TRADING_WALLET_ADD_CREDIT_TITLE_DESCRIPTION": {
 		"EN": "Added Kz #AMOUNT# credits in your wallet by #USER#",
-		"PT": "Adicionados Kz #AMOUNT# créditos em sua carteira por #USER#"
+		"PT": "Adicionados #AMOUNT# Kz créditos em sua carteira por #USER#"
 	},
 	"LBL_WALLET_BREADCRUMB_TRANSACTION": {
 		"EN": "Transactions",
@@ -2278,8 +2285,8 @@
 		"PT": "Retirar valores"
 	},
 	"LBL_WALLET_WITHDRAWAL_MONEY_MESSAGE": {
-		"EN": "This operation is now pending the approval of kepya support team. Once this is approved the amount requested will be transferred to your following bank account - #BANK_INFO#",
-		"PT": "Esta operação está aguardando a aprovação da equipe de suporte kepya. Depois que isso for aprovado, o valor solicitado será transferido para sua seguinte conta bancária - #BANK_INFO#"
+		"EN": "This operation is now pending the approval of kepya support team. Once this is approved the amount requested will be transferred to your following IBAN - #BANK_INFO#",
+		"PT": "Esta operação está aguardando a aprovação da equipe de suporte kepya. Depois que isso for aprovado, o valor solicitado será transferido para o seguinte IBAN - #BANK_INFO#"
 	},
 	"LBL_WALLET_FROM_DATE_TO_DATE_FILTER": {
 		"EN": "Please select from date and to date",
@@ -2333,7 +2340,6 @@
 		"EN": "Withdrawal Money",
 		"PT": "Levantar dinheiro"
 	},
-
 	"LBL_WALLET_ACCOUNT_BALANCE_TEXT": {
 		"EN": "Account balance",
 		"PT": "Saldo da conta"
@@ -2391,12 +2397,12 @@
 		"PT": "Digite o nome do seu banco"
 	},
 	"LBL_COMPRADOR_USER_BANK_ACCOUNT_NO": {
-		"EN": "Bank account no",
-		"PT": "Número da conta bancária"
+		"EN": "IBAN no",
+		"PT": "Número do IBAN"
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
-		"EN": "Enter your correct bank account no",
-		"PT": "Digite sua conta bancária correta no"
+		"EN": "Enter your correct IBAN no",
+		"PT": "Digite seu IBAN correto "
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",
@@ -2415,12 +2421,12 @@
 		"PT": "Digite o nome do seu banco"
 	},
 	"LBL_TRADING_USER_BANK_ACCOUNT_NO": {
-		"EN": "Bank account no",
-		"PT": "Número da conta bancária"
+		"EN": "IBAN no",
+		"PT": "Número do IBAN"
 	},
 	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
-		"EN": "Enter your correct bank account no",
-		"PT": "Digite sua conta bancária correta no"
+		"EN": "Enter your correct IBAN no",
+		"PT": "Digite seu IBAN correto "
 	},
 	"LBL_TRADING_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",
@@ -2444,19 +2450,19 @@
 	},
 	"LBL_WALLET_PROMPT_HEADER": {
 		"EN": "Message",
-		"PT": "mensagem"
+		"PT": "Montante a levanta"
 	},
 	"LBL_WALLET_PROMPT_ENTER_AMOUNT": {
 		"EN": "Enter amount",
-		"PT": "Digite o valor"
+		"PT": "Digite o montante a levantar"
 	},
 	"LBL_WALLET_PROMPT_VALIDATE_ENTER_AMOUNT": {
 		"EN": "Enter amount",
-		"PT": "Digite o valor"
+		"PT": "Digite o montante a levantar"
 	},
 	"LBL_WALLET_PROMPT_VALIDATE_RANGE_AMOUNT": {
-		"EN": "Amount must be less than or equal Kz #AMOUNT#",
-		"PT": "O valor deve ser menor ou igual a Kz #AMOUNT#"
+		"EN": "Amount must be less than or equal #AMOUNT# Kz",
+		"PT": "O valor deve ser menor ou igual a #AMOUNT# Kz"
 	},
 	"LBL_MENU_NOTIFICATION": {
 		"EN": "Notifications",
@@ -2503,12 +2509,12 @@
 		"PT": "Digite o nome do seu banco"
 	},
 	"LBL_FARMER_USER_BANK_ACCOUNT_NO": {
-		"EN": "Bank account no",
-		"PT": "Número da conta bancária"
+		"EN": "IBAN no",
+		"PT": "Número do IBAN"
 	},
 	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
-		"EN": "Enter your correct bank account no",
-		"PT": "Digite sua conta bancária correta no"
+		"EN": "Enter your correct IBAN no",
+		"PT": "Digite seu IBAN correto "
 	},
 	"LBL_FARMER_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",
@@ -3076,7 +3082,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_TOP_PRODUCTS": {
 		"EN": "Top Products (No of orders)",
-		"PT": "Principais produtos (sem pedidos)"
+		"PT": "Principais Produtos (sem pedidos)"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_TOP_DESTINATIONS": {
 		"EN": "Top Destinations (No of orders)",
@@ -3084,14 +3090,14 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_TOP_FARMERS": {
 		"EN": "Top Farmers (No of orders)",
-		"PT": "Principais agricultores (número de pedidos)"
+		"PT": "Principais Productores (número de pedidos)"
 	},
 	"LBL_PRODUCER_DASHBOARD_CHART_EARNINGS": {
 		"EN": "Sales amounts (Kz)",
 		"PT": "Vendas em valores (Kz)"
 	},
 	"LBL_PRODUCER_DASHBOARD_CHART_SALES": {
-		"EN": "Sales quantity",
+		"EN": "Sales (Qty)",
 		"PT": "Vendas em quantidade"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_CHART_EARNINGS": {
@@ -3102,6 +3108,7 @@
 		"EN": "Sales (Qty)",
 		"PT": "Vendas (quantidade)"
 	},
+	
 	"LBL_DASHBOARD_EARNINGS_AMOUNT": {
 		"EN": "Sales (Kz)",
 		"PT": "Vendas (Kz)"
@@ -3750,7 +3757,6 @@
 		"EN": "Product Order Detail",
 		"PT": "Detalhes do Produto"
 	},
-
 	"LBL_PRODUCT_DETAIL": {
 		"EN": "Product Detail",
 		"PT": "Detalhes do Produto"
@@ -3789,15 +3795,15 @@
 	},
 	"LBL_ADD_FARMER": {
 		"EN": "Add Farmer",
-		"PT": "Adicionar Agricultor"
+		"PT": "Adicionar Productor"
 	},
 	"LBL_FARMER_LIST": {
 		"EN": "Farmes List",
-		"PT": "Lista de Agricultores"
+		"PT": "Lista de Productores"
 	},
 	"EDIT_FARMER": {
 		"EN": "Edit Farmer",
-		"PT": "Editar dados do Agricultor"
+		"PT": "Editar dados do Productor"
 	},
 	"LBL_AGGREGATOR_PUBLISH_PRODUCTS": {
 		"EN": "Post product",
@@ -3823,74 +3829,80 @@
 		"EN": "Paid",
 		"PT": "Pago"
 	},
-	
-"LBL_TABLE_PROCESSING":{
-    "EN": "Processing...",
-    "PT": "A processar..."
-},  
-"LBL_TABLE_MENU":{
-    "EN": "Show _MENU_ entries",
-    "PT": "Mostrar _MENU_ registos"
-},  
-"LBL_TABLE_ZERO_RECORDS":{
-    "EN": "No matching records found",
-    "PT": "Não foram encontrados resultados"
-},  
-"LBL_TABLE_INFO":{
-    "EN": "Showing _START_ to _END_ of _TOTAL_ entries",
-    "PT": "Mostrando de _START_ até _END_ de _TOTAL_ registos"
-},  
-"LBL_TABLE_INFO_EMPTY":{
-    "EN": "Showing 0 to 0 of 0 entries",
-    "PT": "Mostrando de 0 até 0 de 0 registos"
-},  
-"LBL_TABLE_INFO_FILTERED":{ 
-    "EN": "(filtered from _MAX_ total entries)",
-    "PT": "(filtrado de _MAX_ registos no total)"
-},  
-"LBL_TABLE_INFO_POST_FIX":{
-    "EN": "",
-    "PT": ""
-},  
-"LBL_TABLE_SEARCH":{
-    "EN": "Search:",
-    "PT": "Procurar:"
-},  
-"LBL_TABLE_URL":{
-    "EN": "",
-    "PT": ""
-},  
-"LBL_TABLE_FIRST":{
-    "EN": "FIRST",
-    "PT": "Primeiro"
-},  
-"LBL_TABLE_PREVIOUS":{
-    "EN": "Previous",
-    "PT": "Anterior"
-},  
-"LBL_TABLE_NEXT":{
-    "EN": "Next",
-    "PT": "Seguinte"
-},  
-"LBL_TABLE_LAST":{
-    "EN": "LAST",
-    "PT": "Último"
-},
-"LBL_TABLE_PDF_FOOTER_CREATED_DATE":{
-    "EN": "Created on: ",
-    "PT": "Criado em: "
-},    
+	"LBL_TABLE_PROCESSING": {
+		"EN": "Processing...",
+		"PT": "A processar..."
+	},
+	"LBL_TABLE_MENU": {
+		"EN": "Show _MENU_ entries",
+		"PT": "Mostrar _MENU_ registos"
+	},
+	"LBL_TABLE_ZERO_RECORDS": {
+		"EN": "No matching records found",
+		"PT": "Não foram encontrados resultados"
+	},
+	"LBL_TABLE_INFO": {
+		"EN": "Showing _START_ to _END_ of _TOTAL_ entries",
+		"PT": "Mostrando de _START_ até _END_ de _TOTAL_ registos"
+	},
+	"LBL_TABLE_INFO_EMPTY": {
+		"EN": "Showing 0 to 0 of 0 entries",
+		"PT": "Mostrando de 0 até 0 de 0 registos"
+	},
+	"LBL_TABLE_INFO_FILTERED": {
+		"EN": "(filtered from _MAX_ total entries)",
+		"PT": "(filtrado de _MAX_ registos no total)"
+	},
+	"LBL_TABLE_INFO_POST_FIX": {
+		"EN": "",
+		"PT": ""
+	},
+	"LBL_TABLE_SEARCH": {
+		"EN": "Search:",
+		"PT": "Procurar:"
+	},
+	"LBL_TABLE_URL": {
+		"EN": "",
+		"PT": ""
+	},
+	"LBL_TABLE_FIRST": {
+		"EN": "FIRST",
+		"PT": "Primeiro"
+	},
+	"LBL_TABLE_PREVIOUS": {
+		"EN": "Previous",
+		"PT": "Anterior"
+	},
+	"LBL_TABLE_NEXT": {
+		"EN": "Next",
+		"PT": "Seguinte"
+	},
+	"LBL_TABLE_LAST": {
+		"EN": "LAST",
+		"PT": "Último"
+	},
+	"LBL_TABLE_PDF_FOOTER_CREATED_DATE": {
+		"EN": "Created on: ",
+		"PT": "Criado em: "
+	},
 	"LBL_AGGREGATOR_DASHBOARD_ADD_FARMER": {
 		"EN": "Add Farmer",
-		"PT": "Adicionar Agricultor"
+		"PT": "Adicionar Productor"
 	},
 	"LBL_NAME_RESPONSIBLE": {
 		"EN": "Responsible Name",
 		"PT": "Nome do Responsável"
 	},
-
 	"LBL_CLEAR_ALL_NOTIFICATION": {
 		"EN": "Remove all",
 		"PT": "Limpar todas"
+	},
+	"LBL_PRODUCT_ADD_MSG": {
+		"EN": "O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!",
+		"PT": "O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!"
+	},
+	"LBL_SHIPPED_PRODUCT": {
+		"EN": "Shipped",
+		"PT": "Em transport"
 	}
 }

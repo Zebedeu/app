@@ -63,6 +63,7 @@ exports.list = function (req, res) {
                          labels,
                          wallet: separators(singleUser.wallet),
                          lockedAmount: separators(lockAmountSum),
+                         walletAccountBalance: separators(singleUser.wallet + lockAmountSum),
                          is_wallet_enable: (singleUser.bank_name && singleUser.bank_account_no) ? true : false,
                          breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + path + "/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_WALLET'][(req.session.language || config.default_language_code)] + "</li>",
                          language: req.session.language || config.default_language_code,
@@ -101,9 +102,9 @@ exports.transactions = function (req, res) {
                     _.each(logs, (element, index, list) => {
                          title = element.title[req.session.language || config.default_language_code];
                          description = element.description[req.session.language || config.default_language_code];
-                         remaining_balance = separators(element.remaining_balance);
+                         remaining_balance = separators(element.remaining_balance) + ' Kz ';
                          created_at = convert_date(element.created_at, req.session.language);
-                         amount = (element.type == 'add') ? ('+ Kz ' + separators(element.amount)) : ('- Kz ' + separators(element.amount));
+                         amount = (element.type == 'add') ? ( ' - ' + separators(element.amount)+ ' Kz ') : ( ' - ' + separators(element.amount)+ ' Kz ');
 
                          ajaxContent += "<tr><td>" + created_at + "</td><td>" + description + "</td><td class='wallet_amount'>" + amount + "</td><td class='wallet_amount'>" + remaining_balance + "</td></tr>";
                     })
@@ -169,7 +170,7 @@ exports.withdrawalRequests = function (req, res) {
                     let created_at = '', amount = '', status = '';
                     _.each(logs, (element, index, list) => {
                          created_at = convert_date(element.created_at, req.session.language);
-                         amount = '- Kz ' + separators(element.amount);
+                         amount = ' - ' + separators(element.amount) + ' Kz ';
 
                          if (element.status == 'pending') {
                               status = labels['LBL_WITHDRAWAL_REQUEST_STATUS_PENDING'][(req.session.language || config.default_language_code)];

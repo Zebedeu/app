@@ -43,7 +43,11 @@ exports.get_ongoing_orders = function (req, res) {
 					address = element.address_info.locality + ', ' + element.address_info.city_district + ', ' + element.address_info.state;
 				
 				element.address_info.locality + ', ' + element.address_info.city_district + ', ' + element.address_info.state
-				tbl_ongoing_orders += "<tr><td class='column_order_table " + className + "' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + element.status + "</td></tr>";
+        
+				_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
+				
+				tbl_ongoing_orders += "<tr><td class='column_order_table " + className + "' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
+
 			})
 		} else {
 			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";
@@ -303,7 +307,7 @@ exports.get_my_products = (req, res) => {
 				let total_ratings = (element.reviews.length > 0) ? (element.reviews.reduce((a, b) => +a + +b.rating, 0)) : 0;
 				to_sell = ((element.remaining_unit_value * 100) / element.unit_value) + '%';
 				already_sold = (100 - ((element.remaining_unit_value * 100) / element.unit_value)) + '%';
-				my_products_str += '<tr onClick=productDetails("' + element.product_id + '")><td>' + element.product_id + '</td><td>' + element.sub_category_title + '</td><td>' + element.name + '</td><td>' + element.category_title + '</td><td>' + ((element.reviews.length > 0) ? (total_ratings / element.reviews.length).toFixed(2) : 0) + '</td><td>' + already_sold + '</td><td>' + to_sell + '</td><td>Kz ' + element.unit_price.toFixed(2) + '</td></tr>';
+				my_products_str += '<tr onClick=productDetails("' + element.product_id + '")><td>' + element.product_id + '</td><td>' + element.sub_category_title + '</td><td>' + element.name + '</td><td>' + element.category_title + '</td><td>' + ((element.reviews.length > 0) ? (total_ratings / element.reviews.length).toFixed(2) : 0) + '</td><td>' + already_sold + '</td><td>' + to_sell + '</td><td>' + element.unit_price.toFixed(2) + ' Kz</td></tr>';
 			})
 		} else {
 			my_products_str = "<tr><td colspan='7'>" + labels['LBL_NO_PRODUCTS_AVAILABLE'][req.session.language] + "</td></tr>";

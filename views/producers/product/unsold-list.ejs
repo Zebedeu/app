@@ -37,8 +37,8 @@
 											<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;"
 													class="fa fa-map-marker" aria-hidden="true"></i>
 												<span><%= products[i].location %></span></h4>
-											<h4 style="color: #f69624;" class="sku_wrapper">Kz
-												<%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
+											<h4 style="color: #f69624;" class="sku_wrapper">
+												<%= (products[i].unit_price) %> Kz / <%= products[i].unit_type %></h4>
 										</figcaption>
 									</figure>
 								</td>
@@ -64,17 +64,17 @@
 								<td>
 									<div style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a href="<%=baseURL%>aggregators/product/order/<%= products[i].product_id %>"><i
+										<a href="<%=baseURL%>producers/product/order/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-eye"></i></a>
 									</div>
 									<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a href="<%=baseURL%>aggregators/product/display/<%= products[i].product_id %>"><i
+										<a href="<%=baseURL%>producers/product/display/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 									</div>
 									<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a href="<%=baseURL%>aggregators/product/remove/<%= products[i].product_id %>"><i
+										<a href="<%=baseURL%>producers/product/remove/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 									</div>
 								</td>

@@ -27,7 +27,7 @@
 										<div class="product-text">
 											<a href="details/<%= demands[d]['products'][i].product_id %>"><p style='text-transform: uppercase'><%= demands[d]['products'][i].category_title %></p></a>
 											<h5 style='text-transform: capitalize'><%= demands[d]['products'][i].sub_category_title %></h5>
-											<h5 style='text-transform: capitalize'><span>Kz <%= (demands[d]['products'][i].unit_price).toFixed(2) %></span> Units : <%= demands[d]['products'][i].unit_type %></h5>
+											<h5 style='text-transform: capitalize'><span><%= (demands[d]['products'][i].unit_price).toFixed(2) %> Kz</span> Units : <%= demands[d]['products'][i].unit_type %></h5>
 											<h6>In Stock : <%= demands[d]['products'][i].unit_value %></h6>
 											<div class="kp_location">
 												<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= demands[d]['products'][i].state_name %></span>

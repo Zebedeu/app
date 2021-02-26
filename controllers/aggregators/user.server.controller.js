@@ -51,7 +51,7 @@ exports.add = function (req, res) {
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			bank_name: req.body.bank_name,
-			bank_account_no: req.body.bank_account_no,
+			bank_account_no: "AO06 "+ req.body.bank_account_no,
 			nif: req.body.nif,
 			address: req.body.address
 		}

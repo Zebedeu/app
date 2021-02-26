@@ -16,8 +16,8 @@
 								<h2><%= products[i].sub_category_title %></h2>
 								<h3 class='capitalize'><%= products[i].category_title %></h3>
 								<p class="itemNumber"><%= labels['LBL_QTY'][language] %>: <span style="color: #000;"><%= products[i].qty %></span> <%= products[i].unit_plural_title %></p>
-								<p class="itemNumber"><%= labels['LBL_PRICE'][language] %> - Kz <%= (products[i].unit_price).toFixed(2) %> / <%= products[i].unit_type %></p>
-								<p class="itemNumber"><%= labels['LBL_ORDER_TOTAL'][language] %>: <span style="color: #000;">Kz <%= (products[i].qty * products[i].unit_price).toFixed(2) %></span></p>
+								<p class="itemNumber"><%= labels['LBL_PRICE'][language] %> - <%= (products[i].unit_price).toFixed(2) %> Kz / <%= products[i].unit_type %></p>
+								<p class="itemNumber"><%= labels['LBL_ORDER_TOTAL'][language] %>: <span style="color: #000;"><%= (products[i].qty * products[i].unit_price).toFixed(2) %> Kz</span></p>
 							</div>
 						</div>
 					<% } %>
@@ -117,11 +117,11 @@
 					        <div class="subtotal cf checkout_total">
 					        	<h3><%= labels['LBL_ORDER_TOTAL'][language] %></h3>
 			   					<ul>
-						      		<li class="totalRow"><span class="label"><%= labels['LBL_SUB_TOTAL'][language] %></span><span class="value">Kz <%= subtotal.toFixed(2) %></span></li>
-						      		<li class="totalRow"><span class="label"><%= labels['LBL_TRANSPORTATION_FEES'][language] %></span><span class="value trans_fees">Kz <%= transportFees.toFixed(2) %></span></li>
-						          	<li class="totalRow hide"><span class="label">Shipping</span><span class="value">Kz 0.00</span></li>
-						            <li class="totalRow hide"><span class="label">Tax</span><span class="value">Kz 0.00</span></li>
-						            <li class="totalRow final"><span class="label"><%= labels['LBL_TOTAL'][language] %></span><span class="value total_fees">Kz <%= (total + transportFees).toFixed(2) %></span></li>
+						      		<li class="totalRow"><span class="label"><%= labels['LBL_SUB_TOTAL'][language] %></span><span class="value"><%= subtotal.toFixed(2) %> Kz</span></li>
+						      		<li class="totalRow"><span class="label"><%= labels['LBL_TRANSPORTATION_FEES'][language] %></span><span class="value trans_fees"><%= transportFees.toFixed(2) %> Kz </span></li>
+						          	<li class="totalRow hide"><span class="label">Shipping</span><span class="value">0.00 Kz</span></li>
+						            <li class="totalRow hide"><span class="label">Tax</span><span class="value">0.00 Kz</span></li>
+						            <li class="totalRow final"><span class="label"><%= labels['LBL_TOTAL'][language] %></span><span class="value total_fees"><%= (total + transportFees).toFixed(2) %> Kz</span></li>
 							    </ul>
 							</div>
 				    	</li>
@@ -168,8 +168,8 @@ $(document).ready(function(){
 function setAddressType(address_id){
 	$.post( "<%=baseURL%>trading/checkout/transport_fees", { address_id }).done(function( data ) {
 		transport_fees = parseFloat(data.transport_fees);
-		$('.trans_fees').text('Kz '+transport_fees.toFixed(2));
-		$('.total_fees').text('Kz '+(total_fees+transport_fees).toFixed(2));
+		$('.trans_fees').text(transport_fees.toFixed(2) +' Kz');
+		$('.total_fees').text((total_fees+transport_fees).toFixed(2)+ 'Kz');
 	   	ajax_address_id = address_id;
 		$('.address_radio').attr('checked', false);
 		$('#radio_'+address_id).attr('checked', true).button("refresh");
