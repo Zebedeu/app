@@ -584,7 +584,7 @@ exports.recommendedProducts = async (req, res) => {
 					recommendedProductsHelper(req, res, singleUser, products, productArr, overMargin)
 				} else {
 					recommendedProductsHelper(req, res, singleUser, products, productArr, overMargin)
-				}a
+				}
 
 			})
 		})
