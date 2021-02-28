@@ -66,19 +66,8 @@
 									<div class="search-container">
 										<label class="my-1 mr-2"><%= labels['LBL_FARMER_USER_BANK_NAME'][language] %> </label>
 										<!-- <input class="custom_input" type="text" placeholder="" value="" id='bank_name' name="bank_name"> -->
-										<select class="form-control " id="bank_name" name="bank_name" style='height:42px;cursor:pointer;'>
-											<option value="">- <%= labels['LBL_PRODUCER_USER_SELECT_BANK_NAME'][language] %> -</option>
-											<option value="BFA"> Banco de Fomento Angola, S.A</option>
-											<option value="BPC">Banco de Poupança e Crédito, S.A</option>
-											<option value="SOL">Banco Sol, S.A.</option>
-											<option value="SBA">Standard Bank Angola, S.A</option>
-											<option value="BCI">Banco de Desenvolvimento de Angola, S.A</option>
-											<option value="BMA">Banco Millennium Angola, S.A</option>
-											<option value="BAI">Banco Angolano de Investimentos, S.A</option>
-											<option value="BIC">Banco BIC, S.A</option>
-											<option value="BCGA">Banco Caixa Geral Totta de Angola, S.A</option>
-
-				
+										<select class="form-control bank_data_html " id="bank_name" name="bank_name" style='height:42px;cursor:pointer;'>
+											
 										</select>
 										<span class="validation-alert" id='err-bank-name'></span>
 									</div>
@@ -252,6 +241,56 @@ errNIFFlag = 1;
 			notificacao();
 		}
 	}
+
+	var bankList =[ 
+		{
+		name: 'Banco de Poupança e Crédito, S.A',
+		abbr: 'BPC',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco Sol, S.A.',
+		abbr: 'SOL',
+		code: '0006' 
+		}, 
+		{
+		name: 'Standard Bank Angola, S.A',
+		abbr: 'SBA',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco de Desenvolvimento de Angola, S.A',
+		abbr: 'BDA',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco Millennium Angola, S.A',
+		abbr: 'BMA',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco Angolano de Investimentos, S.A',
+		abbr: 'BAI',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco BIC, S.A',
+		abbr: 'BIC',
+		code: '0006' 
+		}, 
+		{
+		name: 'Banco Caixa Geral Totta de Angola, S.A',
+		abbr: 'BCGA',
+		code: '0006' 
+		}, 
+	]	
+	var options = "<option value=''>-- <%= labels['LBL_PRODUCER_USER_SELECT_BANK_NAME'][language] %> --</option>"
+
+	bankList.forEach( (item, index) =>{
+		options += '<option  data-code="'+item.code+'" value="'+item.abbr+'">'+item.name+'</option>'
+	} )
+
+	$('.bank_data_html').html(options)
 
 	function notificacao() {
 		$.confirm({
