@@ -53,7 +53,7 @@
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_REQUIRED_STOCK'][language] %></label>
-									<input class="custom_input farmer_currency_number" type="text" placeholder="" value="" min="1"
+									<input class="custom_input" type="number" placeholder="" value="" min="1"
 										id="unit_value" name="unit_value" oninput="validity.valid||(value='');">
 									<span class="validation-alert" id='err-unit-value'></span>
 								</div>
@@ -187,6 +187,10 @@
 		</div>
 	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
 	function validatePost() {
 		let errCategoryFlag = 0, errTitleFlag = 0, errDescriptionFlag = 0, errUnitFlag = 0, errUnitValueFlag = 0, errStateFlag = 0, errCityFlag = 0, errExpireDateFlag = 0, errLocationFlag = 0, errWhereToDeliverFlag = 0;
@@ -297,8 +301,27 @@
 		if (validatePost()) {
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			$('#frm-add-product').submit()
+			notificacao();
 		}
+	}
+
+	function notificacao() {
+		$.confirm({
+			title: 'Publicar Produto',
+			icon: 'fa fa-check',
+			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'btn',
+					action: function () {
+						$('#frm-add-product').submit();
+					}
+				}
+			}
+		});
 	}
 
 	$(document).ready(function () {

@@ -65,140 +65,149 @@
 	</div>
 </ul>
 
-<div class="col-md-12  text-center" >
-	<div class="float-container">
-		<button  style="margin-top: 1.4%;" type="button" class="btn-wallet" data-toggle="collapse" data-target="#chart-event">Ver / Ocultar grafico</button>
-	</div>
-</div>
 
-	<section id="chart-event" class="collapse products">
+<section class="products">
 	<div class="container">
-		<div class="row">
-			<div style="padding:0;" class="col-md-3">				
-				<div class="dashboard-heading">
-				  	<div class="all">
-				  		<div class="row">
-				  			<div class="col-md-12 cus_paddy">
-				  				<div class="box dash_bg">
-						  			<h3 class="dash_title">Statistics</h3>
-									<section class="statis text-center">
-										<div class="row">
-											<div class="col-md-12">
-												<a href="<%=baseURL%>compradors/statistics/total_purchase">
-													<div class="box dash_bg">
-														<i class="fa fa-bar-chart"></i>
-														<h3 class="stat_title total-purchase">0</h3>
-														<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE'][language] %> </p>
-													</div>
-												</a>
-											</div>
-											<div class="col-md-12">
-												<div class="box dash_bg">
-													<i class="fa fa-eye"></i>
-													<h3 class="stat_title total-product-views">0</h3>
-													<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS'][language] %></p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<a href="<%=baseURL%>compradors/favourite/list">
-													<div class="box dash_bg">
-														<i class="fa fa-heart-o"></i>
-														<h3 class="stat_title total-favourite-products">0</h3>
-														<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS'][language] %></p>
-													</div>
-												</a>
-											</div>
-											<div class="col-md-12">
-												<div class="box dash_bg">
-													<i class="fa fa-cart-plus"></i>
-													<h3 class="stat_title total-purchase-products">0</h3>
-													<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS'][language] %></p>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<a href="<%=baseURL%>compradors/product/list">
-													<div class="box dash_bg">
-														<i class="fa fa-check-circle"></i>
-														<h3 class="stat_title total-active-demands">0</h3>
-														<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS'][language] %></p>
-													</div>
-												</a>
-											</div>
-											<div class="col-md-12">
-												<a href="<%=baseURL%>compradors/product/list">
-													<div class="box dash_bg">
-														<i class="fa fa-hourglass-end"></i>
-														<h3 class="stat_title total-expired-demands">0</h3>
-														<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS'][language] %></p>
-													</div>
-												</a>
-											</div>
-										</div>
-									</section>
-								</div>
-							</div>
-						</div>
 
-				  	</div>
-				</div>	
-			</div>
-			<div style="padding:0;" class="col-md-9">
-				<div class="dashboard-heading">
-				  	<div class="box dash_bg" style="height: 535px !important;">
-				  		<div class="row">
-				  			<div class="col-md-6">
-				  				<div class="box dash_bg">
-				  					<h4><%= labels['LBL_COMPRADOR_DASHBOARD_CHART_OUTWARDS'][language] %></h4>
-				  					<div class="starter-stats">
-								      	<div class="clear"></div>
-								        <div class="gains">
-								          	<canvas id="myChart" height="250" class='outwardsChart'></canvas>
-								        </div>
-								    </div>
-				  				</div>
-				  			</div>
-				  			<div class="col-md-6">
-				  				<div class="box dash_bg">
-				  					<h4><%= labels['LBL_COMPRADOR_DASHBOARD_CHART_PURCHASE'][language] %></h4>
-				  					<div class="starter-stats">
-								      	<div class="clear"></div>
-								        <div class="gains">
-								          	<canvas id="bar-chart" height="250" class='purchaseChart'></canvas>
-								        </div>
-								    </div>
-				  				</div>
-				  			</div>				  			
-				  		</div>
-				  		<div style="padding-top: 20px;" class="">
-		  					<h4 style="padding-bottom: 15px;" class="dash_title"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_ORDERS'][language] %></h4>
-							<section class="statis text-center">
-								<div class="row">
-									<div class="col-md-4">
-										<div class="box dash_bg">
-											<i class="fa fa-shopping-cart"></i>
-											<h4 class="stat_title open-orders">0</h4>
-											<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_OPEN_ORDERS'][language] %></p>
+		<div class="accordion js-accordion">
+			<div class="accordion__item js-accordion-item">
+				 <div class="accordion-header js-accordion-header head_"><img
+						   src="../../../images/pie-chart.png">
+					  <span></span></div>
+				 <div class="accordion-body js-accordion-body">
+					
+					
+					<div class="row">
+						<div style="padding:0;" class="col-md-3">				
+							<div class="dashboard-heading">
+								<div class="all">
+									<div class="row">
+										<div class="col-md-12 cus_paddy">
+											<div class="box dash_bg">
+												<h3 class="dash_title">Statistics</h3>
+												<section class="statis text-center">
+													<div class="row">
+														<div class="col-md-12">
+															<a href="<%=baseURL%>compradors/statistics/total_purchase">
+																<div class="box dash_bg">
+																	<i class="fa fa-bar-chart"></i>
+																	<h3 class="stat_title total-purchase">0</h3>
+																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE'][language] %> </p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<div class="box dash_bg">
+																<i class="fa fa-eye"></i>
+																<h3 class="stat_title total-product-views">0</h3>
+																<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS'][language] %></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>compradors/favourite/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-heart-o"></i>
+																	<h3 class="stat_title total-favourite-products">0</h3>
+																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS'][language] %></p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<div class="box dash_bg">
+																<i class="fa fa-cart-plus"></i>
+																<h3 class="stat_title total-purchase-products">0</h3>
+																<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS'][language] %></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>compradors/product/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-check-circle"></i>
+																	<h3 class="stat_title total-active-demands">0</h3>
+																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS'][language] %></p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>compradors/product/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-hourglass-end"></i>
+																	<h3 class="stat_title total-expired-demands">0</h3>
+																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS'][language] %></p>
+																</div>
+															</a>
+														</div>
+													</div>
+												</section>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="box dash_bg">
-											<i class="fa fa-shopping-cart"></i>
-											<h4 class="stat_title completed-orders">0</h4>
-											<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_COMPLETED_ORDERS'][language] %></p>
+
+								</div>
+							</div>	
+						</div>
+						<div style="padding:0;" class="col-md-9">
+							<div class="dashboard-heading">
+								<div class="box dash_bg" style="height: 535px !important;">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="box dash_bg">
+												<h4><%= labels['LBL_COMPRADOR_DASHBOARD_CHART_OUTWARDS'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas id="myChart" height="250" class='outwardsChart'></canvas>
+													</div>
+												</div>
+											</div>
 										</div>
+										<div class="col-md-6">
+											<div class="box dash_bg">
+												<h4><%= labels['LBL_COMPRADOR_DASHBOARD_CHART_PURCHASE'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas id="bar-chart" height="250" class='purchaseChart'></canvas>
+													</div>
+												</div>
+											</div>
+										</div>				  			
 									</div>
-									<div class="col-md-4">
-										<div class="box dash_bg">
-											<i class="fa fa-shopping-cart"></i>
-											<h4 class="stat_title cancelled-orders">0</h4>
-											<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_CANCELLED_ORDERS'][language] %></p>
-										</div>
+									<div style="padding-top: 20px;" class="">
+										<h4 style="padding-bottom: 15px;" class="dash_title"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_ORDERS'][language] %></h4>
+										<section class="statis text-center">
+											<div class="row">
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title open-orders">0</h4>
+														<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_OPEN_ORDERS'][language] %></p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title completed-orders">0</h4>
+														<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_COMPLETED_ORDERS'][language] %></p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title cancelled-orders">0</h4>
+														<p class="lead"><%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_CANCELLED_ORDERS'][language] %></p>
+													</div>
+												</div>
+											</div>
+										</section>
 									</div>
 								</div>
-							</section>
-		  				</div>
-				  	</div>
-				</div>	
+							</div>	
+						</div>
+					</div>
+
+
+				</div>
 			</div>
 		</div>
 	</div>
@@ -209,7 +218,7 @@
 		<div class="white_bg product_card">
 			<div class="row">
 				<div class="col-md-12 data-section">
-					<h2><%= labels['LBL_COMPRADOR_DASHBOARD_MATCH_PRODUCTS'][language] %></h2>
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_MATCH_PRODUCTS'][language] %></h3>
 				</div>
 			</div>
 			<div class="row">
@@ -226,14 +235,14 @@
 		<div class="white_bg product_card">
 			<div class="row">
 				<div class="col-md-12 data-section">
-					<h2><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS'][language] %></h2>
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS'][language] %></h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="box dash_bg">
 						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
-							<table class="tbl-bottom-space">
+							<table class="table table-striped tbl-bottom-space ">
 								<thead>
 									<tr>
 										<th scope="col" width='15%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID'][language] %></th>
@@ -262,14 +271,14 @@
 		<div class="white_bg product_card">
 			<div class="row">
 				<div class="col-md-12 data-section">
-					<h2><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS'][language] %></h2>
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS'][language] %></h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="box dash_bg">
 						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
-							<table class="tbl-bottom-space">
+							<table class="table table-striped tbl-bottom-space ">
 								<thead>
 									<tr>
 										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_TITLE'][language] %></th>
@@ -296,7 +305,7 @@
 		<div class="white_bg product_card">
 			<div class="row">
 				<div class="col-md-12 data-section">
-					<h2><%= labels['LBL_COMPRADOR_DASHBOARD_RECOMMENDED_PRODUCTS'][language] %></h2>
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_RECOMMENDED_PRODUCTS'][language] %></h3>
 				</div>
 			</div>
 			<div class="row recommended-products">
@@ -308,6 +317,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
 $(document).ready(()=> {
+
 	$.ajax({url: "<%=baseURL%>check-profile-status", success: (result) => {
 		if(!result.is_profile){
 			$('.profile-section').html(result.caption).addClass('show').removeClass('hide');
@@ -331,7 +341,8 @@ $(document).ready(()=> {
     }});
 
     $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
-    	$('.total-purchase').text(result.response.total_purchase);
+    	//$('.total-purchase').text(result.response.total_purchase);
+    	$('.total-purchase').text(result.response.total_purchase_products);
         $('.total-product-views').text(result.response.total_product_views);
         $('.total-favourite-products').text(result.response.total_favourite_products);
         $('.total-purchase-products').text(result.response.total_purchase_products);

@@ -22,7 +22,19 @@
                                              </div>
                                              <div class="inline">
                                                   <h6><%= labels['LBL_STATUS'][language] %></h6>
-                                                  <p style="text-transform: capitalize !important;"><%= order.status %>
+                                                  <p style="text-transform: capitalize !important;">                                                                                                           
+                                                       <!-- <%= order.status %> -->
+                                                       <% if(order.status == 'packed'){ %>
+                                                            <%= labels['LBL_PACKED'][language] %>
+                                                       <% } else if(order.status == 'shipped'){ %>
+                                                            <%= labels['LBL_SHIPPED'][language] %>
+                                                       <% } else if(order.status == 'delivered'){ %>
+                                                            <%= labels['LBL_DELIVERED'][language] %>
+                                                       <% } else if(order.status == 'waiting'){ %>
+                                                            <%= labels['LBL_WAITING'][language] %>
+                                                       <% } else if(order.status == 'paid'){ %>
+                                                            <%= labels['LBL_PAID'][language] %>
+                                                       <% } %>
                                                   </p>
                                              </div>
                                              <% if(order['payment_type'] == 'atm_reference'){ %>

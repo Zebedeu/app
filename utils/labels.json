@@ -3903,6 +3903,11 @@
 	},
 	"LBL_SHIPPED_PRODUCT": {
 		"EN": "Shipped",
-		"PT": "Em transport"
+		"PT": "Em Târnsito"
+	},
+	
+	"LBL_SHOW_HIDE_CHART": {
+		"EN": "Show / hide chart",
+		"PT": "Mostrar / Esconder gráficos"
 	}
 }

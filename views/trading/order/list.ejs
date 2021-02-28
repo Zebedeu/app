@@ -49,8 +49,20 @@
 																<p><%= orders[i]['order_id'] %></p>
 															</div>
 															<div class="inline">
-																<h6><%= labels['LBL_STATUS'][language] %></h6>
-																<p style="text-transform: capitalize !important;"><%= orders[i]['status'] %></p>
+																<h6><%= labels['LBL_STATUS'][language] %></h6>																
+																<p style="text-transform: capitalize !important;">                                                                                                           
+																	<% if(orders[i]['status'] == 'packed'){ %>
+																		 <%= labels['LBL_PACKED'][language] %>
+																	<% } else if(orders[i]['status'] == 'shipped'){ %>
+																		 <%= labels['LBL_SHIPPED'][language] %>
+																	<% } else if(orders[i]['status'] == 'delivered'){ %>
+																		 <%= labels['LBL_DELIVERED'][language] %>
+																	<% } else if(orders[i]['status'] == 'waiting'){ %>
+																		 <%= labels['LBL_WAITING'][language] %>
+																	<% }else if(orders[i]['status'] == 'paid'){ %>
+																		<%= labels['LBL_PAID'][language] %>
+																   <% }%>
+															   </p>
 															</div>
 															<% if(orders[i]['payment_type'] == 'atm_reference'){ %>
 																<% if(orders[i]['atm_reference_response']['TIME_LEFT']){ %>

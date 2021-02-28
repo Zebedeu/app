@@ -50,7 +50,7 @@ exports.totalSales = function(req, res) {
 				}
 
 				_status ="";
-				if (element.status == 'Paid') {
+				if (element.status == 'paid') {
 					_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
 				}else if (element.status == 'packed') {
 					_status = (element.status == 'packed') ? labels['LBL_PACKED'][(req.session.language || config.default_language_code)] : labels['LBL_PACKED'][(req.session.language || config.default_language_code)];

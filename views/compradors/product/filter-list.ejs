@@ -7,7 +7,7 @@
 		  <th scope="col" width="130"><%= labels['LBL_REQUIRED_STOCK'][language] %></th>
 		  <th scope="col" width="140"><%= labels['LBL_MAX_PRICE'][language] %></th>
 		  <th scope="col" width="120"><%= labels['LBL_STATUS'][language] %></th>
-		  <th scope="col" width="100"><%= labels['LBL_ACTION'][language] %></th>
+		  <th scope="col" width="200"><%= labels['LBL_ACTION'][language] %></th>
 		</tr>
 		<% for(let i=0; i < products.length; i++) { %>
 			<tr>
@@ -39,10 +39,44 @@
 						<a href="<%=baseURL%>compradors/product/display/<%= products[i].product_id %>"><i style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 					</div>
 					<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"  class="">
-						<a href="<%=baseURL%>compradors/product/remove/<%= products[i].product_id %>"><i style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
+						<a onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
+						href="#"><i style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 					</div>
 				</td>
 			</tr>
 		<% } %>
 	</tbody>
 </table>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+	function notificacao(sub_category_title, product_id) {
+			$.confirm({
+			title: 'Desejas remover o produto ?',
+			content: sub_category_title,
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Sim',
+					btnClass: 'btn',
+					action: function () {
+						$.ajax({
+							url: "<%=baseURL%>compradors/product/remove/" + product_id,
+							success: function (result) {
+								setInterval('location.reload()', 5000);
+							},
+							error: function () {
+								location.reload(true);
+							}
+						});
+					}
+				},
+				close: function () {
+				}
+			}
+		});
+	}
+</script>

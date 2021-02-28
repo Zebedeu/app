@@ -342,6 +342,7 @@ const list = (req, res) => {
 	})
 };
 const soldList = async (req, res) => {
+	
 	let categoryArr = [];
 	Order.find({ 'products.user_info.user_id': { $in: [req.session.user_id] } }, (error, orders) => {
 		if (error) {
@@ -354,6 +355,8 @@ const soldList = async (req, res) => {
 		_.each(orders, data => {
 			data.products = JSON.parse(JSON.stringify(data.products));
 			_.each(data.products, singleProduct => {
+
+				console.log(singleProduct)
 				singleProduct.buyer_info = data.buyer_info
 				singleProduct.order_id = data.order_id
 				singleProduct.seller_id = singleProduct.user_info.user_id
@@ -363,7 +366,9 @@ const soldList = async (req, res) => {
 				singleProduct['size'] = singleProduct.size[req.session.language || config.default_language_code];
 				singleProduct['sub_category_title'] = singleProduct.sub_category_title[req.session.language || config.default_language_code];
 				singleProduct['category_title'] = singleProduct.category_title[req.session.language || config.default_language_code];
-				singleProduct.unit_price = "Kz " + separators(singleProduct.unit_price)
+				singleProduct.unit_price = separators(singleProduct.unit_price) 
+				singleProduct['images'][0] = ((singleProduct.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element.images[0] : '../../../images/forcast.png');
+
 				// singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
 				// singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
 				singleProduct.delivery_at = data.delivery_at
@@ -375,7 +380,7 @@ const soldList = async (req, res) => {
 		})
 		products = _.flatten(products)
 		// console.log("products", products);
-		console.log("befor length", products.length)
+		//console.log("befor length", products.length)
 		products = _.groupBy(products, 'product_id')
 		let finalData = []
 		_.each(products, (singleProducts, key) => {
@@ -384,7 +389,7 @@ const soldList = async (req, res) => {
 			singleProduct.qty = __.sumBy(singleProducts, "qty");
 			finalData.push(singleProduct);
 		});
-		console.log("finalData.length", finalData.length);
+		//console.log("finalData.length oiii", finalData.length);
 		if (finalData.length == 0) {
 			res.render('producers/product/empty', {
 				user: {
@@ -1009,9 +1014,9 @@ const order = function (req, res) {
 						singleProduct.order_id = data.order_id
 						singleProduct.user_info.type = (singleProduct.user_info.type).slice(0, -1)
 						singleProduct.total = singleProduct.unit_price * singleProduct.qty
-						singleProduct.unit_price = "Kz " + separatorsWD(singleProduct.unit_price)
-						singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
-						singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
+						singleProduct.unit_price = separatorsWD(singleProduct.unit_price)
+						singleProduct.seller_amount = separatorsWD(singleProduct.seller_amount) + " Kz"
+						singleProduct.kepya_commission = separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%) KZ"
 						singleProduct.delivery_at = data.delivery_at
 						singleProduct.payment_status = data.payment_status
 						// singleProduct.address_info = data.address_info.locality + ", " + data.address_info.city_district + " " + data.address_info.state
