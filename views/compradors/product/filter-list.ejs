@@ -50,7 +50,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <script>
 	function notificacao(sub_category_title, product_id) {
 			$.confirm({
@@ -79,4 +80,17 @@
 			}
 		});
 	}
+
+	tippy('#view-item', {
+        content: 'Visualizar',
+		theme: 'tomato'
+      });
+	  tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+      });
+	  tippy('#delete-item', {
+        content: 'Eliminar',
+		theme: 'tomato'
+      });
 </script>

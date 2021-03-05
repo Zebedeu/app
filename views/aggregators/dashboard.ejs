@@ -297,7 +297,7 @@
 					<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS'][language] %></h3>
 				</div>
 			</div>
-			<div class="row"></div>
+			<div class="row">
 				<div class="col-md-12">
 					<div class="box dash_bg">
 						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
@@ -397,6 +397,7 @@
 		$.ajax({
 			url: "<%=baseURL%>statistics/total", success: (result) => {
 				$('.total-sales').text(result.response.total_sales);
+			//	$('.total-sales').text(result.response.total_sold_products);
 				$('.total-product-views').text(result.response.total_product_views);
 				$('.total-favourite-list').text(result.response.total_favourite_list);
 				$('.total-sold-products').text(result.response.total_sold_products);
