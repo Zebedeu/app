@@ -18,7 +18,7 @@
 						<figcaption class="media-body kp_myorder">
 							<h3><%= products[i].sub_category_title %></h3>
 							<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span></h4>
-							<h4 style="color: #f69624;" class="sku_wrapper">Kz <%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
+							<h4 class="currency_color_text sku_wrapper">Kz <%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
 						</figcaption>
 					</figure> 
 				</td>
@@ -64,7 +64,7 @@
 	function notificacao(sub_category_title, product_id) {
 			$.confirm({
 			title: 'Desejas remover o produto ?',
-			content: sub_category_title,
+			content: "ID: " + product_id + "<br>" + 'Nome: ' + sub_category_title,
 			type: 'purple',
 			typeAnimated: true,
 			buttons: {
@@ -75,7 +75,19 @@
 						$.ajax({
 							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
 							success: function (result) {
-								setInterval('location.reload()', 5000);
+								if(result == '0'){
+									showAlert('Não pode remover o produto com id: ' + product_id, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}else if(result == '1'){
+									showAlert('Produtor removido com sucesso!', '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}
 							},
 							error: function () {
 								location.reload(true);

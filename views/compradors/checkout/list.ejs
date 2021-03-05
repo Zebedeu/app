@@ -60,10 +60,10 @@
 														</div>
 													</td>
 													<td> 
-														<h4 style="color: #f69624;padding-top: 11px;" class="sku_wrapper">Kz 1,00 / Kg</h4>
+														<h4 style="padding-top: 11px;" class="currency_color_text sku_wrapper">Kz 1,00 / Kg</h4>
 													</td>
 													<td> 
-														<h4 style="color: #f69624;padding-top: 11px;" class="sku_wrapper">Kz 300</h4>
+														<h4 style="padding-top: 11px;" class="currency_color_text sku_wrapper">Kz 300</h4>
 													</td>
 												</tr>
 											</tbody>
@@ -75,20 +75,20 @@
 										<h3 style="padding: 15px 20px;margin: 0 !important;font-size: 18px !important;"><%= labels['LBL_ORDER_TOTAL'][language] %></h3>
 										<div class="totals-item">
 									  		<label><%= labels['LBL_SUB_TOTAL'][language] %></label>
-										  	<div class="totals-value" id="cart-subtotal">Kz <%= subtotal =></div>
+										  	<div class="totals-value" id="cart-subtotal"><%= subtotal =>  Kz</div>
 										</div>
 										<div class="totals-item">
 										  	<label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
-										  	<div class="totals-value" id="cart-tax">Kz <%= transportFees %></div>
+										  	<div class="totals-value" id="cart-tax"><%= transportFees %>  Kz</div>
 										</div>
 										<div class="totals-item hide">
 										  	<label>Shipping</label>
-										  	<div class="totals-value" id="cart-shipping">Kz 0.00</div>
+										  	<div class="totals-value" id="cart-shipping">0.00  Kz</div>
 										</div>
 										<hr style="border-color: #cecece;margin: 15px;">
 										<div class="totals-item totals-item-total">
 										  	<label style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
-										  	<div style="font-size: 18px;" class="totals-value" id="cart-total">Kz <%= (total + transportFees) %></div>
+										  	<div style="font-size: 18px;" class="totals-value" id="cart-total"><%= (total + transportFees) %>  Kz</div>
 										</div>
 									
 									</div>

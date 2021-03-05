@@ -758,11 +758,24 @@ exports.add = function (req, res) {
 		}).sort({ order_number: 1 })
 	}
 };
-
+/*
 exports.remove = function (req, res) {
 	Product.remove({ product_id: req.params.id }, (err, response) => {
 		return res.redirect(config.base_url + 'aggregators/product/list');
 	})
+};*/
+
+exports.remove = function (req, res) {
+	let columnsAndValue = { products: { $elemMatch: { product_id: req.params.id } } }
+	Order.find(columnsAndValue, { _id: 0 }, (error, orders) => {
+		if (orders.length > 0) {
+			return res.end('0');
+		} else {
+			Product.remove({ product_id: req.params.id }, (err, response) => {
+				return res.end('1');
+			})
+		}
+	});
 };
 
 exports.display = function (req, res) {

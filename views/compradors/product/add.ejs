@@ -95,7 +95,7 @@
 								<div class="search-container">
 									<label
 										class="my-1 mr-2"><%= labels['LBL_COMPRADOR_DEMAND_PERIOD'][language] %></label>
-									<select class="select_plug period" id="period" name="period">
+									<!-- <select class="select_plug period" id="period" name="period">
 										<option value="none">---
 											<%= labels['LBL_COMPRADOR_DEMAND_SELECT_PERIOD'][language] %> ---</option>
 										<option value="every_week">
@@ -111,6 +111,17 @@
 										<option value="every_3_months">
 											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_3_MONTHS'][language] %>
 										</option>
+									</select> -->
+									<select class="select_plug period" id="period" name="period">
+										<option value="none">---
+											<%= labels['LBL_COMPRADOR_DEMAND_SELECT_PERIOD'][language] %> ---</option>
+										<option value="one-off">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_PONTUAL'][language] %></option>
+										<option value="weekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_WEEKLY'][language] %>
+										</option>
+										<option value="biweekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY'][language] %></option>
 									</select>
 								</div>
 							</div>
@@ -297,11 +308,20 @@
 		}
 	}
 
+	function submitPost() {
+		if (validatePost()) {
+			$(".post-add-now").attr("disabled", true);
+			$(".lds-facebook").show();
+			//$('#frm-add-product').submit()
+			notificacao();
+		}
+	}
+
 	function notificacao() {
 		$.confirm({
-			title: 'Publicar Produto',
+			title: 'Publicar Pedido',
 			icon: 'fa fa-check',
-			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			content: 'O seu pedido foi adicionado com sucesso!',
 			type: 'purple',
 			typeAnimated: true,
 			buttons: {
@@ -314,14 +334,6 @@
 				}
 			}
 		});
-	}
-
-	function submitPost() {
-		if (validatePost()) {
-			$(".post-add-now").attr("disabled", true);
-			$(".lds-facebook").show();
-			notificacao();
-		}
 	}
 
 	$(document).ready(function () {

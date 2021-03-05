@@ -31,15 +31,14 @@
                                         <b class=" col-md-5" style="margin: 1% 0 2% 30%; color: red;" >Kz <span class='user_wallet_balance'><%= wallet %></span></b> -->
 
                                         <div class="col-md-8">
-                                             <div class="row">
                                                   <div class="col-md-12">
-                                                       <div class="col-md-12" style="background: #3cc0a6; padding: 13px; margin: 10px 0px 0; color: #fff; font-size: 1.5em; margin-bottom: 5%; font-weight: 900;">
+                                                       <div class="col-md-12 wallet-account-balance-text" >
                                                             <b class="pull-left" ><%= labels['LBL_WALLET_ACCOUNT_BALANCE_TEXT'][language] %></b>
                                                        </div>
-                                                       <div class=" col-md-12 panel-badge pull-left" style="margin: 0 0 0 30%;" >
+                                                       <div class=" col-md-12 panel-badge pull-left" >
                                                             <span class=" pull-left"><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %> 
-                                                            </span><b class="pull-right" style="background: #fff; color: #252932; font-weight: 800;"><%= wallet %> Kz</b>
-                                                            <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                                                            </span><b class="pull-right wallet-recent-trasantion" ><%= wallet %> Kz</b>
+                                                            <div class="col-md-12 wallet-account-balance-line"></div>  
                    
                                                        </div>
                                                        <% if(user.user_type != 'compradors' && user.user_type != 'trading'){ %>
@@ -49,14 +48,14 @@
                                                             <span class='text-success' > : Kz <%= parseFloat(wallet) + parseFloat(lockedAmount) %></span></h4> -->
                
                                                            
-                                                               <div class=" col-md-12 panel-badge pull-left" style="margin: 0 0 0 30%;" >
+                                                               <div class=" col-md-12 panel-badge pull-left" >
                                                                 <span class=" pull-left"><%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> </span><span class="pull-right" style="background: #fff; color: rgb(243, 4, 4);"> <%= lockedAmount %> Kz</span>
-                                                                <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                                                                <div class="col-md-12 wallet-account-balance-line"></div>  
                                                             </div>
                
-                                                            <div class="col-md-12 panel-badge pull-left" style="margin: 1% 0 0% 30%;" >
+                                                            <div class="col-md-12 panel-badge pull-left"  >
                                                                  <span class="pull-left"><%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %></span> <span style=" color: #252932;" class=" pull-right" style="background: #fff; color: #000;"> <%= (walletAccountBalance) %> Kz</span>
-                                                                 <div style="background-color: #989898; margin-bottom: 2%;" class="col-md-12"></div>  
+                                                                 <div class="col-md-12 wallet-account-balance-line"></div>  
                                                             </div>
                
                                                             <!-- <ul class="nav nav-pills nav-stacked col-md-5" style="margin-left: 30%;">
@@ -79,7 +78,7 @@
                                                                  </div>
                                                              </div> -->
                                                        <% } %>
-                                                       <div class="col-md-12 panel-badge pull-left" style="margin: 1% 0 0% 30%;" >
+                                                       <div class="col-md-12 panel-badge pull-left">
 
                                                        <button class="withdrwal_btn  pull-right" style="margin: 2%  0 5% 0%; font-weight: 800;"
                                                        type="button"><%= labels['LBL_WALLET_BALANCE_WITHDRAWAL_MONEY_BUTTON'][language] %></button>

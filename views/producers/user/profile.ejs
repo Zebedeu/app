@@ -116,6 +116,15 @@
 							    <button class="main_btn2" onClick="getUserStateCityInfo('<%=baseURL%>','city','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_CITY'][language] %>','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_CITY'][language] %>','<%= user_info.state_id %>','<%= user_info.city_id %>')"><%= labels['LBL_EDIT'][language] %></button>
 							</div>
 						</div>
+						
+						<div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="search-container loginsecurity_detail security-box-height">
+							   <label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT'][language] %>:</label>
+							   <p class='profile_city'></p>
+							   <button class="main_btn2" onClick="getUserStateDocInfo('<%=baseURL%>','city','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_CITY'][language] %>','<%= labels['LBL_PRODUCER_YOUR_ACCOUNT_VALIDATE_CITY'][language] %>','<%= user_info.state_id %>','<%= user_info.city_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+						   </div>
+					   </div>
+
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -128,6 +137,7 @@
 					 		<a href="<%=baseURL%>producers/dashboard"><button class="main_btn"><%= labels['LBL_DONE'][language] %></button></a>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

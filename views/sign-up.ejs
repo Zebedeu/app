@@ -243,6 +243,9 @@
 							</div>
 							<button type="button" class="btn btn-default" onclick="submitSignUp()"><%= labels['LBL_SIGN_UP_FOR_FREE_BUTTON'][language] %></button>
 
+							<!-- <a href="javascript:void(0)" class="facebook btn" id="facebook-sign-up">
+								<i class="fa fa-facebook fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_FACEBOOK'][language] %>
+							</a> -->
 							<a href="javascript:void(0)" class="google btn" id="google-sign-up">
 								<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %>
 							</a>
@@ -250,6 +253,8 @@
 							<div class="text-center creat_new"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT'][language] %>? <a href="/"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN'][language] %></a></div>
 							
 							<div class="g-signin2 hide" data-onsuccess="onSocialSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div>
+							<!-- <div class="g-signin2 hide" data-onsuccess="onFacebookSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div> -->
+
 						</form>
 					</div>
 			</div>
@@ -409,7 +414,9 @@
 				if(obj.type == 'google'){
 					var auth2 = gapi.auth2.getAuthInstance();
 				  	auth2.signOut().then(function () {});
-				}
+				}else{
+					alert(1)
+				} 
 				
 				showAlert(response.message);
 				setTimeout(() => {
@@ -450,7 +457,13 @@
 	  	$('#google-sign-up').click('on', function(){
 	  		$('.abcRioButton').trigger('click');
 	  	})
+
+		  $('#acebook-sign-up').click('on', function(){
+	  		$('.abcRioButton').trigger('click');
+	  	})
 	});
+
+	
 </script>
 </body>
 </html>

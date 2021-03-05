@@ -49,7 +49,7 @@
 	function notificacao(farmers, farmer_id) {
 			$.confirm({
 			title: 'Desejas remover o produtor ?',
-			content: farmers,
+			content: "ID: " + farmer_id + "<br>" + 'Nome: ' + farmers,
 			type: 'purple',
 			typeAnimated: true,
 			buttons: {
@@ -60,7 +60,19 @@
 						$.ajax({
 							url: "<%=baseURL%>aggregators/user/remove/" + farmer_id,
 							success: function (result) {
-								setInterval('location.reload()', 5000);
+								if(result == '0'){
+									showAlert('Não pode remover o produtor com id: ' + farmer_id, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}else if(result == '1'){
+									showAlert('Produtor removido com sucesso!', '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}
 							},
 							error: function () {
 								location.reload(true);

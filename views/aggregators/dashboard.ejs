@@ -2,21 +2,21 @@
 <ul class="menu2">
 	<div class="container">
 		<li>
-			<a href="<%=baseURL%>aggregators/product/list">
+			<a href="<%=baseURL%>aggregators/product/add">
 				<div class="account_box2">
 					<img src="../../../images/postadd.png">
 					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE'][language] %></h3>
+						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION'][language] %></h3>
 					</div>
 				</div>
 			</a>
 		</li>
 		<li>
-			<a href="<%=baseURL%>aggregators/product/add">
+			<a href="<%=baseURL%>aggregators/product/list">
 				<div class="account_box2">
 					<img src="../../../images/open-box.png">
 					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION'][language] %></h3>
+						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE'][language] %></h3>
 					</div>
 				</div>
 			</a>
@@ -68,8 +68,7 @@
 
 		<div class="accordion js-accordion">
 			<div class="accordion__item js-accordion-item">
-				 <div class="accordion-header js-accordion-header head_"><img
-						   src="../../../images/pie-chart.png">
+				 <div class="accordion-header-dash js-accordion-header head_">
 					  <span></span></div>
 				 <div class="accordion-body js-accordion-body">
 					
@@ -397,8 +396,7 @@
 
 		$.ajax({
 			url: "<%=baseURL%>statistics/total", success: (result) => {
-			//	$('.total-sales').text(result.response.total_sales);
-				$('.total-sales').text(result.response.total_sold_products);
+				$('.total-sales').text(result.response.total_sales);
 				$('.total-product-views').text(result.response.total_product_views);
 				$('.total-favourite-list').text(result.response.total_favourite_list);
 				$('.total-sold-products').text(result.response.total_sold_products);

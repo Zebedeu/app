@@ -71,10 +71,10 @@
 								<h4><%= orders[i]['products'][j]['quantity'] %> <%= orders[i]['products'][j]['unit_type'] %></h4>	
 							</td>
 							<td> 
-								<h4 style="color: #f69624;" class="sku_wrapper">Kz <%= (orders[i]['products'][j]['unit_price']) %> / <%= orders[i]['products'][j]['unit_type'] %></h4>
+								<h4 class="currency_color_text sku_wrapper">Kz <%= (orders[i]['products'][j]['unit_price']) %> / <%= orders[i]['products'][j]['unit_type'] %></h4>
 							</td>
 							<td> 
-								<h4 style="color: #f69624;" class="sku_wrapper">Kz <%= orders[i]['products'][j]['item_total'] %></h4>
+								<h4 class="currency_color_text sku_wrapper">Kz <%= orders[i]['products'][j]['item_total'] %></h4>
 							</td>
 						</tr>
 					<% } %>

@@ -43,7 +43,7 @@
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %>
 										[<%= languages[i]['code'] %>]</label>
-									<textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>"
+									<textarea placeholder="<%= labels['LBL_PRODUCT_DESCRIPTION_1'][language] %>" class="form-control" rows="3" id="description_<%= languages[i]['code'] %>"
 										name="description_<%= languages[i]['code'] %>"><%= product.description[languages[i]['code']] %></textarea>
 									<span class="validation-alert"
 										id='err-description_<%= languages[i]['code'] %>'></span>
@@ -98,7 +98,7 @@
 								<div class="search-container">
 									<label
 										class="my-1 mr-2"><%= labels['LBL_COMPRADOR_DEMAND_PERIOD'][language] %></label>
-									<select class="select_plug period" id="period" name="period">
+									<!-- <select class="select_plug period" id="period" name="period">
 										<option value="none">---
 											<%= labels['LBL_COMPRADOR_DEMAND_SELECT_PERIOD'][language] %> ---</option>
 										<option value="every_week"
@@ -119,6 +119,17 @@
 											<% if(product.period == 'every_3_months'){ %>selected<% } %>>
 											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_3_MONTHS'][language] %>
 										</option>
+									</select> -->
+									<select class="select_plug period" id="period" name="period">
+										<option value="none">---
+											<%= labels['LBL_COMPRADOR_DEMAND_SELECT_PERIOD'][language] %> ---</option>
+										<option value="one-off">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_PONTUAL'][language] %></option>
+										<option value="weekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_WEEKLY'][language] %>
+										</option>
+										<option value="biweekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY'][language] %></option>
 									</select>
 								</div>
 							</div>
@@ -193,6 +204,10 @@
 		</div>
 	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
 	function validatePost() {
 		let errCategoryFlag = 0, errTitleFlag = 0, errDescriptionFlag = 0, errUnitFlag = 0, errUnitValueFlag = 0, errStateFlag = 0, errCityFlag = 0, errExpireDateFlag = 0, errLocationFlag = 0, errWhereToDeliverFlag = 0;
@@ -299,11 +314,30 @@
 		}
 	}
 
+	function notificacao() {
+		$.confirm({
+			title: 'Actualizar Pedido',
+			icon: 'fa fa-check',
+			content: 'O seu pedido foi actualizado com sucesso!',
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'btn',
+					action: function () {
+						$('#frm-edit-product').submit();
+					}
+				}
+			}
+		});
+	}
+
 	function submitPost() {
 		if (validatePost()) {
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			$('#frm-edit-product').submit()
+			notificacao();
 		}
 	}
 

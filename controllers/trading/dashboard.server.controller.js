@@ -323,7 +323,7 @@ exports.get_recently_viewed_products = function (req, res) {
 							className = 'tbl-row-color';
 						}
 
-						tbl_recently_viewed_products += "<tr><td class='capitalize column_order_table" + className + "' onClick=productDetails('" + config.base_url + "','trading','" + element.product_id + "')>" + element.sub_category_title + "</td><td class='capitalize'>" + element.category_title + "</td><td>Kz " + separators(element.unit_price) + ' / ' + element.unit_type + "</td><td>" + separatorsWD(element.remaining_unit_value) + ' ' + (parseFloat(element.remaining_unit_value) > 1 ? element.unit_plural_title : element.unit_type) + "</td><td>" + element.state_name + "</td></tr>";
+						tbl_recently_viewed_products += "<tr><td class='capitalize column_order_table " + className + "' onClick=productDetails('" + config.base_url + "','trading','" + element.product_id + "')>" + element.sub_category_title + "</td><td class='capitalize'>" + element.category_title + "</td><td>Kz " + separators(element.unit_price) + ' / ' + element.unit_type + "</td><td>" + separatorsWD(element.remaining_unit_value) + ' ' + (parseFloat(element.remaining_unit_value) > 1 ? element.unit_plural_title : element.unit_type) + "</td><td>" + element.state_name + "</td></tr>";
 					}
 				})
 			} else {

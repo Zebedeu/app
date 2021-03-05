@@ -115,11 +115,14 @@ var productSchema = new Schema({
 		type: String,
 		enum: [
 			'none',
-			'every_week',
+			/*'every_week',
 			'every_twice_week',
 			'every_month',
 			'every_2_months',
-			'every_3_months',
+			'every_3_months',*/
+			'one-off',
+			'weekly',
+			'biweekly',
 		],
 		default: 'none',
 	},

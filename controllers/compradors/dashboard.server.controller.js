@@ -317,7 +317,7 @@ exports.get_recently_viewed_products = function (req, res) {
 							className = 'tbl-row-color';
 						}
 
-						tbl_recently_viewed_products += "<tr><td class='capitalize column_order_table " + className + "' onClick=productDetails('" + config.base_url + "','compradors','" + element.product_id + "')>" + element.sub_category_title + "</td><td class='capitalize'>" + element.category_title + "</td><td>" + separators(element.unit_price) + 'Kz / ' + element.unit_type + "</td><td>" + separatorsWD(element.remaining_unit_value) + ' ' + (parseFloat(element.remaining_unit_value) > 1 ? element.unit_plural_title : element.unit_type) + "</td><td>" + element.state_name + "</td></tr>";
+						tbl_recently_viewed_products += "<tr class='" + className + "'><td class='capitalize column_order_table' onClick=productDetails('" + config.base_url + "','compradors','" + element.product_id + "')>" + element.sub_category_title + "</td><td class='capitalize'>" + element.category_title + "</td><td>" + separators(element.unit_price) + 'Kz / ' + element.unit_type + "</td><td>" + separatorsWD(element.remaining_unit_value) + ' ' + (parseFloat(element.remaining_unit_value) > 1 ? element.unit_plural_title : element.unit_type) + "</td><td>" + element.state_name + "</td></tr>";
 					}
 				})
 			} else {
@@ -358,7 +358,7 @@ exports.get_ongoing_orders = function (req, res) {
 					_status = (element.status == 'waiting') ? labels['LBL_WAITING'][(req.session.language || config.default_language_code)] : labels['LBL_WAITING'][(req.session.language || config.default_language_code)];
 				}
 
-				tbl_ongoing_orders += "<tr><td class='column_order_table " + className + "' onClick=orderDetails('" + config.base_url + "','compradors','" + element.order_id + "')>" + element.order_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td> " + separators(element.total) + " Kz</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
+				tbl_ongoing_orders += "<tr class='" + className + "'><td class='column_order_table' onClick=orderDetails('" + config.base_url + "','compradors','" + element.order_id + "')>" + element.order_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td> " + separators(element.total) + " Kz</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
 			})
 		} else {
 			tbl_ongoing_orders += "<tr><td colspan='6'>" + (labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";

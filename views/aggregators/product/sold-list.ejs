@@ -26,8 +26,8 @@
 								console.log("products[i]",products[i]);
 							%>
 
-							<tr
-								onclick="window.location = '<%=baseURL%>aggregators/product/display/<%=products[i].product_id%>'">
+							<!-- <tr onclick="window.location = '<%=baseURL%>aggregators/product/display/<%=products[i].product_id%>'"> -->
+							<tr>
 								<td>
 									<figure class="">
 										<div class="img-wrap"><img src="<%= imageUrl+"/"+products[i].images[0] %>"
@@ -37,7 +37,7 @@
 											<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;"
 													class="fa fa-map-marker" aria-hidden="true"></i>
 												<span><%= products[i].location %></span></h4>
-											<h4 style="color: #f69624;" class="sku_wrapper">
+											<h4 class="currency_color_text sku_wrapper">
 												<%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
 										</figcaption>
 									</figure>
@@ -65,8 +65,8 @@
 									</div>
 									<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a href="<%=baseURL%>aggregators/product/remove/<%= products[i].product_id %>"><i
-												style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
+										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
+										    href="#"><i	style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 									</div>
 								</td>
 							</tr>
@@ -86,6 +86,10 @@
 		</div>
 	</div>
 </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 <script>
 	function filterProducts() {
 		let category_id = $('#category_id').val();
@@ -97,6 +101,45 @@
 		$.ajax({
 			url: "<%=baseURL%>producers/product/filter-list?category_id=" + category_id + "&type=" + type + "&status=" + status + "&sort_by_price=" + sort_by_price + "&sort_by_qty=" + sort_by_qty, success: function (result) {
 				$('.list-products').html(result);
+			}
+		});
+	}
+	function notificacao(sub_category_title, product_id) {
+			$.confirm({
+			title: 'Desejas remover o produto ?',
+			content: "ID: " + product_id + "<br>" + 'Nome: ' + sub_category_title,
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Sim',
+					btnClass: 'btn',
+					action: function () {
+						$.ajax({
+							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
+							success: function (result) {
+								if(result == '0'){
+									showAlert('Não pode remover o produto com id: ' + product_id, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}else if(result == '1'){
+									showAlert('Produtor removido com sucesso!', '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+									setTimeout(() => {
+										hideAlert(),
+										location.reload(true)
+									}, 3000);
+								}
+							},
+							error: function () {
+								location.reload(true);
+							}
+						});
+					}
+				},
+				close: function () {
+				}
 			}
 		});
 	}

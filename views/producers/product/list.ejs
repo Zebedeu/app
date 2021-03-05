@@ -101,7 +101,8 @@
 					</div>
 
 					<div class="col-lg-12 col-sm-12 list-products">
-						<a href="add" style="float: right; margin: 0;"><button class="main_btn add-product-btn-left-space">
+						<a href="add" style="float: right; margin: 0;"><button
+								class="main_btn add-product-btn-left-space">
 								<%= labels['LBL_POST_ADD_NOW'][language] %>
 							</button></a>
 						<table class="table shopping-cart-wrap">
@@ -139,19 +140,22 @@
 												<div class="img-wrap"><img src="<%= products[i].images[0] %>"
 														class="img-thumbnail img-sm"></div>
 												<figcaption class="media-body kp_myorder">
-													<h3>
+													<h3 class="list-product-m-item ">
 														<%= products[i].sub_category_title %>
 													</h3>
-													<h4>
-														<%= products[i].product_id %> &nbsp; <i
-																style="font-size: 14px;" class="fa fa-map-marker"
-																aria-hidden="true"></i>
+
+													<h4><span class="product-number-text list-product-m-item">
+														#<%= products[i].product_id %></span> &nbsp; 
+														<div class="list-product-m-item"><i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i>
 															<span>
 																<%= products[i].location %>
 															</span>
+														</div>
 													</h4>
-													<h4 style="color: #555;" class="sku_wrapper">
+
+													<h4 class="list-product-m-item currency_color_text sku_wrapper">
 														<%= (products[i].unit_price) %> Kz / <%= products[i].unit_type %>
+
 													</h4>
 												</figcaption>
 											</figure>
@@ -188,26 +192,25 @@
 											</h4>
 										</td>
 										<td>
-											<div style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
-												class="">
+											<div id="view-item" style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
+												>
 												<a
 													href="<%=baseURL%>producers/product/order/<%= products[i].product_id %>"><i
-														style="font-size: 22px;color: #fff;" class="fa fa-eye"></i></a>
+														style="font-size: 22px;color: #fff;" class="fa fa-eye" ></i></a>
 											</div>
-											<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
-												class="">
-												<a
+											<div  id="edit-item" style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
+												>
+												<a 
 													href="<%=baseURL%>producers/product/display/<%= products[i].product_id %>"><i
-														style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
+														style="font-size: 22px;color: #fff;" class="fa fa-edit" ></i></a>
 											</div>
-											<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
-												class="">
+											<div id="delete-item" style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;">
 
-												<a href="javascript:void(0)"
+												<a href="javascript:void(0)" 
 													onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
 													href="<%=baseURL%>producers/product/remove/<%= products[i].product_id %>"><i
 														style="font-size: 22px;color: #fff;"
-														class="fa fa-trash"></i></a>
+														class="fa fa-trash" ></i></a>
 												<!-- <a
 													     href="<%=baseURL%>producers/product/remove/<%= products[i].product_id %>"><i
 														style="font-size: 22px;color: #fff;"
@@ -235,7 +238,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <script>
 	function filterProducts() {
 		let category_id = $('#category_id').val();
@@ -251,10 +255,23 @@
 		});
 	}
 
+	tippy('#view-item', {
+        content: 'Visualizar',
+		theme: 'tomato'
+      });
+	  tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+      });
+	  tippy('#delete-item', {
+        content: 'Eliminar',
+		theme: 'tomato'
+      });
+
 	function notificacao(sub_category_title, product_id) {
-			$.confirm({
+		$.confirm({
 			title: 'Desejas remover o produto ?',
-			content: sub_category_title,
+			content: "ID: " + product_id + "<br>" + "Nome: " + sub_category_title,
 			type: 'purple',
 			typeAnimated: true,
 			buttons: {
@@ -265,10 +282,22 @@
 						$.ajax({
 							url: "<%=baseURL%>producers/product/remove/" + product_id,
 							success: function (result) {
-								location.reload();
+								if (result === '0') {
+									showAlert('O produto ' + product_id + ' não pode ser removido', '<%=baseURL%>', '');
+									setTimeout(() => {
+										hideAlert()
+									}, 3000);
+								} else if (result === '1') {
+									showAlert('O produto ' + product_id + 'removido com sucesso!', '<%=baseURL%>', '');
+									setTimeout(() => {
+										hideAlert()
+									}, 2000);
+									setTimeout(() => {
+										window.location.replace("list");
+									}, 2000);
+								}
 							},
 							error: function () {
-								document.location.reload(true);
 							}
 						});
 					}

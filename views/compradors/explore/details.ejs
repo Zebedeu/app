@@ -83,7 +83,7 @@
 					</div>
 
 					<div class="product_meta"><br>
-							<h4 style="color: #f69624;" class="sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz/ <%= product.unit_type %></h4>
+							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz/ <%= product.unit_type %></h4>
 							<% if(product.product_type == 'forecast'){ %>
 							<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_plural_title %></h5>
 								<h5 style='padding-bottom: 4px;'><%= labels['LBL_DATE_OF_AVAILABILITY'][language] %> : <%= product.harvest_date %></h5>
@@ -100,7 +100,8 @@
 							<label class="qty-product-details"><%= labels['LBL_QTY'][language] %> : </label>
 							<div class="custom pull-left">
 								<div class="quantity">
-									<input type="number" id="number" class="count input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'>
+									<!-- <input type="number" id="number" class="count input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'> -->
+									<input type="number" id="number" class="input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'>
 								</div>
 							</div>
 							<span style="position: relative;top: 20px;left: 10px;"><%= product.unit_type %></span>

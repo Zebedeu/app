@@ -14,6 +14,7 @@ let labels = require('../../utils/labels.json');
 let imagemagick = require('imagemagick');
 let path = require('path');
 let fs = require('fs');
+let Product = require('mongoose').model('Product');
 
 exports.list = function (req, res) {
 	Farmer.find({ user_id: req.session.user_id }, { _id: 0, created_at: 0, updated_at: 0 }, (err, farmers) => {
@@ -51,7 +52,7 @@ exports.add = function (req, res) {
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			bank_name: req.body.bank_name,
-			bank_account_no: "AO06 "+ req.body.bank_account_no,
+			bank_account_no: "AO06 " + req.body.bank_account_no,
 			nif: req.body.nif,
 			address: req.body.address
 		}
@@ -340,7 +341,7 @@ exports.edit = function (req, res) {
 	})
 };
 
-exports.remove = function (req, res) {
+/*exports.remove = function (req, res) {
 	Farmer.findOne({ farmer_id: req.params.id }, { _id: 0, farmer_id: 1, photo: 1 }, (err, singleFarmer) => {
 		if (!singleFarmer) {
 			return res.redirect('list');
@@ -356,6 +357,31 @@ exports.remove = function (req, res) {
 			return res.redirect(config.base_url + 'aggregators/user/list');
 		})
 	})
+};*/
+
+exports.remove = function (req, res) {
+
+
+	Product.find({ producer_id: req.params.id }, (err, prod) => {
+		if (prod.length > 0) {
+			res.end('0');
+		} else if (prod.length == 0) {
+			Farmer.findOne({ farmer_id: req.params.id }, { _id: 0, farmer_id: 1, photo: 1 }, (err, singleFarmer) => {
+				if (!singleFarmer) {
+					return res.redirect('list');
+				}
+				if (singleFarmer.photo) {
+					let fileArr = [];
+					fileArr.push({ Key: 'users/' + /[^/]*$/.exec(singleFarmer.photo)[0] })
+					s3Handler.deleteMultipleFiles(fileArr, config.aws.bucketName, (error, res) => { });
+				}
+				Farmer.remove({ farmer_id: req.params.id }, (err, response) => {
+					//return res.redirect(config.base_url + 'aggregators/user/list');
+					return res.end('1');
+				})
+			})
+		}
+	});
 };
 
 exports.display = function (req, res) {

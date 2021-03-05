@@ -99,6 +99,42 @@
      </div>
 </div>
 
+<div class="modal fade in" id="editUserDocInfoModal" role="dialog">
+     <input type='hidden' class="profile_type">
+     <input type='hidden' class="profile_type_error">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT_PRODUCT_DOC'][language] %> <span class='profile_title'></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row add-address">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <div class="input-group">
+                                        <div class="custom-file">
+                                             <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                  aria-describedby="inputGroupFileAddon01" name="images" id="images" multiple>
+                                             <label class="custom-file-label" for="inputGroupFile01"></label>
+                                       </div>
+                                   </div>
+                                   <span class="validation-alert" id='img_err'></span>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);"
+                                   onClick='setUserStateCityInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
+                                        style="margin: 5px 0;"
+                                        class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
 <div class="modal fade in" id="editUserInfoPasswordModal" role="dialog">
      <input type='hidden' class="profile_type">
      <div class="modal-dialog">

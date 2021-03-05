@@ -35,8 +35,8 @@ exports.get_ongoing_orders = function (req, res) {
 				shipped_date = convert_date(element.delivery_at, req.session.language);
 
 				let className = '';
-				if (index % 2 != 0) {
-					className = 'tbl-row-color';
+				if (index % 2 != 0 ) {
+					className = 'tbl-row-colorv';
 				}
 				let address = "-";
 				if (element.address_info.locality)
@@ -46,7 +46,7 @@ exports.get_ongoing_orders = function (req, res) {
         
 				_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
 				
-				tbl_ongoing_orders += "<tr><td class='column_order_table " + className + "' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
+				tbl_ongoing_orders += "<tr class='"+ className +"'><td class='column_order_table' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
 
 			})
 		} else {

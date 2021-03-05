@@ -334,7 +334,6 @@ exports.total = async (req, res) => {
 				total_favourite_products: separatorsWD(singleUser.favourite_product_id.length),
 				total_purchase_products: (singleUser.statistics && singleUser.statistics.total_purchase_products) ? separatorsWD(singleUser.statistics.total_purchase_products) : 0
 			}
-
 			let activeColumnAndValues = [
 				{
 					$match: {
@@ -353,7 +352,6 @@ exports.total = async (req, res) => {
 
 			Product.aggregate(activeColumnAndValues, (error, orders) => {
 				responseObj['total_active_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
-
 				let expireColumnAndValues = [
 					{
 						$match: {
@@ -372,7 +370,6 @@ exports.total = async (req, res) => {
 
 				Product.aggregate(expireColumnAndValues, (error, orders) => {
 					responseObj['total_expired_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
-
 					res.send({ code: 200, response: responseObj })
 					return false;
 				})
@@ -395,12 +392,16 @@ exports.total = async (req, res) => {
 								done(errors.internalServer(true), null);
 								return;
 							}
+							let total_sales =0;
 							let finalProducts = [];
 							_.each(orders, data => {
 								data.products = JSON.parse(JSON.stringify(data.products));
 								_.each(data.products, singleProduct => {
 									singleProduct.seller_id = singleProduct.user_info.user_id
 								})
+								if(data.payment_status == 'paid'){
+									total_sales += 1;
+								}
 								finalProducts.push(_.where(data.products, { seller_id: req.session.user_id }))
 							})
 
@@ -415,10 +416,12 @@ exports.total = async (req, res) => {
 								responseObj['total_favourite_list'] = separatorsWD(users.length);
 								responseObj['total_sold_products'] = separatorsWD(soldCount);
 								responseObj['total_unsold_products'] = separatorsWD(unSoldProducts.length);
+								responseObj['total_sales'] = separatorsWD(total_sales);
 
 								res.send({ code: 200, response: responseObj })
 								return false;
 							})
+							//console.log(Object.keys(finalProducts).length);
 						});
 
 

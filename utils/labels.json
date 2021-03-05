@@ -184,7 +184,7 @@
 		"PT": "Publicar produto"
 	},
 	"LBL_POST_FORECAST": {
-		"EN": "Post Forecast",
+		"EN": "Post forecast",
 		"PT": "Publicar pedido"
 	},
 	"LBL_EXPLORE_PRODUCTS": {
@@ -196,8 +196,8 @@
 		"PT": "Explore o produto mais recente"
 	},
 	"LBL_MANAGE_USERS": {
-		"EN": "Manage Users",
-		"PT": "Gerir Produtores"
+		"EN": "Manage users",
+		"PT": "Gerir produtores"
 	},
 	"LBL_YOUR_USERS": {
 		"EN": "Your users",
@@ -205,7 +205,7 @@
 	},
 	"LBL_YOUR_ORDERS": {
 		"EN": "Your Orders",
-		"PT": "As minhas encomendas"
+		"PT": "As minhas compras"
 	},
 	"LBL_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -596,7 +596,7 @@
 		"PT": "Seus detalhes"
 	},
 	"LBL_TYPE_OF_ADDRESS": {
-		"EN": "Type of Address",
+		"EN": "Establishment",
 		"PT": "Estabelecimento"
 	},
 	"LBL_OFFICE_COMMERCIAL": {
@@ -765,7 +765,7 @@
 	},
 	"LBL_REQUIRED_STOCK": {
 		"EN": "Required Stock",
-		"PT": "Quantidade necessária"
+		"PT": "Quantidade"
 	},
 	"LBL_MAX_PRICE": {
 		"EN": "Maximum Price Range per Kg",
@@ -857,7 +857,7 @@
 	},
 	"LBL_LIST_FAVOURITE": {
 		"EN": "List Favourites",
-		"PT": "Favoritos da lista"
+		"PT": " Lista de favoritos"
 	},
 	"LBL_FAVOURITE_LIST": {
 		"EN": "Favourite list",
@@ -1165,7 +1165,7 @@
 	},
 	"LBL_USE_THIS": {
 		"EN": "Use this",
-		"PT": "Usa isto"
+		"PT": "Usar este endereço"
 	},
 	"LBL_PAYMENT_OPTIONS": {
 		"EN": "Payment Options",
@@ -1554,7 +1554,7 @@
 	},
 	"LBL_SIGN_IN_REMEMBER_ME": {
 		"EN": "Remember Me",
-		"PT": "Guardas os meus dados"
+		"PT": "Guardar os meus dados"
 	},
 	"LBL_SIGN_IN_FORGOT_PASSWORD": {
 		"EN": "Forgot Password",
@@ -1566,7 +1566,7 @@
 	},
 	"LBL_SIGN_IN_WITH_GOOGLE_BUTTON": {
 		"EN": "Sign In with Google",
-		"PT": "Faça login com o Google"
+		"PT": "Fazer login com o Google"
 	},
 	"LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT": {
 		"EN": "Don’t Have an Account",
@@ -1877,7 +1877,7 @@
 		"PT": "Publicar produtos"
 	},
 	"LBL_PRODUCER_DASHBOARD_POST_FORECAST_OR_PRODUCTS_DESCRIPTION": {
-		"EN": "Post Forecast",
+		"EN": "Post forecast",
 		"PT": "Publicar um produto ou uma previsão de colheita"
 	},
 	"LBL_PRODUCER_DASHBOARD_YOUR_ORDERS": {
@@ -1897,16 +1897,16 @@
 		"PT": "Editar a informação da minha conta"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST": {
-		"EN": "Post Forecast",
+		"EN": "Post forecast",
 		"PT": "Publicar Produtos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION": {
-		"EN": "Post Forecast",
+		"EN": "Post forecast",
 		"PT": "Publicar Produtos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS": {
-		"EN": "Manage Farmer",
-		"PT": "Gerir Productor"
+		"EN": "Manage farmer",
+		"PT": "Gerir productor"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION": {
 		"EN": "Your users",
@@ -1930,7 +1930,7 @@
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
 		"EN": "Your Orders",
-		"PT": "As minhas encomendas"
+		"PT": "As minhas Compras"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -1985,7 +1985,7 @@
 		"PT": "Acompanhar o meu histórico de compras"
 	},
 	"LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND": {
-		"EN": "Post Forecast",
+		"EN": "Post forecast",
 		"PT": "Publicar pedido"
 	},
 	"LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND_DESCRIPTION": {
@@ -2025,7 +2025,7 @@
 		"PT": "Editar os meus dados pessoais"
 	},
 	"LBL_PRODUCER_YOUR_ORDER_EMPTY": {
-		"EN": "Recently you don't have any LBL_SELECT_PRODUCESorders",
+		"EN": "Recently you don't have any LBL_SELECT_PRODUCES orders",
 		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_AGGREGATOR_YOUR_ORDER_EMPTY": {
@@ -2121,12 +2121,12 @@
 		"PT": "Ver a minha lista de produtos e previsões de colheita"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE": {
-		"EN": "Manage Products",
-		"PT": "Gerir Produtos"
+		"EN": "Manage products",
+		"PT": "Gerir produtos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_DESCRIPTION": {
-		"EN": "Manage Products",
-		"PT": "Gerenciar Produtos"
+		"EN": "Manage products",
+		"PT": "Gerenciar produtos"
 	},
 	"LBL_PRODUCER_PRODUCT_MIN_UNIT_QTY": {
 		"EN": "Minimum qty should be greater than or equal to ",
@@ -2213,19 +2213,19 @@
 		"PT": "Entregue"
 	},
 	"LBL_COMPRADOR_MENU_YOUR_WALLET": {
-		"EN": "My Wallet",
+		"EN": "My wallet",
 		"PT": "A minha carteira"
 	},
 	"LBL_TRADING_MENU_YOUR_WALLET": {
-		"EN": "My Wallet",
+		"EN": "My wallet",
 		"PT": "A minha carteira"
 	},
 	"LBL_PRODUCER_MENU_YOUR_WALLET": {
-		"EN": "My Wallet",
+		"EN": "My wallet",
 		"PT": "A minha carteira"
 	},
 	"LBL_AGGREGATOR_MENU_YOUR_WALLET": {
-		"EN": "Your Wallet",
+		"EN": "Your wallet",
 		"PT": "A minha carteira"
 	},
 	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_TITLE": {
@@ -2742,7 +2742,7 @@
 	},
 	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS": {
 		"EN": "Ongoing Orders",
-		"PT": "Pedidos em andamento"
+		"PT": "Vendas em andamento"
 	},
 	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
 		"EN": "Order ID",
@@ -3794,8 +3794,8 @@
 		"PT": "Carateristicas do produto / Condições de embalagem / Já colheu ou não?"
 	},
 	"LBL_ADD_FARMER": {
-		"EN": "Add Farmer",
-		"PT": "Adicionar Productor"
+		"EN": "Add farmer",
+		"PT": "Adicionar productor"
 	},
 	"LBL_FARMER_LIST": {
 		"EN": "Farmes List",
@@ -3886,8 +3886,8 @@
 		"PT": "Criado em: "
 	},
 	"LBL_AGGREGATOR_DASHBOARD_ADD_FARMER": {
-		"EN": "Add Farmer",
-		"PT": "Adicionar Productor"
+		"EN": "Add farmer",
+		"PT": "Adicionar productor"
 	},
 	"LBL_NAME_RESPONSIBLE": {
 		"EN": "Responsible Name",
@@ -3909,5 +3909,37 @@
 	"LBL_SHOW_HIDE_CHART": {
 		"EN": "Show / hide chart",
 		"PT": "Mostrar / Esconder gráficos"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_PONTUAL": {
+		"EN": "One-off",
+		"PT": "Pontual"
+	},
+	"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_WEEKLY": {
+		"EN": "Weekly",
+		"PT": "Semanalmente"
+	},"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY": {
+		"EN": "Biweekly",
+		"PT": "Quinzenalmente"
+	},
+	"LBL_LIST_COMPRADOR_PEDIDO": {
+		"EN": "Demand list",
+		"PT": "Lista de Pedidos"
+	},
+	"LBL_LIST_COMPRADOR_PEDIDO_MENU": {
+		"EN": "Demand",
+		"PT": "Pedidos"
+	},
+	"LBL_MENU_COMPRADOR_MANAGE_ORDERS": {
+		"EN": "Manage orders",
+		"PT": "Gerir pedidos"
+	},	"LBL_YOUR_ORDERS_PRODUCERS": {
+		"EN": "Your Orders",
+		"PT": "As minhas vendas"
+	},"LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT": {
+		"EN": "Document",
+		"PT": "Documento"
+	},	"LBL_EDIT_PRODUCT_DOC": {
+		"EN": "Edit Document",
+		"PT": "Editar Documento"
 	}
 }

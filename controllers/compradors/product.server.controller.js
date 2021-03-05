@@ -19,6 +19,7 @@ let Setting = require('mongoose').model('Setting');
 let Unit = require('mongoose').model('Unit');
 let labels = require('../../utils/labels.json');
 
+
 exports.filterList = function(req, res) {
 	let sortColumnAndValues = {}, filterColumnAndValues = { user_id: req.session.user_id };
 	if(req.query.sort_by_price == 'min'){
@@ -256,7 +257,7 @@ exports.list = function(req, res) {
 				categories: categoryArr,
 				labels,
 				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_DEMAND'][(req.session.language || config.default_language_code)]+"</li>",
+				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_COMPRADOR_PEDIDO'][(req.session.language || config.default_language_code)]+"</li>",
 				messages : req.flash('error') || req.flash('info'),
 				messages : req.flash('info'),
 			});
@@ -312,7 +313,7 @@ exports.add = function(req, res) {
 				labels,
 				languages,
 				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item'><a href='"+config.base_url+"compradors/product/list'>"+labels['LBL_LIST_DEMAND'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_ADD_NEW_DEMAND'][(req.session.language || config.default_language_code)]+"</li>",
+				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item'><a href='"+config.base_url+"compradors/product/list'>"+labels['LBL_LIST_COMPRADOR_PEDIDO'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_ADD_NEW_DEMAND'][(req.session.language || config.default_language_code)]+"</li>",
 				messages : req.flash('error') || req.flash('info'),
 				messages : req.flash('info'),
 			});
@@ -351,7 +352,7 @@ exports.display = function(req, res) {
 						languages,
 						language: req.session.language || config.default_language_code,
 						max_price_range: (units) ? units.max_price_range : 0,
-						breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item'><a href='"+config.base_url+"compradors/product/list'>"+labels['LBL_LIST_DEMAND'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_EDIT_DEMAND'][(req.session.language || config.default_language_code)]+"</li>",
+						breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item'><a href='"+config.base_url+"compradors/product/list'>"+labels['LBL_LIST_COMPRADOR_PEDIDO'][(req.session.language || config.default_language_code)]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_EDIT_DEMAND'][(req.session.language || config.default_language_code)]+"</li>",
 						messages : req.flash('error') || req.flash('info'),
 						messages : req.flash('info'),
 					});
@@ -391,7 +392,8 @@ exports.edit = function(req, res) {
 				let descriptionObj = {};
 				_.each(languages, (element, index, list) => {
 					let desc = 'description_'+element.code;
-					let descCode = (req.body[desc]).trim() || '';
+					let descCode = (req.body[desc] ? ((req.body[desc]).trim()) : '');
+					//let descCode = (req.body[desc]).trim() || '';
 					descCode = descCode.replace(/[\t\n]+/g,' ');
 					descriptionObj[element.code] = descCode;
 		        })

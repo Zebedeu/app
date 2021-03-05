@@ -342,7 +342,7 @@ const list = (req, res) => {
 	})
 };
 const soldList = async (req, res) => {
-	
+
 	let categoryArr = [];
 	Order.find({ 'products.user_info.user_id': { $in: [req.session.user_id] } }, (error, orders) => {
 		if (error) {
@@ -366,7 +366,7 @@ const soldList = async (req, res) => {
 				singleProduct['size'] = singleProduct.size[req.session.language || config.default_language_code];
 				singleProduct['sub_category_title'] = singleProduct.sub_category_title[req.session.language || config.default_language_code];
 				singleProduct['category_title'] = singleProduct.category_title[req.session.language || config.default_language_code];
-				singleProduct.unit_price = separators(singleProduct.unit_price) 
+				singleProduct.unit_price = separators(singleProduct.unit_price)
 				singleProduct['images'][0] = ((singleProduct.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element.images[0] : '../../../images/forcast.png');
 
 				// singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
@@ -743,25 +743,31 @@ const add = (req, res) => {
 };
 
 const remove = (req, res) => {
-	Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, images: 1 }, (err, singleProduct) => {
-		if (!singleProduct) {
-			return res.redirect('list');
-		}
-
-		Product.remove({ product_id: req.params.id }, (err, response) => {
-			let fileArr = [];
-			let productImagesArr = singleProduct.images;
-			_.each(productImagesArr, (element, index, list) => {
-				fileArr.push({
-					Key: 'products/' + /[^/]*$/.exec(element)[0]
+	let columnsAndValue = { products: { $elemMatch: { product_id: req.params.id } } }
+	Order.find(columnsAndValue, { _id: 0 }, (error, orders) => {
+		if (orders.length > 0) {
+			console.log("orders - ", orders.length);
+			return res.end('0');
+		} else {
+			Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, images: 1 }, (err, singleProduct) => {
+				if (!singleProduct) {
+					return res.end('0');
+				}
+				Product.remove({ product_id: req.params.id }, (err, response) => {
+					let fileArr = [];
+					let productImagesArr = singleProduct.images;
+					_.each(productImagesArr, (element, index, list) => {
+						fileArr.push({
+							Key: 'products/' + /[^/]*$/.exec(element)[0]
+						})
+					})
+					s3Handler.deleteMultipleFiles(fileArr, config.aws.bucketName, (error, res) => { });
+					return res.end('1');
 				})
 			})
+		}
 
-			s3Handler.deleteMultipleFiles(fileArr, config.aws.bucketName, (error, res) => { });
-			//return true;
-			return res.redirect(config.base_url + 'producers/product/list');
-		})
-	})
+	});
 };
 
 const display = (req, res) => {

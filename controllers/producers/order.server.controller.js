@@ -134,7 +134,7 @@ exports.list = async function (req, res) {
                moment,
                labels,
                language: req.session.language || 'EN',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</li>",
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS_PRODUCERS'][(req.session.language || 'EN')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });
@@ -213,7 +213,7 @@ exports.details = function (req, res) {
                totalDelivered: totalDelivered,
                labels,
                language: req.session.language || 'EN',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "producers/order/list'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'EN')] + "</li>",
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "producers/order/list'>" + labels['LBL_YOUR_ORDERS_PRODUCERS'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'EN')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });

@@ -9,13 +9,20 @@ const randomStr = () => {
     return result;
 };
 
+const generateInviteCode = (length) => {
+    let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
+  };
+  
 const randomNo = () => {
     return (Math.floor(Math.random() * (999999999 - 111111111 + 1) + 111111111));
 };
 
 const generateRandom = (label) => {
     let generatedId = '';
-    if (label == 'USE' || label == 'FAR') {
+    if (label) {
         generatedId = (Math.floor(Math.random() * (999999 - 111111 + 1) + 111111));
     } else {
         generatedId = `${moment().unix()}${Math.floor((Math.random() * 99) + 11)}`;
@@ -37,5 +44,6 @@ module.exports = {
     randomStr,
     generateId,
     generateRandom,
-    generateReference
+    generateReference,
+    generateInviteCode
 };

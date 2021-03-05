@@ -12,7 +12,29 @@
 				</div>
 			</a>
 		</li>
+		
 		<li>
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<div class="account_box2">
+							<img src="../../../images/open-box.png">
+							<div class="account_box_inner2">
+								<h3><%= labels['LBL_LIST_COMPRADOR_PEDIDO_MENU'][language] %></h3>
+								<b class="caret"></b>
+							</div>
+						</div>
+					</a>
+
+					<ul class="dropdown-menu my_account">
+						<li><a class="" href="<%=baseURL%>compradors/product/add"><%= labels['LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND'][language] %></a></li>
+						<li style="margin-top: -25px;" class=''><a class="" href="<%=baseURL%>compradors/product/list"><%= labels['LBL_MENU_COMPRADOR_MANAGE_ORDERS'][language] %></a></li>
+					</ul>
+				</li>
+			
+		</li>
+
+		<!-- <li>
 			<a href="<%=baseURL%>compradors/product/add">
 				<div class="account_box2">
 		        	<img src="../../../images/postadd.png">
@@ -21,7 +43,8 @@
 		        	</div>
 				</div>
 			</a>
-		</li>
+		</li> -->
+		
 		<li>
 			<a href="<%=baseURL%>compradors/explore/list">
 				<div class="account_box2">
@@ -71,8 +94,7 @@
 
 		<div class="accordion js-accordion">
 			<div class="accordion__item js-accordion-item">
-				 <div class="accordion-header js-accordion-header head_"><img
-						   src="../../../images/pie-chart.png">
+				 <div class="accordion-header-dash js-accordion-header head_">
 					  <span></span></div>
 				 <div class="accordion-body js-accordion-body">
 					
@@ -84,14 +106,14 @@
 									<div class="row">
 										<div class="col-md-12 cus_paddy">
 											<div class="box dash_bg">
-												<h3 class="dash_title">Statistics</h3>
+												<h3 class="dash_title"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS'][language] %>
 												<section class="statis text-center">
 													<div class="row">
 														<div class="col-md-12">
 															<a href="<%=baseURL%>compradors/statistics/total_purchase">
 																<div class="box dash_bg">
 																	<i class="fa fa-bar-chart"></i>
-																	<h3 class="stat_title total-purchase">0</h3>
+																	<h4 class="stat_title total-purchase">0</h4>
 																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE'][language] %> </p>
 																</div>
 															</a>
@@ -99,7 +121,7 @@
 														<div class="col-md-12">
 															<div class="box dash_bg">
 																<i class="fa fa-eye"></i>
-																<h3 class="stat_title total-product-views">0</h3>
+																<h4 class="stat_title total-product-views">0</h4>
 																<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS'][language] %></p>
 															</div>
 														</div>
@@ -107,7 +129,7 @@
 															<a href="<%=baseURL%>compradors/favourite/list">
 																<div class="box dash_bg">
 																	<i class="fa fa-heart-o"></i>
-																	<h3 class="stat_title total-favourite-products">0</h3>
+																	<h4 class="stat_title total-favourite-products">0</h4>
 																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS'][language] %></p>
 																</div>
 															</a>
@@ -115,7 +137,7 @@
 														<div class="col-md-12">
 															<div class="box dash_bg">
 																<i class="fa fa-cart-plus"></i>
-																<h3 class="stat_title total-purchase-products">0</h3>
+																<h4 class="stat_title total-purchase-products">0</h4>
 																<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS'][language] %></p>
 															</div>
 														</div>
@@ -123,7 +145,7 @@
 															<a href="<%=baseURL%>compradors/product/list">
 																<div class="box dash_bg">
 																	<i class="fa fa-check-circle"></i>
-																	<h3 class="stat_title total-active-demands">0</h3>
+																	<h4 class="stat_title total-active-demands">0</h4>
 																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS'][language] %></p>
 																</div>
 															</a>
@@ -132,7 +154,7 @@
 															<a href="<%=baseURL%>compradors/product/list">
 																<div class="box dash_bg">
 																	<i class="fa fa-hourglass-end"></i>
-																	<h3 class="stat_title total-expired-demands">0</h3>
+																	<h4 class="stat_title total-expired-demands">0</h4>
 																	<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS'][language] %></p>
 																</div>
 															</a>
@@ -265,7 +287,7 @@
 	</div>
 </section>
 
-<section class="best_product products">
+<!-- <section class="best_product products">
 	<div class="container">
 		
 		<div class="white_bg product_card">
@@ -298,7 +320,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <section class="best_product products">
 	<div class="container">
@@ -341,8 +363,8 @@ $(document).ready(()=> {
     }});
 
     $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
-    	//$('.total-purchase').text(result.response.total_purchase);
-    	$('.total-purchase').text(result.response.total_purchase_products);
+    	//$('.total-purchase').text(result.response.total_sales);
+    	$('.total-purchase').text((result.response.total_purchase_products  > 1)? (result.response.total_purchase_products - 1): (result.response.total_purchase_products))
         $('.total-product-views').text(result.response.total_product_views);
         $('.total-favourite-products').text(result.response.total_favourite_products);
         $('.total-purchase-products').text(result.response.total_purchase_products);
