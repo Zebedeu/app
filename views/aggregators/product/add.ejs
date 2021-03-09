@@ -8,7 +8,7 @@
 				<form id="frm-add-product" action="" method="post" enctype="multipart/form-data">
 					<input type='hidden' class='min_unit_qty'>
 					<input type='hidden' class='min_unit_qty_error'>
-					<div class="row add-address">
+					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 					 		<h3><%= labels['LBL_AGGREGATOR_PUBLISH_PRODUCTS'][language] %></h3>
 						</div>
@@ -91,12 +91,12 @@
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_VALUE'][language] %></label>
-								    <input class="custom_input farmer_currency_number" type="text" placeholder="" value="" min="1" max="9523000000" id="unit_value" name="unit_value" onkeyup="calculateTotalPrice()" oninput="validity.valid||(value='');">
-								    <span class="validation-alert" id='err-unit-value'></span>
+								    <input class="custom_input" type="text" placeholder="" value="" min="1" max="9523000000" id="unit_value" name="unit_value" onkeyup="calculateTotalPrice()" oninput="validity.valid||(value='');">
+									<span class="validation-alert unit-error" id='err-unit-value'></span>
 								</div>
 							</div>
 							
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit">
+							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
 								    <select class="select_plug units_id" id="unit" name="unit" onchange="getMinQty('<%=baseURL%>')">
@@ -105,12 +105,19 @@
 									<span class="validation-alert" id='err-unit'></span>
 								</div>
 							</div>
+							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
+								<div class="search-container">
+								   <label class="my-1 mr-2"><%= labels['LBL_TONS'][language] %></label>
+								   <input class="custom_input  txt-disabled" type="text" placeholder="" value=""  name="ton_result" id="ton_result" readonly>
+								   <span class="validation-alert" id='err-unit'></span>
+							   </div>
+						   </div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_price">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_PRICE'][language] %></label>
-								    <input class="custom_input farmer_currency_number" type="text" placeholder="" value="" min="1" name="unit_price" id="unit_price" onkeyup="calculateTotalPrice()">
+								    <input class="custom_input" type="text" placeholder="" value="" min="1" name="unit_price" id="unit_price" onkeyup="calculateTotalPrice()">
 								    <span class="validation-alert" id='err-unit-price'></span>
 								</div>
 							</div>
@@ -322,7 +329,7 @@
 
 	function notificacao() {
 		$.confirm({
-			title: 'Publicar Produto',
+			title: 'Publicar produto',
 			icon: 'fa fa-check',
 			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
 			type: 'purple',

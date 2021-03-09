@@ -592,7 +592,7 @@ exports.unsoldList = async (req, res) => {
 };
 exports.add = function (req, res) {
 	if (req.body.product_category && req.body.title && req.body.product_variety_id && req.body.unit && req.body.unit_value && req.body.total_unit_price && req.body.size && req.body.unit_price && req.body.state_id && req.body.city_id && req.body.location) {
-		let total_unit_price = req.body.total_unit_price.replace(/[,.]/g, "");
+		let total_unit_price = req.body.total_unit_price;
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			category_id: req.body.product_category,
@@ -909,7 +909,7 @@ exports.order = function (req, res) {
 
 exports.edit = function (req, res) {
 	if (req.body.product_id && req.body.product_category && req.body.title && req.body.product_variety_id && req.body.size && req.body.unit_price && req.body.total_unit_price && req.body.state_id && req.body.city_id && req.body.producer_id && req.body.location) {
-		let total_unit_price = req.body.total_unit_price.replace(/[,.]/g, "");
+		let total_unit_price = req.body.total_unit_price;
 		Product.findOne({ product_id: req.body.product_id }, { _id: 0, images: 1 }, (err, response) => {
 			if (!response) {
 				return res.redirect('list');

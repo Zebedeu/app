@@ -23,6 +23,8 @@ exports.list = function (req, res) {
 			farmers[index]['photo'] = ((element.photo) ? config.aws.prefix + config.aws.s3.userBucket + '/' + element.photo : '../../../images/placeholder.jpg');
 		})
 
+		console.log(farmers)
+
 		res.render('aggregators/user/list', {
 			user: {
 				user_id: req.session.user_id,
@@ -41,11 +43,12 @@ exports.list = function (req, res) {
 };
 
 exports.add = function (req, res) {
-	if (req.body.names && req.body.email_id && req.body.address && req.body.state_id && req.body.city_id && req.body.bank_name && req.body.bank_account_no && req.body.nif) {
+	if (req.body.first_name && req.body.last_name && req.body.email_id && req.body.address && req.body.state_id && req.body.city_id && req.body.bank_name && req.body.bank_account_no && req.body.nif) {
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			user_type: req.session.user_type,
-			name: req.body.names,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
 			email: req.body.email_id,
 			mobile_country_code: (req.body.mobile_country_code && req.body.phone_number) ? req.body.mobile_country_code : '',
 			phone_number: (req.body.mobile_country_code && req.body.phone_number) ? req.body.phone_number : '',
@@ -273,7 +276,8 @@ exports.edit = function (req, res) {
 		}
 
 		let columnAndValues = {
-			name: req.body.names,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			bank_name: req.body.bank_name,

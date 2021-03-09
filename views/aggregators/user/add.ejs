@@ -6,21 +6,29 @@
 		<div class="product_card">
 			<div class="help_sidebar_right">
 				<form id="frm-add-user" action="" method="post" enctype="multipart/form-data">
-					<div class="row add-address">
+					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3>
 								<%= labels['LBL_ADD_FARMER'][language] %>
 							</h3>
 						</div>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-12 col-xs-12">
 								<div class="search-container">
 									<label class="my-1 mr-2">
-										<%= labels['LBL_NAME'][language] %>
+										<%= labels['LBL_SIGN_UP_FIRST_NAME'][language] %>
 									</label>
-									<input class="custom_input" type="text" placeholder="" value="" id='name'
-										name="names">
-									<span class="validation-alert" id='err-name'></span>
+									<input type="text" id="first_name" name="first_name" class="form-control" placeholder="" required="">
+									<span class="validation-alert" id='err-firstname'></span>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-12 col-xs-12">
+								<div class="search-container">
+									<label class="my-1 mr-2">
+										<%= labels['LBL_SIGN_UP_LAST_NAME'][language] %>
+									</label>
+									<input type="text" id="txt-lastname" name="last_name" class="form-control" placeholder="" required="">
+									<span class="validation-alert" id='err-lastname'></span>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
@@ -161,12 +169,12 @@
 <script>
 	function validatePost() {
 		let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
-		if (!$('#name').val()) {
+		if (!$('#first_name').val()) {
 			errNameFlag = 1;
-			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
+			$('#err-firstname').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
 		} else {
 			errNameFlag = 0;
-			$('#err-name').hide();
+			$('#err-firstname').hide();
 		}
 
 		errEmailFlag = validateEmailAddress($('#email').val());
