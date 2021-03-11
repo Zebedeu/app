@@ -321,7 +321,7 @@ exports.get_recently_viewed_products = function (req, res) {
 					}
 				})
 			} else {
-				tbl_recently_viewed_products += "<tr><td colspan='5'>" + (labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_NO_PRODUCTS'][(req.session.language || 'EN')]) + "</td></tr>";
+				tbl_recently_viewed_products += "<tr><td colspan='5'>" + (labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_NO_PRODUCTS'][(req.session.language || 'PT')]) + "</td></tr>";
 			}
 
 			res.send(tbl_recently_viewed_products);
@@ -361,7 +361,7 @@ exports.get_ongoing_orders = function (req, res) {
 				tbl_ongoing_orders += "<tr class='" + className + "'><td class='column_order_table' onClick=orderDetails('" + config.base_url + "','compradors','" + element.order_id + "')>" + element.order_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td> " + separators(element.total) + " Kz</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
 			})
 		} else {
-			tbl_ongoing_orders += "<tr><td colspan='6'>" + (labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";
+			tbl_ongoing_orders += "<tr><td colspan='6'>" + (labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'PT')]) + "</td></tr>";
 		}
 
 		res.send(tbl_ongoing_orders);

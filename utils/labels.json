@@ -449,7 +449,7 @@
 	},
 	"LBL_ORDER_ID": {
 		"EN": "Order ID",
-		"PT": "ID da encomenda"
+		"PT": "Código da encomenda"
 	},
 	"LBL_CLIENT_NAME": {
 		"EN": "Client Name",
@@ -3759,7 +3759,7 @@
 	},
 	"LBL_PRODUCT_DETAIL": {
 		"EN": "Product Detail",
-		"PT": "Detalhes do Produto"
+		"PT": "Detalhes do produto"
 	},
 	"LBL_NO_ORDER_AVAILABLE": {
 		"EN": "No order available",

@@ -301,13 +301,14 @@
 		$.confirm({
 			title: 'Publicar produto',
 			icon: 'fa fa-check',
-			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
-			type: 'purple',
+			content: 'O seu produto ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			type: 'green',
+			//type: 'purple',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'btn',
+					btnClass: 'btn btn-green',
 					action: function () {
 						$('#frm-add-product').submit();
 					}

@@ -270,9 +270,10 @@
 
 	function notificacao(sub_category_title, product_id) {
 		$.confirm({
-			title: 'Desejas remover o produto ?',
-			content: "ID: " + product_id + "<br>" + "Nome: " + sub_category_title,
-			type: 'purple',
+			title: '<p style= "font-size: 18px;">Tens certeza que deseja remover este produto ?</p>',
+			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + product_id + "<br>" + " Nome: " + sub_category_title + '</p>',
+			//type: 'purple',
+			type: 'green',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {

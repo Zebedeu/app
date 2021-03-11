@@ -276,7 +276,7 @@
 			$('#err-city-id').hide();
 		}
 
-		if(!errFirstNameFlag && errLastNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
+		if(!errFirstNameFlag && !errLastNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
 			return true;
 		} else {
 			return false;
@@ -287,22 +287,20 @@
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-
 			if($('#mobile_country_code').val() && $('#phone_number').val()){
 				$.post('<%=baseURL%>check_farmer_email_exist', { type: 'other', farmer_id: $('#farmer_id').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
 					if(result.code == 200){
-		            	$('#frm-edit-user').submit();
+						$('#frm-edit-user').submit();
 		            } else {
 		            	$(".post-add-now").attr("disabled", false);
 						$(".lds-facebook").hide();
-
 		            	showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
 						setTimeout(() => {
 							hideAlert()
 						}, 3000);
 		            }
 				});
-			} else {
+			} else {				
 				$('#frm-edit-user').submit();
 			}
 		}

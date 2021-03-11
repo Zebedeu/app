@@ -8,6 +8,7 @@ let State = require('mongoose').model('State');
 let City = require('mongoose').model('City');
 let passwordHandler = require('../../utils/password-handler');
 let s3Manager = require('../../utils/s3-manager');
+let logger = require('../../utils/logger');
 let s3Handler = require('../../utils/s3-handler');
 s3Handler = new s3Handler();
 let labels = require('../../utils/labels.json');
@@ -99,7 +100,8 @@ exports.add = function (req, res) {
 						columnAndValues['photo'] = [url.substring(url.lastIndexOf('/') + 1)];
 						let farmerObj = new Farmer(columnAndValues);
 						farmerObj.save((err, response) => {
-							return res.redirect('list');
+							res.end(response.farmer_id);
+							//return res.redirect('list');
 						})
 					});
 				});
@@ -109,7 +111,8 @@ exports.add = function (req, res) {
 			let farmerObj = new Farmer(columnAndValues);
 			farmerObj.save((err, response) => {
 				console.log(err);
-				return res.redirect('list');
+				res.end(response.farmer_id);
+				//return res.redirect('list');
 			})
 		}
 	} else {
@@ -407,7 +410,7 @@ exports.display = function (req, res) {
 				farmer: response,
 				labels,
 				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/user/list'>" + labels['LBL_FARMER_LIST'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_EDIT_USER'][(req.session.language || config.default_language_code)] + "</li>",
+				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/user/list'>" + labels['LBL_FARMER_LIST'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['EDIT_FARMER'][(req.session.language || config.default_language_code)] + "</li>",
 				messages: req.flash('error') || req.flash('info'),
 				messages: req.flash('info'),
 			});

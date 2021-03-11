@@ -76,6 +76,7 @@ exports.list = function (req, res) {
 };
 
 exports.transactions = function (req, res) {
+
      let columnAndValues = {
           $and: [
                { "created_at": { $gte: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') } },
@@ -100,11 +101,12 @@ exports.transactions = function (req, res) {
                if (logs.length > 0) {
                     let title = '', description = '', created_at = '', amount = '', remaining_balance="";
                     _.each(logs, (element, index, list) => {
+
                          title = element.title[req.session.language || config.default_language_code];
                          description = element.description[req.session.language || config.default_language_code];
                          remaining_balance = separators(element.remaining_balance) + ' Kz ';
                          created_at = convert_date(element.created_at, req.session.language);
-                         amount = (element.type == 'add') ? ( ' - ' + separators(element.amount)+ ' Kz ') : ( ' - ' + separators(element.amount)+ ' Kz ');
+                         amount = (element.type == 'add') ? ( '<span class="wallet-currency-add-color">' + separators(element.amount)+ ' Kz </span>') : ( ' - ' + separators(element.amount)+ ' Kz ');
 
                          ajaxContent += "<tr><td>" + created_at + "</td><td>" + description + "</td><td class='wallet_amount'>" + amount + "</td><td class='wallet_amount'>" + remaining_balance + "</td></tr>";
                     })
@@ -117,6 +119,9 @@ exports.transactions = function (req, res) {
           } else {
                logs = JSON.parse(JSON.stringify(logs));
                _.each(logs, (element, index, list) => {
+
+                    console.log(element)
+
                     logs[index]['title'] = element.title[req.session.language || config.default_language_code];
                     logs[index]['amount'] = separators(element.amount);
                     logs[index]['remaining_balance'] = separators(element.remaining_balance);
@@ -169,6 +174,8 @@ exports.withdrawalRequests = function (req, res) {
                if (logs.length > 0) {
                     let created_at = '', amount = '', status = '';
                     _.each(logs, (element, index, list) => {
+
+                         console.log(element)
                          created_at = convert_date(element.created_at, req.session.language);
                          amount = ' - ' + separators(element.amount) + ' Kz ';
 

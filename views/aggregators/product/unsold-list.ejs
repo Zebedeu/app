@@ -74,7 +74,7 @@
 									</div>
 									<div id="delete-item" style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
+										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>','<%= products[i].images[0] %>')"
 										    href="#"><i
 											style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 									</div>
@@ -116,16 +116,16 @@
 		});
 	}
 
-	function notificacao(sub_category_title, product_id) {
+	function notificacao(sub_category_title, product_id,img) {
 			$.confirm({
-			title: 'Desejas remover o produto ?',
-			content: "ID: " + product_id + "<br>" + 'Nome: ' + sub_category_title,
-			type: 'purple',
+			title: '<p style= "font-size: 18px;">Tens certeza que deseja remover este produto ?</p>',
+			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + product_id + "<br>" + " Nome: " + sub_category_title + '</p>',
+			type: 'green',
 			typeAnimated: true,
 			buttons: {
-				tryAgain: {
+				yes:{
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'btn-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
@@ -149,13 +149,16 @@
 							}
 						});
 					}
-				},
-				close: function () {
+			    },
+				no: {
+					keys: ['Não'],
+					text: 'Não',
+					btnClass: 'btn-green',
 				}
+					
 			}
 		});
 	}
-
 
 	tippy('#view-item', {
         content: 'Visualizar',

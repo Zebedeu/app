@@ -24,6 +24,7 @@ let Product = require('mongoose').model('Product');
 let Setting = require('mongoose').model('Setting');
 let labels = require('../../utils/labels.json');
 let imagemagick = require('imagemagick');
+let logger = require('../../utils/logger');
 let path = require('path');
 let fs = require('fs');
 let __ = require('lodash');
@@ -593,7 +594,6 @@ const add = (req, res) => {
 		let total_unit_price = req.body.total_unit_price;
 
 		console.log(req.body.unit_price + '-------')
-		console.log(removePointerInCurrence(req.body.unit_price))
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			category_id: req.body.product_category,
