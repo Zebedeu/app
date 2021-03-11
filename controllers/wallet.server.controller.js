@@ -104,7 +104,14 @@ exports.transactions = function (req, res) {
 
                          title = element.title[req.session.language || config.default_language_code];
                          description = element.description[req.session.language || config.default_language_code];
-                         remaining_balance = separators(element.remaining_balance) + ' Kz ';
+                         valueChecked = element.remaining_balance;
+                         if( valueChecked > 0 ) {
+                              remaining_balance = '<span class="wallet-currency-add-color">' + separators(valueChecked) + ' Kz </span>';
+
+                         }else{
+                              remaining_balance = separators(valueChecked) + ' Kz ';
+
+                         } 
                          created_at = convert_date(element.created_at, req.session.language);
                          amount = (element.type == 'add') ? ( '<span class="wallet-currency-add-color">' + separators(element.amount)+ ' Kz </span>') : ( ' - ' + separators(element.amount)+ ' Kz ');
 
