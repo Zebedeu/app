@@ -7,11 +7,9 @@
 			<%- include('../../shared/breadcrumb') %>
 		</div>
 		<div class="product_card">
-			<div class="row order-list-title post-add">
+			<div class="row add-address post-add">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="col-md-6 col-sm-6 col-xs-6" style='padding-left: 0;'>
-						<h3><%= labels['LBL_YOUR_ORDERS_PRODUCERS'][language] %></h3>
-					</div>
+					<h3><%= labels['LBL_YOUR_ORDERS_PRODUCERS'][language] %></h3>
 				</div>
 				<div class="row order-list-title">
 					<div class="col-md-3">
@@ -107,7 +105,7 @@
 										  <th scope="col"><%= labels['LBL_PRODUCT'][language] %></th>
 										  <th scope="col" width="180"><%= labels['LBL_QUANTITY'][language] %></th>
 										  <th scope="col" width="180"><%= labels['LBL_PRICE'][language] %></th>
-										  <th scope="col" width="100"><%= labels['LBL_TOTAL'][language] %></th>
+										  <th scope="col" width="180"><%= labels['LBL_TOTAL'][language] %></th>
 										</tr>
 										<% for(let j=0; j < orders[i]['products'].length; j++) { %>
 											<tr>
@@ -121,10 +119,11 @@
 													</figure>
 												</td>
 												<td>
-													<h4><%= orders[i]['products'][j]['quantity'] %> <%= orders[i]['products'][j]['unit_type'] %></h4>	
+													<!-- <h4><%= orders[i]['products'][j]['quantity'] %> <%= orders[i]['products'][j]['unit_type'] %></h4>	 -->
+													<h4><%= orders[i]['products'][j]['quantity'] %> </h4>	
 												</td>
 												<td> 
-													<h4 class="currency_color_text sku_wrapper"><%= (orders[i]['products'][j]['unit_price']) %> Kz / <%= orders[i]['products'][j]['unit_type'] %></h4>
+													<h4 class="currency_color_text sku_wrapper"><%= (orders[i]['products'][j]['unit_price']) %> Kz</h4>
 												</td>
 												<td> 
 													<h4 class="currency_color_text sku_wrapper"><%= orders[i]['products'][j]['item_total'] %> Kz</h4>

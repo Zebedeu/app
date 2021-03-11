@@ -6,7 +6,7 @@
 		</div>
 		<div class="product_card">
 			<div class="help_sidebar_right">
-				<form id="frm-edit-product" action="<%=baseURL%>producers/product/edit" method="post" enctype="multipart/form-data">
+				<form id="frm-edit-product" action="" method="post" enctype="multipart/form-data">
 					<input class="custom_input" type="hidden" placeholder="" value="<%= product.product_id %>" id="product_id" name="product_id">
 					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -343,9 +343,34 @@
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			notificacao();
+			editar();
 		}
 	}
+
+	function editar(){
+        var url = '<%=baseURL%>producers/product/edit';
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $('#frm-edit-product').serialize(),
+            dataType: "JSON",
+                success: function (data){
+					showAlert('O produto ' + "<%= product.product_id %>" +' foi actualizado com sucesso!');
+					setTimeout(() => {
+						hideAlert()
+						window.location.href = "<%=baseURL%>producers/product/list";
+					}, 3000);
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+					showAlert("Erro ao editar o produto!");
+					setTimeout(() => {
+						hideAlert()
+						window.location.href = "<%=baseURL%>producers/product/list";
+						//window.location.reload();
+					}, 3000);
+                }
+        });
+    }
 
 	$( document ).ready(function() {
 		getCategories('<%=baseURL%>', '<%= product.category_id %>');

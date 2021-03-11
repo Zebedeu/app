@@ -280,7 +280,7 @@
 		"PT": "Adicionar produtos"
 	},
 	"LBL_LIST_PRODUCTS": {
-		"EN": "List Products",
+		"EN": "List products",
 		"PT": "Lista de produtos"
 	},
 	"LBL_POST_ADD_NOW": {
@@ -417,7 +417,7 @@
 	},
 	"LBL_PRICE": {
 		"EN": "Price",
-		"PT": "Preço por Kg"
+		"PT": "Preço/Kg"
 	},
 	"LBL_AMOUNT_IN_WALLET": {
 		"EN": "Amount in wallet",
@@ -541,7 +541,7 @@
 	},
 	"LBL_QUANTITY": {
 		"EN": "Qty",
-		"PT": "Qtde"
+		"PT": "Quantidade"
 	},
 	"LBL_ORDERED_ON": {
 		"EN": "Ordered On",
@@ -3183,7 +3183,7 @@
 	},
 	"LBL_DASHBOARD_PURCHASE_QTY": {
 		"EN": "Qty",
-		"PT": "Qtde"
+		"PT": "Quantidade"
 	},
 	"LBL_COMPRADOR_DASHBOARD_MATCH_PRODUCTS": {
 		"EN": "Match Products",
@@ -3798,7 +3798,7 @@
 		"PT": "Adicionar produtor"
 	},
 	"LBL_FARMER_LIST": {
-		"EN": "Farmes List",
+		"EN": "Farmes list",
 		"PT": "Lista de produtores"
 	},
 	"EDIT_FARMER": {
@@ -3814,7 +3814,7 @@
 		"PT": "Valor na carteira"
 	},
 	"LBL_LIST_PRODUCTS_AGGREGATOR": {
-		"EN": "List Products",
+		"EN": "List products",
 		"PT": "Listar produtos"
 	},
 	"LBL_LIST_PRODUCTS_AGGREGATOR_1": {
@@ -3965,6 +3965,13 @@
 	"LBL_TONS": {
 		"EN": "Tons",
 		"PT": "Toneladas"
+	},
+	"LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC": {
+		"EN": "Select your document",
+		"PT": "Selecione sua documento"
+	},	"LBL_AGGREGATOR_YOUR_ACCOUNT_DOC": {
+		"EN": "Document",
+		"PT": "Documento"
 	}
 
 	
