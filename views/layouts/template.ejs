@@ -131,17 +131,17 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 	    
-$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
+// $('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
 		
-		$(window).on('load', function(){
-	  setTimeout(removeLoader, 500); //wait for page load PLUS two seconds.
-	});
-	function removeLoader(){
-		$( "#loading" ).fadeOut(500, function() {
-		  // fadeOut complete. Remove the loading div
-		  $( "#loading" ).remove(); //makes page more lightweight 
-	  });  
-	}
+// 		$(window).on('load', function(){
+// 	  setTimeout(removeLoader, 500); //wait for page load PLUS two seconds.
+// 	});
+// 	function removeLoader(){
+// 		$( "#loading" ).fadeOut(500, function() {
+// 		  // fadeOut complete. Remove the loading div
+// 		  $( "#loading" ).remove(); //makes page more lightweight 
+// 	  });  
+// 	}
 	
 </script>
 </body>
