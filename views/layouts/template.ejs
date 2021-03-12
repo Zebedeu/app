@@ -13,13 +13,22 @@
 	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
-<script>
+<!-- <script>
 		
-		
-</script>
+		$(window).on('load', function(){
+	  setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
+	});
+	function removeLoader(){
+		$( "#loading" ).fadeOut(500, function() {
+		  // fadeOut complete. Remove the loading div
+		  $( "#loading" ).remove(); //makes page more lightweight 
+	  });  
+	}
+				$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
+
+</script> -->
 
 <body>
-
 <div class="">
 	<div id="nav-icon" class="menu-button visible-xs">
 		<span class="burger-icon"></span>
@@ -81,19 +90,7 @@ function myFunction() {
 <script  src="../../../js/script.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script type="text/javascript">
-	$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
-
-$(document).ready(function(){	
-
-	
-	  setTimeout(removeLoader, 1500); //wait for page load PLUS two seconds.
-	
-	function removeLoader(){
-		$( "#loading" ).fadeOut(500, function() {
-		  // fadeOut complete. Remove the loading div
-		  $( "#loading" ).remove(); //makes page more lightweight 
-	  });  
-	}
+$(document).ready(function(){
 	$("#accordion i").click(function(){
 		//slide up all the link lists
 		$("#accordion ul ul").slideUp(200);
