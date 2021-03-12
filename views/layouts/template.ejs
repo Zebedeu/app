@@ -15,15 +15,7 @@
 </head>
 <script>
 		
-		$(window).on('load', function(){
-	  setTimeout(removeLoader, 500); //wait for page load PLUS two seconds.
-	});
-	function removeLoader(){
-		$( "#loading" ).fadeOut(500, function() {
-		  // fadeOut complete. Remove the loading div
-		  $( "#loading" ).remove(); //makes page more lightweight 
-	  });  
-	}
+		
 </script>
 
 <body>
@@ -89,7 +81,19 @@ function myFunction() {
 <script  src="../../../js/script.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script type="text/javascript">
-$(document).ready(function(){
+	$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
+
+$(document).ready(function(){	
+
+	
+	  setTimeout(removeLoader, 1500); //wait for page load PLUS two seconds.
+	
+	function removeLoader(){
+		$( "#loading" ).fadeOut(500, function() {
+		  // fadeOut complete. Remove the loading div
+		  $( "#loading" ).remove(); //makes page more lightweight 
+	  });  
+	}
 	$("#accordion i").click(function(){
 		//slide up all the link lists
 		$("#accordion ul ul").slideUp(200);
