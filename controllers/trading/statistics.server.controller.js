@@ -47,7 +47,7 @@ exports.totalPurchase = function(req, res) {
 			className = (!className) ? 'tbl-row-color' : '';
 			tbl_purchase_orders+= "<tr class='"+className+"' ><td colspan='4'>&nbsp;</td><td colspan='2'>Kz "+separators(total)+"</td></tr>";
 		} else {
-			tbl_purchase_orders+= "<tr><td colspan='6'>"+(labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'PT')])+"</td></tr>";
+			tbl_purchase_orders+= "<tr><td colspan='6'>"+(labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')])+"</td></tr>";
 		}
 
 		res.send(tbl_purchase_orders);

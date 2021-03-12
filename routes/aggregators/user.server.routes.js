@@ -13,5 +13,4 @@ module.exports = function(app) {
 	app.get('/aggregators/user/address', authenticate_aggregators, user.address);
 	app.post('/aggregators/user/edit', authenticate_aggregators, user.edit);
 	app.get('/aggregators/user/remove/:id', authenticate_aggregators, user.remove);
-	app.post('/aggregators/user/editDoc', authenticate_aggregators, user.editDoc);
 };

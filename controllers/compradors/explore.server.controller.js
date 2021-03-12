@@ -197,7 +197,7 @@ exports.demand = function (req, res) {
 					total_cart_products,
 					higher_price_range: _.max(unit_prices),
 					labels,
-					language: req.session.language || 'PT',
+					language: req.session.language || 'EN',
 					messages: req.flash('error') || req.flash('info'),
 					messages: req.flash('info'),
 				});
@@ -687,8 +687,8 @@ function detailsProduct(req, res) {
 			product: productObj,
 			moment,
 			labels,
-			language: req.session.language || 'PT',
-			breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'PT')] + "</li>",
+			language: req.session.language || 'EN',
+			breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'EN')] + "</li>",
 			messages: req.flash('error') || req.flash('info'),
 			messages: req.flash('info')
 		});

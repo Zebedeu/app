@@ -12,7 +12,7 @@ exports.list = function(req, res) {
 			},
 			total_cart_products: 0,
 			labels,
-			language: req.session.language || 'PT',
+			language: req.session.language || 'EN',
 			messages : req.flash('error') || req.flash('info'),
 			messages : req.flash('info'),
 		});

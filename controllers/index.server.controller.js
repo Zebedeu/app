@@ -93,11 +93,11 @@ exports.authenticate = function (req, res) {
 
 			User.findOne({ email: regexEmail }, { _id: 0, user_id: 1, first_name: 1, email: 1, user_type: 1, password: 1, mobile_country_code: 1, phone_number: 1, status: 1, is_verify_mobile: 1 }, (err, response) => {
 				if (!response) {
-					res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'PT')]}`, user_type: '' });
+					res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'EN')]}`, user_type: '' });
 				} else if (response.status == 'inactive') {
-					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'EN')]}`, user_type: response.user_type });
 				} else if (response.password != encPin) {
-					res.send({ code: 402, message: `${labels['LBL_INVALID_PASSWORD'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+					res.send({ code: 402, message: `${labels['LBL_INVALID_PASSWORD'][(req.session.language || 'EN')]}`, user_type: response.user_type });
 				} else {
 					if (!response.is_verify_mobile) {
 						Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
@@ -123,9 +123,9 @@ exports.authenticate = function (req, res) {
 	} else if ((req.body.type == 'google' || req.body.type == 'facebook') && req.body.social_id) {
 		User.findOne({ social_id: req.body.social_id }, { _id: 0, user_id: 1, first_name: 1, user_type: 1, password: 1, status: 1 }, (err, response) => {
 			if (!response) {
-				res.send({ code: 404, message: `${labels['LBL_YOUR_SOCIAL_ACCOUNT'][(req.session.language || 'PT')]}`, user_type: '' });
+				res.send({ code: 404, message: `${labels['LBL_YOUR_SOCIAL_ACCOUNT'][(req.session.language || 'EN')]}`, user_type: '' });
 			} else if (response.status == 'inactive') {
-				res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+				res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'EN')]}`, user_type: response.user_type });
 			} else {
 				req.session.user_id = response.user_id;
 				req.session.name = response.first_name;
@@ -138,7 +138,7 @@ exports.authenticate = function (req, res) {
 			}
 		})
 	} else {
-		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'PT')]}` });
+		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'EN')]}` });
 	}
 };
 
@@ -149,16 +149,16 @@ exports.forgotPassword = function (req, res) {
 
 		User.findOne({ email: regexEmail }, { _id: 0, user_id: 1, first_name: 1, user_type: 1, status: 1 }, (err, response) => {
 			if (!response) {
-				res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'PT')]}` });
+				res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'EN')]}` });
 			} else if (response.status == 'inactive') {
-				res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}` });
+				res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'EN')]}` });
 			} else {
 				let email = req.body.email;
 				let otp = parseInt(Math.random() * (999999 - 111111) + 111111);
 
 				User.update({ email }, { $set: { otp } }, (err, update_response) => {
 					emailController.send({ language: (req.session.language || config.default_language_code), code: 'FORGOT_PASSWORD', otp, email: req.body.email, name: response.first_name });
-					res.send({ code: 200, message: `${labels['LBL_FORGOT_PASSWORD_VALIDATION'][(req.session.language || 'PT')]}` });
+					res.send({ code: 200, message: `${labels['LBL_FORGOT_PASSWORD_VALIDATION'][(req.session.language || 'EN')]}` });
 				})
 			}
 		})
@@ -205,12 +205,12 @@ exports.resetPassword = function (req, res) {
 		console.log(req.body);
 		User.findOne({ otp: parseInt(req.body.otp) }, { _id: 0, first_name: 1, email: 1 }, (err, result) => {
 			if (!result) {
-				res.send({ code: 404, message: `${labels['LBL_INVALID_OTP'][(req.session.language || 'PT')]}` });
+				res.send({ code: 404, message: `${labels['LBL_INVALID_OTP'][(req.session.language || 'EN')]}` });
 			} else {
 				passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
 					User.update({ otp: req.body.otp }, { $set: { password: encPin, otp: 0 } }, (err, update_response) => {
 						emailController.send({ language: (req.session.language || config.default_language_code), code: 'PASSWORD_CHANGED', email: result.email, name: result.first_name });
-						res.send({ code: 200, message: `${labels['LBL_PASSWORD_CHANGED_VALIDATION'][(req.session.language || 'PT')]}` });
+						res.send({ code: 200, message: `${labels['LBL_PASSWORD_CHANGED_VALIDATION'][(req.session.language || 'EN')]}` });
 					})
 				})
 			}
@@ -267,14 +267,14 @@ exports.checkEmailExist = function (req, res) {
 									res.send({ code: 410, message: '', user_info: response });
 								})
 							} else {
-								res.send({ code: 409, message: `${labels['LBL_TEMPLATE_NOT_EXIST'][(req.session.language || 'PT')]}` });
+								res.send({ code: 409, message: `${labels['LBL_TEMPLATE_NOT_EXIST'][(req.session.language || 'EN')]}` });
 							}
 						})
 					} else {
-						res.send({ code: 409, message: `${labels['LBL_PHONE_NO_EXIST'][(req.session.language || 'PT')]}` });
+						res.send({ code: 409, message: `${labels['LBL_PHONE_NO_EXIST'][(req.session.language || 'EN')]}` });
 					}
 				} else {
-					res.send({ code: 409, message: `${labels['LBL_EMAIL_ID_EXIST'][(req.session.language || 'PT')]}` });
+					res.send({ code: 409, message: `${labels['LBL_EMAIL_ID_EXIST'][(req.session.language || 'EN')]}` });
 				}
 			} else {
 				res.send({ code: 200, message: '' });
@@ -294,7 +294,7 @@ exports.checkEmailExist = function (req, res) {
 		User.findOne(columnAndValues, { _id: 0, user_id: 1, first_name: 1, last_name: 1, user_type: 1, password: 1, status: 1 }, (err, response) => {
 			if (response) {
 				if (response.status == 'inactive') {
-					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}` });
+					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'EN')]}` });
 					return false;
 				} else {
 					req.session.user_id = response.user_id;
@@ -361,7 +361,7 @@ exports.checkEmailExist = function (req, res) {
 			}
 		})
 	} else {
-		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'PT')]}` });
+		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'EN')]}` });
 		return false;
 	}
 };
@@ -455,11 +455,11 @@ exports.submitVerifyOTP = function (req, res) {
 					})
 				})
 			} else {
-				res.send({ code: 402, message: `${labels['LBL_INVALID_OTP'][(req.session.language || 'PT')]}` });
+				res.send({ code: 402, message: `${labels['LBL_INVALID_OTP'][(req.session.language || 'EN')]}` });
 			}
 		})
 	} else {
-		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'PT')]}` });
+		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'EN')]}` });
 	}
 };
 
@@ -485,7 +485,7 @@ exports.signUp = function (req, res) {
 				Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
 					if (sms) {
 						let otp = parseInt(Math.random() * (999999 - 111111) + 111111);
-						let caption = (sms['value'][req.session.language || 'PT']);
+						let caption = (sms['value'][req.session.language || 'EN']);
 						caption = caption.replace("#OTP#", otp).replace("#NAME#", req.body.first_name);
 						smsManager.sendSMS({ message: caption, mobile: (req.body.mobile_country_code + req.body.phone_number) });
 
@@ -501,8 +501,8 @@ exports.signUp = function (req, res) {
 	} else {
 		MobileCountryCode.find({}, { _id: 0, mobile_country_code_id: 1, code: 1 }, (err, mobile_country_codes) => {
 			CMS.findOne({ code: 'TERMS_AND_CONDITIONS', user_type: 'producers' }, { _id: 0, cms_id: 1, title: 1, code: 1, description: 1 }, (err, cms_pages) => {
-				let tc_title = (cms_pages) ? cms_pages['title'][req.session.language || 'PT'] : '';
-				let tc_description = (cms_pages) ? cms_pages['description'][req.session.language || 'PT'] : '';
+				let tc_title = (cms_pages) ? cms_pages['title'][req.session.language || 'EN'] : '';
+				let tc_description = (cms_pages) ? cms_pages['description'][req.session.language || 'EN'] : '';
 
 				State.find({ status: 'active' }, { _id: 0, state_id: 1, name: 1 }, (err, states) => {
 					states = _.sortBy(states, function (item) { return item.name; })

@@ -6,29 +6,21 @@
 		<div class="product_card">
 			<div class="help_sidebar_right">
 				<form id="frm-add-user" action="" method="post" enctype="multipart/form-data">
-					<div class="row order-list-title">
+					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3>
 								<%= labels['LBL_ADD_FARMER'][language] %>
 							</h3>
 						</div>
 						<div class="row">
-							<div class="col-md-3 col-sm-12 col-xs-12">
+							<div class="col-md-6 col-sm-12 col-xs-12">
 								<div class="search-container">
 									<label class="my-1 mr-2">
-										<%= labels['LBL_SIGN_UP_FIRST_NAME'][language] %>
+										<%= labels['LBL_NAME'][language] %>
 									</label>
-									<input type="text" id="first_name" name="first_name" class="form-control" placeholder="" required="">
-									<span class="validation-alert" id='err-firstname'></span>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-12 col-xs-12">
-								<div class="search-container">
-									<label class="my-1 mr-2">
-										<%= labels['LBL_SIGN_UP_LAST_NAME'][language] %>
-									</label>
-									<input type="text" id="txt-lastname" name="last_name" class="form-control" placeholder="" required="">
-									<span class="validation-alert" id='err-lastname'></span>
+									<input class="custom_input" type="text" placeholder="" value="" id='name'
+										name="names">
+									<span class="validation-alert" id='err-name'></span>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
@@ -100,7 +92,7 @@
 							<div class="col-md-3 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_FARMER_LOGIN_SECURITY_NIF'][language] %> </label>
-								    <input class="custom_input farmer_nif_number" type="text" readonly onfocus="this.removeAttribute('readonly')"  placeholder="" value="" id='nif' name="nif" >
+								    <input class="custom_input farmer_nif_number" type="text" placeholder="" value="" id='nif' name="nif" >
 								    <span class="validation-alert" id='err-nif'></span>
 								</div>
 							</div>
@@ -169,12 +161,12 @@
 <script>
 	function validatePost() {
 		let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
-		if (!$('#first_name').val()) {
+		if (!$('#name').val()) {
 			errNameFlag = 1;
-			$('#err-firstname').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
+			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
 		} else {
 			errNameFlag = 0;
-			$('#err-firstname').hide();
+			$('#err-name').hide();
 		}
 
 		errEmailFlag = validateEmailAddress($('#email').val());
@@ -242,6 +234,14 @@ errNIFFlag = 1;
 		}
 	}
 
+	function submitPost() {
+		if (validatePost()) {
+			$(".post-add-now").attr("disabled", true);
+			$(".lds-facebook").show();
+			notificacao();
+		}
+	}
+
 	var bankList =[ 
 		{
 		name: 'Banco de Poupança e Crédito, S.A',
@@ -292,50 +292,49 @@ errNIFFlag = 1;
 
 	$('.bank_data_html').html(options)
 
-	function submitPost() {
-		if (validatePost()) {
-			$(".post-add-now").attr("disabled", true);
-			$(".lds-facebook").show();
-			salvar();
-		}
-	}
+	function notificacao() {
+		$.confirm({
+			title: 'Adicionar Produtor',
+			icon: 'fa fa-check',
+			content: 'Produtor adicionado com sucesso!',
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'btn',
+					action: function () {
+						$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
+							if (result.code == 200) {
+								$('#frm-add-user').submit();
+							} else {
+								$(".post-add-now").attr("disabled", false);
+								$(".lds-facebook").hide();
 
-	function salvar(){
-			var url = '<%=baseURL%>aggregators/user/add';
-			$.ajax({
-				url: url,
-				type: "POST",
-				data: $('#frm-add-user').serialize(),
-				dataType: "JSON",
-					success: function (data){
-						showAlert("Produtor ( " + data + ") adicionado com sucesso!");
-							setTimeout(() => {
-								hideAlert()
-								window.location.href="list";
-						}, 3000);
-					},
-					error: function (jqXHR, textStatus, errorThrown){
-						showAlert("Erro ao publicar o produtor!");
-						setTimeout(() => {
-							hideAlert()
-							window.location.reload();
-						}, 3000);
+								showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+								setTimeout(() => {
+									hideAlert()
+								}, 3000);
+							}
+						});
 					}
-			});
-    }
-
-	function verifyEmail(){
-		$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
-			if (result.code == 200) {
-				return 1;
-			} else {
-				return 0;			
+				}
 			}
 		});
 	}
 
 	$(document).ready(function () {
 
+// function formatPhoneNumber(phoneNumberString) {
+//   var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+//   var match = cleaned.match(/^(1|)?(\d{2})(\d{3})(\d{5})$/)
+//   if (match) {
+//     var intlCode = (match[1] ? '+1 ' : '')
+//     console.log([intlCode, '(', match[2], ') ', match[3], '-', match[4]].join(''))
+//   }
+//   return null
+// }
+// formatPhoneNumber('+12345678900')
     getStates('<%=baseURL%>');
 	getMobileCountryCodes('<%=baseURL%>');
 	

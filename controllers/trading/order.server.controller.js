@@ -59,7 +59,7 @@ exports.filterList = function (req, res) {
                moment,
                labels,
                layout: false,
-               language: req.session.language || 'PT'
+               language: req.session.language || 'EN'
           });
      }).sort({ created_at: -1 });
 };
@@ -406,7 +406,7 @@ const sendShipmentStatusEmail = (requestParam, error) => {
                          }
 
                          if (template) {
-                              let emailtemplate = template.description['PT'];
+                              let emailtemplate = template.description['EN'];
                               emailtemplate = emailtemplate.replace('#IMAGE#', (response.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + response.images[0] : 'http://my.kepya.co.ao/images/forcast.png');
                               emailtemplate = emailtemplate.replace('#NAME#', updatedUserData.first_name + " " + updatedUserData.last_name);
                               emailtemplate = emailtemplate.replace('#SHIPMENT_ID#', requestParam.shipment_id);
@@ -420,7 +420,7 @@ const sendShipmentStatusEmail = (requestParam, error) => {
                               emailtemplate = emailtemplate.replace('#TWITTER#', setting.twitter_url);
                               emailtemplate = emailtemplate.replace('#FACEBOOK#', setting.fb_url);
                               emailtemplate = emailtemplate.replace('#INSTAGRAM#', setting.instagram_url);
-                              let subject = template.email_subject['PT'];
+                              let subject = template.email_subject['EN'];
                               subject = subject.replace('#STATUS#', requestParam['status']);
                               subject = subject.replace('#SHIPMENT_ID#', requestParam['shipment_id']);
                               // let fromEmail = template.from_email;
@@ -519,8 +519,8 @@ exports.list = function (req, res) {
                end_date: monthStartEndDates.end,
                moment,
                labels,
-               language: req.session.language || 'PT',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'PT')] + "</li>",
+               language: req.session.language || 'EN',
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });
@@ -576,7 +576,7 @@ exports.details = function (req, res) {
                          transporter_id: element.transporter_id,
                          name: element.name,
                          phone_number: element.mobile_country_code + element.phone_number,
-                         bid_type: ((element.bid_type == 'fixed_bid') ? labels['LBL_FIXED_BID'][req.session.language || 'PT'] : labels['LBL_PRICE_PER_KM'][req.session.language || 'PT']),
+                         bid_type: ((element.bid_type == 'fixed_bid') ? labels['LBL_FIXED_BID'][req.session.language || 'EN'] : labels['LBL_PRICE_PER_KM'][req.session.language || 'EN']),
                          bid_amount: separators(element.bid_amount),
                          transporter_status: element.transporter_status
                     })
@@ -637,8 +637,8 @@ exports.details = function (req, res) {
                totalDelivered: totalDelivered,
                labels,
                bidders,
-               language: req.session.language || 'PT',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/order/list'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'PT')] + "</li>",
+               language: req.session.language || 'EN',
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/order/list'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'EN')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });

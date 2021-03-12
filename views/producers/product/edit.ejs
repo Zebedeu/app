@@ -6,9 +6,9 @@
 		</div>
 		<div class="product_card">
 			<div class="help_sidebar_right">
-				<form id="frm-edit-product" action="" method="post" enctype="multipart/form-data">
+				<form id="frm-edit-product" action="<%=baseURL%>producers/product/edit" method="post" enctype="multipart/form-data">
 					<input class="custom_input" type="hidden" placeholder="" value="<%= product.product_id %>" id="product_id" name="product_id">
-					<div class="row order-list-title">
+					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 					 		<h3><%= labels['LBL_POST_FORECAST_OR_PRODUCTS'][language] %></h3>
 						</div>
@@ -74,7 +74,7 @@
 								</div>
 							</div>
 							
-							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
+							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
 								    <select class="select_plug txt-disabled units_id" id="unit" name="unit" disabled>
@@ -83,13 +83,6 @@
 									<span class="validation-alert" id='err-unit'></span>
 								</div>
 							</div>
-							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
-								<div class="search-container">
-								   <label class="my-1 mr-2"><%= labels['LBL_TONS'][language] %></label>
-								   <input class="custom_input  txt-disabled" type="text" placeholder="" value="<%= product.unit_value / 1000 %>"  name="ton_result" id="ton_result" readonly>
-								   <span class="validation-alert" id='err-unit'></span>
-							   </div>
-						   </div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_price">
@@ -343,34 +336,9 @@
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			editar();
+			notificacao();
 		}
 	}
-
-	function editar(){
-        var url = '<%=baseURL%>producers/product/edit';
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: $('#frm-edit-product').serialize(),
-            dataType: "JSON",
-                success: function (data){
-					showAlert('O produto ' + "<%= product.product_id %>" +' foi actualizado com sucesso!');
-					setTimeout(() => {
-						hideAlert()
-						window.location.href = "<%=baseURL%>producers/product/list";
-					}, 3000);
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-					showAlert("Erro ao editar o produto!");
-					setTimeout(() => {
-						hideAlert()
-						window.location.href = "<%=baseURL%>producers/product/list";
-						//window.location.reload();
-					}, 3000);
-                }
-        });
-    }
 
 	$( document ).ready(function() {
 		getCategories('<%=baseURL%>', '<%= product.category_id %>');

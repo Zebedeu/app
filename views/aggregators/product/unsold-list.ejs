@@ -62,19 +62,19 @@
 									<h4><%= products[i].status %></h4>
 								</td>
 								<td>
-									<div id="view-item" style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
+									<div style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
 										class="">
 										<a href="<%=baseURL%>aggregators/product/order/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-eye"></i></a>
 									</div>
-									<div id="edit-item" style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
+									<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
 										class="">
 										<a href="<%=baseURL%>aggregators/product/display/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 									</div>
-									<div id="delete-item" style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
+									<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>','<%= products[i].images[0] %>')"
+										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
 										    href="#"><i
 											style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 									</div>
@@ -99,8 +99,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
+
 <script>
 	function filterProducts() {
 		let category_id = $('#category_id').val();
@@ -116,16 +115,16 @@
 		});
 	}
 
-	function notificacao(sub_category_title, product_id,img) {
+	function notificacao(sub_category_title, product_id) {
 			$.confirm({
-			title: '<p style= "font-size: 18px;">Tens certeza que deseja remover este produto ?</p>',
-			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + product_id + "<br>" + " Nome: " + sub_category_title + '</p>',
-			type: 'green',
+			title: 'Desejas remover o produto ?',
+			content: "ID: " + product_id + "<br>" + 'Nome: ' + sub_category_title,
+			type: 'purple',
 			typeAnimated: true,
 			buttons: {
-				yes:{
+				tryAgain: {
 					text: 'Sim',
-					btnClass: 'btn-green',
+					btnClass: 'btn',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
@@ -149,27 +148,10 @@
 							}
 						});
 					}
-			    },
-				no: {
-					keys: ['Não'],
-					text: 'Não',
-					btnClass: 'btn-green',
+				},
+				close: function () {
 				}
-					
 			}
 		});
 	}
-
-	tippy('#view-item', {
-        content: 'Visualizar',
-		theme: 'tomato'
-      });
-	  tippy('#edit-item', {
-        content: 'Editar',
-		theme: 'tomato'
-      });
-	  tippy('#delete-item', {
-        content: 'Eliminar',
-		theme: 'tomato'
-      });
 </script>

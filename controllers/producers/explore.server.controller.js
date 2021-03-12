@@ -3,7 +3,7 @@ let labels = require('../../utils/labels.json');
 exports.list = function(req, res) {
 	res.render('producers/explore/list', {
 		labels,
-		language: req.session.language || 'PT',
+		language: req.session.language || 'EN',
 		user: {
 			user_id: req.session.user_id,
 			name: req.session.name,
