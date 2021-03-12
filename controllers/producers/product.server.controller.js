@@ -7,7 +7,8 @@ let s3Handler = require('../../utils/s3-handler');
 let {
 	convert_date,
 	separators,
-	separatorsWD
+	separatorsWD,
+	removePointerInCurrence
 } = require('../../utils/formatter');
 s3Handler = new s3Handler();
 let City = require('mongoose').model('City');
@@ -23,6 +24,7 @@ let Product = require('mongoose').model('Product');
 let Setting = require('mongoose').model('Setting');
 let labels = require('../../utils/labels.json');
 let imagemagick = require('imagemagick');
+let logger = require('../../utils/logger');
 let path = require('path');
 let fs = require('fs');
 let __ = require('lodash');
@@ -582,14 +584,17 @@ const unsoldList = async (req, res) => {
 const addResponse = (req, res, columnAndValues) => {
 	let productObj = new Product(columnAndValues);
 	productObj.save((err, response) => {
-		return res.redirect('order/' + response.product_id);
+		return res.end(response.product_id);
+		//return res.redirect('order/' + response.product_id);
 	})
 };
 
 const add = (req, res) => {
 	if (req.body.product_category && req.body.title && req.body.product_variety_id && req.body.unit && req.body.unit_value && req.body.size && req.body.state_id && req.body.city_id && req.body.location) {
 		let dateIsAfter = moment(req.body.harvest_date).isAfter(moment());
-		let total_unit_price = req.body.total_unit_price.replace(/[,.]/g, "");
+		let total_unit_price = req.body.total_unit_price;
+
+		console.log(req.body.unit_price + '-------')
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			category_id: req.body.product_category,
@@ -602,7 +607,7 @@ const add = (req, res) => {
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			location: req.body.location,
-			unit_price: parseFloat(req.body.unit_price),
+			unit_price: removePointerInCurrence(req.body.unit_price),
 			total_unit_price: parseFloat(total_unit_price),
 			harvest_date: new Date(req.body.harvest_date),
 			product_type: (dateIsAfter) ? 'forecast' : 'available'
@@ -810,13 +815,14 @@ const display = (req, res) => {
 
 const editResponse = (req, res, columnAndValues, product_id) => {
 	Product.update({ product_id }, columnAndValues, function (err, response) {
-		return res.redirect('list');
+		res.end('1');
+		//return res.redirect('list');
 	})
 };
 
 const edit = (req, res) => {
 	if (req.body.product_id && req.body.product_category && req.body.title && req.body.product_variety_id && req.body.size && req.body.state_id && req.body.city_id && req.body.location) {
-		let total_unit_price = req.body.total_unit_price.replace(/[,.]/g, "");
+		let total_unit_price = req.body.total_unit_price;
 		Product.findOne({ product_id: req.body.product_id }, { _id: 0, images: 1 }, (err, response) => {
 			if (!response) {
 				return res.redirect('list');
@@ -834,7 +840,7 @@ const edit = (req, res) => {
 				city_id: req.body.city_id,
 				location: req.body.location,
 				unit_price: parseFloat(req.body.unit_price),
-				total_unit_price: parseFloat(total_unit_price),
+				total_unit_price: removePointerInCurrence(total_unit_price),
 				harvest_date: new Date(req.body.harvest_date),
 				product_type: (dateIsAfter) ? 'forecast' : 'available'
 			}

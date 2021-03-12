@@ -207,10 +207,10 @@ exports.getCMS = (req, res) => {
 		{ _id: 0, cms_id: 1, title: 1, code: 1, description: 1 },
 		(err, cms_pages) => {
 			let tc_title = cms_pages
-				? cms_pages['title'][req.session.language || 'EN']
+				? cms_pages['title'][req.session.language || 'PT']
 				: '';
 			let tc_description = cms_pages
-				? cms_pages['description'][req.session.language || 'EN']
+				? cms_pages['description'][req.session.language || 'PT']
 				: '';
 
 			res.send({
@@ -1208,11 +1208,11 @@ exports.get_producer = function (req, res) {
 	let farmerStr = "";
 	Farmer.find(
 		{ status: 'active', user_id: req.session.user_id },
-		{ _id: 0, farmer_id: 1, name: 1 },
+		{ _id: 0, farmer_id: 1, first_name: 1, last_name: 1 },
 		(err, farmers) => {
 			farmers = _.sortBy(farmers, function (item) {
 				return item
-					.name[req.session.language || config.default_language_code];
+					.first_name[req.session.language || config.default_language_code];
 			});
 
             if(!farmers){
@@ -1224,19 +1224,20 @@ exports.get_producer = function (req, res) {
 				' ---</option>';
 			}
 			_.each(farmers, (element, index, list) => {
+
 				if (req.query.producer_id == element.farmer_id) {
 					farmerStr +=
 						"<option value='" +
 						element.farmer_id +
 						"' selected>" +
-						element.name +
+						element.first_name + ' ' + element.last_name 
 						'</option>';
 				} else {
 					farmerStr +=
 						"<option value='" +
 						element.farmer_id +
 						"'>" +
-						element.name +
+						element.first_name + ' ' + element.last_name 
 						'</option>';
 				}
 			});

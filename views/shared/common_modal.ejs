@@ -7,7 +7,7 @@
                     <h4 class="modal-title"><%= labels['LBL_WALLET_PROMPT_HEADER'][language] %></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <label class="my-1 mr-2"><span
@@ -44,7 +44,7 @@
                     <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <label class="my-1 mr-2"><span class='profile_label'>Name</span>:*</label>
@@ -57,7 +57,7 @@
                               <a href="javascript:void(0);"
                                    onClick='setUserInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
                                         style="margin: 5px 0;"
-                                        class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                                        class="button btn-cart"><%= labels['LBL_SAVE_CHANGES'][language] %></button></a>
                          </div>
                     </div>
                </div>
@@ -76,7 +76,7 @@
                     <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <label class="my-1 mr-2"><span class='profile_label'></span>:*</label>
@@ -107,27 +107,31 @@
           <div class="modal-content ">
                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title"><%= labels['LBL_EDIT_PRODUCT_DOC'][language] %> <span class='profile_title'></h4>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <div class="input-group">
                                         <div class="custom-file">
-                                             <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                  aria-describedby="inputGroupFileAddon01" name="images" id="images" multiple>
+                                             <input type="file" class="custom-file-input" 
+                                                  aria-describedby="inputGroupFileAddon01" name="docUser" id="docUser" multiple>
                                              <label class="custom-file-label" for="inputGroupFile01"></label>
                                        </div>
                                    </div>
-                                   <span class="validation-alert" id='img_err'></span>
                               </div>
                          </div>
-                         <div class="col-md-12 align_center">
+                         <!-- <div class="col-md-12 align_center">
                               <a href="javascript:void(0);"
-                                   onClick='setUserStateCityInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
+                                   onClick='setUserStateDOCInfo("<%=baseURL%>", "<%= labels['LBL_MESSAGE'][language] %>")'><button
                                         style="margin: 5px 0;"
                                         class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button></a>
+                         </div> -->
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);" onClick='addNewDocUser()'>
+                                   <button style="margin: 5px 0;" class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button>
+                              </a>
                          </div>
                     </div>
                </div>
@@ -145,7 +149,7 @@
                     <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <label class="my-1 mr-2"><span
@@ -205,7 +209,7 @@
                     </h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <div class="row">
@@ -251,7 +255,7 @@
                     </h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <div class="search-container">
                                    <div class="row">
@@ -290,7 +294,7 @@
                     <h4 class="modal-title"><%= labels['LBL_ADD_NEW_ADDRESS'][language] %></h4>
                </div>
                <div class="modal-body">
-                    <div class="row add-address">
+                    <div class="row order-list-title">
                          <div class="col-md-12">
                               <!-- <h3><%= labels['LBL_ADDRESS_DETAILS'][language] %></h3> -->
                               <div class="row">
@@ -446,6 +450,41 @@
           </div>
      </div>
      <script>
+
+
+          function addNewDocUser(){
+
+               var file_data = $('#docUser').prop('files')[0];   
+               var form_data = new FormData();                  
+               form_data.append('images', file_data);
+         
+               var url = '<%=baseURL%>aggregators/user/editDoc';
+               $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                   // dataType: "JSON",
+                    success: function (data){
+                         showAlert("Documento submetido com sucesso!");
+					setTimeout(() => {
+						hideAlert();
+                              window.location.reload();
+						//window.location.href = "<%=baseURL%>aggregators/user/list";
+					}, 3000); 
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                         showAlert("Erro ao publicar o produto!");
+					setTimeout(() => {
+						hideAlert()
+						window.location.reload();
+					}, 3000);                        
+                    }
+               });
+               
+          }
+
 
           function addNewAddress(from) {
                $('#addressModal').modal('show');
