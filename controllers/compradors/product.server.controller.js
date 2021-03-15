@@ -20,6 +20,9 @@ let Unit = require('mongoose').model('Unit');
 let labels = require('../../utils/labels.json');
 
 
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.filterList = function(req, res) {
 	let sortColumnAndValues = {}, filterColumnAndValues = { user_id: req.session.user_id };
 	if(req.query.sort_by_price == 'min'){

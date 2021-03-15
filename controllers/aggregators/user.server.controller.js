@@ -193,6 +193,7 @@ exports.profile = function (req, res) {
 			}
 
 			let userInfo = response[0];
+			userInfo['photo'] = ((response.photo) ? config.aws.prefix + config.aws.s3.userBucket + '/' + response.photo : '../../../images/placeholder.jpg');
 			userInfo['user_type'] = labels['LBL_SIGN_UP_USER_AGGREGATORS'][req.session.language];
 			passwordHandler.decrypt(userInfo.password, (decPin) => {
 				userInfo.password = (userInfo.password ? decPin : '');

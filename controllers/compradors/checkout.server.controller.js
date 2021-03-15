@@ -32,6 +32,9 @@ let {
 const axios = require('axios');
 const { forEach } = require('p-iteration');
 
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.getPaymentCaptions = async (req, res) => {
      Setting.findOne({}, { _id: 0, payment_captions: 1 }, (err, settings) => {
           res.send({

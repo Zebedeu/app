@@ -17,6 +17,10 @@ let {
 	separatorsWD
 } = require('../../utils/formatter');
 
+
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = function(req, res) {
 	User.findOne({ user_id: req.session.user_id }, { _id: 0, favourite_product_id: 1 }, (err, singleUser) => {
 		Product.aggregate([

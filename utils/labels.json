@@ -2206,7 +2206,7 @@
 	},
 	"LBL_SHIPPED": {
 		"EN": "Shipped",
-		"PT": "Preparado"
+		"PT": "Em trânsito"
 	},
 	"LBL_DELIVERED": {
 		"EN": "Delivered",

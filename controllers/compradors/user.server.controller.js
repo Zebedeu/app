@@ -6,6 +6,10 @@ let User = require('mongoose').model('User');
 let passwordHandler = require('../../utils/password-handler');
 let labels = require('../../utils/labels.json');
 
+
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = function(req, res) {
 	res.render('compradors/user/list', {
 		user: {

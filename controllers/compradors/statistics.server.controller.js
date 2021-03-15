@@ -12,6 +12,10 @@ let {
 	separatorsWD
 } = require('../../utils/formatter');
 
+
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = function(req, res) {
 	res.render('compradors/statistics/total_purchase', {
 		user: {

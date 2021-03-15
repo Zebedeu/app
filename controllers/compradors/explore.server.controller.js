@@ -20,6 +20,10 @@ let User = require('mongoose').model('User');
 let sortBy = require('lodash').sortBy;
 let labels = require('../../utils/labels.json');
 
+
+exports.toExplore = (req, res) => {
+	return res.redirect('/compradors/explore/list');
+} 
 exports.demand = function (req, res) {
 	Cart.count({ user_id: req.session.user_id }, (err, total_cart_products) => {
 		Product.aggregate([

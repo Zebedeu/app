@@ -16,6 +16,9 @@ let {
      separatorsWD
 } = require('../../utils/formatter');
 
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.filterList = function (req, res) {
      
      Order.find({ 'buyer_info.user_id': req.session.user_id, $and: [{ "delivery_at": { $gte: new Date(req.query.from_date + 'T00:00:00.000Z') } }, { "delivery_at": { $lte: new Date(req.query.to_date + 'T23:59:59.000Z') } }] }, { _id: 0 }, (err, orders) => {
