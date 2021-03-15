@@ -5,7 +5,18 @@
 	<a href="https://www.instagram.com/kepyamarket/" target=_blank><span class="youtube"><i class="fa fa-instagram"></i></span></a>
 </div>
 <div class="social-media-right" id='site-footer'>&copy; <span id="year"></span> <%= labels['LBL_MY_ACCOUNT_SITE_FOOTER'][language] %></div>
-
 <script>
+	$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
+
+	function removeLoader(){
+		$( "#loading" ).fadeOut(500, function() {
+		  // fadeOut complete. Remove the loading div
+		  $( "#loading" ).remove(); //makes page more lightweight 
+	  });  
+	}
+
+</script>
+<script>
+	setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
     document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
