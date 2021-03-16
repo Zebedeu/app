@@ -237,7 +237,8 @@ exports.profile = function(req, res) {
 	                state_name: "$stateDetails.name",
 	                city_name: "$cityDetails.name",
 	                city_latitude: "$cityDetails.latitude",
-	                city_longitude: "$cityDetails.longitude"
+	                city_longitude: "$cityDetails.longitude",
+					doc: "$doc"
 			  	}
 			}
 		], (err, response) => {

@@ -90,7 +90,8 @@ exports.profile = function(req, res){
 	                gps_location: "$gps_location",
 	                status: "$status",
 	                state_name: "$stateDetails.name",
-	                city_name: "$cityDetails.name"
+	                city_name: "$cityDetails.name",
+					doc: "$doc"
 			  	}
 			}
 		], (err, response) => {

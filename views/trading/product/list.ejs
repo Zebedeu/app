@@ -136,12 +136,12 @@ tippy('#view-item', {
 			$.confirm({
 			title: 'Desejas remover o produto ?',
 			content: sub_category_title,
-			type: 'purple',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>trading/product/remove/" + product_id,

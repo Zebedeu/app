@@ -97,6 +97,13 @@
 							    <button class="main_btn2" onClick="getUserInfo('nif','<%= lbl_nif %>','<%= lbl_validate_nif %>')"><%= labels['LBL_EDIT'][language] %></button>
 							</div>
 						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="search-container loginsecurity_detail security-box-height">
+							   <label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT'][language] %>:</label>
+							   <p class='profile_doc'> <a href="<%= user_info.doc %>"> BI</a></p>
+							   <button class="main_btn2" onClick="getUserStateDocInfo('<%=baseURL%>','doc','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_DOC'][language] %>','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC'][language] %>','<%= user_info.user_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+						   </div>
+					   </div>
 
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">

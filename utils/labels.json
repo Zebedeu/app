@@ -204,7 +204,7 @@
 		"PT": "Os produtores na minha carteira"
 	},
 	"LBL_YOUR_ORDERS": {
-		"EN": "Your Orders",
+		"EN": "My Orders",
 		"PT": "As minhas compras"
 	},
 	"LBL_YOUR_ORDERS_DESCRIPTION": {
@@ -212,7 +212,7 @@
 		"PT": "Gerir reservas de produtos a serem enviados em breve."
 	},
 	"LBL_YOUR_ADDRESSES": {
-		"EN": "Your Addresses",
+		"EN": "My Addresses",
 		"PT": "Os meus endereços"
 	},
 	"LBL_YOUR_ADDRESSES_DESCRIPTION": {
@@ -288,7 +288,7 @@
 		"PT": "Adicionar produtos"
 	},
 	"LBL_ADD_NEW_PRODUCT": {
-		"EN": "Add New Product",
+		"EN": "Add new product",
 		"PT": "Adicionar novo produto"
 	},
 	"LBL_TYPE": {
@@ -296,7 +296,7 @@
 		"PT": "Tipo"
 	},
 	"LBL_PRODUCT_CATEGORY": {
-		"EN": "Product Category",
+		"EN": "Product category",
 		"PT": "Categoria do produto"
 	},
 	"LBL_SELECT_CATEGORY": {
@@ -508,7 +508,7 @@
 		"PT": "Lista de Usuários"
 	},
 	"LBL_ADD_NEW_USER": {
-		"EN": "Add New User",
+		"EN": "Add new user",
 		"PT": "Adicionar novo usuário"
 	},
 	"LBL_EDIT_USER": {
@@ -552,15 +552,15 @@
 		"PT": "Total da encomenda"
 	},
 	"LBL_MANAGE_ADDRESSES": {
-		"EN": "Manage Addresses",
-		"PT": "Gerir Endereços"
+		"EN": "Manage addresses",
+		"PT": "Gerir endereços"
 	},
 	"LBL_MOBILE_NUMBER": {
 		"EN": "Mobile number",
 		"PT": "Número de telefone"
 	},
 	"LBL_ADD_NEW_ADDRESS": {
-		"EN": "Add New Address",
+		"EN": "Add new address",
 		"PT": "Adicionar novo endereço"
 	},
 	"LBL_EDIT": {
@@ -592,7 +592,7 @@
 		"PT": "Município"
 	},
 	"LBL_YOUR_DETAILS": {
-		"EN": "Your Details",
+		"EN": "My details",
 		"PT": "Seus detalhes"
 	},
 	"LBL_TYPE_OF_ADDRESS": {
@@ -605,22 +605,22 @@
 	},
 	"LBL_DONE": {
 		"EN": "Done",
-		"PT": "Voltar ao Início"
+		"PT": "Voltar ao início"
 	},
 	"LBL_LIST_FORCAST": {
-		"EN": "List Forcasts",
+		"EN": "List forcasts",
 		"PT": "Listar previsoes"
 	},
 	"LBL_ADD_NEW_FORCAST": {
-		"EN": "Add New Forcast",
+		"EN": "Add new forcast",
 		"PT": "Adicionar nova previsão"
 	},
 	"LBL_EMPTY_FORCAST": {
-		"EN": "Empty Forcasts",
+		"EN": "Empty forcasts",
 		"PT": "Previsões vazias"
 	},
 	"LBL_EDIT_FORCAST": {
-		"EN": "Edit Forcasts",
+		"EN": "Edit forcasts",
 		"PT": "Editar previsoes"
 	},
 	"LBL_ADD_PRODUCES": {
@@ -652,7 +652,7 @@
 		"PT": "Total"
 	},
 	"LBL_TOTAL_ITEM_PREPARED": {
-		"EN": "Your item has been prepared",
+		"EN": "My item has been prepared",
 		"PT": "Seu item foi preparado"
 	},
 	"LBL_ITEM_SUB_TOTAL": {
@@ -692,11 +692,11 @@
 		"PT": "Sair"
 	},
 	"LBL_POST_DEMAND": {
-		"EN": "Post your Demand",
+		"EN": "Post my demand",
 		"PT": "Publicar necessidades"
 	},
 	"LBL_FAV_LIST": {
-		"EN": "Your Favourite List",
+		"EN": "My favourite list",
 		"PT": "Lista de favoritos"
 	},
 	"LBL_YOUR_IDEA": {
@@ -728,19 +728,19 @@
 		"PT": "Download em PDF"
 	},
 	"LBL_LIST_DEMAND": {
-		"EN": "List Demands",
+		"EN": "List demands",
 		"PT": "Lista de demandas"
 	},
 	"LBL_EMPTY_DEMAND": {
-		"EN": "Empty Demands",
+		"EN": "Empty demands",
 		"PT": "Demandas vazias"
 	},
 	"LBL_POST_YOUR_DEMAND": {
-		"EN": "POST YOUR DEMAND",
+		"EN": "Post my demand",
 		"PT": "Gerir e publicar as necessidades pontuais e recorrentes de produtos"
 	},
 	"LBL_ADD_NEW_DEMAND": {
-		"EN": "Add New Demand",
+		"EN": "Add new demand",
 		"PT": "Adicionar pedido"
 	},
 	"LBL_KILOGRAM": {
@@ -1909,11 +1909,11 @@
 		"PT": "Gerir produtor"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION": {
-		"EN": "Your users",
+		"EN": "My users",
 		"PT": "Seus usuários"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS": {
-		"EN": "Your Orders",
+		"EN": "My Orders",
 		"PT": "Seus pedidos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
@@ -1929,7 +1929,7 @@
 		"PT": "Editar login, nome e número de telefone"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
-		"EN": "Your Orders",
+		"EN": "My Orders",
 		"PT": "As minhas Compras"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
@@ -1961,7 +1961,7 @@
 		"PT": "Sua ideia lista ou compra coisas"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES": {
-		"EN": "Your Addresses",
+		"EN": "My addresses",
 		"PT": "As minhas moradas"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
@@ -1977,7 +1977,7 @@
 		"PT": "Editar os meus dados pessoais"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS": {
-		"EN": "Your Orders",
+		"EN": "My Orders",
 		"PT": "As minhas encomendas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
@@ -2009,7 +2009,7 @@
 		"PT": "Sua ideia lista ou compra coisas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES": {
-		"EN": "Your Addresses",
+		"EN": "My addresses",
 		"PT": "As minhas moradas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
@@ -2037,7 +2037,7 @@
 		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE": {
-		"EN": "Post your demand",
+		"EN": "Post my demand",
 		"PT": "Adicionar pedido"
 	},
 	"LBL_COMPRADOR_ADD_NEW_DEMAND_SUBMIT_BUTTON": {
@@ -3714,11 +3714,11 @@
 		"PT": "Quantidade"
 	},
 	"LBL_SOLD_PRODUCT": {
-		"EN": "Sold Product List",
+		"EN": "Sold product list",
 		"PT": "Lista de produtos vendidos"
 	},
 	"LBL_UNSOLD_PRODUCT": {
-		"EN": "Unsold Product List",
+		"EN": "Unsold product list",
 		"PT": "Lista de produtos não vendidos"
 	},
 	"LBL_SHIPMENT_ID": {
@@ -3935,7 +3935,7 @@
 	},
 	
 	"LBL_YOUR_ORDERS_PRODUCERS": {
-		"EN": "Your Orders",
+		"EN": "My Orders",
 		"PT": "As minhas vendas"
 	},
 	"LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT": {
@@ -3972,7 +3972,29 @@
 	},	"LBL_AGGREGATOR_YOUR_ACCOUNT_DOC": {
 		"EN": "Document",
 		"PT": "Documento"
+	},	"LBL_ADD_COMPROVATIVO_MODAL": {
+		"EN": "Insert the receipt",
+		"PT": "Insira o comprovativo"
+	},	"LBL_WALLET_RECEIPT": {
+		"EN": "Receipt",
+		"PT": "Comprovativo"
+	},	"LBL_WALLET_RECEIPT_VIEW": {
+		"EN": "View",
+		"PT": "Visualizar"
+	},	"LBL_WALLET_RECEIPT_ADD": {
+		"EN": "Add",
+		"PT": "Adicionar"
+	},	"LBL_WALLET_RECEIPT_MSG": {
+		"EN": "Caso tenha feito uma transferência bancária para a sua carteira, por favor submeta o comprovativo aqui",
+		"PT": "Caso tenha feito uma transferência bancária para a sua carteira, por favor submeta o comprovativo aqui"
+	},	"LBL_WALLET_RECEIPT_MSG_BUTTON": {
+		"EN": "Submeter comprovativo",
+		"PT": "Submeter comprovativo"
+	},"LBL_ADDRESS_SUBMIT": {
+		"EN": "Submit address",
+		"PT": "Submeter endereço"
+	},"LBL_WALLET_RECEIPT_EDIT": {
+		"EN": "Edit receipt",
+		"PT": "Editar comprovativo"
 	}
-
-	
 }

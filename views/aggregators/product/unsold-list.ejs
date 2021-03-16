@@ -121,14 +121,14 @@
 
 	function notificacao(sub_category_title, product_id,img) {
 			$.confirm({
-			title: '<p style= "font-size: 18px;">Tens certeza que deseja remover este produto ?</p>',
+			title: '<p style= "font-size: 18px;">Tem certeza que deseja remover este produto ?</p>',
 			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + product_id + "<br>" + " Nome: " + sub_category_title + '</p>',
-			type: 'green',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
 				yes:{
 					text: 'Sim',
-					btnClass: 'btn-green',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
@@ -156,7 +156,7 @@
 				no: {
 					keys: ['Não'],
 					text: 'Não',
-					btnClass: 'btn-green',
+					btnClass: 'kepya-green',
 				}
 					
 			}

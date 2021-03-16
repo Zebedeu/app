@@ -389,8 +389,10 @@ exports.soldList = async (req, res) => {
 				singleProduct.unit_price = separatorsWD(singleProduct.unit_price) + "Kz "
 				// singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
 				// singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
-				singleProduct.delivery_at = data.delivery_at
-				singleProduct.payment_status = data.payment_status
+				singleProduct.delivery_at = data.delivery_at;
+				singleProduct.payment_status = data.payment_status;
+				singleProduct['images'][0] = ((singleProduct.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + data.images : '../../../images/forcast.png');
+
 			})
 			// console.log("Sigle order", data);
 			products.push(_.where(data.products, { seller_id: req.session.user_id }))
