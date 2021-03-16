@@ -76,7 +76,6 @@ exports.list = function (req, res) {
 };
 
 exports.transactions = function (req, res) {
-
      let columnAndValues = {
           $and: [
                { "created_at": { $gte: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') } },
@@ -95,48 +94,19 @@ exports.transactions = function (req, res) {
           };
      }
 
-     WalletLog.find(columnAndValues, (err, logs) => {
-
+     WalletLog.find(columnAndValues, { _id: 0 }, (err, logs) => {
           if (req.query.from_date && req.query.to_date) {
                let ajaxContent = "";
                if (logs.length > 0) {
-                    let title = '', description = '', created_at = '', amount = '', remaining_balance = "", receipt = "";
+                    let title = '', description = '', created_at = '', amount = '', remaining_balance="";
                     _.each(logs, (element, index, list) => {
-
                          title = element.title[req.session.language || config.default_language_code];
                          description = element.description[req.session.language || config.default_language_code];
-                         valueChecked = element.remaining_balance;
-                         receipt = element.receipt;
-
-                         if (valueChecked > 0) {
-                              remaining_balance = '<span class="wallet-currency-add-color">' + separators(valueChecked) + ' Kz </span>';
-                         } else {
-                              remaining_balance = separators(valueChecked) + ' Kz ';
-                         }
+                         remaining_balance = separators(element.remaining_balance) + ' Kz ';
                          created_at = convert_date(element.created_at, req.session.language);
-                         amount = (element.type == 'add') ? ('<span class="wallet-currency-add-color">' + separators(element.amount) + ' Kz </span>') : (' - ' + separators(element.amount) + ' Kz ');
+                         amount = (element.type == 'add') ? ( ' - ' + separators(element.amount)+ ' Kz ') : ( ' - ' + separators(element.amount)+ ' Kz ');
 
-                         req.session.wallet_log_id = element.wallet_log_id;
-       
-                         var line ='';
-                         if(receipt === ''){
-                              line = '</td><td style="width:100px;height:50px;">'+ 
-                                        '<a id="view-item" href="#"> <i style="font-size: 22px;color: #fff; background-color: #4abfa5; margin-left:10px; width: 25px;height: 23px;"  class="fa fa-eye"></i></a>'+
-                                        '<a id="edit-item" onClick="callModalReceipt()"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
-                                     '</td></tr>';
-                         }else{
-                              line = '</td><td style="width:100px;height:50px;">'+ 
-                                        '<a id="view-item" href="' + receipt +  '"> <i style="font-size: 22px;color: #fff; background-color: #4abfa5; margin-left:10px; width: 25px;height: 23px;"  class="fa fa-eye"></i></a>'+
-                                        '<a id="edit-item" onClick="callModalReceipt()"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
-                                     '</td></tr>'; 
-                         }
-                  
-                         ajaxContent += "<tr><td>" + created_at +
-                              "</td><td>" + description +
-                              "</td><td class='wallet_amount'>" + amount +
-                              "</td><td class='wallet_amount'>" + remaining_balance +
-                              line
-
+                         ajaxContent += "<tr><td>" + created_at + "</td><td>" + description + "</td><td class='wallet_amount'>" + amount + "</td><td class='wallet_amount'>" + remaining_balance + "</td></tr>";
                     })
                } else {
                     ajaxContent = "<tr><td colspan='4'>" + labels['LBL_WALLET_NO_RECORD_AVAILABLE'][(req.session.language || config.default_language_code)] + "</td></tr>";
@@ -147,9 +117,6 @@ exports.transactions = function (req, res) {
           } else {
                logs = JSON.parse(JSON.stringify(logs));
                _.each(logs, (element, index, list) => {
-
-                    console.log(element)
-
                     logs[index]['title'] = element.title[req.session.language || config.default_language_code];
                     logs[index]['amount'] = separators(element.amount);
                     logs[index]['remaining_balance'] = separators(element.remaining_balance);
@@ -202,8 +169,6 @@ exports.withdrawalRequests = function (req, res) {
                if (logs.length > 0) {
                     let created_at = '', amount = '', status = '';
                     _.each(logs, (element, index, list) => {
-
-                         console.log(element)
                          created_at = convert_date(element.created_at, req.session.language);
                          amount = ' - ' + separators(element.amount) + ' Kz ';
 

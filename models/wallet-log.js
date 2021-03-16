@@ -47,10 +47,6 @@ var walletLogSchema = new Schema({
     updated_at: {
         type: Date,
         default: Date.now
-    }, 
-    receipt: {
-        type: String,
-        default: ''
     }
 });
 

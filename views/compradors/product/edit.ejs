@@ -12,7 +12,7 @@
 					<input type='hidden' id="lower_price_range" name="lower_price_range" value="0">
 					<input type='hidden' id="higher_price_range" name="higher_price_range" value="0">
 					<input type="hidden" id="product_id" name="product_id" value="<%= product.product_id %>">
-					<div class="row order-list-title">
+					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3><%= labels['LBL_POST_DEMAND'][language] %></h3>
 						</div>
@@ -319,12 +319,12 @@
 			title: 'Actualizar Pedido',
 			icon: 'fa fa-check',
 			content: 'O seu pedido foi actualizado com sucesso!',
-			type: 'kepya',
+			type: 'purple',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'kepya-green',
+					btnClass: 'btn',
 					action: function () {
 						$('#frm-edit-product').submit();
 					}

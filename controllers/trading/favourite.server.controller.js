@@ -142,8 +142,8 @@ exports.list = function(req, res) {
 				moment,
 				products,
 				labels,
-				language: req.session.language || 'PT',
-				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"trading/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'PT')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_FAVOURITE'][(req.session.language || 'PT')]+"</li>",
+				language: req.session.language || 'EN',
+				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"trading/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'EN')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_FAVOURITE'][(req.session.language || 'EN')]+"</li>",
 				messages : req.flash('error') || req.flash('info'),
 				messages : req.flash('info'),
 			});

@@ -4,8 +4,6 @@ const {
 } = require('../../utils/session.js');
 
 module.exports = function(app) {
-
-	app.get('/compradors/cart', authenticate_compradors, cart.toDashboard);
 	app.get('/compradors/cart/list', authenticate_compradors, cart.list);
 	app.post('/compradors/cart/update', authenticate_compradors, cart.update);
 };
