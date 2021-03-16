@@ -4,35 +4,36 @@
 			<%- include('../../shared/breadcrumb') %>
 		</div>
 		<div class="product_card">
-			<a href="add" style="float: right; margin-right:60px; margin-top: 20px;"><button class="main_btn"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
 			<div class="row add-address post-add">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-			 		<h3><%= labels['LBL_FARMER_LIST'][language] %></h3>
+			 		<h3 style="font-size:20px; margin-bottom: -35px;"><%= labels['LBL_FARMER_LIST'][language] %></h3>
 				</div>
-				
+			   <a href="add" style="float: right; margin-bottom:35px;"><button class="main_btn"><%= labels['LBL_ADD_FARMER'][language] %></button></a>
 				<% for(let i=0; i < farmers.length; i++) { %>
-				    <% let name = farmers[i]['name'] %>
-					<div class="col-lg-12 col-sm-12 my_oderDetails">
+				    <% let name = farmers[i]['first_name']%>
+				    <% let nameCompleto = farmers[i]['first_name'] +  ' ' + farmers[i]['last_name'] %>
+					<% let photo = farmers[i]['photo']  %>
+					<div class="col-lg-12 col-sm-12 my_oderDetails" style="margin-top: -25px;">
 						<div class="col-lg-3 col-md-6 col-sm-12 kp_myorder">
 							<img src="<%= farmers[i]['photo'] %>" class="img-farmer-size">
 						</div>
 						<div class="col-lg-8 col-md-6 col-sm-12 kp_myorder">
-							<h2><%= farmers[i]['name'] %></h3>
-							<h3><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= farmers[i]['email'] %></h3>
-							<% if(farmers[i]['mobile_country_code'] && farmers[i]['phone_number']){ %>
+							<h2><%= farmers[i]['first_name'] %>  <%= farmers[i]['last_name'] %> </h3>
+								<h3><i class="fa fa-envelope-o" aria-hidden="true"></i> <%= farmers[i]['email'] %></h3>
+								<h3><i class="fa fa-user-o" aria-hidden="true"></i> <%= farmers[i]['farmer_id'] %></h3>
+								<% if(farmers[i]['mobile_country_code'] && farmers[i]['phone_number']){ %>
 								<h3><i class="fa fa-phone" aria-hidden="true"></i> <%= farmers[i]['mobile_country_code'] %> <%= farmers[i]['phone_number'] %></h3>
 							<% } %>
 							<h3><i class="fa fa-building" aria-hidden="true"></i> <%= farmers[i]['bank_name'] %> - <%= farmers[i]['bank_account_no'] %></h3>
-							<h3><i class="fa fa-calculator" aria-hidden="true"></i> <%= farmers[i]['nif'] %></h3>
-							<div class="kp_location">
-								<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= farmers[i]['address'] %></span>
-							</div>
+							<h3><i class="fa fa-calculator" aria-hidden="true">NIF</i> <%= farmers[i]['nif'] %></h3>
+							<h3><i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= farmers[i]['address'] %></span></h3>
+							</>
 						</div>
-						<div class="edit_ico">
+						<div id="edit-item" class="edit_ico">
 							<a href="<%=baseURL%>aggregators/user/display/<%= farmers[i].farmer_id %>"><i class="fa fa-edit"></i></a>
 						</div>
-						<div class="delete_ico">
-							<a onclick="notificacao('<%=name%>','<%= farmers[i].farmer_id %>')"
+						<div id="delete-item" class="delete_ico">
+							<a onclick="notificacao('<%=nameCompleto%>','<%= farmers[i].farmer_id %>','<%= photo %>')",
 								href="#"><i  class="fa fa-trash"></i></a>
 						</div>
 					</div>
@@ -44,18 +45,31 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 
 <script>
-	function notificacao(farmers, farmer_id) {
+
+    tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+    });
+	
+	tippy('#delete-item', {
+        content: 'Eliminar',
+		theme: 'tomato'
+    });
+
+	function notificacao(farmers, farmer_id, img) {
 			$.confirm({
-			title: 'Desejas remover o produtor ?',
-			content: "ID: " + farmer_id + "<br>" + 'Nome: ' + farmers,
-			type: 'purple',
+			title: '<p style= "font-size: 18px;">Tem certeza que deseja remover este produtor ?</p>',
+			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + farmer_id + "<br>" + " Nome: " + farmers + '</p>',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
-				tryAgain: {
+				yes:{
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>aggregators/user/remove/" + farmer_id,
@@ -79,9 +93,13 @@
 							}
 						});
 					}
-				},
-				close: function () {
+			    },
+				no: {
+					keys: ['Não'],
+					text: 'Não',
+					btnClass: 'kepya-green',
 				}
+					
 			}
 		});
 	}

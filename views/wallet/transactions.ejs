@@ -1,9 +1,14 @@
 <link rel="stylesheet" href="../../../css/transaction.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.css"/>
- 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
+-->
+<script src="../../../../js/profile.js"></script>
+
 <section class="productsdetail">
 	<div class="container">
 		<div class="breadcrumb_card">
@@ -56,10 +61,11 @@
 											<th width='40%'><%= labels['LBL_WALLET_DESCRIPTION'][language] %></th>
 											<th width='20%'><%= labels['LBL_WALLET_AMOUNT'][language] %></th>
 											<th width='20%'><%= labels['LBL_WALLET_REMAINING_BALANCE'][language] %></th>
+											<th width='20%'><%= labels['LBL_WALLET_RECEIPT'][language] %></th>
 										</tr>
 									</thead>
 									<tbody class='wallet_transactions'>
-							
+										
 									</tbody>
 								</table>
 							</div>
@@ -70,11 +76,31 @@
 		</div>	
 	</div>
 </section>
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
 <script>
+
+    tippy('#view-item', {
+        content: 'Visualizar',
+		theme: 'tomato'
+    });
+	
+	tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+    });
+
+	function callModalReceipt(wallet_log_id){
+		$('.wallet_log_id').val(wallet_log_id)
+		$('#UserModalReceipt').modal('show');
+	}
+
 	function searchByDate(){
 		if($('#from-date').val() && $('#to-date').val()){
 			$.ajax({url: "<%=baseURL%>wallet-transactions?from_date="+$('#from-date').val()+"&to_date="+$('#to-date').val(),  success: (result) => {
-				//ajaxContent += "<tr><td>" + created_at + "</td><td>" + description + "</td><td class='wallet_amount'>" + amount + "</td><td class='wallet_amount'>" + remaining_balance + "</td></tr>";
+				// ajaxContent += "<tr><td>" + created_at + "</td><td>" + description + "</td><td class='wallet_amount'>" + amount + "</td><td class='wallet_amount'>" + remaining_balance + "</td></tr>";
 				// var ajaxContent =""; 
 				// for (let index = 0; index < result.data.length; index++) {
 				// 	const element = result.data[index];
@@ -91,7 +117,6 @@
 		}
 	}
 
-	// $(document).ready(function(){
 	// 	$("#wallet_history-table").DataTable({
 
 	// 		"order": [0, "asc"],
@@ -223,7 +248,7 @@
 	// 						],
 	// 						responsive: true
 	// 	});
-	// })
+
 
 
 </script>

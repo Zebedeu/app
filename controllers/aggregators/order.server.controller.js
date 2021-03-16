@@ -151,7 +151,7 @@ exports.filterList = function (req, res) {
                     moment,
                     labels,
                     layout: false,
-                    language: req.session.language || 'EN',
+                    language: req.session.language || 'PT',
                });
           }
      ).sort({ created_at: -1 });
@@ -294,15 +294,15 @@ exports.list = function (req, res) {
                     end_date: monthStartEndDates.end,
                     moment,
                     labels,
-                    language: req.session.language || 'EN',
+                    language: req.session.language || 'PT',
                     breadcrumb:
                          "<li class='breadcrumb-item'><a href='" +
                          config.base_url +
                          "aggregators/dashboard'>" +
-                         labels['LBL_HOME'][req.session.language || 'EN'] +
+                         labels['LBL_HOME'][req.session.language || 'PT'] +
                          "</a></li><li class='breadcrumb-item active' aria-current='page'>" +
                          labels['LBL_YOUR_ORDERS'][
-                         req.session.language || 'EN'
+                         req.session.language || 'PT'
                          ] +
                          '</li>',
                     messages: req.flash('error') || req.flash('info'),
@@ -444,21 +444,21 @@ exports.details = function (req, res) {
                     totalShipped: totalShipped,
                     totalDelivered: totalDelivered,
                     labels,
-                    language: req.session.language || 'EN',
+                    language: req.session.language || 'PT',
                     breadcrumb:
                          "<li class='breadcrumb-item'><a href='" +
                          config.base_url +
                          "aggregators/dashboard'>" +
-                         labels['LBL_HOME'][req.session.language || 'EN'] +
+                         labels['LBL_HOME'][req.session.language || 'PT'] +
                          "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" +
                          config.base_url +
                          "aggregators/order/list'>" +
                          labels['LBL_YOUR_ORDERS'][
-                         req.session.language || 'EN'
+                         req.session.language || 'PT'
                          ] +
                          "</a></li><li class='breadcrumb-item active' aria-current='page'>" +
                          labels['LBL_ORDER_DETAILS'][
-                         req.session.language || 'EN'
+                         req.session.language || 'PT'
                          ] +
                          '</li>',
                     messages: req.flash('error') || req.flash('info'),

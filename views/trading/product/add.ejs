@@ -10,7 +10,7 @@
 					<input type='hidden' class='min_unit_qty_error'>
 					<input type='hidden' id="lower_price_range" name="lower_price_range" value="0">
 					<input type='hidden' id="higher_price_range" name="higher_price_range" value="0">
-					<div class="row add-address">
+					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3><%= labels['LBL_TRADING_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE'][language] %></h3>
 						</div>
@@ -307,15 +307,15 @@
 
 	function notificacao() {
 		$.confirm({
-			title: 'Publicar Produto',
+			title: 'Publicar produto',
 			icon: 'fa fa-check',
 			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
-			type: 'purple',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$('#frm-add-product').submit();
 					}

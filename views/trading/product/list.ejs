@@ -79,10 +79,10 @@
 											<h4><%= products[i].status %></h4>	
 										</td>
 										<td> 
-											<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;" class="">
+											<div id="edit-item" style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;" class="">
 												<a href="<%=baseURL%>trading/product/display/<%= products[i].product_id %>"><i style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 											</div>
-											<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"  class="">
+											<div  id="delete-item"style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"  class="">
 												<a onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
 												 href="#"><i style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 											</div>
@@ -105,8 +105,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
 <script>
-	function filterProducts(){
+
+tippy('#view-item', {
+	content: 'Visualizar',
+	theme: 'tomato'
+  });
+  tippy('#edit-item', {
+	content: 'Editar',
+	theme: 'tomato'
+  });
+  tippy('#delete-item', {
+	content: 'Eliminar',
+	theme: 'tomato'
+  });
+
+  function filterProducts(){
 		let category_id = $('#category_id').val();
 		let sort_by_price = $('#sort_by_price').val();
 		let sort_by_qty = $('#sort_by_qty').val();
@@ -119,12 +136,12 @@
 			$.confirm({
 			title: 'Desejas remover o produto ?',
 			content: sub_category_title,
-			type: 'purple',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>trading/product/remove/" + product_id,

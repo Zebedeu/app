@@ -1,3 +1,4 @@
+ 
 <link rel="stylesheet" href="../../../css/wallet.css" />
 <section class="productsdetail">
      <div class="container">
@@ -23,22 +24,17 @@
                     </div>
                </div>
                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <div class="col-md-12 wallet-account-balance-text" >
+                         <b class="pull-left" ><%= labels['LBL_WALLET_ACCOUNT_BALANCE_TEXT'][language] %></b>
+                    </div>
                     <div class="white_bg2">
                          <div class="row">
-                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                   <div class="wallet_balance">
                                         <!-- <p><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %></p>
                                         <b class=" col-md-5" style="margin: 1% 0 2% 30%; color: red;" >Kz <span class='user_wallet_balance'><%= wallet %></span></b> -->
 
-                                        <div class="col-md-8">
-                                                  <div class="col-md-12">
-                                                       <div class="col-md-12 wallet-account-balance-text" >
-                                                            <b class="pull-left" ><%= labels['LBL_WALLET_ACCOUNT_BALANCE_TEXT'][language] %></b>
-                                                       </div>
-                                                       <div class=" col-md-12 panel-badge pull-left" >
+                                                      <div class=" col-md-11 panel-badge-1" >
                                                             <span class=" pull-left"><%= labels['LBL_WALLET_BALANCE_RECENT_TRANSACTIONS_TITLE'][language] %> 
-                                                            </span><b class="pull-right wallet-recent-trasantion" ><%= wallet %> Kz</b>
-                                                            <div class="col-md-12 wallet-account-balance-line"></div>  
+                                                            </span><b class="pull-right" ><%= wallet %> Kz</b>
                    
                                                        </div>
                                                        <% if(user.user_type != 'compradors' && user.user_type != 'trading'){ %>
@@ -48,15 +44,13 @@
                                                             <span class='text-success' > : Kz <%= parseFloat(wallet) + parseFloat(lockedAmount) %></span></h4> -->
                
                                                            
-                                                               <div class=" col-md-12 panel-badge pull-left" >
+                                                               <div class=" col-md-12 panel-badge-2 pull-left" >
                                                                 <span class=" pull-left"><%= labels['LBL_WALLET_LOCKED_AMOUNT'][language] %> </span><span class="pull-right" style="background: #fff; color: rgb(243, 4, 4);"> <%= lockedAmount %> Kz</span>
-                                                                <div class="col-md-12 wallet-account-balance-line"></div>  
-                                                            </div>
+                                                                </div>
                
-                                                            <div class="col-md-12 panel-badge pull-left"  >
+                                                            <div class="col-md-12 panel-badge-1 pull-left"  >
                                                                  <span class="pull-left"><%= labels['LBL_WALLET_ACCOUNT_BALANCE'][language] %></span> <span style=" color: #252932;" class=" pull-right" style="background: #fff; color: #000;"> <%= (walletAccountBalance) %> Kz</span>
-                                                                 <div class="col-md-12 wallet-account-balance-line"></div>  
-                                                            </div>
+                                                                 </div>
                
                                                             <!-- <ul class="nav nav-pills nav-stacked col-md-5" style="margin-left: 30%;">
                                                                  <li role="presentation" class="active"><a href="#">
@@ -86,11 +80,7 @@
                                                   </div>
                                         
 
-                                                  </div>
-                                             </div>
-                                        </div>
                                        
-                                   </div>
                                    
                                    <!-- <div class="wallet_history">
                                         <table width='100%'>
@@ -135,13 +125,11 @@
           if (wallet <= 0 || !is_wallet_enable) {
                $(".withdrwal_btn").attr("disabled", true);
           }
-
           $('.withdrwal_btn').on('click', () => {
                $('.enter-wallet-amount').val('');
                $("#walletWithdrawModal").modal('show');
           })
      })
-
      function withDrawWalletAmount() {
           if (!$('.enter-wallet-amount').val()) {
                $('#err-enter-wallet-amount').text("<%= labels['LBL_WALLET_PROMPT_VALIDATE_ENTER_AMOUNT'][language] %>");
@@ -155,12 +143,10 @@
                $('#err-enter-wallet-amount').text('');
                $(".btn-save-wallet-amount").attr("disabled", true);
                $(".lds-facebook").show();
-
                $.post("<%=baseURL%>withdrawal-money", { wallet: parseFloat($('.enter-wallet-amount').val()) }).done((result) => {
                     $(".btn-save-wallet-amount").attr("disabled", false);
                     $(".lds-facebook").hide();
                     $("#walletWithdrawModal").modal('hide');
-
                     $(".user_wallet_balance").text(result.remaining_amount);
                     $('.wallet_withdraw_message').html(result.message).show();
                     setTimeout(function () {
@@ -170,3 +156,4 @@
           }
      }
 </script>
+

@@ -39,4 +39,7 @@ module.exports = function (app) {
 	);
 	app.post('/edit_address', authenticate_compradors, common.editAddress);
 	app.post('/add-product-review', common.addProductReview);
+
+	app.post('/editDocUser', common.editDocUser);
+	app.post('/addReceiptUser', common.addReceiptUser);
 };

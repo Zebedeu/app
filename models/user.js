@@ -166,6 +166,10 @@ var userSchema = new Schema({
     updated_at: {
         type: Date,
         default: Date.now
+    }, 
+    doc: {
+        type: String,
+        default: ''
     }
 });
 

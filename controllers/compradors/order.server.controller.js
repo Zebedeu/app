@@ -16,6 +16,9 @@ let {
      separatorsWD
 } = require('../../utils/formatter');
 
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.filterList = function (req, res) {
      
      Order.find({ 'buyer_info.user_id': req.session.user_id, $and: [{ "delivery_at": { $gte: new Date(req.query.from_date + 'T00:00:00.000Z') } }, { "delivery_at": { $lte: new Date(req.query.to_date + 'T23:59:59.000Z') } }] }, { _id: 0 }, (err, orders) => {
@@ -58,7 +61,7 @@ exports.filterList = function (req, res) {
                moment,
                labels,
                layout: false,
-               language: req.session.language || 'EN'
+               language: req.session.language || 'PT'
           });
      }).sort({ created_at: -1 });
 };
@@ -405,7 +408,7 @@ const sendShipmentNotification =async (requestParam, error) => {
                      }
  
                      if (template) {
-                         let emailtemplate = template.description['EN'];
+                         let emailtemplate = template.description['PT'];
                          emailtemplate = emailtemplate.replace('#IMAGE#', (response.images.length > 0)?config.aws.prefix + config.aws.s3.productBucket + '/' +response.images[0]:'http://my.kepya.co.ao/images/forcast.png');
                          emailtemplate = emailtemplate.replace('#NAME#', updatedUserData.first_name+" "+updatedUserData.last_name);
                          emailtemplate = emailtemplate.replace('#SHIPMENT_ID#', requestParam.shipment_id);
@@ -419,7 +422,7 @@ const sendShipmentNotification =async (requestParam, error) => {
                          emailtemplate = emailtemplate.replace('#TWITTER#', setting.twitter_url);
                          emailtemplate = emailtemplate.replace('#FACEBOOK#', setting.fb_url);
                          emailtemplate = emailtemplate.replace('#INSTAGRAM#', setting.instagram_url);
-                         let subject = template.email_subject['EN'];
+                         let subject = template.email_subject['PT'];
                          subject = subject.replace('#STATUS#', requestParam['status']);
                          subject = subject.replace('#SHIPMENT_ID#', requestParam['shipment_id']);
                          // let fromEmail = template.from_email;
@@ -516,8 +519,8 @@ exports.list = function (req, res) {
                end_date: monthStartEndDates.end,
                moment,
                labels,
-               language: req.session.language || 'EN',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</li>",
+               language: req.session.language || 'PT',
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'PT')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });
@@ -572,7 +575,7 @@ exports.details = function (req, res) {
                          transporter_id: element.transporter_id,
                          name: element.name,
                          phone_number: element.mobile_country_code + element.phone_number,
-                         bid_type: ((element.bid_type == 'fixed_bid') ? labels['LBL_FIXED_BID'][req.session.language || 'EN'] : labels['LBL_PRICE_PER_KM'][req.session.language || 'EN']),
+                         bid_type: ((element.bid_type == 'fixed_bid') ? labels['LBL_FIXED_BID'][req.session.language || 'PT'] : labels['LBL_PRICE_PER_KM'][req.session.language || 'PT']),
                          bid_amount: separators(element.bid_amount),
                          transporter_status: element.transporter_status
                     })
@@ -633,8 +636,8 @@ exports.details = function (req, res) {
                totalDelivered: totalDelivered,
                labels,
                bidders,
-               language: req.session.language || 'EN',
-               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/order/list'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'EN')] + "</li>",
+               language: req.session.language || 'PT',
+               breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/order/list'>" + labels['LBL_YOUR_ORDERS'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_ORDER_DETAILS'][(req.session.language || 'PT')] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),
           });

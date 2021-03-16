@@ -42,7 +42,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12 col-sm-12 list-products">
-						<a href="add" style="float: right;"><button class="main_btn"><%= labels['LBL_POST_ADD_NOW'][language] %></button></a>
+						<a href="add" style="float: right;"><button class="main_btn"><%= labels['LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE'][language] %></button></a>
 						<table class="table shopping-cart-wrap">
 							<tbody>
 								<tr>
@@ -60,7 +60,8 @@
 											<figure class="">											
 												<figcaption class="media-body kp_myorder">
 													<h3><%= products[i].sub_category_title %></h3>
-													<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span></h4>
+													<h3>#<%= products[i].product_id %></h3>
+													<h4><i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span></h4>
 												</figcaption>
 											</figure> 
 										</td>
@@ -80,10 +81,10 @@
 											<h4><%= products[i].status %></h4>	
 										</td>
 										<td> 
-											<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;" class="">
+											<div id="edit-item" style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;" class="">
 												<a href="<%=baseURL%>compradors/product/display/<%= products[i].product_id %>"><i style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 											</div>
-											<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"  class="">
+											<div id="delete-item" style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"  class="">
 												<a onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
 												 href="#"><i style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 											</div>
@@ -103,6 +104,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 
 <script>
 	function filterProducts(){
@@ -114,31 +117,61 @@
 	        $('.list-products').html(result);
 	    }});
 	}
+	
 	function notificacao(sub_category_title, product_id) {
 			$.confirm({
 			title: 'Desejas remover o produto ?',
 			content: "Id: " + product_id + '<br>' +  'Nome: ' + sub_category_title,
-			type: 'purple',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
-				tryAgain: {
+				yes: {
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>compradors/product/remove/" + product_id,
 							success: function (result) {
-								location.reload();
+								if (result === '0') {
+									showAlert('O pedido ' + product_id + ' não pode ser removido', '<%=baseURL%>', '');
+									setTimeout(() => {
+										hideAlert()
+									}, 3000);
+								} else if (result === '1') {
+									showAlert('O pedido ' + product_id + 'removido com sucesso!', '<%=baseURL%>', '');
+									setTimeout(() => {
+										hideAlert()
+									}, 2000);
+									setTimeout(() => {
+										window.location.replace("list");
+									}, 2000);
+								}
 							},
 							error: function () {
-								document.location.reload(true);
 							}
 						});
 					}
 				},
-				close: function () {
+				no: {
+					keys: ['Não'],
+					text: 'Não',
+					btnClass: 'btn-green',
 				}
 			}
+
 		});
 	}
+
+	tippy('#view-item', {
+        content: 'Visualizar',
+		theme: 'tomato'
+      });
+	  tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+      });
+	  tippy('#delete-item', {
+        content: 'Eliminar',
+		theme: 'tomato'
+      });
 </script>
