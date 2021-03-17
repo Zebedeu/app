@@ -17,8 +17,10 @@ let {
 exports.withdrawalMoney = function (req, res) {
      User.findOne({ user_id: req.session.user_id }, { _id: 0, wallet: 1, bank_name: 1, bank_account_no: 1 }, (err, singleUser) => {
           let walletBalance = singleUser.wallet;
+
           let withDrawAmount = (parseFloat(req.body.wallet) >= walletBalance) ? walletBalance : parseFloat(req.body.wallet);
           let remainingAmount = (walletBalance - withDrawAmount);
+
 
           User.update({ user_id: req.session.user_id }, { wallet: remainingAmount }, function (err, response) {
                let walletObj = new WithDrawRequest({
@@ -101,6 +103,8 @@ exports.transactions = function (req, res) {
                let ajaxContent = "";
                if (logs.length > 0) {
                     let title = '', description = '', created_at = '', amount = '', remaining_balance = "", receipt = "";
+                    var wallet_log_ids = [];
+                    var i=0;
                     _.each(logs, (element, index, list) => {
 
                          title = element.title[req.session.language || config.default_language_code];
@@ -116,18 +120,18 @@ exports.transactions = function (req, res) {
                          created_at = convert_date(element.created_at, req.session.language);
                          amount = (element.type == 'add') ? ('<span class="wallet-currency-add-color">' + separators(element.amount) + ' Kz </span>') : (' - ' + separators(element.amount) + ' Kz ');
 
-                         req.session.wallet_log_id = element.wallet_log_id;
+                         wallet_log_ids[i] = element.wallet_log_id;
        
                          var line ='';
                          if(receipt === ''){
                               line = '</td><td style="width:100px;height:50px;">'+ 
                                         '<a id="view-item" href="#"> <i style="font-size: 22px;color: #fff; background-color: #4abfa5; margin-left:10px; width: 25px;height: 23px;"  class="fa fa-eye"></i></a>'+
-                                        '<a id="edit-item" onClick="callModalReceipt()"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
+                                        '<a id="edit-item" onClick="callModalReceipt(' + element.wallet_log_id  + ')"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
                                      '</td></tr>';
                          }else{
                               line = '</td><td style="width:100px;height:50px;">'+ 
                                         '<a id="view-item" href="' + receipt +  '"> <i style="font-size: 22px;color: #fff; background-color: #4abfa5; margin-left:10px; width: 25px;height: 23px;"  class="fa fa-eye"></i></a>'+
-                                        '<a id="edit-item" onClick="callModalReceipt()"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
+                                        '<a id="edit-item" onClick="callModalReceipt(' +  element.wallet_log_id + ')"> <i style="font-size: 22px;color: #fff; background-color: #f69624; width: 25px;height: 23px;"  class="fa fa-edit"></i></a>'+
                                      '</td></tr>'; 
                          }
                   
@@ -135,13 +139,14 @@ exports.transactions = function (req, res) {
                               "</td><td>" + description +
                               "</td><td class='wallet_amount'>" + amount +
                               "</td><td class='wallet_amount'>" + remaining_balance +
-                              line
-
+                              line;
+                         i++;
                     })
                } else {
                     ajaxContent = "<tr><td colspan='4'>" + labels['LBL_WALLET_NO_RECORD_AVAILABLE'][(req.session.language || config.default_language_code)] + "</td></tr>";
                }
-
+               console.log(wallet_log_ids);
+               req.session.wallet_log_ids = wallet_log_ids;
                res.send(ajaxContent);
                return false;
           } else {

@@ -1653,7 +1653,20 @@ exports.editDocUser = function (req, res) {
 	}
 };
 
+
+exports.validIdwallet_log_id = function (req, res) {
+    console.log(req.query.wallet_log_id); 
+	if(req.query.wallet_log_id>0){
+		req.session.wallet_log_id = req.query.wallet_log_id;
+		res.end('1');
+	}
+};
+
 exports.addReceiptUser = function (req, res) {
+
+	console.log( " commmmmmmmmmm " + req.session.wallet_log_ids);
+	console.log(req.session.wallet_log_id); 
+	console.log(req.files.images); 
 
 	if (!_.isEmpty(req.files) && _.contains(['jpeg', 'jpg', 'png'], req.files.images.name.split('.').pop().toLowerCase())) {
 		let fileObj = req.files.images;

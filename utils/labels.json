@@ -1914,7 +1914,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS": {
 		"EN": "My Orders",
-		"PT": "Seus pedidos"
+		"PT": "As minhas vendas"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -3371,7 +3371,7 @@
 	},
 	"LBL_RESERVED": {
 		"EN": "Reserved",
-		"PT": "Reservada"
+		"PT": "Reservado"
 	},
 	"LBL_PRODUCER_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
 		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
@@ -3920,6 +3920,9 @@
 	},"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY": {
 		"EN": "Biweekly",
 		"PT": "Quinzenalmente"
+	},"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTHLY": {
+		"EN": "Monthly",
+		"PT": "Mensalmente"
 	},
 	"LBL_LIST_COMPRADOR_PEDIDO": {
 		"EN": "Demand list",
@@ -3952,11 +3955,11 @@
 	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_2": {
 		"EN": "Please click on the button and start buying your agricultural products efficiently and rapidly.",
-		"PT": "Por favor , clique no botão acima e comece a comprar os seus produtos do campo de forma rápida e eficaz."
+		"PT": "Por favor , clique no botão a baixo e comece a comprar os seus produtos do campo de forma rápida e eficaz."
 	},
 	"LBL_COMPRADOR_ATM_DESCRIBE": {
 		"EN": "Please click on the button to have access to an ATM´s reference.",
-		"PT": "Por favor, clique no botão acima para ter acesso a  referência ATM."
+		"PT": "Por favor, clique no botão a baixo para ter acesso a  referência ATM."
 	},
 	"LBL_COMPRADOR_ACCOUNT_DESCRIBE": {
 		"EN": "In case, you wish to pay, via bank transfer, please take note of the banking details below  mentioned:",
@@ -3996,5 +3999,14 @@
 	},"LBL_WALLET_RECEIPT_EDIT": {
 		"EN": "Edit receipt",
 		"PT": "Editar comprovativo"
+	},"LBL_LIST_AGREGADOR_PEDIDO_MENU": {
+		"EN": "Products",
+		"PT": "Produtos"
+	},"LBL_LIST_AGREGADOR_MANAGER_FARMERS": {
+		"EN": "Farmers",
+		"PT": "Produtores"
+	},"LBL_YOUR_ORDERS_AGGREGATOR": {
+		"EN": "My Orders",
+		"PT": "As minhas vendas"
 	}
 }

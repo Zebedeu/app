@@ -301,7 +301,7 @@ exports.list = function (req, res) {
                          "aggregators/dashboard'>" +
                          labels['LBL_HOME'][req.session.language || 'PT'] +
                          "</a></li><li class='breadcrumb-item active' aria-current='page'>" +
-                         labels['LBL_YOUR_ORDERS'][
+                         labels['LBL_YOUR_ORDERS_AGGREGATOR'][
                          req.session.language || 'PT'
                          ] +
                          '</li>',
@@ -453,7 +453,7 @@ exports.details = function (req, res) {
                          "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" +
                          config.base_url +
                          "aggregators/order/list'>" +
-                         labels['LBL_YOUR_ORDERS'][
+                         labels['LBL_YOUR_ORDERS_AGGREGATOR'][
                          req.session.language || 'PT'
                          ] +
                          "</a></li><li class='breadcrumb-item active' aria-current='page'>" +

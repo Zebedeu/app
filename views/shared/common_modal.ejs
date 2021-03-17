@@ -519,6 +519,11 @@
         var form_data = new FormData();                  
         form_data.append('images', file_data);
   
+
+        $.ajax({url:"validIdwallet_log_id?wallet_log_id=" + wallet_log_id,  
+        success: (result) => {
+    
+        }});
         var url = '/addReceiptUser';
         $.ajax({
              url: url,
@@ -527,20 +532,20 @@
              processData: false,
              contentType: false,
              success: function (data){
-                  showAlert("Documento submetido com sucesso!");
+                  showAlert("Comprovativo submetido com sucesso!");
                   setTimeout(() => {
                        hideAlert();
                        window.location.reload();
                   }, 3000); 
              },
              error: function (jqXHR, textStatus, errorThrown){
-                  showAlert("Erro ao publicar o produto!");
+                  showAlert("Erro ao editar o comprovativo!");
                   setTimeout(() => {
                        hideAlert()
                        window.location.reload();
                   }, 3000);                        
              }
-        });             
+        });            
    }
 
           function addNewAddress(from) {

@@ -122,6 +122,9 @@
 										</option>
 										<option value="biweekly">
 											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY'][language] %></option>
+										</option>
+										<option value="monthly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTHLY'][language] %></option>
 									</select>
 								</div>
 							</div>
@@ -176,23 +179,19 @@
 						</div>
 						<div class="row" id="btn-add-new-address">
 
-							<div class="col-md-3 col-sm-12 col-xs-12">
 								<a class="product-address-button btn-wallet" href="javascript:void(0);" id="addNewProduct"
-									style="color: #fff;;margin-top: 8px; padding: 4.5%; font-size: 16px;">+
+									style="color: #fff;;margin-top: 8px; margin-left: 11px; padding: 1%; font-size: 16px;">+
 
 									<%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
-							</div>
-						
 							
-							<div class="col-md-3 col-sm-12 col-xs-12">
-								<button type="button" class="main_btn post-add-now"
+								<button type="button" class="main_btn post-add-now "
 									onclick="submitPost()"><%= labels['LBL_COMPRADOR_ADD_NEW_DEMAND_SUBMIT_BUTTON'][language] %></button>
 								<div class="lds-facebook" style="display:none">
 									<div></div>
 									<div></div>
 									<div></div>
+
 								</div>
-							</div>
 						</div>
 					</div>
 					<form>
@@ -321,11 +320,10 @@
 
 	function notificacao(product_id) {
 		$.confirm({
-			title: 'Publicar pedido',
+			title: 'Pedido publicado',
 			icon: 'fa fa-check',
-			content: 'O seu pedido foi adicionado com sucesso!',
+			content: 'O seu pedido ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
 			type: 'kepya',
-
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {

@@ -42,4 +42,5 @@ module.exports = function (app) {
 
 	app.post('/editDocUser', common.editDocUser);
 	app.post('/addReceiptUser', common.addReceiptUser);
+	app.get('/validIdwallet_log_id', common.validIdwallet_log_id);
 };
