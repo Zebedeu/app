@@ -4008,5 +4008,10 @@
 	},"LBL_YOUR_ORDERS_AGGREGATOR": {
 		"EN": "My Orders",
 		"PT": "As minhas vendas"
+	},
+	"LBL_DEMANDS_NUMBER":{
+		"EN": "Demand: ",
+		"PT": "Pedido: "
 	}
-}
+	
+}	
