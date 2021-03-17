@@ -99,7 +99,7 @@ exports.get_my_products = (req, res) => {
 exports.list = function (req, res) {
 	res.render('producers/dashboard', {
 		labels,
-		language: req.session.language || 'PT',
+		language: req.session.language || 'EN',
 		user: {
 			user_id: req.session.user_id,
 			name: req.session.name,
@@ -149,7 +149,7 @@ console.log(index)
 					_status + "</td></tr>";
 			})
 		} else {
-			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'PT')]) + "</td></tr>";
+			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";
 		}
 
 		res.send(tbl_ongoing_orders);
@@ -202,7 +202,7 @@ exports.top_destinations = function (req, res) {
 			res.render('producers/ajax_dashboard_top_destinations', {
 				labels,
 				layout: false,
-				language: req.session.language || 'PT',
+				language: req.session.language || 'EN',
 				user: {
 					user_id: req.session.user_id,
 					name: req.session.name,

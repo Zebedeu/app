@@ -27,18 +27,18 @@ exports.list = function(req, res) {
 
 		let orderPlacedCaption = "";
 		if(singleOrder.payment_type == 'wallet'){
-			orderPlacedCaption = labels['LBL_WALLET_ORDER_PLACED'][(req.session.language || 'PT')];
+			orderPlacedCaption = labels['LBL_WALLET_ORDER_PLACED'][(req.session.language || 'EN')];
 			orderPlacedCaption = orderPlacedCaption.replace("#NAME#", singleOrder.buyer_info.name);
 			orderPlacedCaption = orderPlacedCaption.replace("#ORDER_ID#", singleOrder.order_id);	
 		} else if(singleOrder.payment_type == 'atm_reference'){
-			orderPlacedCaption = labels['LBL_ATM_REFERENCE_ORDER_PLACED'][(req.session.language || 'PT')];
+			orderPlacedCaption = labels['LBL_ATM_REFERENCE_ORDER_PLACED'][(req.session.language || 'EN')];
 			orderPlacedCaption = orderPlacedCaption.replace("#NAME#", singleOrder.buyer_info.name);
 			orderPlacedCaption = orderPlacedCaption.replace("#ORDER_ID#", singleOrder.order_id);
 			orderPlacedCaption = orderPlacedCaption.replace("#ENTITY_ID#", singleOrder.atm_reference_response.ENTITY_ID);
 			orderPlacedCaption = orderPlacedCaption.replace("#REFERENCE_CODE#", singleOrder.atm_reference_response.REFERENCE);
 			orderPlacedCaption = orderPlacedCaption.replace("#AMOUNT#", separators(singleOrder.atm_reference_response.AMOUNT));
 		} else if(singleOrder.payment_type == 'bank'){
-			orderPlacedCaption = labels['LBL_ORDER_PLACED'][(req.session.language || 'PT')];
+			orderPlacedCaption = labels['LBL_ORDER_PLACED'][(req.session.language || 'EN')];
 			orderPlacedCaption = orderPlacedCaption.replace("#NAME#", singleOrder.buyer_info.name);
 			orderPlacedCaption = orderPlacedCaption.replace("#ORDER_ID#", singleOrder.order_id);	
 		}
@@ -56,7 +56,7 @@ exports.list = function(req, res) {
 			total_cart_products: 0,
 			labels,
 			order_caption: orderPlacedCaption,
-			language: req.session.language || 'PT',
+			language: req.session.language || 'EN',
 			messages : req.flash('error') || req.flash('info'),
 			messages : req.flash('info'),
 		});

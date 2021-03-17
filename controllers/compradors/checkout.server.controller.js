@@ -32,9 +32,6 @@ let {
 const axios = require('axios');
 const { forEach } = require('p-iteration');
 
-exports.toDashboard = (req, res) => {
-	return res.redirect('/compradors/dashboard');
-} 
 exports.getPaymentCaptions = async (req, res) => {
      Setting.findOne({}, { _id: 0, payment_captions: 1 }, (err, settings) => {
           res.send({
@@ -244,7 +241,7 @@ exports.reserveOrder = async (req, res) => {
                                         orderPlacedCaption = _.findWhere(sms, { code: "ORDER_PLACED" });
 
                                         if (!_.isEmpty(orderPlacedCaption)) {
-                                             let caption = (orderPlacedCaption['value'][req.session.language || 'PT']);
+                                             let caption = (orderPlacedCaption['value'][req.session.language || 'EN']);
                                              caption = caption.replace("#NAME#", addressObj.name);
                                              caption = caption.replace("#ORDER_ID#", response.order_id);
                                              smsManager.sendSMS({ message: caption, mobile: addressObj.mobile_number });
@@ -253,7 +250,7 @@ exports.reserveOrder = async (req, res) => {
                                         sellerNewOrderCaption = _.findWhere(sms, { code: "SELLER_NEW_ORDER" });
 
                                         if (!_.isEmpty(sellerNewOrderCaption)) {
-                                             let sellerCaption = (sellerNewOrderCaption['value'][req.session.language || 'PT']);
+                                             let sellerCaption = (sellerNewOrderCaption['value'][req.session.language || 'EN']);
                                              sellerCaption = sellerCaption.replace("#ORDER_ID#", response.order_id);
                                              _.each(sellerInfo, (element, index, list) => {
                                                   sellerCaption = sellerCaption.replace("#NAME#", element.name);
@@ -465,7 +462,7 @@ exports.placeOrder = async (req, res) => {
                          updateProductsQuantity(products);
 
                          let walletAmount = (total + parseFloat(req.body.transport_fees));
-                         let logDescEN = labels['LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION']['PT'];
+                         let logDescEN = labels['LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION']['EN'];
                          logDescEN = logDescEN.replace("#AMOUNT#", separators(walletAmount));
                          logDescEN = logDescEN.replace("#ORDER_ID#", response.order_id);
 
@@ -560,7 +557,7 @@ exports.placeOrder = async (req, res) => {
                                    User.update({ user_id: singleUser.user_id }, userProfileObj, function (err, update_response) { });
 
                                    if (addressObj.email) {
-                                        emailController.send({ language: (req.session.language || 'PT'), code: 'INVOICE', email: addressObj.email, order_id: response.order_id, client_name: (singleUser.first_name + ' ' + singleUser.first_name), address_type: (_.isEmpty(addressObj) ? '' : (addressObj.type)).toUpperCase(), address_name: addressObj.name, full_address: (_.isEmpty(addressObj) ? '' : (addressObj.complete_address + ', ' + addressObj.locality + ', ' + addressObj.city_district + ', ' + addressObj.state + ', ' + addressObj.pin_code)), sub_total: parseFloat(total).toFixed(2), transport_fees: parseFloat(req.body.transport_fees), total: parseFloat((total + parseFloat(req.body.transport_fees))).toFixed(2), delivery_date: moment().format('Do MMM YYYY, hh:mm A'), products: productStr });
+                                        emailController.send({ language: (req.session.language || 'EN'), code: 'INVOICE', email: addressObj.email, order_id: response.order_id, client_name: (singleUser.first_name + ' ' + singleUser.first_name), address_type: (_.isEmpty(addressObj) ? '' : (addressObj.type)).toUpperCase(), address_name: addressObj.name, full_address: (_.isEmpty(addressObj) ? '' : (addressObj.complete_address + ', ' + addressObj.locality + ', ' + addressObj.city_district + ', ' + addressObj.state + ', ' + addressObj.pin_code)), sub_total: parseFloat(total).toFixed(2), transport_fees: parseFloat(req.body.transport_fees), total: parseFloat((total + parseFloat(req.body.transport_fees))).toFixed(2), delivery_date: moment().format('Do MMM YYYY, hh:mm A'), products: productStr });
                                    }
 
                                    let orderPlacedCaption = {}, sellerNewOrderCaption = {};
@@ -569,7 +566,7 @@ exports.placeOrder = async (req, res) => {
                                         console.log("addressObj", addressObj);
                                         if (!_.isEmpty(orderPlacedCaption) && addressObj.mobile_country_code && addressObj.mobile_number) {
                                              console.log('send sms');
-                                             let caption = (orderPlacedCaption['value'][req.session.language || 'PT']);
+                                             let caption = (orderPlacedCaption['value'][req.session.language || 'EN']);
                                              caption = caption.replace("#NAME#", addressObj.name);
                                              caption = caption.replace("#ORDER_ID#", response.order_id);
                                              smsManager.sendSMS({ message: caption, mobile: addressObj.mobile_country_code + addressObj.mobile_number });
@@ -578,7 +575,7 @@ exports.placeOrder = async (req, res) => {
                                         sellerNewOrderCaption = _.findWhere(sms, { code: "SELLER_NEW_ORDER" });
 
                                         if (!_.isEmpty(sellerNewOrderCaption)) {
-                                             let sellerCaption = (sellerNewOrderCaption['value'][req.session.language || 'PT']);
+                                             let sellerCaption = (sellerNewOrderCaption['value'][req.session.language || 'EN']);
                                              sellerCaption = sellerCaption.replace("#ORDER_ID#", response.order_id);
                                              _.each(sellerInfo, (element, index, list) => {
                                                   sellerCaption = sellerCaption.replace("#NAME#", element.name);
@@ -790,7 +787,7 @@ exports.list = async (req, res) => {
                subtotal: total,
                total: total,
                labels,
-               language: req.session.language || 'PT',
+               language: req.session.language || 'EN',
                breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_CHECKOUT'][(req.session.language || config.default_language_code)] + "</li>",
                messages: req.flash('error') || req.flash('info'),
                messages: req.flash('info'),

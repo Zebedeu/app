@@ -14,18 +14,7 @@
 										</div>
 										<div class="inline">
 											<h6><%= labels['LBL_STATUS'][language] %></h6>
-											<p style="text-transform: capitalize !important;">
-												<% if(orders[i]['status'] == 'packed'){ %>
-													<%= labels['LBL_PACKED'][language] %>
-											   <% } else if(orders[i]['status'] == 'shipped'){ %>
-													<%= labels['LBL_SHIPPED'][language] %>
-											   <% } else if(orders[i]['status'] == 'delivered'){ %>
-													<%= labels['LBL_DELIVERED'][language] %>
-											   <% } else if(orders[i]['status'] == 'waiting'){ %>
-													<%= labels['LBL_WAITING'][language] %>
-											   <% }else if(orders[i]['status'] == 'paid'){ %>
-												   <%= labels['LBL_PAID'][language] %>
-											  <% }%></p>
+											<p style="text-transform: capitalize !important;"><%= orders[i]['status'] %></p>
 										</div>
 										<% if(orders[i]['payment_type'] == 'atm_reference'){ %>
 											<% if(orders[i]['atm_reference_response']['TIME_LEFT']){ %>
@@ -49,12 +38,9 @@
 										<% } %>
 									</div>
 									<div class="col-md-4 col-sm-4 col-xs-12 align_right">
-								
 										<ul class="nav navbar-nav invoice_lable">		
-											<li>
-												<a href="<%=baseURL%>compradors/order/details/<%= orders[i]['order_id'] %>"><button style="margin: 5px;" class="button btn-details" ><%= labels['LBL_ORDER_DETAILS'][language] %></button></a>
-											</li>
-										</ul>
+											<li class="dropdown"><a href="<%=baseURL%>compradors/order/details/<%= orders[i]['order_id'] %>" class="dropdown-toggle"><%= labels['LBL_ORDER_DETAILS'][language] %></a></li>
+		                                </ul>
 									</div>
 								</div>
 							</div>
@@ -64,7 +50,7 @@
 					  <th scope="col"><%= labels['LBL_PRODUCT'][language] %></th>
 					  <th scope="col" width="180"><%= labels['LBL_QUANTITY'][language] %></th>
 					  <th scope="col" width="180"><%= labels['LBL_PRICE'][language] %></th>
-					  <th scope="col" width="180"><%= labels['LBL_TOTAL'][language] %></th>
+					  <th scope="col" width="100"><%= labels['LBL_TOTAL'][language] %></th>
 					</tr>
 					<% for(let j=0; j < orders[i]['products'].length; j++) { %>
 						<tr>
@@ -78,13 +64,13 @@
 								</figure> 
 							</td>
 							<td> 
-								<h4><%= orders[i]['products'][j]['product_qty'] %></h4>	
+								<h4><%= orders[i]['products'][j]['product_qty'] %> <%= orders[i]['products'][j]['unit_type'] %></h4>	
 							</td>
 							<td> 
-								<h4 class="currency_color_text sku_wrapper"><%= (orders[i]['products'][j]['unit_price']) %> Kz</h4>
+								<h4 class="currency_color_text sku_wrapper">Kz <%= (orders[i]['products'][j]['unit_price']) %> / <%= orders[i]['products'][j]['unit_type'] %></h4>
 							</td>
 							<td> 
-								<h4 class="currency_color_text sku_wrapper"><%= orders[i]['products'][j]['item_total'] %> Kz</h4>
+								<h4 class="currency_color_text sku_wrapper">Kz <%= orders[i]['products'][j]['item_total'] %></h4>
 							</td>
 						</tr>
 					<% } %>

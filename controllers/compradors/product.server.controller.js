@@ -18,11 +18,8 @@ let Language = require('mongoose').model('Language');
 let Setting = require('mongoose').model('Setting');
 let Unit = require('mongoose').model('Unit');
 let labels = require('../../utils/labels.json');
-let Order = require('mongoose').model('Order');
 
-exports.toDashboard = (req, res) => {
-	return res.redirect('/compradors/dashboard');
-} 
+
 exports.filterList = function(req, res) {
 	let sortColumnAndValues = {}, filterColumnAndValues = { user_id: req.session.user_id };
 	if(req.query.sort_by_price == 'min'){
@@ -301,8 +298,7 @@ exports.add = function(req, res) {
 			columnAndValues['description'] = descriptionObj;
 			let productObj = new Product(columnAndValues);
 			productObj.save((err, response) => {
-				return res.end(response.product_id);
-				//return res.redirect('list');
+				return res.redirect('list');
 			})
 		}).sort({ order_number : 1 })
 	} else {
@@ -325,32 +321,10 @@ exports.add = function(req, res) {
 	}
 };
 
-/*
 exports.remove = function(req, res) {
 	Product.remove({ product_id: req.params.id }, (err, response) => {
 		return res.redirect(config.base_url+'compradors/product/list');
 	})
-};*/
-
-
-exports.remove = (req, res) => {
-	let columnsAndValue = { products: { $elemMatch: { product_id: req.params.id } } }
-	Order.find(columnsAndValue, { _id: 0 }, (error, orders) => {
-		if (orders.length > 0) {
-			console.log("orders - ", orders.length);
-			return res.end('0');
-		} else {
-			Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, images: 1 }, (err, singleProduct) => {
-				if (!singleProduct) {
-					return res.end('0');
-				}
-				Product.remove({ product_id: req.params.id }, (err, response) => {
-					return res.end('1');
-				})
-			})
-		}
-
-	});
 };
 
 exports.display = function(req, res) {

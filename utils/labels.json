@@ -204,7 +204,7 @@
 		"PT": "Os produtores na minha carteira"
 	},
 	"LBL_YOUR_ORDERS": {
-		"EN": "My Orders",
+		"EN": "Your Orders",
 		"PT": "As minhas compras"
 	},
 	"LBL_YOUR_ORDERS_DESCRIPTION": {
@@ -212,7 +212,7 @@
 		"PT": "Gerir reservas de produtos a serem enviados em breve."
 	},
 	"LBL_YOUR_ADDRESSES": {
-		"EN": "My Addresses",
+		"EN": "Your Addresses",
 		"PT": "Os meus endereços"
 	},
 	"LBL_YOUR_ADDRESSES_DESCRIPTION": {
@@ -280,15 +280,15 @@
 		"PT": "Adicionar produtos"
 	},
 	"LBL_LIST_PRODUCTS": {
-		"EN": "List products",
-		"PT": "Lista de produtos"
+		"EN": "List Products",
+		"PT": "Lista de Produtos"
 	},
 	"LBL_POST_ADD_NOW": {
 		"EN": "Add",
-		"PT": "Adicionar produtos"
+		"PT": "Adicionar Produtos"
 	},
 	"LBL_ADD_NEW_PRODUCT": {
-		"EN": "Add new product",
+		"EN": "Add New Product",
 		"PT": "Adicionar novo produto"
 	},
 	"LBL_TYPE": {
@@ -296,7 +296,7 @@
 		"PT": "Tipo"
 	},
 	"LBL_PRODUCT_CATEGORY": {
-		"EN": "Product category",
+		"EN": "Product Category",
 		"PT": "Categoria do produto"
 	},
 	"LBL_SELECT_CATEGORY": {
@@ -417,7 +417,7 @@
 	},
 	"LBL_PRICE": {
 		"EN": "Price",
-		"PT": "Preço/Kg"
+		"PT": "Preço por Kg"
 	},
 	"LBL_AMOUNT_IN_WALLET": {
 		"EN": "Amount in wallet",
@@ -449,7 +449,7 @@
 	},
 	"LBL_ORDER_ID": {
 		"EN": "Order ID",
-		"PT": "Código da encomenda"
+		"PT": "ID da encomenda"
 	},
 	"LBL_CLIENT_NAME": {
 		"EN": "Client Name",
@@ -508,7 +508,7 @@
 		"PT": "Lista de Usuários"
 	},
 	"LBL_ADD_NEW_USER": {
-		"EN": "Add new user",
+		"EN": "Add New User",
 		"PT": "Adicionar novo usuário"
 	},
 	"LBL_EDIT_USER": {
@@ -541,7 +541,7 @@
 	},
 	"LBL_QUANTITY": {
 		"EN": "Qty",
-		"PT": "Quantidade"
+		"PT": "Qtde"
 	},
 	"LBL_ORDERED_ON": {
 		"EN": "Ordered On",
@@ -552,15 +552,15 @@
 		"PT": "Total da encomenda"
 	},
 	"LBL_MANAGE_ADDRESSES": {
-		"EN": "Manage addresses",
-		"PT": "Gerir endereços"
+		"EN": "Manage Addresses",
+		"PT": "Gerir Endereços"
 	},
 	"LBL_MOBILE_NUMBER": {
 		"EN": "Mobile number",
 		"PT": "Número de telefone"
 	},
 	"LBL_ADD_NEW_ADDRESS": {
-		"EN": "Add new address",
+		"EN": "Add New Address",
 		"PT": "Adicionar novo endereço"
 	},
 	"LBL_EDIT": {
@@ -592,7 +592,7 @@
 		"PT": "Município"
 	},
 	"LBL_YOUR_DETAILS": {
-		"EN": "My details",
+		"EN": "Your Details",
 		"PT": "Seus detalhes"
 	},
 	"LBL_TYPE_OF_ADDRESS": {
@@ -605,22 +605,22 @@
 	},
 	"LBL_DONE": {
 		"EN": "Done",
-		"PT": "Voltar ao início"
+		"PT": "Voltar ao Início"
 	},
 	"LBL_LIST_FORCAST": {
-		"EN": "List forcasts",
+		"EN": "List Forcasts",
 		"PT": "Listar previsoes"
 	},
 	"LBL_ADD_NEW_FORCAST": {
-		"EN": "Add new forcast",
+		"EN": "Add New Forcast",
 		"PT": "Adicionar nova previsão"
 	},
 	"LBL_EMPTY_FORCAST": {
-		"EN": "Empty forcasts",
+		"EN": "Empty Forcasts",
 		"PT": "Previsões vazias"
 	},
 	"LBL_EDIT_FORCAST": {
-		"EN": "Edit forcasts",
+		"EN": "Edit Forcasts",
 		"PT": "Editar previsoes"
 	},
 	"LBL_ADD_PRODUCES": {
@@ -652,7 +652,7 @@
 		"PT": "Total"
 	},
 	"LBL_TOTAL_ITEM_PREPARED": {
-		"EN": "My item has been prepared",
+		"EN": "Your item has been prepared",
 		"PT": "Seu item foi preparado"
 	},
 	"LBL_ITEM_SUB_TOTAL": {
@@ -692,11 +692,11 @@
 		"PT": "Sair"
 	},
 	"LBL_POST_DEMAND": {
-		"EN": "Post my demand",
+		"EN": "Post your Demand",
 		"PT": "Publicar necessidades"
 	},
 	"LBL_FAV_LIST": {
-		"EN": "My favourite list",
+		"EN": "Your Favourite List",
 		"PT": "Lista de favoritos"
 	},
 	"LBL_YOUR_IDEA": {
@@ -728,19 +728,19 @@
 		"PT": "Download em PDF"
 	},
 	"LBL_LIST_DEMAND": {
-		"EN": "List demands",
+		"EN": "List Demands",
 		"PT": "Lista de demandas"
 	},
 	"LBL_EMPTY_DEMAND": {
-		"EN": "Empty demands",
+		"EN": "Empty Demands",
 		"PT": "Demandas vazias"
 	},
 	"LBL_POST_YOUR_DEMAND": {
-		"EN": "Post my demand",
+		"EN": "POST YOUR DEMAND",
 		"PT": "Gerir e publicar as necessidades pontuais e recorrentes de produtos"
 	},
 	"LBL_ADD_NEW_DEMAND": {
-		"EN": "Add new demand",
+		"EN": "Add New Demand",
 		"PT": "Adicionar pedido"
 	},
 	"LBL_KILOGRAM": {
@@ -1534,15 +1534,15 @@
 	},
 	"LBL_PRODUCER_DASHBOARD_ORDER_SHIPPED_SOON_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_ORDER_SHIPPED_SOON_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_MY_ACCOUNT_SITE_FOOTER": {
-		"EN": " Kepya - AGRO MARKETPLACE, SA. All rights reserved.",
-		"PT": " Kepya - AGRO MARKETPLACE, SA. Todos os direitos reservados"
+		"EN": "© 2020 Kepya - AGRO MARKETPLACE, SA. All rights reserved.",
+		"PT": "© 2020 Kepya - AGRO MARKETPLACE, SA. Todos os direitos reservados"
 	},
 	"LBL_SIGN_IN_EMAIL": {
 		"EN": "Email",
@@ -1898,23 +1898,23 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST": {
 		"EN": "Post forecast",
-		"PT": "Publicar produtos"
+		"PT": "Publicar Produtos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION": {
 		"EN": "Post forecast",
-		"PT": "Publicar produtos"
+		"PT": "Publicar Produtos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS": {
 		"EN": "Manage farmer",
-		"PT": "Gerir produtores"
+		"PT": "Gerir productor"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION": {
-		"EN": "My users",
+		"EN": "Your users",
 		"PT": "Seus usuários"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS": {
-		"EN": "My Orders",
-		"PT": "As minhas vendas"
+		"EN": "Your Orders",
+		"PT": "Seus pedidos"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -1929,7 +1929,7 @@
 		"PT": "Editar login, nome e número de telefone"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
-		"EN": "My Orders",
+		"EN": "Your Orders",
 		"PT": "As minhas Compras"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
@@ -1961,7 +1961,7 @@
 		"PT": "Sua ideia lista ou compra coisas"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES": {
-		"EN": "My addresses",
+		"EN": "Your Addresses",
 		"PT": "As minhas moradas"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
@@ -1977,7 +1977,7 @@
 		"PT": "Editar os meus dados pessoais"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS": {
-		"EN": "My Orders",
+		"EN": "Your Orders",
 		"PT": "As minhas encomendas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
@@ -2009,7 +2009,7 @@
 		"PT": "Sua ideia lista ou compra coisas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES": {
-		"EN": "My addresses",
+		"EN": "Your Addresses",
 		"PT": "As minhas moradas"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION": {
@@ -2037,7 +2037,7 @@
 		"PT": "Você não tem pedidos recentes"
 	},
 	"LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE": {
-		"EN": "Post my demand",
+		"EN": "Post your demand",
 		"PT": "Adicionar pedido"
 	},
 	"LBL_COMPRADOR_ADD_NEW_DEMAND_SUBMIT_BUTTON": {
@@ -2206,7 +2206,7 @@
 	},
 	"LBL_SHIPPED": {
 		"EN": "Shipped",
-		"PT": "Em trânsito"
+		"PT": "Preparado"
 	},
 	"LBL_DELIVERED": {
 		"EN": "Delivered",
@@ -2449,8 +2449,8 @@
 		"PT": "Você precisa transferir dinheiro para esta conta"
 	},
 	"LBL_WALLET_PROMPT_HEADER": {
-		"EN": "Amount to withdraw",
-		"PT": "Montante a levantar"
+		"EN": "Message",
+		"PT": "Montante a levanta"
 	},
 	"LBL_WALLET_PROMPT_ENTER_AMOUNT": {
 		"EN": "Enter amount",
@@ -2650,11 +2650,11 @@
 	},
 	"LBL_PRODUCER_YOUR_ORDER_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_AGGREGATOR_YOUR_ORDER_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_COMPRADOR_CHECKOUT_RESERVE_ORDER": {
 		"EN": "Reserve Order",
@@ -2678,7 +2678,7 @@
 	},
 	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
 		"EN": "Ordered date",
@@ -2714,7 +2714,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE": {
 		"EN": "Ordered date",
@@ -2994,11 +2994,11 @@
 	},
 	"LBL_PRODUCER_DASHBOARD_STATISTICS_COMPRADOR_FAVOURITE_LIST": {
 		"EN": "Buyer’s Favourite List",
-		"PT": "Produtos favoritos dos compradores"
+		"PT": "Produtos Favoritos dos Compradores"
 	},
 	"LBL_PRODUCER_DASHBOARD_STATISTICS_TRADING_FAVOURITE_LIST": {
 		"EN": "Trading’s Favourite List",
-		"PT": "Produtos favoritos dos compradores trading"
+		"PT": "Produtos Favoritos dos Compradores trading"
 	},
 	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_SOLD_PRODUCTS": {
 		"EN": "Total Sold Products",
@@ -3022,7 +3022,7 @@
 	},
 	"LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_RATE_REVIEWS": {
 		"EN": "Rate & Reviews",
-		"PT": "Pontuações e comentários"
+		"PT": "Pontuações e Comentários"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_STATISTICS": {
 		"EN": "Statistics",
@@ -3038,11 +3038,11 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_COMPRADOR_FAVOURITE_LIST": {
 		"EN": "Buyer's Favourite List",
-		"PT": "Favoritos dos compradores"
+		"PT": "Favoritos dos Compradores"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TRADING_FAVOURITE_LIST": {
 		"EN": "Trading's Favourite List",
-		"PT": "Favoritos dos compradores comerciais"
+		"PT": "Favoritos dos Compradores comerciais"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_SOLD_PRODUCTS": {
 		"EN": "Total Sold Products",
@@ -3066,7 +3066,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_STATISTICS_TOTAL_RATE_REVIEWS": {
 		"EN": "Total Rate & Reviews",
-		"PT": "Pontuações e comentários"
+		"PT": "Pontuações e Comentários"
 	},
 	"LBL_PRODUCER_DASHBOARD_TOP_PRODUCTS": {
 		"EN": "Top Products",
@@ -3082,7 +3082,7 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_TOP_PRODUCTS": {
 		"EN": "Top Products (No of orders)",
-		"PT": "Principais  (sem pedidos)"
+		"PT": "Principais Produtos (sem pedidos)"
 	},
 	"LBL_AGGREGATOR_DASHBOARD_TOP_DESTINATIONS": {
 		"EN": "Top Destinations (No of orders)",
@@ -3183,7 +3183,7 @@
 	},
 	"LBL_DASHBOARD_PURCHASE_QTY": {
 		"EN": "Qty",
-		"PT": "Quantidade"
+		"PT": "Qtde"
 	},
 	"LBL_COMPRADOR_DASHBOARD_MATCH_PRODUCTS": {
 		"EN": "Match Products",
@@ -3371,7 +3371,7 @@
 	},
 	"LBL_RESERVED": {
 		"EN": "Reserved",
-		"PT": "Reservado"
+		"PT": "Reservada"
 	},
 	"LBL_PRODUCER_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
 		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
@@ -3451,7 +3451,7 @@
 	},
 	"LBL_COMPRADOR_EXPLORE_DETAILS_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_TRADING_DASHBOARD_PROFILE_INCOMPLETE_CAPTION": {
 		"EN": "Note : Your profile is incomplete, #CLICK_HERE# to complete your profile",
@@ -3491,11 +3491,11 @@
 	},
 	"LBL_TRADING_DEMAND_WHERE_TO_DELIVER_SELECT_ADDRESS": {
 		"EN": "Select Where to deliver",
-		"PT": "Selecione onde entregar"
+		"PT": "Selecione Onde entregar"
 	},
 	"LBL_TRADING_DEMAND_VALIDATE_WHERE_TO_DELIVER": {
 		"EN": "Select Where to deliver",
-		"PT": "Selecione onde entregar"
+		"PT": "Selecione Onde entregar"
 	},
 	"LBL_TRADING_CART_LIST_ORDER_TOTAL": {
 		"EN": "Order Total",
@@ -3523,7 +3523,7 @@
 	},
 	"LBL_TRADING_EXPLORE_DETAILS_CLIENT_ID": {
 		"EN": "Client ID",
-		"PT": "ID do cliente"
+		"PT": "ID do Cliente"
 	},
 	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS": {
 		"EN": "Destination address",
@@ -3714,11 +3714,11 @@
 		"PT": "Quantidade"
 	},
 	"LBL_SOLD_PRODUCT": {
-		"EN": "Sold product list",
+		"EN": "Sold Product List",
 		"PT": "Lista de produtos vendidos"
 	},
 	"LBL_UNSOLD_PRODUCT": {
-		"EN": "Unsold product list",
+		"EN": "Unsold Product List",
 		"PT": "Lista de produtos não vendidos"
 	},
 	"LBL_SHIPMENT_ID": {
@@ -3743,7 +3743,7 @@
 	},
 	"LBL_WALLET_REMAINING_BALANCE": {
 		"EN": "Remaining Balance",
-		"PT": "Saldo final"
+		"PT": "Saldo Final"
 	},
 	"LBL_CONTINUE": {
 		"EN": "Continue",
@@ -3755,11 +3755,11 @@
 	},
 	"LBL_PRODUCT_ORDER_DETAIL": {
 		"EN": "Product Order Detail",
-		"PT": "Detalhes do produto"
+		"PT": "Detalhes do Produto"
 	},
 	"LBL_PRODUCT_DETAIL": {
 		"EN": "Product Detail",
-		"PT": "Detalhes do produto"
+		"PT": "Detalhes do Produto"
 	},
 	"LBL_NO_ORDER_AVAILABLE": {
 		"EN": "No order available",
@@ -3771,7 +3771,7 @@
 	},
 	"LBL_ADD_AMOUNT_MODAL_GENERATE_REFERENCE": {
 		"EN": "Generate reference",
-		"PT": "Gerar referência"
+		"PT": "Gerar Referência"
 	},
 	"LBL_ADD_AMOUNT_MODAL_ENTER_AMOUNT": {
 		"EN": "Enter amount",
@@ -3795,15 +3795,15 @@
 	},
 	"LBL_ADD_FARMER": {
 		"EN": "Add farmer",
-		"PT": "Adicionar produtor"
+		"PT": "Adicionar productor"
 	},
 	"LBL_FARMER_LIST": {
-		"EN": "Farmes list",
-		"PT": "Lista de produtores"
+		"EN": "Farmes List",
+		"PT": "Lista de Productores"
 	},
 	"EDIT_FARMER": {
 		"EN": "Edit Farmer",
-		"PT": "Editar dados do productor"
+		"PT": "Editar dados do Productor"
 	},
 	"LBL_AGGREGATOR_PUBLISH_PRODUCTS": {
 		"EN": "Post product",
@@ -3814,16 +3814,16 @@
 		"PT": "Valor na carteira"
 	},
 	"LBL_LIST_PRODUCTS_AGGREGATOR": {
-		"EN": "List products",
-		"PT": "Listar produtos"
+		"EN": "List Products",
+		"PT": "Listar Produtos"
 	},
 	"LBL_LIST_PRODUCTS_AGGREGATOR_1": {
 		"EN": "Published Products",
-		"PT": "Produtos publicados"
+		"PT": "Produtos Publicados"
 	},
 	"LBL_WALLET_ACCOUNT_BALANCE": {
 		"EN": "Account Balance",
-		"PT": "Saldo contabilistico"
+		"PT": "Saldo Contabilistico"
 	},
 	"LBL_PAID": {
 		"EN": "Paid",
@@ -3887,11 +3887,11 @@
 	},
 	"LBL_AGGREGATOR_DASHBOARD_ADD_FARMER": {
 		"EN": "Add farmer",
-		"PT": "Adicionar produtor"
+		"PT": "Adicionar productor"
 	},
 	"LBL_NAME_RESPONSIBLE": {
 		"EN": "Responsible Name",
-		"PT": "Nome do responsável"
+		"PT": "Nome do Responsável"
 	},
 	"LBL_CLEAR_ALL_NOTIFICATION": {
 		"EN": "Remove all",
@@ -3903,7 +3903,7 @@
 	},
 	"LBL_SHIPPED_PRODUCT": {
 		"EN": "Shipped",
-		"PT": "Em târnsito"
+		"PT": "Em Târnsito"
 	},
 	
 	"LBL_SHOW_HIDE_CHART": {
@@ -3920,13 +3920,10 @@
 	},"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY": {
 		"EN": "Biweekly",
 		"PT": "Quinzenalmente"
-	},"LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTHLY": {
-		"EN": "Monthly",
-		"PT": "Mensalmente"
 	},
 	"LBL_LIST_COMPRADOR_PEDIDO": {
 		"EN": "Demand list",
-		"PT": "Lista de pedidos"
+		"PT": "Lista de Pedidos"
 	},
 	"LBL_LIST_COMPRADOR_PEDIDO_MENU": {
 		"EN": "Demand",
@@ -3935,78 +3932,26 @@
 	"LBL_MENU_COMPRADOR_MANAGE_ORDERS": {
 		"EN": "Manage orders",
 		"PT": "Gerir pedidos"
-	},
-	
-	"LBL_YOUR_ORDERS_PRODUCERS": {
-		"EN": "My Orders",
+	},	"LBL_YOUR_ORDERS_PRODUCERS": {
+		"EN": "Your Orders",
 		"PT": "As minhas vendas"
-	},
-	"LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT": {
+	},"LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT": {
 		"EN": "Document",
 		"PT": "Documento"
-	},
-	"LBL_EDIT_PRODUCT_DOC": {
+	},	"LBL_EDIT_PRODUCT_DOC": {
 		"EN": "Edit Document",
-		"PT": "Editar documento"
-	},
-	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
+		"PT": "Editar Documento"
+	},	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
 		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
 		"PT": "A sua carteira encontra-se vazia. Por favor carregue a sua carteira e comece a comprar os seus produtos do campo  de forma rápida e eficaz"
-	},
-	"LBL_COMPRADOR_WALLET_DESCRIBE_2": {
+	},	"LBL_COMPRADOR_WALLET_DESCRIBE_2": {
 		"EN": "Please click on the button and start buying your agricultural products efficiently and rapidly.",
-		"PT": "Por favor , clique no botão a baixo e comece a comprar os seus produtos do campo de forma rápida e eficaz."
-	},
-	"LBL_COMPRADOR_ATM_DESCRIBE": {
+		"PT": "Por favor , clique no botão acima e comece a comprar os seus produtos do campo de forma rápida e eficaz."
+	},	"LBL_COMPRADOR_ATM_DESCRIBE": {
 		"EN": "Please click on the button to have access to an ATM´s reference.",
-		"PT": "Por favor, clique no botão a baixo para ter acesso a  referência ATM."
-	},
-	"LBL_COMPRADOR_ACCOUNT_DESCRIBE": {
+		"PT": "Por favor, clique no botão acima para ter acesso a  referência ATM."
+	},	"LBL_COMPRADOR_ACCOUNT_DESCRIBE": {
 		"EN": "In case, you wish to pay, via bank transfer, please take note of the banking details below  mentioned:",
 		"PT": "Caso o metódo de pagamento, seja por transferência bancária , por favor tome nota das coordenadas bancárias abaixo mencionadas:"
-	},
-	"LBL_TONS": {
-		"EN": "Tons",
-		"PT": "Toneladas"
-	},
-	"LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC": {
-		"EN": "Select your document",
-		"PT": "Selecione sua documento"
-	},	"LBL_AGGREGATOR_YOUR_ACCOUNT_DOC": {
-		"EN": "Document",
-		"PT": "Documento"
-	},	"LBL_ADD_COMPROVATIVO_MODAL": {
-		"EN": "Insert the receipt",
-		"PT": "Insira o comprovativo"
-	},	"LBL_WALLET_RECEIPT": {
-		"EN": "Receipt",
-		"PT": "Comprovativo"
-	},	"LBL_WALLET_RECEIPT_VIEW": {
-		"EN": "View",
-		"PT": "Visualizar"
-	},	"LBL_WALLET_RECEIPT_ADD": {
-		"EN": "Add",
-		"PT": "Adicionar"
-	},	"LBL_WALLET_RECEIPT_MSG": {
-		"EN": "Caso tenha feito uma transferência bancária para a sua carteira, por favor submeta o comprovativo aqui",
-		"PT": "Caso tenha feito uma transferência bancária para a sua carteira, por favor submeta o comprovativo aqui"
-	},	"LBL_WALLET_RECEIPT_MSG_BUTTON": {
-		"EN": "Submeter comprovativo",
-		"PT": "Submeter comprovativo"
-	},"LBL_ADDRESS_SUBMIT": {
-		"EN": "Submit address",
-		"PT": "Submeter endereço"
-	},"LBL_WALLET_RECEIPT_EDIT": {
-		"EN": "Edit receipt",
-		"PT": "Editar comprovativo"
-	},"LBL_LIST_AGREGADOR_PEDIDO_MENU": {
-		"EN": "Products",
-		"PT": "Produtos"
-	},"LBL_LIST_AGREGADOR_MANAGER_FARMERS": {
-		"EN": "Farmers",
-		"PT": "Produtores"
-	},"LBL_YOUR_ORDERS_AGGREGATOR": {
-		"EN": "My Orders",
-		"PT": "As minhas vendas"
 	}
 }

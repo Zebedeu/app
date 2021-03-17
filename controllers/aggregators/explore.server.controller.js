@@ -9,7 +9,7 @@ exports.list = function(req, res) {
 			login_type: req.session.login_type
 		},
 		labels,
-		language: req.session.language || 'PT',
+		language: req.session.language || 'EN',
 		messages : req.flash('error') || req.flash('info'),
 		messages : req.flash('info'),
 	});
