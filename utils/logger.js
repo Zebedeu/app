@@ -2,7 +2,7 @@
 
 const _ = require('underscore');
 const moment = require('moment');
-const config = require('./../config.js');
+const config = require('./../../config/config');
 const fs = require('fs');
 
 

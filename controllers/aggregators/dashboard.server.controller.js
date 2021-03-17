@@ -50,7 +50,7 @@ exports.get_ongoing_orders = function (req, res) {
 
 			})
 		} else {
-			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')]) + "</td></tr>";
+			tbl_ongoing_orders += "<tr><td colspan='7'>" + (labels['LBL_AGGREGATOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'PT')]) + "</td></tr>";
 		}
 
 		res.send(tbl_ongoing_orders);
@@ -103,7 +103,7 @@ exports.top_destinations = function (req, res) {
 			res.render('aggregators/ajax_dashboard_top_destinations', {
 				labels,
 				layout: false,
-				language: req.session.language || 'EN',
+				language: req.session.language || 'PT',
 				user: {
 					user_id: req.session.user_id,
 					name: req.session.name,
@@ -214,7 +214,7 @@ exports.top_producers = function (req, res) {
 			res.render('aggregators/ajax_dashboard_top_producers', {
 				labels,
 				layout: false,
-				language: req.session.language || 'EN',
+				language: req.session.language || 'PT',
 				user: {
 					user_id: req.session.user_id,
 					name: req.session.name,
@@ -327,7 +327,7 @@ exports.list = function (req, res) {
 			login_type: req.session.login_type
 		},
 		labels,
-		language: req.session.language || 'EN',
+		language: req.session.language || 'PT',
 		messages: req.flash('error') || req.flash('info'),
 		messages: req.flash('info'),
 	});
@@ -535,7 +535,7 @@ exports.list = function (req, res) {
 				labels,
 				my_products,
 				categories,
-				language: req.session.language || 'EN',
+				language: req.session.language || 'PT',
 				messages : req.flash('error') || req.flash('info'),
 				messages : req.flash('info'),
 			});

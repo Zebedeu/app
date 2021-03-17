@@ -13,6 +13,15 @@ const separatorsWD = (num) => {
     return num_parts.join(",");
 };
 
+
+const removePointerInCurrence = (number) => {
+    let regex = /([+-]?[0-9|^.|^,]+)[\.|,]([0-9]+)$/igm
+    let result = regex.exec(number);
+
+    let floatResult = result? result[1].replace(/[.,]/g, "")+ "." + result[2] : number.replace(/[^0-9-+]/g, "");
+    return floatResult
+} 
+
 const convert_date = (date, language) => {
     return (language == 'PT') ? moment(date).format('DD/MM/YYYY') : moment(date).format('MM/DD/YYYY')
 };
@@ -20,5 +29,6 @@ const convert_date = (date, language) => {
 module.exports = {
 	separators,
 	separatorsWD,
-  	convert_date
+  	convert_date,
+    removePointerInCurrence
 };

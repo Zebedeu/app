@@ -29,9 +29,11 @@ exports.generate = async function(req, res) {
     });
 
 	referenceObj.save((err, response) => {
+		console.log(response);
 		res.send({ code: 200 });
 		return false;
 	})
+
 
 	let data = JSON.stringify( {
         SOURCE_ID: generateRandom(null),
@@ -43,7 +45,7 @@ exports.generate = async function(req, res) {
         END_DATE: moment(moment().format('YYYY-MM-DD'), "YYYY-MM-DD").add(settingInfo.atm_reference_days, 'days')
     })
 
-	console.log(data)
+	//console.log(data)
 
 	axios({
 		method: 'get',
@@ -54,6 +56,8 @@ exports.generate = async function(req, res) {
 		  console.log(atmRes)
 		res.send({ code: 200 });
 	  })
+
+	  
 	// axios.post('http://18.229.213.198:2000/references', data).then((atmRes) => {
     // 	console.log(atmRes.data);
 

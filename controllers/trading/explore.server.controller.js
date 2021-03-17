@@ -201,7 +201,7 @@ exports.demand = function (req, res) {
 					total_cart_products,
 					higher_price_range: _.max(unit_prices),
 					labels,
-					language: req.session.language || 'EN',
+					language: req.session.language || 'PT',
 					messages: req.flash('error') || req.flash('info'),
 					messages: req.flash('info'),
 				});
@@ -833,8 +833,8 @@ exports.details = function (req, res) {
 				product: productObj,
 				moment,
 				labels,
-				language: req.session.language || 'EN',
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'EN')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'EN')] + "</li>",
+				language: req.session.language || 'PT',
+				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'PT')] + "</li>",
 				messages: req.flash('error') || req.flash('info'),
 				messages: req.flash('info')
 			});
