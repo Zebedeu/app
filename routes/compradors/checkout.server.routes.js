@@ -4,7 +4,6 @@ const {
 } = require('../../utils/session.js');
 
 module.exports = function(app) {
-	app.get('/compradors/checkout', authenticate_compradors, checkout.toDashboard);
 	app.get('/compradors/checkout/get-payment-captions', authenticate_compradors, checkout.getPaymentCaptions);
 	app.get('/compradors/checkout/list', authenticate_compradors, checkout.list);
 	app.get('/compradors/checkout/get-bank-information', authenticate_compradors, checkout.getBankInformation);

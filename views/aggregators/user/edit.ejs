@@ -7,25 +7,18 @@
 			<div class="help_sidebar_right">
 				<form id="frm-edit-user" action="<%=baseURL%>aggregators/user/edit" method="post" enctype="multipart/form-data">
 					<input type="hidden" value="<%= farmer.farmer_id %>" id="farmer_id" name="farmer_id">
-					<div class="row order-list-title">
+					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 					 		<h3><%= labels['EDIT_FARMER'][language] %></h3>
 						</div>
 						<div class="row">
-							<div class="col-md-3 col-sm-12 col-xs-12">
+							<div class="col-md-6 col-sm-12 col-xs-12">
 						 		<div class="search-container">
-						        	<label class="my-1 mr-2"><%= labels['LBL_SIGN_UP_FIRST_NAME'][language] %></label>
-									<input type="text" id="txt-firstname" name="first_name" value="<%= farmer.first_name %>" class="form-control" placeholder="" required="">
-								    <span class="validation-alert" id='err-firstname'></span>
+						        	<label class="my-1 mr-2"><%= labels['LBL_NAME'][language] %></label>
+								    <input class="custom_input" type="text" placeholder="" value="<%= farmer.name %>" id='name' name="names">
+								    <span class="validation-alert" id='err-name'></span>
 								</div>
 							</div>
-							<div class="col-md-3 col-sm-12 col-xs-12">
-								<div class="search-container">
-								   <label class="my-1 mr-2"><%= labels['LBL_SIGN_UP_LAST_NAME'][language] %></label>
-								   <input class="custom_input" type="text" placeholder="" value="<%= farmer.last_name %>" id='txt-lastname' name="last_name">
-								   <span class="validation-alert" id='err-lastname'></span>
-							   </div>
-						   </div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %></label>
@@ -201,22 +194,14 @@
     }
 
     function validatePost(){
-    	let errFirstNameFlag = 0, errLastNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
+    	let errNameFlag = 0, errEmailFlag = 0, errBankNameFlag = 0, errBankNoFlag = 0, errNIFFlag = 0, errAddressFlag = 0, errStateFlag = 0, errCityFlag = 0;
     	
-		if(!$('#txt-firstname').val()){
-			errFirstNameFlag = 1;
-			$('#err-firstname').text("<%= labels['LBL_SIGN_UP_VALIDATE_FIRST_NAME'][language] %>").show();
+    	if(!$('#name').val()){
+			errNameFlag = 1;
+			$('#err-name').text("<%= labels['LBL_ENTER_NAME_VALIDATION'][language] %>").show();
 		} else {
-			errFirstNameFlag = 0;
-			$('#err-firstname').hide();
-		}
-
-		if(!$('#txt-lastname').val()){
-			errLastNameFlag = 1;
-			$('#err-lastname').text("<%= labels['LBL_SIGN_UP_VALIDATE_LAST_NAME'][language] %>").show();
-		} else {
-			errLastNameFlag = 0;
-			$('#err-lastname').hide();
+			errNameFlag = 0;
+			$('#err-name').hide();
 		}
 
 		errEmailFlag = validateEmailAddress($('#email').val());
@@ -276,7 +261,7 @@
 			$('#err-city-id').hide();
 		}
 
-		if(!errFirstNameFlag && !errLastNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
+		if(!errNameFlag && !errEmailFlag && !errBankNameFlag && !errBankNoFlag && !errNIFFlag && !errAddressFlag && !errStateFlag && !errCityFlag){
 			return true;
 		} else {
 			return false;
@@ -287,20 +272,22 @@
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
+
 			if($('#mobile_country_code').val() && $('#phone_number').val()){
 				$.post('<%=baseURL%>check_farmer_email_exist', { type: 'other', farmer_id: $('#farmer_id').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
 					if(result.code == 200){
-						$('#frm-edit-user').submit();
+		            	$('#frm-edit-user').submit();
 		            } else {
 		            	$(".post-add-now").attr("disabled", false);
 						$(".lds-facebook").hide();
+
 		            	showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
 						setTimeout(() => {
 							hideAlert()
 						}, 3000);
 		            }
 				});
-			} else {				
+			} else {
 				$('#frm-edit-user').submit();
 			}
 		}
