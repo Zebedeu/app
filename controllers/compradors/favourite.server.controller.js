@@ -17,6 +17,10 @@ let {
 	separatorsWD
 } = require('../../utils/formatter');
 
+
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = function(req, res) {
 	User.findOne({ user_id: req.session.user_id }, { _id: 0, favourite_product_id: 1 }, (err, singleUser) => {
 		Product.aggregate([
@@ -138,8 +142,8 @@ exports.list = function(req, res) {
 				moment,
 				products,
 				labels,
-				language: req.session.language || 'EN',
-				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'EN')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_FAVOURITE'][(req.session.language || 'EN')]+"</li>",
+				language: req.session.language || 'PT',
+				breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'PT')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LIST_FAVOURITE'][(req.session.language || 'PT')]+"</li>",
 				messages : req.flash('error') || req.flash('info'),
 				messages : req.flash('info'),
 			});

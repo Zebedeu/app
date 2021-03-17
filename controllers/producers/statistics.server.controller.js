@@ -68,7 +68,7 @@ exports.totalSales = function(req, res) {
 			className = (!className) ? 'tbl-row-color' : '';
 			tbl_sales_orders+= "<tr class='"+className+"' ><td colspan='5'>&nbsp;</td><td colspan='2'>Kz "+separators(total)+"</td></tr>";
 		} else {
-			tbl_sales_orders+= "<tr><td colspan='7'>"+(labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'EN')])+"</td></tr>";
+			tbl_sales_orders+= "<tr><td colspan='7'>"+(labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][(req.session.language || 'PT')])+"</td></tr>";
 		}
 
 		res.send(tbl_sales_orders);

@@ -189,10 +189,10 @@
                                         <td>
                                              <% if(order['status'] == "paid" || order['products'][j]['shipment_status'] == "packed" || order['products'][j]['shipment_status'] == "shipped" || order['products'][j]['shipment_status'] == "delivered"){ %>
                                                   <% if(order['status'] == "paid" && order['products'][j]['shipment_status'] == "waiting"){ %>
-                                                  <input type="button" class="btn btn-success packed"
+                                                  <input type="button" class="btn packed" style="background-color: #3cc0a6; color: #f0f0f0;"
                                                        data-val="<%= order['products'][j]['shipment_id'] %>" value="<%= labels['LBL_PACKED'][language] %>">
                                                   <% }else{ %>
-                                                  <button class="btn btn-success"
+                                                  <button class="btn btn-cart"
                                                        style="text-transform: capitalize !important;"
                                                        disabled>
                                                        <% if(order['products'][j]['shipment_status'] == 'packed'){ %>
@@ -202,7 +202,7 @@
                                                        <% } else if(order['products'][j]['shipment_status'] == 'delivered'){ %>
                                                             <%= labels['LBL_DELIVERED'][language] %>
                                                        <% } %>
-                                                       </button>
+                                                  </button>
                                                   <% } %>
                                              <% } %>
                                         </td>

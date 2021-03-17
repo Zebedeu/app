@@ -27,6 +27,14 @@ var farmerSchema = new Schema({
         type: String,
         default: ''
     },
+    first_name: {
+        type: String,
+        default: ''
+    },
+    last_name: {
+        type: String,
+        default: ''
+    },
     email: {
         type: String,
         default: ''
