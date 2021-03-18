@@ -33,8 +33,8 @@ const axios = require('axios');
 const { forEach } = require('p-iteration');
 
 exports.toDashboard = (req, res) => {
-	return res.redirect('/compradors/dashboard');
-} 
+     return res.redirect('/compradors/dashboard');
+}
 exports.getPaymentCaptions = async (req, res) => {
      Setting.findOne({}, { _id: 0, payment_captions: 1 }, (err, settings) => {
           res.send({
@@ -402,7 +402,7 @@ exports.placeOrder = async (req, res) => {
                });
                _.each(products, (element, index, list) => {
                     element.original_price = element.unit_price;
-                    
+
                     kepyaCommission = (element.kepya_commission) || ((settingInfo && settingInfo.kepya_commission) ? settingInfo.kepya_commission : 0);
                     productAmount = (element.qty * element.unit_price);
                     sellerAmount = (productAmount - ((productAmount * kepyaCommission) / 100));
@@ -592,6 +592,9 @@ exports.placeOrder = async (req, res) => {
                                    });
 
                                    if (req.body.payment_type == 'atm_reference') {
+                                        const today = moment();
+                                        const nextData = today.add(settingInfo.atm_reference_days, 'days');
+                                        const end_date = nextData.format('YYYY-MM-DD');
                                         axios.post('http://18.229.213.198:2000/references', {
                                              SOURCE_ID: response.order_id,
                                              CUSTOMER_NAME: singleUser.first_name,
@@ -599,10 +602,16 @@ exports.placeOrder = async (req, res) => {
                                              PHONE_NUMBER: singleUser.phone_number,
                                              AMOUNT: (total + parseFloat(req.body.transport_fees)),
                                              START_DATE: moment().format('YYYY-MM-DD'),
-                                             END_DATE: moment(moment().format('YYYY-MM-DD'), "YYYY-MM-DD").add(settingInfo.atm_reference_days, 'days')
+                                             END_DATE: end_date
+                                             // END_DATE: moment(moment().format('YYYY-MM-DD'), "YYYY-MM-DD").add(settingInfo.atm_reference_days, 'days')
                                         }).then((atmRes) => {
+                                             console.log(atmRes.data)
                                              Order.update({ order_id: response.order_id }, { atm_reference_response: atmRes.data }, function (err, update_response) {
-                                                  res.send({ code: 200, order_id: response.order_id });
+                                                  console.log(update_response);
+                                                  Order.findOne({ order_id: response.order_id }, function (err, response) {
+                                                       console.log(response);
+                                                       res.send({ code: 200, order_id: response.order_id });
+                                                  })
                                              });
                                         })
                                    } else {
