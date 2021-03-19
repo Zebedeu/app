@@ -278,9 +278,11 @@
                                                                            <p style="margin-top: 15px;"
                                                                                 id="wallet-caption33">
                                                                                 
-                                                                                
-                                                                                     <%= labels['LBL_COMPRADOR_WALLET_DESCRIBE_1'][language] %>  
-                                                                                  
+                                                                                <% if( wallet > 0){ %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_WALLET_DESCRIBE_1'][language] %>
+                                                                                <% } else if( wallet < 0 ){ %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1'][language] %>
+                                                                                     <% }  %>                                                                                  
                                                                                 
                                                                                 </p>
                                                                            <a href="javascript:void(0)"><button
