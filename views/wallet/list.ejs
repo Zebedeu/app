@@ -148,7 +148,7 @@
                $('#err-enter-wallet-amount').text('');
                $(".btn-save-wallet-amount").attr("disabled", true);
                $(".lds-facebook").show();
-               $.post("<%=baseURL%>withdrawal-money", { wallet: ($('.enter-wallet-amount').val()) }).done((result) => {
+               $.post("<%=baseURL%>withdrawal-money", { wallet: parseInt(removePointerInCurrence($('.enter-wallet-amount').val())) }).done((result) => {
                     $(".btn-save-wallet-amount").attr("disabled", false);
                     $(".lds-facebook").hide();
                     $("#walletWithdrawModal").modal('hide');

@@ -3949,6 +3949,14 @@
 		"EN": "Edit Document",
 		"PT": "Editar documento"
 	},
+	"LBL_COMPRADOR_IF_WALLET_DESCRIBE_1": {
+		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
+		"PT": "Tem valor suficiente na sua carteira para efectuar a compra."
+	},
+	"LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1": {
+		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
+		"PT": "TA sua carteira não tem saldo suficiente para efectuar a compra. <br>Por favor seleccione um dos meios de pagamento alternativos"
+	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
 		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
 		"PT": "A sua carteira encontra-se vazia. Por favor carregue a sua carteira e comece a comprar os seus produtos do campo  de forma rápida e eficaz"
@@ -3957,9 +3965,21 @@
 		"EN": "Please click on the button and start buying your agricultural products efficiently and rapidly.",
 		"PT": "Por favor , clique no botão a baixo e comece a comprar os seus produtos do campo de forma rápida e eficaz."
 	},
+	"LBL_COMPRADOR_IF_WALLET": {
+		"EN": "Please click on the button to have access to an ATM´s reference.",
+		"PT": "em saldo suficiente na sua carteira para efectuar a compra. Por favor seleccione o pagamento via carteira."
+	},
+	"LBL_COMPRADOR_ATM_DESCRIBE_IF_NOT_WALLET": {
+		"EN": "Please click on the button to have access to an ATM´s reference.",
+		"PT": "Ao pagar via referência ATM a sua encomenda ficará reservada por um período máximo de 24h. Assim que o pagamento for feito a sua compra prosseguirá de modo automático."
+	},
 	"LBL_COMPRADOR_ATM_DESCRIBE": {
 		"EN": "Please click on the button to have access to an ATM´s reference.",
 		"PT": "Por favor, clique no botão a baixo para ter acesso a  referência ATM."
+	},
+	"LBL_COMPRADOR_ACCOUNT_DESCRIBE_IF_NOT_WALLET": {
+		"EN": "In case, you wish to pay, via bank transfer, please take note of the banking details below  mentioned:",
+		"PT": "Ao pagar via transferência bancária a sua encomenda ficará reservada por um período máximo de 24h. Após o pagamento, por favor submeta o comprovativo da operação. A sua compra prosseguirá assim que o pagamento for confirmado."
 	},
 	"LBL_COMPRADOR_ACCOUNT_DESCRIBE": {
 		"EN": "In case, you wish to pay, via bank transfer, please take note of the banking details below  mentioned:",
