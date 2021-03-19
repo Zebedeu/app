@@ -174,6 +174,7 @@ exports.list = function(req, res) {
 				let demandQty = element_demand.unit_value;
 
 				_.each(demandProducts, (element_product, index_product, list_product) => {
+					demandProducts[index_product]['product_id'] = element_product.product_id[req.session.language || config.default_language_code];
 					demandProducts[index_product]['category_title'] = element_product.category_title[req.session.language || config.default_language_code];
 					demandProducts[index_product]['sub_category_title'] = element_product.sub_category_title[req.session.language || config.default_language_code];
 					demandProducts[index_product]['unit_plural_title'] = element_product.unit_plural_title[req.session.language || config.default_language_code];

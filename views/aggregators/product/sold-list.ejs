@@ -22,22 +22,20 @@
 								<th scope="col" width="120"><%= labels['LBL_QUANTITY'][language] %></th>
 								<th scope="col" width="200"><%= labels['LBL_ACTION'][language] %></th>
 							</tr>
-							<% for(let i=0; i < products.length; i++) { 
-								console.log("products[i]",products[i]);
-							%>
+							<% for(let i=0; i < products.length; i++) { %>
 
 							<!-- <tr onclick="window.location = '<%=baseURL%>aggregators/product/display/<%=products[i].product_id%>'"> -->
 							<tr>
 								<td>
 									<figure class="">
-										<div class="img-wrap"><img src="<%= imageUrl+"/"+products[i].images[0] %>"
+										<div class="img-wrap"><img src="<%= products[i].images[0] %>"
 												class="img-thumbnail img-sm"></div>
 										<figcaption class="media-body kp_myorder">
 											<h3><%= products[i].sub_category_title %></h3>
 											<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;"
 													class="fa fa-map-marker" aria-hidden="true"></i>
 												<span><%= products[i].location %></span></h4>
-											<h4 class="currency_color_text sku_wrapper">
+											<h4 class="currency_color_text sku_wrapper">Kz
 												<%= (products[i].unit_price) %> / <%= products[i].unit_type %></h4>
 										</figcaption>
 									</figure>
@@ -53,19 +51,19 @@
 										<%= products[i].unit_type %></h4>
 								</td>
 								<td>
-									<div style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
+									<div id="view-item" style="display: inline-block;background-color: #4abfa5;padding: 10px;width: 39px;height: 39px;"
 										class="">
 										<a href="<%=baseURL%>aggregators/product/order/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-eye"></i></a>
 									</div>
-									<div style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
+									<div id="edit-item" style="display: inline-block;background-color: #f69624;padding: 10px;width: 39px;height: 39px;"
 										class="">
 										<a href="<%=baseURL%>aggregators/product/display/<%= products[i].product_id %>"><i
 												style="font-size: 22px;color: #fff;" class="fa fa-edit"></i></a>
 									</div>
-									<div style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
+									<div id="delete-item" style="display: inline-block;background-color: #aa1a2b;padding: 10px;width: 39px;height: 39px;"
 										class="">
-										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>')"
+										<a  onclick="notificacao('<%= products[i].sub_category_title %>','<%= products[i].product_id %>','<%= products[i].images[0] %>')"
 										    href="#"><i	style="font-size: 22px;color: #fff;" class="fa fa-trash"></i></a>
 									</div>
 								</td>
@@ -89,7 +87,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <script>
 	function filterProducts() {
 		let category_id = $('#category_id').val();
@@ -104,16 +103,16 @@
 			}
 		});
 	}
-	function notificacao(sub_category_title, product_id) {
+	function notificacao(sub_category_title, product_id,img) {
 			$.confirm({
-			title: 'Desejas remover o produto ?',
-			content: "ID: " + product_id + "<br>" + 'Nome: ' + sub_category_title,
-			type: 'purple',
+			title: '<p style= "font-size: 18px;">Tem certeza que deseja remover este produto ?</p>',
+			content: '<img src="' + img + '" class="img-thumbnail img-sm" style="width:60px;height:55px; margin-top:0px;">' + '<p style= "margin-left:80px; margin-top:-50px; font-size:15px;">' + ' ID: ' + product_id + "<br>" + " Nome: " + sub_category_title + '</p>',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
-				tryAgain: {
+				yes:{
 					text: 'Sim',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
 						$.ajax({
 							url: "<%=baseURL%>aggregators/product/remove/" + product_id,
@@ -137,10 +136,28 @@
 							}
 						});
 					}
-				},
-				close: function () {
+			    },
+				no: {
+					keys: ['Não'],
+					text: 'Não',
+					btnClass: 'kepya-green',
 				}
+					
 			}
 		});
 	}
+
+
+	tippy('#view-item', {
+        content: 'Visualizar',
+		theme: 'tomato'
+      });
+	  tippy('#edit-item', {
+        content: 'Editar',
+		theme: 'tomato'
+      });
+	  tippy('#delete-item', {
+        content: 'Eliminar',
+		theme: 'tomato'
+      });
 </script>

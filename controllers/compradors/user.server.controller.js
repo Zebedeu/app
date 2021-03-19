@@ -6,6 +6,10 @@ let User = require('mongoose').model('User');
 let passwordHandler = require('../../utils/password-handler');
 let labels = require('../../utils/labels.json');
 
+
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = function(req, res) {
 	res.render('compradors/user/list', {
 		user: {
@@ -15,7 +19,7 @@ exports.list = function(req, res) {
 			login_type: req.session.login_type
 		},
 		labels,
-		language: req.session.language || 'EN',
+		language: req.session.language || 'PT',
 		messages : req.flash('error') || req.flash('info'),
 		messages : req.flash('info'),
 	});
@@ -30,7 +34,7 @@ exports.add = function(req, res) {
 			login_type: req.session.login_type
 		},
 		labels,
-		language: req.session.language || 'EN',
+		language: req.session.language || 'PT',
 		messages : req.flash('error') || req.flash('info'),
 		messages : req.flash('info'),
 	});
@@ -86,7 +90,8 @@ exports.profile = function(req, res){
 	                gps_location: "$gps_location",
 	                status: "$status",
 	                state_name: "$stateDetails.name",
-	                city_name: "$cityDetails.name"
+	                city_name: "$cityDetails.name",
+					doc: "$doc"
 			  	}
 			}
 		], (err, response) => {
@@ -112,9 +117,9 @@ exports.profile = function(req, res){
 					lbl_nif: (userInfo.type == 'individual') ? labels['LBL_COMPRADOR_LOGIN_SECURITY_NIF'][(req.session.language || config.default_language_code)] : labels['LBL_COMPRADOR_LOGIN_SECURITY_COMPANY_NIF'][(req.session.language || config.default_language_code)],
 					lbl_validate_nif: (userInfo.type == 'individual') ? labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_NIF'][(req.session.language || config.default_language_code)] : labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_COMPANY_NIF'][(req.session.language || config.default_language_code)],
 					labels,
-					language: req.session.language || 'EN',
+					language: req.session.language || 'PT',
 					google_api_key: config.googleAPIKey,
-					breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'EN')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LOGIN_AND_SECURITY'][(req.session.language || 'EN')]+"</li>",
+					breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'PT')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LOGIN_AND_SECURITY'][(req.session.language || 'PT')]+"</li>",
 					messages : req.flash('error') || req.flash('info'),
 					messages : req.flash('info'),
 				});
@@ -143,9 +148,9 @@ exports.profile = function(req, res){
 							lbl_nif: (userInfo.type == 'individual') ? labels['LBL_COMPRADOR_LOGIN_SECURITY_NIF'][(req.session.language || config.default_language_code)] : labels['LBL_COMPRADOR_LOGIN_SECURITY_COMPANY_NIF'][(req.session.language || config.default_language_code)],
 							lbl_validate_nif: (userInfo.type == 'individual') ? labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_NIF'][(req.session.language || config.default_language_code)] : labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_COMPANY_NIF'][(req.session.language || config.default_language_code)],
 							labels,
-							language: req.session.language || 'EN',
+							language: req.session.language || 'PT',
 							google_api_key: config.googleAPIKey,
-							breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'EN')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LOGIN_AND_SECURITY'][(req.session.language || 'EN')]+"</li>",
+							breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'PT')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_LOGIN_AND_SECURITY'][(req.session.language || 'PT')]+"</li>",
 							messages : req.flash('error') || req.flash('info'),
 							messages : req.flash('info'),
 						});
@@ -168,8 +173,8 @@ exports.address = function(req, res) {
 			addresses: (response.addresses.length > 0) ? response.addresses.reverse() : [],
 			total_cart_products: 0,
 			labels,
-			language: req.session.language || 'EN',
-			breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'EN')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_YOUR_ADDRESSES'][(req.session.language || 'EN')]+"</li>",
+			language: req.session.language || 'PT',
+			breadcrumb: "<li class='breadcrumb-item'><a href='"+config.base_url+"compradors/dashboard'>"+labels['LBL_HOME'][(req.session.language || 'PT')]+"</a></li><li class='breadcrumb-item active' aria-current='page'>"+labels['LBL_YOUR_ADDRESSES'][(req.session.language || 'PT')]+"</li>",
 			messages : req.flash('error') || req.flash('info'),
 			messages : req.flash('info'),
 		});

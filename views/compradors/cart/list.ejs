@@ -5,7 +5,7 @@
                <%- include('../../shared/breadcrumb') %>
           </div>
           <div class="product_card">
-               <div class="row add-address">
+               <div class="row order-list-title">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                          <h3 style="padding-bottom: 20px;"><%= labels['LBL_CHECKOUT'][language] %></h3>
                     </div>
@@ -276,7 +276,15 @@
                                                                  <div class="row">
                                                                       <div class="col-md-12">
                                                                            <p style="margin-top: 15px;"
-                                                                                id="wallet-caption33"> <%= labels['LBL_COMPRADOR_WALLET_DESCRIBE_2'][language] %> </p>
+                                                                                id="wallet-caption33">
+                                                                                
+                                                                                <% if( wallet > total ){ %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_WALLET_DESCRIBE_1'][language] %>
+                                                                                <% } else { %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1'][language] %>
+                                                                                     <% }  %>                                                                                  
+                                                                                
+                                                                                </p>
                                                                            <a href="javascript:void(0)"><button
                                                                                      id="order_now"
                                                                                      class="order_now button btn-cart btn-wallet"
@@ -306,7 +314,13 @@
                                                                  <div class="row">
                                                                       <div class="col-md-12">
                                                                            <p style="margin-top: 15px;"
-                                                                           id="atm-reference-caption33"> <%= labels['LBL_COMPRADOR_ATM_DESCRIBE'][language] %></p>
+                                                                           id="atm-reference-caption33">
+                                                                           <% if( wallet > total ){ %>
+                                                                                <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
+                                                                           <% } else { %>
+                                                                                <%= labels['LBL_COMPRADOR_ATM_DESCRIBE_IF_NOT_WALLET'][language] %>
+                                                                                <% }  %>                                                                                  
+                                                                                                                                                      </p>
                                                                            <a href="javascript:void(0)"><button
                                                                                      type="button" name="add-to-cart"
                                                                                      class="add-to-cart-btn button btn-cart btn-atm-reference"
@@ -331,7 +345,14 @@
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
                                                                       <p style="margin-top: 15px; margin-left: 10px;"
-                                                                      id="atm-reference-caption33"> <%= labels['LBL_COMPRADOR_ACCOUNT_DESCRIBE'][language] %></p>
+                                                                      id="atm-reference-caption33">
+                                                                      <% if( wallet > total ){ %>
+                                                                           <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
+                                                                      <% } else { %>
+                                                                           <%= labels['LBL_COMPRADOR_ACCOUNT_DESCRIBE_IF_NOT_WALLET'][language] %>
+                                                                           <% }  %> 
+
+                                                                      </p>
                                                                       <div class="col-md-12">
                                                                            <div class="search-container">
                                                                                 <p style="margin-left: 20px;"><%= labels['LBL_ACCOUNT_NO'][language] %>
@@ -652,12 +673,12 @@
 			title: 'Campra',
 			icon: 'fa fa-check',
 			content: 'A compra  do produto ' + id + ' foi realizada com sucesso!',
-			type: 'purple',
+			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'btn',
+					btnClass: 'kepya-green',
 					action: function () {
                               window.location.href = "<%=baseURL%>compradors/order/list";
 					}
