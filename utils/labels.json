@@ -3950,11 +3950,11 @@
 		"PT": "Editar documento"
 	},
 	"LBL_COMPRADOR_IF_WALLET_DESCRIBE_1": {
-		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
+		"EN": "",
 		"PT": "Tem valor suficiente na sua carteira para efectuar a compra."
 	},
 	"LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1": {
-		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
+		"EN": "",
 		"PT": "A sua carteira não tem saldo suficiente para efectuar a compra. \n Por favor seleccione um dos meios de pagamento alternativos"
 	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
@@ -3967,7 +3967,7 @@
 	},
 	"LBL_COMPRADOR_IF_WALLET": {
 		"EN": "Please click on the button to have access to an ATM´s reference.",
-		"PT": "em saldo suficiente na sua carteira para efectuar a compra. Por favor seleccione o pagamento via carteira."
+		"PT": "Tem saldo suficiente na sua carteira para efectuar a compra. Por favor seleccione o pagamento via carteira."
 	},
 	"LBL_COMPRADOR_ATM_DESCRIBE_IF_NOT_WALLET": {
 		"EN": "Please click on the button to have access to an ATM´s reference.",
