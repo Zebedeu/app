@@ -1173,7 +1173,7 @@
 	},
 	"LBL_ORDER_NOW": {
 		"EN": "Order Now",
-		"PT": "Pedir agora"
+		"PT": "Confirmar compra"
 	},
 	"LBL_ENTER_CVV": {
 		"EN": "Enter CVV",
@@ -3955,11 +3955,11 @@
 	},
 	"LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1": {
 		"EN": "",
-		"PT": "A sua carteira não tem saldo suficiente para efectuar a compra. \n Por favor seleccione um dos meios de pagamento alternativos"
+		"PT": "A sua carteira não tem saldo suficiente para efectuar a compra. \n Por favor seleccione um dos meios de pagamento alternativos."
 	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
 		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
-		"PT": "A sua carteira encontra-se vazia. Por favor carregue a sua carteira e comece a comprar os seus produtos do campo  de forma rápida e eficaz"
+		"PT": "A sua carteira encontra-se vazia. Por favor carregue a sua carteira e comece a comprar os seus produtos do campo  de forma rápida e eficaz."
 	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_2": {
 		"EN": "Please click on the button and start buying your agricultural products efficiently and rapidly.",
