@@ -13,14 +13,6 @@
 	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
-
-<script>
-// 	$(document).ready(function(){
-// 		$('body').append('<div id="loading"><ul class="bokeh"><li></li><li></li><li></li></ul></div>');
-
-// 	}  )
-
-// </script>
 <body>
 
 <div class="">
@@ -52,6 +44,7 @@
 		</div>
 	</div>
 </footer>
+
 <div class="main-section social-media">
 	<div class="sub-section">
 		<div class="container">
@@ -83,9 +76,7 @@ function myFunction() {
 <script  src="../../../js/script.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <script type="text/javascript">
-
 $(document).ready(function(){
-
 	$("#accordion i").click(function(){
 		//slide up all the link lists
 		$("#accordion ul ul").slideUp(200);
@@ -106,15 +97,6 @@ $(document).ready(function(){
     }});
 })
 
-	function removeLoader(){
-		$( "#loading" ).fadeOut(1000, function() {
-		  // fadeOut complete. Remove the loading div
-		  $( "#loading" ).remove(); //makes page more lightweight 
-	  });  
-	}
-
-
-	setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -147,17 +129,6 @@ function logOut(login_type) {
 $("#imageUpload").change(function() {
     readURL(this);
 });
-
-
-// function removeLoader(){
-// 	$( "#loading" ).fadeOut(1000, function() {
-// 	  // fadeOut complete. Remove the loading div
-// 	  $( "#loading" ).remove(); //makes page more lightweight 
-//   });  
-// }
-
-// setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
-	
 </script>
 </body>
 </html>

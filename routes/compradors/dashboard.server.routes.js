@@ -4,7 +4,6 @@ const {
 } = require('../../utils/session.js');
 
 module.exports = function(app) {
-	app.get('/compradors', authenticate_compradors, dashboard.toDashboard);
 	app.get('/compradors/dashboard', authenticate_compradors, dashboard.list);
 	app.get('/compradors/get-settings', authenticate_compradors, dashboard.settings);
 	app.get('/compradors/dashboard/get-ongoing-orders', authenticate_compradors, dashboard.get_ongoing_orders);

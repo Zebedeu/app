@@ -8,7 +8,6 @@ let State = require('mongoose').model('State');
 let City = require('mongoose').model('City');
 let passwordHandler = require('../../utils/password-handler');
 let s3Manager = require('../../utils/s3-manager');
-let logger = require('../../utils/logger');
 let s3Handler = require('../../utils/s3-handler');
 s3Handler = new s3Handler();
 let labels = require('../../utils/labels.json');
@@ -23,8 +22,6 @@ exports.list = function (req, res) {
 		_.each(farmers, (element, index, list) => {
 			farmers[index]['photo'] = ((element.photo) ? config.aws.prefix + config.aws.s3.userBucket + '/' + element.photo : '../../../images/placeholder.jpg');
 		})
-
-		console.log(farmers)
 
 		res.render('aggregators/user/list', {
 			user: {
@@ -44,12 +41,11 @@ exports.list = function (req, res) {
 };
 
 exports.add = function (req, res) {
-	if (req.body.first_name && req.body.last_name && req.body.email_id && req.body.address && req.body.state_id && req.body.city_id && req.body.bank_name && req.body.bank_account_no && req.body.nif) {
+	if (req.body.names && req.body.email_id && req.body.address && req.body.state_id && req.body.city_id && req.body.bank_name && req.body.bank_account_no && req.body.nif) {
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			user_type: req.session.user_type,
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
+			name: req.body.names,
 			email: req.body.email_id,
 			mobile_country_code: (req.body.mobile_country_code && req.body.phone_number) ? req.body.mobile_country_code : '',
 			phone_number: (req.body.mobile_country_code && req.body.phone_number) ? req.body.phone_number : '',
@@ -100,8 +96,7 @@ exports.add = function (req, res) {
 						columnAndValues['photo'] = [url.substring(url.lastIndexOf('/') + 1)];
 						let farmerObj = new Farmer(columnAndValues);
 						farmerObj.save((err, response) => {
-							res.end(response.farmer_id);
-							//return res.redirect('list');
+							return res.redirect('list');
 						})
 					});
 				});
@@ -111,8 +106,7 @@ exports.add = function (req, res) {
 			let farmerObj = new Farmer(columnAndValues);
 			farmerObj.save((err, response) => {
 				console.log(err);
-				res.end(response.farmer_id);
-				//return res.redirect('list');
+				return res.redirect('list');
 			})
 		}
 	} else {
@@ -183,8 +177,7 @@ exports.profile = function (req, res) {
 					state_name: "$stateDetails.name",
 					city_name: "$cityDetails.name",
 					city_latitude: "$cityDetails.latitude",
-					city_longitude: "$cityDetails.longitude",
-					doc: "$doc"
+					city_longitude: "$cityDetails.longitude"
 				}
 			}
 		], (err, response) => {
@@ -193,7 +186,6 @@ exports.profile = function (req, res) {
 			}
 
 			let userInfo = response[0];
-			userInfo['photo'] = ((response.photo) ? config.aws.prefix + config.aws.s3.userBucket + '/' + response.photo : '../../../images/placeholder.jpg');
 			userInfo['user_type'] = labels['LBL_SIGN_UP_USER_AGGREGATORS'][req.session.language];
 			passwordHandler.decrypt(userInfo.password, (decPin) => {
 				userInfo.password = (userInfo.password ? decPin : '');
@@ -281,8 +273,7 @@ exports.edit = function (req, res) {
 		}
 
 		let columnAndValues = {
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
+			name: req.body.names,
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			bank_name: req.body.bank_name,
@@ -412,7 +403,7 @@ exports.display = function (req, res) {
 				farmer: response,
 				labels,
 				language: req.session.language || config.default_language_code,
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/user/list'>" + labels['LBL_FARMER_LIST'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['EDIT_FARMER'][(req.session.language || config.default_language_code)] + "</li>",
+				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item'><a href='" + config.base_url + "aggregators/user/list'>" + labels['LBL_FARMER_LIST'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_EDIT_USER'][(req.session.language || config.default_language_code)] + "</li>",
 				messages: req.flash('error') || req.flash('info'),
 				messages: req.flash('info'),
 			});
