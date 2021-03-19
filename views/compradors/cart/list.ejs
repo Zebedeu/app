@@ -271,15 +271,18 @@
                                                        <div class="accordion__item js-accordion-item">
                                                             <div class="accordion-header js-accordion-header head_"><img
                                                                       src="../../../images/wallet.png"><%= labels['LBL_WALLET'][language] %>
-                                                                 <span>(Kz <%= wallet_formatted %>)</span></div>
+                                                                 <span>(<%= wallet_formatted %> Kz)</span></div>
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
                                                                       <div class="col-md-12">
                                                                            <p style="margin-top: 15px;"
                                                                                 id="wallet-caption33">
-                                                                                <
-                                                                                         <%= labels['LBL_COMPRADOR_WALLET_DESCRIBE_1'][language] %>  
-                                                                                  
+                                                                                <% if( wallet_formatted > 0 ) { %>
+                                                                                 <%= labels['LBL_COMPRADOR_IF_WALLET_DESCRIBE_1'][language] %> 
+                                                                                 <% } else { 
+                                                                                     <%= labels['LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1'][language] %>  
+                                                                                   }  %>
+                                                                                
                                                                                 </p>
                                                                            <a href="javascript:void(0)"><button
                                                                                      id="order_now"
