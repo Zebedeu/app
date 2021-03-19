@@ -657,10 +657,8 @@
 
      function placeOrder(payment_type, type) {
           if (payment_type == 'atm_reference') {
-               //alert('Payment gateway is under development');
-               return false;
-          }
 
+               
           $(".order_now_other").attr("disabled", true);
           $(".order_now").attr("disabled", true);
           // $(".reserve_now").attr("disabled", true);
@@ -670,6 +668,7 @@
                notificacao(data.order_id)
               // window.location.href = "<%=baseURL%>compradors/thanks/list/" + data.order_id;
           });
+     } 
      }
 
      function notificacao(id) {
