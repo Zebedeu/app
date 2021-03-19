@@ -610,7 +610,7 @@ exports.placeOrder = async (req, res) => {
                                                   console.log(update_response);
                                                   Order.findOne({ order_id: response.order_id }, function (err, response) {
                                                        console.log(response);
-                                                       res.send({ code: 200, order_id: response.order_id });
+                                                       res.send({ code: 200, order_id: response.order_id, reference: atmRes.data.REFERENCE, amount:atmRes.data.AMOUNT});
                                                   })
                                              });
                                         })

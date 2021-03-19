@@ -48,8 +48,8 @@ exports.generate = async function (req, res) {
 			    Reference.findOne({ reference_id: reference.reference_id}, function (err, response) {
 					console.log(response);
 					console.log(" -------------- " +  atmRes.data.REFERENCE);
-					return res.end(atmRes.data.REFERENCE);
-					//res.send({ code: 200, reference: atmRes.data.REFERENCE });
+					//return res.end(atmRes.data.REFERENCE);
+					return res.send({ code: 200, reference: atmRes.data.REFERENCE });
 				})
 			})
 		})

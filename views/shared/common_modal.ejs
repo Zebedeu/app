@@ -299,11 +299,8 @@
                               </div>
                          </div>
                          <div class="col-md-12 align_center">
-                              <a href="javascript:void(0);">
-                                   <button class="button btn-cart" type='button'
-                                 
-                                   onclick="generateReference('<%=baseURL%>','<%= labels['LBL_VALIDATE_ADD_AMOUNT_MODAL_ENTER_AMOUNT'][language] %>','<%= labels['LBL_MESSAGE'][language] %>','<%= labels['LBL_WALLET_ATM_REFERENCE_GENERATED_SUCCESSFULLY'][language] %>')">
-                                   
+                              <a href="javascript:void(0);" onClick='addReference()'>
+                                   <button class="button btn-cart">
                                    <%= labels['LBL_ADD_AMOUNT_MODAL_GENERATE_REFERENCE'][language] %>
                               </button></a>
                          </div>
@@ -551,6 +548,50 @@
              }
         });            
    }
+
+          function notificacaoReference(value, reference) {
+               $.confirm({
+                    title: '',
+                    content: '<p style="font-size:16px;"> Para que o seu carregamento fique validado, deve fazer nas próximas 24h o pagamento com os seguintes dados: <br></p>' +
+                              '<p style="margin-bottom:1px; margin-left: 20px; font-size:14px;"><b>Entidade:</b> 00229</p>' +
+                              '<p style="margin-bottom:1px; margin-left: 20px;font-size:14px; font-weight:bold">Referência: ' + reference + '</p>' +
+                              '<p style="margin-bottom:0px; margin-left: 20px;font-size:14px; font-weight:bold">Valor: ' + value + ' Kz</p>',
+                    type: 'kepya',
+                    typeAnimated: true,
+                    buttons: {
+                         tryAgain: {
+                              text: 'Ok',
+                              btnClass: 'kepya-green',
+                              action: function () {
+                              }
+                         }
+                    } 
+               });
+          }
+
+          function addReference() {            
+               let num = $('#load_amount').val();
+               if(num != '' || num > 0){
+                   $('#addAmountInWalletATMModal').modal('hide');
+                   $.ajax({url: "<%=baseURL%>reference/generate?amount=" + num,  
+                         success: (result) => {
+                              notificacaoReference(num, result.reference);
+                         },
+                         error: function (jqXHR, textStatus, errorThrown){
+                              showAlert("Erro ao editar o comprovativo!");
+                              setTimeout(() => {
+                                   hideAlert()
+                                   window.location.reload();
+                              }, 3000);                        
+                         }
+                    });
+               }else{
+                    showAlert(" Insira o valor!");
+                    setTimeout(() => {
+                         hideAlert()
+                    }, 3000);  
+               }
+          }
 
           function addNewAddress(from) {
                $('#addressModal').modal('show');
