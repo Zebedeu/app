@@ -3955,7 +3955,7 @@
 	},
 	"LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1": {
 		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
-		"PT": "TA sua carteira não tem saldo suficiente para efectuar a compra. <br>Por favor seleccione um dos meios de pagamento alternativos"
+		"PT": "A sua carteira não tem saldo suficiente para efectuar a compra. \n Por favor seleccione um dos meios de pagamento alternativos"
 	},
 	"LBL_COMPRADOR_WALLET_DESCRIBE_1": {
 		"EN": "Your wallet is empty. Please recharge your wallet and start buying agricultural products efficiently and rapidly.",
