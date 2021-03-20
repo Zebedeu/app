@@ -584,7 +584,9 @@ const unsoldList = async (req, res) => {
 const addResponse = (req, res, columnAndValues) => {
 	let productObj = new Product(columnAndValues);
 	productObj.save((err, response) => {
-		return res.redirect('order/' + response.product_id);
+		console.log(response.product_id + 'Marcio')
+		return res.send({product_id: response.product_id})
+		
 	})
 };
 
