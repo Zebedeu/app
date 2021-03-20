@@ -5,7 +5,7 @@
                <%- include('../../shared/breadcrumb') %>
           </div>
           <div class="product_card">
-               <div class="row order-list-title">
+               <div class="row add-address">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                          <h3 style="padding-bottom: 20px;"><%= labels['LBL_CHECKOUT'][language] %></h3>
                     </div>
@@ -268,7 +268,7 @@
                                         <div class="row">
                                              <div class="col-md-8">
                                                   <div class="accordion js-accordion">
-                                                       <div id="wallet" class="accordion__item js-accordion-item">
+                                                       <div class="accordion__item js-accordion-item">
                                                             <div class="accordion-header js-accordion-header head_"><img
                                                                       src="../../../images/wallet.png"><%= labels['LBL_WALLET'][language] %>
                                                                  <span>(Kz <%= wallet_formatted %>)</span></div>
@@ -276,15 +276,7 @@
                                                                  <div class="row">
                                                                       <div class="col-md-12">
                                                                            <p style="margin-top: 15px;"
-                                                                                id="wallet-caption33">
-                                                                                
-                                                                                <% if( wallet > total ){ %>
-                                                                                     <%= labels['LBL_COMPRADOR_IF_WALLET_DESCRIBE_1'][language] %>
-                                                                                <% } else { %>
-                                                                                     <%= labels['LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1'][language] %>
-                                                                                     <% }  %>                                                                                  
-                                                                                
-                                                                                </p>
+                                                                                id="wallet-caption33"> <%= labels['LBL_COMPRADOR_WALLET_DESCRIBE_2'][language] %> </p>
                                                                            <a href="javascript:void(0)"><button
                                                                                      id="order_now"
                                                                                      class="order_now button btn-cart btn-wallet"
@@ -306,7 +298,7 @@
                                                             </div>
                                                        </div>
 
-                                                       <div id="atm" class="accordion__item js-accordion-item">
+                                                       <div class="accordion__item js-accordion-item">
                                                             <div class="accordion-header js-accordion-header head_"><img
                                                                       src="../../../images/wallet.png"><%= labels['LBL_ATM_REFERENCE'][language] %>
                                                             </div>
@@ -314,13 +306,7 @@
                                                                  <div class="row">
                                                                       <div class="col-md-12">
                                                                            <p style="margin-top: 15px;"
-                                                                           id="atm-reference-caption33">
-                                                                           <% if( wallet > total ){ %>
-                                                                                <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
-                                                                           <% } else { %>
-                                                                                <%= labels['LBL_COMPRADOR_ATM_DESCRIBE_IF_NOT_WALLET'][language] %>
-                                                                                <% }  %>                                                                                  
-                                                                                                                                                      </p>
+                                                                           id="atm-reference-caption33"> <%= labels['LBL_COMPRADOR_ATM_DESCRIBE'][language] %></p>
                                                                            <a href="javascript:void(0)"><button
                                                                                      type="button" name="add-to-cart"
                                                                                      class="add-to-cart-btn button btn-cart btn-atm-reference"
@@ -338,24 +324,14 @@
                                                        </div>
 
                                                        <!-- accordion item -->
-                                                       <div id="bank" class="accordion__item js-accordion-item">
+                                                       <div class="accordion__item js-accordion-item">
                                                             <div class="accordion-header js-accordion-header head_"><img
                                                                       src="../../../images/card.png"><%= labels['LBL_PAYMENT_FROM_THE_BANK'][language] %>
                                                             </div>
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
-                                                                      <% if( wallet > total ){ %>
                                                                       <p style="margin-top: 15px; margin-left: 10px;"
-                                                                      id="atm-reference-caption33">
-                                                                           <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
-                                                                      </p>
-
-                                                                      <% } else { %>
-                                                                           <p style="margin-top: 15px; margin-left: 10px;"
-                                                                           id="atm-reference-caption33">
-                                                                           <%= labels['LBL_COMPRADOR_ACCOUNT_DESCRIBE_IF_NOT_WALLET'][language] %>
-                                                                           </p>
-                                                                          
+                                                                      id="atm-reference-caption33"> <%= labels['LBL_COMPRADOR_ACCOUNT_DESCRIBE'][language] %></p>
                                                                       <div class="col-md-12">
                                                                            <div class="search-container">
                                                                                 <p style="margin-left: 20px;"><%= labels['LBL_ACCOUNT_NO'][language] %>
@@ -376,7 +352,6 @@
                                                                                 </p>
                                                                            </div>
                                                                       </div>
-                                                                      <% }  %>
                                                                       <div class="col-md-12">
                                                                            <div class="search-container">                                                                               
                                                                                 <a href="javascript:void(0)"><button
@@ -463,7 +438,6 @@
      let wallet_balance = parseFloat('<%= wallet %>');
      let total_fees = parseFloat('<%= total %>');
      let ajax_address_id = '';
-
      function increaseValue(id) {
           var value = parseInt($('.number_' + id).val());
           value = isNaN(value) ? 0 : value;
@@ -657,43 +631,33 @@
      }
 
      function placeOrder(payment_type, type) {
-
-          /*if (payment_type == 'atm_reference') {
-               alert(type);
+          if (payment_type == 'atm_reference') {
                alert('Payment gateway is under development');
                return false;
-          }*/
+          }
 
-               
           $(".order_now_other").attr("disabled", true);
           $(".order_now").attr("disabled", true);
           // $(".reserve_now").attr("disabled", true);
           $(".lds-facebook").show();
           transport_fees = ($('input[name="transport-needed"]:checked').val() == 'yes') ? transport_fees : 0;
           $.post("<%=baseURL%>compradors/checkout/" + type, { payment_type, address_id: ((transportNeeded == 'yes') ? ajax_address_id : ''), transport_fees }).done(function (data) {
-               notificacao(data.order_id, payment_type, data.reference, data.amount)
+               notificacao(data.order_id)
               // window.location.href = "<%=baseURL%>compradors/thanks/list/" + data.order_id;
           });
-     } 
-     
-     function notificacao(order_id,payment_type,reference, amount) {
-          var mensage = '<p style = "font-size:18px;"> A sua compra #' + order_id + ' foi realizada com sucesso!</p>';
-          if (payment_type == 'atm_reference') {
-               mensage = '<p style="font-size:16px;"> A sua compra #' + order_id + ' foi realizada com sucesso! ' +
-                             ' Por favor efectue o pagamento utilizando os seguintes dados:</p>' +
-                        '<p style="margin-bottom:1px; margin-left: 20px; font-size:14px;"><b>Entidade:</b> 00229</p>' +
-                        '<p style="margin-bottom:1px; margin-left: 20px;font-size:14px; font-weight:bold">Referência: ' + reference + '</p>' +
-                        '<p style="margin-bottom:0px; margin-left: 20px;font-size:14px; font-weight:bold">Valor: ' + amount + ' Kz</p>'
-          }
+     }
+
+     function notificacao(id) {
 		$.confirm({
-			title: '',
-			content: mensage,
-			type: 'kepya',
+			title: 'Campra',
+			icon: 'fa fa-check',
+			content: 'A compra  do produto ' + id + ' foi realizada com sucesso!',
+			type: 'purple',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'kepya-green',
+					btnClass: 'btn',
 					action: function () {
                               window.location.href = "<%=baseURL%>compradors/order/list";
 					}

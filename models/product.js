@@ -123,7 +123,6 @@ var productSchema = new Schema({
 			'one-off',
 			'weekly',
 			'biweekly',
-			'monthly',
 		],
 		default: 'none',
 	},

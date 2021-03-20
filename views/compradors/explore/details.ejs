@@ -2,26 +2,19 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<!-- <meta property="og:locale" content="pt_PT" /> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Kepya Agromercado Digital - <%= product.category[language] %> - <%= product.sub_category[language] %></title>
-	<meta name=”description” content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz/ <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" /> 
-	<!-- <meta property="og:site_name" content="Scotch" /> -->
-	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>" />
-	<meta property="og:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>" />
-	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz/ <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" />
-	<meta property="og:image" content="<%=product.images[0]%>" />
-	<meta property="og:type" content="article" />
-	<meta property="og:image:type" content="image/jpeg" />
-	<meta property="og:image:width" content="300" />
-	<meta property="og:image:height" content="200" />
-	<meta property="og:type" content="website" />
-	<meta property="og:image:alt" content="<%= product.category[language] %> - <%= product.sub_category[language] %>" />
-	<meta property="fb:app_id" content="1389892087910589" />
-	<meta property="fb:admins" content="579622216,709634581" />
-	<meta name="google-signin-client_id" content="<%=gSignInClientId%>" />
-<!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kepya Agromercado Digital</title>
+	<meta property="og:site_name" content="Scotch">
+	<meta property="og:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>">
+	<meta property="og:type" content="website">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>">
+	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz/ <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>">
+	<meta property="og:image" content="<%=product.images[0]%>">
+	<meta property="fb:app_id" content="1389892087910589">
+	<meta property="fb:admins" content="579622216,709634581">
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+
 	<link rel="shortcut icon" type="image/x-icon" href="../../../images/logo.png">
 	<%- include('../../shared/common_css') %>
 	<link rel="stylesheet" href="../../../css/new_style.css">

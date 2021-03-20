@@ -117,7 +117,7 @@
 			<div class="login-page">
 					<div class="login-box">
 						<div class="row">
-							<!-- <%- include('shared/language_section') %> -->
+							<%- include('shared/language_section') %>
 						</div>
 						<form id="frm-sign-up" action="" method="post">
 							<img src="images/logo.png">
@@ -229,10 +229,10 @@
 									      <input type="radio" name="users" value="compradors" onchange="loadCMS('compradors')"/>
 									      <div class="control__indicator"></div>
 									    </label>
-									    <!-- <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_TRANSPORTERS'][language] %>
+									    <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_TRANSPORTERS'][language] %>
 									      <input type="radio" name="users" value="transporters" onchange="loadCMS('transporters')"/>
 									      <div class="control__indicator"></div>
-									    </label> -->
+									    </label>
 									</div>
 								</div>
 							</div>
@@ -243,9 +243,9 @@
 							</div>
 							<button type="button" class="btn btn-default" onclick="submitSignUp()"><%= labels['LBL_SIGN_UP_FOR_FREE_BUTTON'][language] %></button>
 
-							<a href="javascript:void(0)" class="facebook btn" id="facebook-sign-up">
+							<!-- <a href="javascript:void(0)" class="facebook btn" id="facebook-sign-up">
 								<i class="fa fa-facebook fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_FACEBOOK'][language] %>
-							</a>
+							</a> -->
 							<a href="javascript:void(0)" class="google btn" id="google-sign-up">
 								<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %>
 							</a>
@@ -253,7 +253,7 @@
 							<div class="text-center creat_new"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT'][language] %>? <a href="/"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN'][language] %></a></div>
 							
 							<div class="g-signin2 hide" data-onsuccess="onSocialSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div>
-							<div class="g-signin2 hide" data-onsuccess="onFacebookSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div>
+							<!-- <div class="g-signin2 hide" data-onsuccess="onFacebookSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div> -->
 
 						</form>
 					</div>
@@ -458,7 +458,7 @@
 	  		$('.abcRioButton').trigger('click');
 	  	})
 
-		  $('#facebook-sign-up').click('on', function(){
+		  $('#acebook-sign-up').click('on', function(){
 	  		$('.abcRioButton').trigger('click');
 	  	})
 	});

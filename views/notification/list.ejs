@@ -12,17 +12,17 @@
 				<div class="notification-no-records">
 					<% if(logs.length > 0){ %>
 						<div class="col-md-6 col-sm-6 col-xs-6 clear-notification-icon" onclick='clearNotification()'>
-							<div style="color: #fff; background-color: #3cc0a6;padding: 10px;width: auto;height: 39px; margin: 2%;"  class="btn pull-right">
+							<div style="color: #fff; background-color: #aa1a2b;padding: 10px;width: auto;height: 39px; margin: 2%;"  class="btn pull-right">
 								<%= labels['LBL_CLEAR_ALL_NOTIFICATION'][language] %>
 							</div>
 						</div>
 						<% for(let i=0; i < logs.length; i++) { %>
 							<div class="col-md-12">
 								<div class="my_orders notification">
-									<div class="order_header" style="background-color: #3cc0a6;">
+									<div class="order_header">
 										<div class="row">
 											<div class="col-md-10 col-sm-10 col-xs-10">
-												<p  style="color: #fff;"><%= logs[i]['title'] %></p>
+												<p><%= logs[i]['title'] %></p>
 											</div>
 											<div class="col-md-2 col-sm-2 col-xs-2" >
 												<a href="<%=baseURL%>notification/remove/<%= logs[i]['notification_log_id'] %>">

@@ -6,173 +6,166 @@
 		<div class="product_card">
 			<div class="help_sidebar_right">
 				<form id="frm-add-product" action="" method="post" enctype="multipart/form-data">
-						<input type='hidden' class='min_unit_qty'>
-						<input type='hidden' class='min_unit_qty_error'>
-	
-						<div class="row order-list-title">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								 <h3><%= labels['LBL_POST_FORECAST_OR_PRODUCTS'][language] %></h3>
+					<input type='hidden' class='min_unit_qty'>
+					<input type='hidden' class='min_unit_qty_error'>
+
+					<div class="row add-address">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<h3><%= labels['LBL_POST_FORECAST_OR_PRODUCTS'][language] %></h3>
+						</div>
+					</div>
+					<div class="row">	
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_expiry_date">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_HARVEST_DATE'][language] %></label>
+							    <div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd" style='position: relative;border-collapse: separate;display: initial;'>
+								    <input class="custom_input date-picker" type="text" id="harvest_date" name="harvest_date" readonly/>
+								    <span class="input-group-addon" style='display:none'></span>
+								</div>
+								<span class="validation-alert" id='err-harvest-date'></span>
 							</div>
 						</div>
-						<div class="row">	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_expiry_date">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_HARVEST_DATE'][language] %></label>
-									<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd" style='position: relative;border-collapse: separate;display: initial;'>
-										<input class="custom_input date-picker" type="text" id="harvest_date" name="harvest_date" readonly/>
-										<span class="input-group-addon" style='display:none'></span>
-									</div>
-									<span class="validation-alert" id='err-harvest-date'></span>
-								</div>
-							</div>
-	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_category">
-								 <div class="search-container">
-									   <label class="my-1 mr-2"><%= labels['LBL_PRODUCT_CATEGORY'][language] %> </label>
-									<select class="select_plug product_category category_id" id="product_category" name="product_category" onChange="getProducts('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_CATEGORY'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-product-category'></span>
-								</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_category">
+						 	<div class="search-container">
+						       	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_CATEGORY'][language] %> </label>
+								<select class="select_plug product_category category_id" id="product_category" name="product_category" onChange="getProducts('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_CATEGORY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-product-category'></span>
 							</div>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_title">
+						 	<div class="search-container">
+						       	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_TITLE'][language] %> </label>
+								<select class="select_plug title sub_category_id" id="title" name="title" onChange="getVerities('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_TITLE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-title'></span>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_variety_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_VARIETY'][language] %></label>
+							    <select class="select_plug product_variety_id" id="product_variety_id" name="product_variety_id">
+									<option value="">--- <%= labels['LBL_SELECT_VARIETY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-product-variety-id'></span>
+							</div>
+						</div>
+					</div>
+					<% for(let i=0; i < languages.length; i++) { %>
 						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_title">
-								 <div class="search-container">
-									   <label class="my-1 mr-2"><%= labels['LBL_PRODUCT_TITLE'][language] %> </label>
-									<select class="select_plug title sub_category_id" id="title" name="title" onChange="getVerities('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_TITLE'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-title'></span>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_product_variety_id">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_VARIETY'][language] %></label>
-									<select class="select_plug product_variety_id" id="product_variety_id" name="product_variety_id">
-										<option value="">--- <%= labels['LBL_SELECT_VARIETY'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-product-variety-id'></span>
+							<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
+						 		<div class="search-container">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %> [<%= languages[i]['code'] %>]</label>
+								    <textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>" name="description_<%= languages[i]['code'] %>" placeholder="<%= labels['LBL_PRODUCT_DESCRIPTION_1'][language] %>"    ></textarea>
+								    <span class="validation-alert" id='err-description_<%= languages[i]['code'] %>'></span>
 								</div>
 							</div>
 						</div>
-						<% for(let i=0; i < languages.length; i++) { %>
-							<div class="row">
-								<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
-									 <div class="search-container">
-										<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %> </label>
-										<textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>" name="description_<%= languages[i]['code'] %>" placeholder="<%= labels['LBL_PRODUCT_DESCRIPTION_1'][language] %>"    ></textarea>
-										<span class="validation-alert" id='err-description_<%= languages[i]['code'] %>'></span>
-									</div>
-								</div>
-							</div>
-						<% } %>
-						<div class="row">
-	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_UNIT_VALUE'][language] %></label>
-									<input class="custom_input" type="text" placeholder="" value="" min="1" max="95230" id="unit_value" name="unit_value" onkeyup="calculateTotalPrice()" oninput="validity.valid||(value='');">
-									<span class="validation-alert unit-error" id='err-unit-value'></span>
-								</div>
-							</div>
-	
-							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
-									<select class="select_plug units_id" id="unit" name="unit" onchange="getMinQty('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_UNIT'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-unit'></span>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-12 col-xs-12" id="section_unit">
-								<div class="search-container">
-								   <label class="my-1 mr-2"><%= labels['LBL_TONS'][language] %></label>
-								   <input class="custom_input  txt-disabled" type="text" placeholder="" value=""  name="ton_result" id="ton_result" readonly>
-								   <span class="validation-alert" id='err-unit'></span>
-							   </div>
-						   </div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_price">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_UNIT_PRICE'][language] %></label>
-									<input class="custom_input" type="text" placeholder="" value=""  name="unit_price" id="unit_price" onkeyup="calculateTotalPrice()">
-									<span class="validation-alert" id='err-unit-price'></span>
-								</div>
-							</div>
-	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_total_unit_price">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_TOTAL_UNIT_PRICE'][language] %></label>
-									<input class="custom_input txt-disabled" type="text" placeholder="" value="" name="total_unit_price" id="total_unit_price" readonly> 
-									<span class="validation-alert " id='err-total-unit-price'></span>
-								</div>
+					<% } %>
+					<div class="row">
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_value">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_VALUE'][language] %></label>
+							    <input class="custom_input" type="number" placeholder="" value="" min="1" max="95230" id="unit_value" name="unit_value" onkeyup="calculateTotalPrice()" oninput="validity.valid||(value='');">
+							    <span class="validation-alert" id='err-unit-value'></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_size">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_SIZE'][language] %></label>
-									<select class="select_plug size_id" id="size" name="size">
-										<option value="">--- <%= labels['LBL_SELECT_SIZE'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-size'></span>
-								</div>
-							</div>
-	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
-									<select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
-										<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-state-id'></span>
-								</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT'][language] %></label>
+							    <select class="select_plug units_id" id="unit" name="unit" onchange="getMinQty('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_UNIT'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-unit'></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
-									<select class="select_plug city_id" id="city_id" name="city_id">
-										<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
-									</select>
-									<span class="validation-alert" id='err-city-id'></span>
-								</div>
-							</div>
-	
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_location">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_LOCATION'][language] %> </label>
-									<input class="custom_input" type="text"  readonly onfocus="this.removeAttribute('readonly')" placeholder="" value="" id="location" name="location">
-									<span class="validation-alert" id='err-location'></span>
-								</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_unit_price">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_UNIT_PRICE'][language] %></label>
+							    <input class="custom_input farmer_currency_number" type="text" placeholder="" value="" min="1" name="unit_price" id="unit_price" onkeyup="calculateTotalPrice()">
+							    <span class="validation-alert" id='err-unit-price'></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
-								 <div class="search-container">
-									<label class="my-1 mr-2"><%= labels['LBL_IMAGES'][language] %></label>
-									<div class="input-group">
-									  <div class="custom-file">
-										<input type="file" class="custom-file-input" id="inputGroupFile01"
-										  aria-describedby="inputGroupFileAddon01" name="images" id="images" multiple>
-										<label class="custom-file-label" for="inputGroupFile01"></label>
-									  </div>
-									</div>
-									<span class="validation-alert" id='img_err'></span>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_total_unit_price">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_TOTAL_UNIT_PRICE'][language] %></label>
+							    <input class="custom_input txt-disabled" type="text" placeholder="" value="" name="total_unit_price" id="total_unit_price" readonly> 
+							    <span class="validation-alert" id='err-total-unit-price'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_size">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_SIZE'][language] %></label>
+							    <select class="select_plug size_id" id="size" name="size">
+									<option value="">--- <%= labels['LBL_SELECT_SIZE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-size'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
+							    <select class="select_plug state_id" id="state_id" name="state_id" onchange="getCities('<%=baseURL%>')">
+									<option value="">--- <%= labels['LBL_SELECT_STATE'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-state-id'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_city_id">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_CITY'][language] %></label>
+							    <select class="select_plug city_id" id="city_id" name="city_id">
+									<option value="">--- <%= labels['LBL_SELECT_CITY'][language] %> ---</option>
+								</select>
+								<span class="validation-alert" id='err-city-id'></span>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_location">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_LOCATION'][language] %> </label>
+							    <input class="custom_input" type="text" placeholder="" value="" id="location" name="location">
+							    <span class="validation-alert" id='err-location'></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12 col-xs-12" id="section_images">
+					 		<div class="search-container">
+					        	<label class="my-1 mr-2"><%= labels['LBL_IMAGES'][language] %></label>
+							    <div class="input-group">
+								  <div class="custom-file">
+								    <input type="file" class="custom-file-input" id="inputGroupFile01"
+								      aria-describedby="inputGroupFileAddon01" name="images" id="images" multiple>
+								    <label class="custom-file-label" for="inputGroupFile01"></label>
+								  </div>
 								</div>
+								<span class="validation-alert" id='img_err'></span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								 <button type="button" class="main_btn post-add-now" onclick="submitPost()"><%= labels['LBL_POST_ADD_NOW'][language] %></button>
-								 <div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
-							</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+					 		<button type="button" class="main_btn post-add-now" onclick="submitPost()"><%= labels['LBL_POST_ADD_NOW'][language] %></button>
+					 		<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
 						</div>
-					<form>
+					</div>
+				<form>
 			</div>
 		</div>
 	</div>
@@ -297,21 +290,20 @@
 		}
 	}
 
-	function notificacao(product_id) {
-
-		
+	function notificacao() {
 		$.confirm({
-			title: 'Produto publicado',
+			title: 'Publicar Produto',
 			icon: 'fa fa-check',
-			content: 'O seu produto ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
-			type: 'kepya',
+			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			type: 'purple',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'kepya-green',
+					btnClass: 'btn',
 					action: function () {
-						window.location.href = "<%=baseURL%>producers/product/order/" + product_id;					}
+						$('#frm-add-product').submit();
+					}
 				}
 			}
 		});
@@ -321,30 +313,9 @@
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			salvar()
+			notificacao();
 		}
 	}
-
-	function salvar(){
-        var url = '<%=baseURL%>producers/product/add';
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: $('#frm-add-product').serialize(),
-            dataType: "JSON",
-                success: function (data){
-					notificacao(data.product_id);
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-					showAlert("Erro ao publicar o produto!");
-					setTimeout(() => {
-						hideAlert()
-						window.location.reload();
-					}, 3000);
-                }
-        });
-    }
-	
 	
 	$( document ).ready(function() {
 		getStates('<%=baseURL%>');

@@ -10,7 +10,7 @@
 					<input type='hidden' class='min_unit_qty_error'>
 					<input type='hidden' id="lower_price_range" name="lower_price_range" value="0">
 					<input type='hidden' id="higher_price_range" name="higher_price_range" value="0">
-					<div class="row order-list-title">
+					<div class="row add-address">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3><%= labels['LBL_COMPRADOR_ADD_NEW_DEMAND_POST_YOUR_DEMAND_PAGE_TITLE'][language] %></h3>
 						</div>
@@ -40,7 +40,7 @@
 							<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %>
-										</label>
+										[<%= languages[i]['code'] %>]</label>
 									<textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>"
 										name="description_<%= languages[i]['code'] %>" placeholder="<%= labels['LBL_PRODUCT_DESCRIPTION_1'][language] %>"></textarea>
 									<span class="validation-alert"
@@ -122,9 +122,6 @@
 										</option>
 										<option value="biweekly">
 											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY'][language] %></option>
-										</option>
-										<option value="monthly">
-											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTHLY'][language] %></option>
 									</select>
 								</div>
 							</div>
@@ -157,7 +154,7 @@
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_LOCATION'][language] %> </label>
 									<input class="custom_input" type="text" placeholder="" value="" id="location"
-										name="location" readonly onfocus="this.removeAttribute('readonly')">
+										name="location">
 									<span class="validation-alert" id='err-location'></span>
 								</div>
 							</div>
@@ -178,20 +175,22 @@
 							</div>
 						</div>
 						<div class="row" id="btn-add-new-address">
-
-								<a class="product-address-button btn-wallet" href="javascript:void(0);" id="addNewProduct"
-									style="color: #fff;;margin-top: 8px; margin-left: 11px; padding: 1%; font-size: 16px;">+
-
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<a href="javascript:void(0);" id="addNewProduct"
+									style="color: blue;text-decoration:underline;">+
 									<%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
-							
-								<button type="button" class="main_btn post-add-now "
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<button type="button" class="main_btn post-add-now"
 									onclick="submitPost()"><%= labels['LBL_COMPRADOR_ADD_NEW_DEMAND_SUBMIT_BUTTON'][language] %></button>
 								<div class="lds-facebook" style="display:none">
 									<div></div>
 									<div></div>
 									<div></div>
-
 								</div>
+							</div>
 						</div>
 					</div>
 					<form>
@@ -314,49 +313,28 @@
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
 			//$('#frm-add-product').submit()
-			salvar();
+			notificacao();
 		}
 	}
 
-	function notificacao(product_id) {
+	function notificacao() {
 		$.confirm({
-			title: 'Pedido publicado',
+			title: 'Publicar Pedido',
 			icon: 'fa fa-check',
-			content: 'O seu pedido ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
-			type: 'kepya',
+			content: 'O seu pedido foi adicionado com sucesso!',
+			type: 'purple',
 			typeAnimated: true,
 			buttons: {
 				tryAgain: {
 					text: 'Ok',
-					btnClass: 'kepya-green',
+					btnClass: 'btn',
 					action: function () {
-						window.location.href = "<%=baseURL%>compradors/product/list";
-
+						$('#frm-add-product').submit();
 					}
 				}
 			}
 		});
 	}
-
-	function salvar(){
-        var url = '<%=baseURL%>compradors/product/add';
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: $('#frm-add-product').serialize(),
-            dataType: "JSON",
-                success: function (data){
-					notificacao(data);
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-					showAlert("Erro ao publicar o pedido!");
-					setTimeout(() => {
-						hideAlert()
-						window.location.reload();
-					}, 3000);
-                }
-        });
-    }
 
 	$(document).ready(function () {
 

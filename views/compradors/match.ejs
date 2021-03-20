@@ -9,7 +9,6 @@
 						</div>
 						<div class="product-text">
 							<a href="<%=baseURL%>compradors/explore/details/<%= demands[d]['products'][i].product_id %>"><h3 class="pro_title_"><%= demands[d]['products'][i].sub_category_title %></h3></a>
-							<h4><%= labels['LBL_DEMANDS_NUMBER'][language] %>#<%= demands[d]['products'][i].product_id %></h4>
 							<h4><%= demands[d]['products'][i].category_title %> / <%= labels['LBL_QUANTITY'][language] %> : <%= demands[d]['products'][i].remaining_unit_qty %> <%= (demands[d]['products'][i]['remaining_unit_value'] > 1) ? demands[d]['products'][i]['unit_plural_title'] : demands[d]['products'][i]['unit_type'] %></h4>
 							<h4 class="currency_color_text sku_wrapper pro-bottom">Kz <%= (demands[d]['products'][i].unit_price) %> / <%= demands[d]['products'][i].unit_type %></h4>
 							<div class="kp_location">
