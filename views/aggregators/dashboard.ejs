@@ -393,7 +393,6 @@
 		$.ajax({
 			url: "<%=baseURL%>statistics/total", success: (result) => {
 				$('.total-sales').text(result.response.total_sales);
-			//	$('.total-sales').text(result.response.total_sold_products);
 				$('.total-product-views').text(result.response.total_product_views);
 				$('.total-favourite-list').text(result.response.total_favourite_list);
 				$('.total-sold-products').text(result.response.total_sold_products);

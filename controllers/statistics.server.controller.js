@@ -399,7 +399,7 @@ exports.total = async (req, res) => {
 								_.each(data.products, singleProduct => {
 									singleProduct.seller_id = singleProduct.user_info.user_id
 								})
-								if(data.payment_status == 'paid'){
+								if(data.status == 'paid'){
 									total_sales += 1;
 								}
 								finalProducts.push(_.where(data.products, { seller_id: req.session.user_id }))
@@ -417,7 +417,6 @@ exports.total = async (req, res) => {
 								responseObj['total_sold_products'] = separatorsWD(soldCount);
 								responseObj['total_unsold_products'] = separatorsWD(unSoldProducts.length);
 								responseObj['total_sales'] = separatorsWD(total_sales);
-
 								res.send({ code: 200, response: responseObj })
 								return false;
 							})
