@@ -1670,8 +1670,8 @@ exports.addReceiptUser = function (req, res) {
 
 	if (!_.isEmpty(req.files) && _.contains(['jpeg', 'jpg', 'png'], req.files.images.name.split('.').pop().toLowerCase())) {
 		let fileObj = req.files.images;
-		let filePath = path.join(__dirname, "../../../upload/") + req.files.images.name;
-		let dstFilePath = path.join(__dirname, "../../../upload/") + 'dst_' + req.files.images.name;
+		let filePath = path.join(__dirname, "../../upload/") + req.files.images.name;
+		let dstFilePath = path.join(__dirname, "../../upload/") + 'dst_' + req.files.images.name;
 
 		fileObj.mv(filePath, function (err) {
 			if (err) {
