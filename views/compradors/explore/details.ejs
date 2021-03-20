@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<!-- <meta property="og:locale" content="pt_PT" /> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Kepya Agromercado Digital</title>
+	<title>Kepya Agromercado Digital - <%= product.category[language] %> - <%= product.sub_category[language] %></title>
 	<meta name=”description” content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz/ <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" /> 
 	<!-- <meta property="og:site_name" content="Scotch" /> -->
 	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>" />

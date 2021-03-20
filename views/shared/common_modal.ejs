@@ -123,7 +123,7 @@
                               </div>
                          </div>
                          <div class="col-md-12 align_center">
-                              <a href="javascript:void(0);" onClick='addNewDocUser()'>
+                              <a href="javascript:void(0);" onClick="addNewDocUser()">
                                    <button style="margin: 5px 0;" class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button>
                               </a>
                          </div>
@@ -489,7 +489,7 @@
                var form_data = new FormData();                  
                form_data.append('images', file_data);
          
-               var url = '/editDocUser';
+               var url = "<%=baseURL%>editDocUser";
                $.ajax({
                     url: url,
                     type: "POST",
@@ -525,7 +525,7 @@
         success: (result) => {
     
         }});
-        var url = '/addReceiptUser';
+        var url = "<%=baseURL%>addReceiptUser";
         $.ajax({
              url: url,
              type: "POST",

@@ -1637,7 +1637,7 @@ exports.editDocUser = function (req, res) {
 					}
 
 					fs.unlinkSync(filePath);
-					//fs.unlinkSync(dstFilePath);
+					fs.unlinkSync(dstFilePath);
 					console.log("url", url)
 					let newDoc = [url.substring(url.lastIndexOf('/') + 1)];
 					User.update({ user_id: req.session.user_id }, { $set: { doc: url } }, function (err, response) {
@@ -1702,6 +1702,8 @@ exports.addReceiptUser = function (req, res) {
 					}
 
 					fs.unlinkSync(filePath);
+					fs.unlinkSync(dstFilePath);
+										
 					console.log("url", url)
 					let newDoc = [url.substring(url.lastIndexOf('/') + 1)];
 					WalletLog.update({ wallet_log_id: req.session.wallet_log_id}, { $set: { receipt: url } }, function (err, response) {
