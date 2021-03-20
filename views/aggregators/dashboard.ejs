@@ -1,48 +1,46 @@
 <link rel="stylesheet" href="../../../css/dashboard.css" />
 <ul class="menu2">
 	<div class="container">
+		
 		<li>
-			<a href="<%=baseURL%>aggregators/product/add">
-				<div class="account_box2">
-					<img src="../../../images/postadd.png">
-					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION'][language] %></h3>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<div class="account_box2">
+						<img src="../../../images/open-box.png">
+						<div class="account_box_inner2">
+							<h3><%= labels['LBL_LIST_AGREGADOR_PEDIDO_MENU'][language] %></h3>
+							<b class="caret"></b>
+						</div>
 					</div>
-				</div>
-			</a>
-		</li>
-		<li>
-			<a href="<%=baseURL%>aggregators/product/list">
-				<div class="account_box2">
-					<img src="../../../images/open-box.png">
-					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE'][language] %></h3>
-					</div>
-				</div>
-			</a>
-		</li>
-		<li>
-			<a href="<%=baseURL%>aggregators/user/list">
+				</a>
+
+				<ul class="dropdown-menu my_account">
+					<li><a class="" href="<%=baseURL%>aggregators/product/add"><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION'][language] %></a></li>
+					<li style="margin-top: -25px;" class=''><a class="" href="<%=baseURL%>aggregators/product/list"><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE'][language] %></a></li>
+				</ul>
+			</li>		
+	   </li>
+	   
+	   <li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<div class="account_box2">
 					<img src="../../../images/signup.png">
 					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS'][language] %></h3>
+						<h3><%= labels['LBL_LIST_AGREGADOR_MANAGER_FARMERS'][language] %></h3>
+						<b class="caret"></b>
 					</div>
 				</div>
 			</a>
-		</li>
+
+			<ul class="dropdown-menu my_account">
+				<li><a class="" href="<%=baseURL%>aggregators/user/add"><%= labels['LBL_AGGREGATOR_DASHBOARD_ADD_FARMER'][language] %></a></li>
+				<li style="margin-top: -25px;" class=''><a class="" href="<%=baseURL%>aggregators/user/list"><%= labels['LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS'][language] %></a></li>
+			</ul>
+		</li>		
+
 		<li>
-			<a href="<%=baseURL%>aggregators/user/add">
-				<div class="account_box2">
-					<img src="../../../images/add-user.png">
-					<div class="account_box_inner2">
-						<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_ADD_FARMER'][language] %></h3>
-					</div>
-				</div>
-			</a>
-		</li>
-		<!-- <li>
-			<a href="<%=baseURL%>aggregators/order/list">aggregators/user/add
+			<a href="<%=baseURL%>aggregators/order/list">
 				<div class="account_box2">
 					<img src="../../../images/order.png">
 					<div class="account_box_inner2">
@@ -50,7 +48,7 @@
 					</div>
 				</div>
 			</a>
-		</li> -->
+		</li>
 		<li>
 			<a href="<%=baseURL%>aggregators/user/profile"> 
 				<div class="account_box2">
@@ -71,7 +69,6 @@
 				 <div class="accordion-header-dash js-accordion-header head_">
 					  <span></span></div>
 				 <div class="accordion-body js-accordion-body">
-					
 					<div class="row">
 						<div style="padding:0;" class="col-md-3">
 							<div class="dashboard-heading">
@@ -288,9 +285,8 @@
 		</div>
 	</div>
 </section>
-<section class="best_product products">
+<section class="best_product products" style="margin-top: -60px;">
 	<div class="container">
-
 		<div class="white_bg product_card">
 			<div class="row">
 				<div class="col-md-12 data-section">

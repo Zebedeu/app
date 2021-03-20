@@ -43,8 +43,10 @@
 									</div>
 									<div class="col-md-4 col-sm-4 col-xs-12 align_right">
 										<ul class="nav navbar-nav invoice_lable">		
-											<li class="dropdown"><a href="<%=baseURL%>producers/order/details/<%= orders[i]['order_id'] %>" class="dropdown-toggle"><%= labels['LBL_ORDER_DETAILS'][language] %></a></li>
-		                                </ul>
+											<li>
+												<a href="<%=baseURL%>producers/order/details/<%= orders[i]['order_id'] %>"><button style="margin: 5px;" class="button btn-details" ><%= labels['LBL_ORDER_DETAILS'][language] %></button></a>
+											</li>
+										</ul>
 									</div>
 								</div>
 							</div>

@@ -12,7 +12,7 @@
 					<input type='hidden' id="lower_price_range" name="lower_price_range" value="0">
 					<input type='hidden' id="higher_price_range" name="higher_price_range" value="0">
 					<input type="hidden" id="product_id" name="product_id" value="<%= product.product_id %>">
-					<div class="row add-address">
+					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3><%= labels['LBL_POST_DEMAND'][language] %></h3>
 						</div>
@@ -42,7 +42,7 @@
 							<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %>
-										[<%= languages[i]['code'] %>]</label>
+										</label>
 									<textarea class="form-control" rows="3" id="description_<%= languages[i]['code'] %>"
 										name="description_<%= languages[i]['code'] %>"><%= product.description[languages[i]['code']] %></textarea>
 									<span class="validation-alert"

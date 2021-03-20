@@ -14,6 +14,8 @@ let Size = require('mongoose').model('Size');
 let Product = require('mongoose').model('Product');
 let Setting = require('mongoose').model('Setting');
 let s3Manager = require('../utils/s3-manager');
+//let s3Handler = require('../../utils/s3-handler');
+//s3Handler = new s3Handler();
 let labels = require('../utils/labels.json');
 let { separators } = require('../utils/formatter');
 const NodeGeocoder = require('node-geocoder');
@@ -26,6 +28,12 @@ const options = {
 const geocoder = NodeGeocoder(options);
 let { randomNo } = require('../utils/id-generator');
 let _ = require('underscore');
+
+let imagemagick = require('imagemagick');
+let path = require('path');
+let fs = require('fs');
+let __ = require('lodash');
+let WalletLog = require('mongoose').model('Wallet_log');
 
 exports.deliverAddresses = (req, res) => {
 	User.findOne(
@@ -207,10 +215,10 @@ exports.getCMS = (req, res) => {
 		{ _id: 0, cms_id: 1, title: 1, code: 1, description: 1 },
 		(err, cms_pages) => {
 			let tc_title = cms_pages
-				? cms_pages['title'][req.session.language || 'EN']
+				? cms_pages['title'][req.session.language || 'PT']
 				: '';
 			let tc_description = cms_pages
-				? cms_pages['description'][req.session.language || 'EN']
+				? cms_pages['description'][req.session.language || 'PT']
 				: '';
 
 			res.send({
@@ -1208,11 +1216,11 @@ exports.get_producer = function (req, res) {
 	let farmerStr = "";
 	Farmer.find(
 		{ status: 'active', user_id: req.session.user_id },
-		{ _id: 0, farmer_id: 1, name: 1 },
+		{ _id: 0, farmer_id: 1, first_name: 1, last_name: 1 },
 		(err, farmers) => {
 			farmers = _.sortBy(farmers, function (item) {
 				return item
-					.name[req.session.language || config.default_language_code];
+					.first_name[req.session.language || config.default_language_code];
 			});
 
             if(!farmers){
@@ -1224,19 +1232,20 @@ exports.get_producer = function (req, res) {
 				' ---</option>';
 			}
 			_.each(farmers, (element, index, list) => {
+
 				if (req.query.producer_id == element.farmer_id) {
 					farmerStr +=
 						"<option value='" +
 						element.farmer_id +
 						"' selected>" +
-						element.name +
+						element.first_name + ' ' + element.last_name 
 						'</option>';
 				} else {
 					farmerStr +=
 						"<option value='" +
 						element.farmer_id +
 						"'>" +
-						element.name +
+						element.first_name + ' ' + element.last_name 
 						'</option>';
 				}
 			});
@@ -1590,4 +1599,122 @@ exports.removeProductImage = function (req, res) {
 			);
 		}
 	);
+};
+
+exports.editDocUser = function (req, res) {
+
+	if (!_.isEmpty(req.files) && _.contains(['jpeg', 'jpg', 'png'], req.files.images.name.split('.').pop().toLowerCase())) {
+		let fileObj = req.files.images;
+		let filePath = path.join(__dirname, "../../../upload/") + req.files.images.name;
+		let dstFilePath = path.join(__dirname, "../../../upload/") + 'dst_' + req.files.images.name;
+
+		fileObj.mv(filePath, function (err) {
+			if (err) {
+				console.log(err);
+			}
+			imagemagick.resize({
+				srcPath: filePath,
+				dstPath: dstFilePath,
+				width: 750,
+				height: 750,
+				quality: 1,
+				gravity: "North"
+			}, function (err, stdout, stderr) {
+				const fileContent = fs.readFileSync(filePath);
+				let fileObject = {
+					name: req.files.images.name,
+					data: fileContent,
+					encoding: req.files.images.encoding,
+					mimetype: req.files.images.mimetype,
+					mv: req.files.images.mv
+				}
+
+				s3Manager.uploadFileObj(fileObject, config.aws.s3.userBucket, 'user_', (error, url) => {
+					if (error) {
+						logger('Error: upload photo from aws s3 bucket. ' + error);
+						done(errors.internalServer(true), null);
+						return;
+					}
+
+					fs.unlinkSync(filePath);
+					fs.unlinkSync(dstFilePath);
+					console.log("url", url)
+					let newDoc = [url.substring(url.lastIndexOf('/') + 1)];
+					User.update({ user_id: req.session.user_id }, { $set: { doc: url } }, function (err, response) {
+						User.findOne({ user_id: req.session.user_id }, function (err, user) {
+							console.log(user);
+							res.end('1');
+							//return res.redirect('list');
+						})
+					})
+				});
+			});
+		});
+	}
+};
+
+
+exports.validIdwallet_log_id = function (req, res) {
+    console.log(req.query.wallet_log_id); 
+	if(req.query.wallet_log_id>0){
+		req.session.wallet_log_id = req.query.wallet_log_id;
+		res.end('1');
+	}
+};
+
+exports.addReceiptUser = function (req, res) {
+
+	console.log( " commmmmmmmmmm " + req.session.wallet_log_ids);
+	console.log(req.session.wallet_log_id); 
+	console.log(req.files.images); 
+
+	if (!_.isEmpty(req.files) && _.contains(['jpeg', 'jpg', 'png'], req.files.images.name.split('.').pop().toLowerCase())) {
+		let fileObj = req.files.images;
+		let filePath = path.join(__dirname, "../../upload/") + req.files.images.name;
+		let dstFilePath = path.join(__dirname, "../../upload/") + 'dst_' + req.files.images.name;
+
+		fileObj.mv(filePath, function (err) {
+			if (err) {
+				console.log(err);
+			}
+			imagemagick.resize({
+				srcPath: filePath,
+				dstPath: dstFilePath,
+				width: 750,
+				height: 750,
+				quality: 1,
+				gravity: "North"
+			}, function (err, stdout, stderr) {
+				const fileContent = fs.readFileSync(filePath);
+				let fileObject = {
+					name: req.files.images.name,
+					data: fileContent,
+					encoding: req.files.images.encoding,
+					mimetype: req.files.images.mimetype,
+					mv: req.files.images.mv
+				}
+
+				s3Manager.uploadFileObj(fileObject, config.aws.s3.userBucket, 'user_', (error, url) => {
+					if (error) {
+						logger('Error: upload photo from aws s3 bucket. ' + error);
+						done(errors.internalServer(true), null);
+						return;
+					}
+
+					fs.unlinkSync(filePath);
+					fs.unlinkSync(dstFilePath);
+										
+					console.log("url", url)
+					let newDoc = [url.substring(url.lastIndexOf('/') + 1)];
+					WalletLog.update({ wallet_log_id: req.session.wallet_log_id}, { $set: { receipt: url } }, function (err, response) {
+						WalletLog.findOne({ user_id: req.session.user_id }, function (err, user) {
+							console.log(user);
+							res.end('1');
+							//return res.redirect('list');
+						})
+					})
+				});
+			});
+		});
+	}
 };

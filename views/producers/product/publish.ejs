@@ -8,7 +8,7 @@
 			<div class="help_sidebar_right">
 				<form id="frm-edit-product" action="<%=baseURL%>producers/product/edit" method="post" enctype="multipart/form-data">
 					<input class="custom_input" type="hidden" placeholder="" value="<%= product.product_id %>" id="product_id" name="product_id">
-					<div class="row add-address">
+					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<h3><%= labels['LBL_PRODUCT_DETAIL'][language] %></h3>
 						</div>
@@ -58,7 +58,7 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12" id="section_description">
 							 		<div class="search-container">
-							        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %> [<%= languages[i]['code'] %>]</label>
+							        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCT_DESCRIPTION'][language] %> </label>
 									    <textarea disabled class="form-control txt-disabled" rows="3" id="description_<%= languages[i]['code'] %>" name="description_<%= languages[i]['code'] %>"><%= product.description[languages[i]['code']] %></textarea>
 									    <span class="validation-alert" id='err-description_<%= languages[i]['code'] %>'></span>
 									</div>

@@ -5,7 +5,7 @@
                <%- include('../../shared/breadcrumb') %>
           </div>
           <div class="product_card">
-               <div class="row add-address">
+               <div class="row order-list-title">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                          <h3 style="padding-bottom: 20px;"><%= labels['LBL_CHECKOUT'][language] %></h3>
                     </div>
@@ -263,6 +263,7 @@
                                    <button style="margin:20px 15px 20px; 0px" type="button" class="button btn-cart"
                                         id="deliverHere"><%= labels['LBL_CONTINUE'][language] %></button>
                               </fieldset>
+                              
                               <fieldset class="payment-section">
                                    <div class="payment_method">
                                         <div class="row">
@@ -275,6 +276,17 @@
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
                                                                       <div class="col-md-12">
+                                                                           <p style="margin-top: 15px;"
+                                                                                id="wallet-caption33">
+                                                                                
+                                                                                <% if( wallet > total ){ %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_WALLET_DESCRIBE_1'][language] %>
+                                                                                <% } else { %>
+                                                                                     <%= labels['LBL_COMPRADOR_IF_NOT_WALLET_DESCRIBE_1'][language] %>
+                                                                                     <% }  %>                                                                                  
+                                                                                
+                                                                                </p>
+                                                                           
                                                                            <a href="javascript:void(0)"><button
                                                                                      id="order_now"
                                                                                      class="order_now button btn-cart btn-wallet"

@@ -22,6 +22,9 @@ let {
 } = require('../../utils/formatter');
 const { forEach } = require('p-iteration');
 
+exports.toDashboard = (req, res) => {
+	return res.redirect('/compradors/dashboard');
+} 
 exports.list = async (req, res) => {
 	let userInfo = await User.findOne({ user_id: req.session.user_id }, { _id: 0, user_id: 1, email: 1, addresses: 1, phone_number: 1, wallet: 1, over_margin: 1 });
 

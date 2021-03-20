@@ -4,6 +4,9 @@ const {
 } = require('../../utils/session.js');
 
 module.exports = function (app) {
+     app.get('/compradors', authenticate_compradors, order.toDashboard);
+     app.get('/compradors/order', authenticate_compradors, order.toDashboard);
+     app.get('/compradors/order/details', authenticate_compradors, order.toDashboard);
      app.get('/compradors/order/list', authenticate_compradors, order.list);
      app.get('/compradors/order/filter-list', authenticate_compradors, order.filterList);
      app.get('/compradors/order/details/:id', authenticate_compradors, order.details);
