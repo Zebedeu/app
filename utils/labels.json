@@ -355,6 +355,10 @@
 		"EN": "Images",
 		"PT": "Imagens"
 	},
+	"LBL_IMAGES_ALERT": {
+		"EN": "Images",
+		"PT": "Pode carregar uma os várias images para este produto."
+	},
 	"LBL_UNIT_PRICE": {
 		"EN": "Unit Price",
 		"PT": "Preço unitário"
@@ -2446,7 +2450,7 @@
 	},
 	"LBL_AGGREGATOR_BANK_ACCOUNT_TOP_TITLE": {
 		"EN": "You have to transfer money into this account",
-		"PT": "Você precisa transferir dinheiro para esta conta"
+		"PT": "Por favor, faça a transferência."
 	},
 	"LBL_WALLET_PROMPT_HEADER": {
 		"EN": "Amount to withdraw",

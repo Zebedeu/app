@@ -61,6 +61,9 @@ exports.add = function (req, res) {
 			address: req.body.address
 		}
 
+		console.log(req.bodyfiles)
+
+
 		if (!_.isEmpty(req.files) && _.contains(['jpeg', 'jpg', 'png'], req.files.images.name.split('.').pop().toLowerCase())) {
 			let fileObj = req.files.images;
 			let filePath = path.join(__dirname, "../../../upload/") + req.files.images.name;
@@ -100,8 +103,8 @@ exports.add = function (req, res) {
 						columnAndValues['photo'] = [url.substring(url.lastIndexOf('/') + 1)];
 						let farmerObj = new Farmer(columnAndValues);
 						farmerObj.save((err, response) => {
-							res.end(response.farmer_id);
-							//return res.redirect('list');
+							res.send({id:  response.farmer_id});
+							return res.redirect('list');
 						})
 					});
 				});
@@ -111,8 +114,8 @@ exports.add = function (req, res) {
 			let farmerObj = new Farmer(columnAndValues);
 			farmerObj.save((err, response) => {
 				console.log(err);
-				res.end(response.farmer_id);
-				//return res.redirect('list');
+				return res.send({id:  response.farmer_id});
+				return res.redirect('list');
 			})
 		}
 	} else {

@@ -292,37 +292,33 @@ errNIFFlag = 1;
 
 	$('.bank_data_html').html(options)
 
-	function submitPost() {
-		if (validatePost()) {
+
+	function submitPost(){
+		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			salvar();
+
+			$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
+
+				if(result.code == 200){
+	            	$('#frm-add-user').submit();
+					showAlert("Produtor foi adicionado com sucesso!");
+							setTimeout(() => {
+								hideAlert()
+						}, 3000);
+	            } else {
+	            	$(".post-add-now").attr("disabled", false);
+					$(".lds-facebook").hide();
+
+	            	showAlert(result.message, '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+					setTimeout(() => {
+						hideAlert()
+					}, 3000);
+	            }
+			});
 		}
 	}
 
-	function salvar(){
-			var url = '<%=baseURL%>aggregators/user/add';
-			$.ajax({
-				url: url,
-				type: "POST",
-				data: $('#frm-add-user').serialize(),
-				dataType: "JSON",
-					success: function (data){
-						showAlert("Produtor ( " + data + ") adicionado com sucesso!");
-							setTimeout(() => {
-								hideAlert()
-								window.location.href="list";
-						}, 3000);
-					},
-					error: function (jqXHR, textStatus, errorThrown){
-						showAlert("Erro ao publicar o produtor!");
-						setTimeout(() => {
-							hideAlert()
-							window.location.reload();
-						}, 3000);
-					}
-			});
-    }
 
 	function verifyEmail(){
 		$.post('<%=baseURL%>check_farmer_email_exist', { type: 'any', email: $('#email').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#phone_number').val() }).done((result) => {
