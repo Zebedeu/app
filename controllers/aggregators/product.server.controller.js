@@ -678,9 +678,9 @@ exports.add = function (req, res) {
 						columnAndValues['images'] = imageArr;
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
-							res.end(response.product_id);
-							/*console.log(response)
-							return res.redirect('list');*/
+							//res.end(response.product_id);
+							//console.log(response)
+							return res.redirect('order/'+response.product_id);
 						})
 					});
 				} else {
@@ -723,8 +723,8 @@ exports.add = function (req, res) {
 									columnAndValues['images'] = [url.substring(url.lastIndexOf('/') + 1)];
 									let productObj = new Product(columnAndValues);
 									productObj.save((err, response) => {
-										res.end(response.product_id);
-										//return res.redirect('list');
+										//res.end(response.product_id);
+										return res.redirect('list');
 									})
 								});
 							});
@@ -733,17 +733,17 @@ exports.add = function (req, res) {
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
 							res.end(response.product_id);
-							/*console.log(err);
-							return res.redirect('list');*/
+							//console.log(err);
+							return res.redirect('list');
 						})
 					}
 				}
 			} else {
 				let productObj = new Product(columnAndValues);
 				productObj.save((err, response) => {
-					res.end(response.product_id);
-					/*console.log(err);
-					return res.redirect('list');*/
+					//res.end(response.product_id);
+					//console.log(err);
+					return res.redirect('list');
 				})
 			}
 		}).sort({ order_number: 1 })

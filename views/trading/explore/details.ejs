@@ -83,7 +83,7 @@
 					</div>
 
 					<div class="product_meta"><br>
-							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz / <%= product.unit_type %></h4>
+							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz%></h4>
 							<% if(product.product_type == 'forecast'){ %>
 							<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_plural_title %></h5>
 								<h5 style='padding-bottom: 4px;'><%= labels['LBL_DATE_OF_AVAILABILITY'][language] %> : <%= product.harvest_date %></h5>
