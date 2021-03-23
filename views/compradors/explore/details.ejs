@@ -33,8 +33,10 @@
 	<script type='text/javascript' src="../../../js/validation.js"></script>
 	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-au.js"></script>
 	<% if(user && user.user_id){ %>
-		<script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb6c3082e55100123f3042&product=sticky-share-buttons"></script>
-	<% } %>
+		<!-- <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb6c3082e55100123f3042&product=sticky-share-buttons"></script> -->
+		<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=605a304f4d1bac0012adf1c3&product=sticky-share-buttons" async="async"></script>
+
+		<% } %>
 	<script src="../../../js/ligh-slider.js"></script>
 </head>
 <body>
@@ -90,7 +92,7 @@
 					</div>
 
 					<div class="product_meta"><br>
-							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz %></h4>
+							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz/ <%= product.unit_type %></h4>
 							<% if(product.product_type == 'forecast'){ %>
 							<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_plural_title %></h5>
 								<h5 style='padding-bottom: 4px;'><%= labels['LBL_DATE_OF_AVAILABILITY'][language] %> : <%= product.harvest_date %></h5>

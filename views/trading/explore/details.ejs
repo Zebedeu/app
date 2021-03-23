@@ -25,10 +25,6 @@
 	<script type='text/javascript' src="../../../js/language.js"></script>
 	<script type='text/javascript' src="../../../js/validation.js"></script>
 	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-au.js"></script>
-	<% if(user && user.user_id){ %>
-		<script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb6c3082e55100123f3042&product=sticky-share-buttons"></script>
-	<% } %>
-	<script src="../../../js/ligh-slider.js"></script>
 </head>
 <body>
 
@@ -136,6 +132,9 @@
 <%- include('../../shared/common_js') %>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js'></script>
+<% if(user && user.user_id){ %>
+	<script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5ebb6c3082e55100123f3042&product=sticky-share-buttons"></script>
+<% } %>
 <script>
 let minQty = parseInt("<%= product.unit_min_qty %>");
 $(document).ready(() => {
