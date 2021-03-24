@@ -114,7 +114,7 @@ exports.add = function (req, res) {
 			let farmerObj = new Farmer(columnAndValues);
 			farmerObj.save((err, response) => {
 				console.log(err);
-				return res.send({id:  response.farmer_id});
+				//return res.send({id:  response.farmer_id});
 				return res.redirect('list');
 			})
 		}

@@ -24,6 +24,65 @@ let labels = require('../../utils/labels.json');
 exports.toExplore = (req, res) => {
 	return res.redirect('/compradors/explore/list');
 } 
+
+
+exports.authenticate = function (req, res) {
+	if (req.body.type == 'email' && req.body.email && req.body.password) {
+		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
+			let email = req.body.email.trim();
+			let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
+
+			User.findOne({ email: regexEmail }, { _id: 0, user_id: 1, first_name: 1, email: 1, user_type: 1, password: 1, mobile_country_code: 1, phone_number: 1, status: 1, is_verify_mobile: 1 }, (err, response) => {
+				if (!response) {
+					res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'PT')]}`, user_type: '' });
+				} else if (response.status == 'inactive') {
+					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+				} else if (response.password != encPin) {
+					res.send({ code: 402, message: `${labels['LBL_INVALID_PASSWORD'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+				} else {
+					if (!response.is_verify_mobile) {
+						Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
+							if (sms) {
+								let otp = parseInt(Math.random() * (999999 - 111111) + 111111);
+								let caption = (sms['value'][req.session.language || config.default_language_code]);
+								caption = caption.replace("#OTP#", otp).replace("#NAME#", response.first_name);
+								smsManager.sendSMS({ message: caption, mobile: (response.mobile_country_code + response.phone_number) });
+
+								User.update({ mobile_country_code: response.mobile_country_code, phone_number: response.phone_number }, { $set: { otp } }, (err, update_response) => {
+									res.send({ code: 409, message: '', user_type: response.user_type, user_info: response });
+								})
+							} else {
+								res.send({ code: 409, message: '', user_type: response.user_type, user_info: response });
+							}
+						})
+					} else {
+						res.send({ code: 200, message: '', user_type: response.user_type });
+					}
+				}
+			})
+		})
+	} else if ((req.body.type == 'google' || req.body.type == 'facebook') && req.body.social_id) {
+		User.findOne({ social_id: req.body.social_id }, { _id: 0, user_id: 1, first_name: 1, user_type: 1, password: 1, status: 1 }, (err, response) => {
+			if (!response) {
+				res.send({ code: 404, message: `${labels['LBL_YOUR_SOCIAL_ACCOUNT'][(req.session.language || 'PT')]}`, user_type: '' });
+			} else if (response.status == 'inactive') {
+				res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}`, user_type: response.user_type });
+			} else {
+				req.session.user_id = response.user_id;
+				req.session.name = response.first_name;
+				req.session.user_type = response.user_type;
+				req.session.login_type = req.body.type;
+
+				console.log(req.session);
+				res.send({ code: 200, message: '', user_type: response.user_type });
+			}
+		})
+	} else {
+		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'PT')]}` });
+	}
+};
+
+
 exports.demand = function (req, res) {
 	Cart.count({ user_id: req.session.user_id }, (err, total_cart_products) => {
 		Product.aggregate([
