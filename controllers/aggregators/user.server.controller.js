@@ -103,7 +103,7 @@ exports.add = function (req, res) {
 						columnAndValues['photo'] = [url.substring(url.lastIndexOf('/') + 1)];
 						let farmerObj = new Farmer(columnAndValues);
 						farmerObj.save((err, response) => {
-							res.send({id:  response.farmer_id});
+							//res.send({id:  response.farmer_id});
 							return res.redirect('list');
 						})
 					});
