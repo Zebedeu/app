@@ -41,12 +41,10 @@
 	                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= labels['LBL_HI'][language] %> <%= user.name %>
 	                                <b class="caret"></b></a>
 	                                <ul class="dropdown-menu my_account">
-										<li><a class="" href="<%=baseURL%>compradors/user/profile"><%= labels['LBL_YOUR_ACCOUNT'][language] %></a></li>
-										<li><a class="" href="<%=baseURL%>wallet"><%= labels['LBL_COMPRADOR_MENU_YOUR_WALLET'][language] %></a></li>
-										<li><a class="" href="<%=baseURL%>compradors/explore/list"><%= labels['LBL_EXPLORE_PRODUCTS'][language] %></a></li>
-										<li><a class="" href="<%=baseURL%>compradors/user/address"><%= labels['LBL_YOUR_ADDRESSES'][language] %></a></li>
-										<li class='hide'><a class="" href="<%=baseURL%>compradors/demands"><%= labels['LBL_MENU_DEMANDS'][language] %></a></li>
-										<li><a class="" href="javascript:void(0)" onClick="logOut('<%= user.login_type %>')"><%= labels['LBL_LOGOUT'][language] %></a></li>
+										
+										<li>
+											<a href="/"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN'][language] %></a>
+										</li>
 	                                </ul>
 	                            </li>
 	                        </ul>
