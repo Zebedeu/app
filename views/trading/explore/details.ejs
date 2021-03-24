@@ -6,7 +6,6 @@
 	<title>Kepya Agromercado Digital</title>
 	<meta property="og:site_name" content="Scotch">
 	<meta property="og:url" content="<%=baseURL%>trading/explore/details/<%=product.product_id%>">
-	<meta property="og:type" content="website">
 	<meta property="og:type" content="article">
 	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>">
 	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz / <%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>">
