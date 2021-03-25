@@ -35,9 +35,10 @@
 	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=605a3ed36f7ab900129ceb13&product=sop' async='async'></script>
 	<script src="../../../js/ligh-slider.js"></script>
 </head>
+
 <body>
-	<div class="sharethis-sticky-share-buttons"></div>
-<div class="">
+
+	<div class="">
 	<div id="nav-icon" class="menu-button visible-xs">
 		<span class="burger-icon"></span>
 	</div>
@@ -50,6 +51,7 @@
 <section class="productsdetail">
 	<div class="container">
 		<% if(user && user.user_id){ %>
+			<div class="sharethis-sticky-share-buttons"></div>
 			<div class="breadcrumb_card">
 				<%- include('../../shared/breadcrumb') %>
 			</div>
@@ -72,7 +74,7 @@
 					<% } %>
 			    </ul>
 			</div>
-			<div style="position: relative;" class="col-md-7 col-sm-12 col-xs-12 details">
+			<div class="col-md-7 col-sm-12 col-xs-12 details">
 					<!-- <a href="javascript:void(0)" style="position: absolute;right: 0;" id="PriceListCart" data-popover="custom"><img style="width: 37px;" src="../../../images/verified.png"></a>
 					<div class="PriceListCart" style="display: none;">
                       <p class="quantity">Quality :  Excellent</p>
@@ -138,6 +140,56 @@
 		
 	</div>
 </div>
+<% if(! user.user_id){ %>
+
+ <!-- Modal -->
+ <div class="modal fade" id="loginModal" role="dialog">
+
+	<section class="login-section text-center">
+			<div class="overlay-position"></div>
+			<div class="login-page">
+				<div class="container">
+					<div class="login-box">
+						<div class="row">
+
+						</div>
+						
+						<img src="<%=baseURL%>images/logo.png">
+						<h1><%= labels['LBL_SIGN_IN'][language] %></h1>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 form">
+								<form id="frm-sign-in" action="/" method="post">
+									<div class="form-group">
+										<input type="text" id="txt-email-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL'][language] %>" required="">
+										<span class="validation-alert" id='err-email-address'></span>
+									</div>
+									<div class="form-group">
+										<input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_PASSWORD'][language] %>" required="">
+										<span class="validation-alert" id='err-password' style="width: 100%;text-align: left !important;"></span>
+									</div>
+									<div class="forgot-pw row">
+										  <div class="col-md-6 col-sm-6 col-xs-6 checkbox"><label class="checkbox-container"><%= labels['LBL_SIGN_IN_REMEMBER_ME'][language] %><input type="checkbox"><span class="checkbox-checkmark"></span></label></div>
+										  <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="<%=baseURL%>forgot-password"><%= labels['LBL_SIGN_IN_FORGOT_PASSWORD'][language] %>?</a></div>
+									</div>
+									<button type="button" class="btn btn-default btn-sign-in" onclick="submitSignIn()"><%= labels['LBL_SIGN_IN_BUTTON'][language] %></button>
+		
+									<a href="javascript:void(0)" class="google btn" id="google-sign-in">
+										<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %>
+									</a>
+									
+									<div class="text-center creat_new"><%= labels['LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT'][language] %>? <a href="<%=baseURL%>sign-up"><%= labels['LBL_SIGN_IN_SIGN_UP_FOR_FREE'][language] %></a></div>
+		
+									<div class="g-signin2 hide" data-onsuccess="onSignIn"><%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %></div>
+								</form>
+							</div>
+					
+				</div>
+			</div>
+	</section>
+    </div>
+
+</div>
+<% }   %>
 
 <%- include('../../shared/common_modal') %>
 <%- include('../../shared/common_js') %>
@@ -337,6 +389,123 @@ function wheretoplace(){
 $("#imageUpload").change(function() {
     readURL(this);
 });
+
+setInterval(function () {
+   $('#loginModal').modal('show');
+   $('#loginModal').modal({backdrop:'static',keyboard:false, show:true});
+
+}, 10000);
+
+
+
+
+	let emailAddress = '', password = '';
+	let errEmailAddressFlag = 0, errPassword = 0;
+	function validateSignIn(){
+		errEmailAddressFlag = validateEmailAddress($('#txt-email-address').val());
+		if(errEmailAddressFlag > 0){
+			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL'][language] %>";
+			$('#err-email-address').text(caption).show();
+		} else {
+			$('#err-email-address').hide();
+		}
+
+		if(!$('#txt-password').val()){
+			errPassword = 1;
+			$('#err-password').text("<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_PASSWORD'][language] %>").show();
+		} else {
+			errPassword = 0;
+			$('#err-password').hide();
+		}
+
+		if(!errEmailAddressFlag && !errPassword){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function submitSignIn(){
+		if(validateSignIn()){
+			signIn({ type: 'email', email: $('#txt-email-address').val(), password: $('#txt-password').val() });
+		}
+	}
+
+	function signIn(obj){
+		$.post('<%=baseURL%>', obj).done((response) => {
+			console.log(response);
+			console.log("Test.. auth...")
+			if(parseInt(response.code) == 200){
+				if(obj.type == 'email'){
+					$('#frm-sign-in').submit()
+
+				} else {
+					if(response.user_type == 'producers') {
+						window.location.href = "producers/dashboard";
+					} else if(response.user_type == 'aggregators') {
+						window.location.href = "aggregators/dashboard";
+					} else if(response.user_type == 'compradors') {
+						window.location.href = "compradors/dashboard";
+					} else if(response.user_type == 'transporters') {
+						window.location.href = "transporters/dashboard";
+					}
+				}
+					return false;
+			} else if(obj.type == 'email' && parseInt(response.code) == 409) {
+				window.location.href = "<%=baseURL%>verify-otp?mobile_country_code="+response.user_info.mobile_country_code+'&phone_number='+response.user_info.phone_number;
+			} else {
+				if(obj.type == 'google'){
+					var auth2 = gapi.auth2.getAuthInstance();
+				  	auth2.signOut().then(function () {});
+				}
+
+				showAlert(response.message);
+				setTimeout(() => {
+					hideAlert()
+					window.location.reload(true);
+				}, 3000);
+			}
+		});
+	}
+
+	function showAlert(message){
+		notify({
+            type: "error",
+            title: "<%= labels['LBL_MESSAGE'][language] %>",
+			 theme: "dark-theme",
+			 position: {
+                x: "right",
+                y: "top"
+            },
+            icon: '<img src="<%=baseURL%>images/paper_plane.png" />',
+            message: message
+        });
+	}
+
+	function hideAlert(){
+		$( ".notify-close-btn" ).trigger( "click" );
+	}
+
+	function onSignIn(googleUser) {
+		let profile = googleUser.getBasicProfile();
+	  	if(profile.getId()){
+	  		signIn({ type: 'google', social_id: profile.getId() });
+	  	}
+	}
+
+	$(document).ready(function(){
+		$('#txt-password').keypress(function (e) {
+		 	let key = e.which;
+		 	if(key == 13){
+		 		$('.btn-sign-in').trigger('click');
+		    	return false;
+		  	}
+		});
+
+	  	$('#google-sign-in').click('on', function(){
+	  		$('.abcRioButton').trigger('click');
+	  	})
+	});
 </script>
 </body>
 </html>
