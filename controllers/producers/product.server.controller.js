@@ -611,6 +611,7 @@ const add = (req, res) => {
 			unit_price: removePointerInCurrence(req.body.unit_price),
 			total_unit_price: parseFloat(total_unit_price),
 			harvest_date: new Date(req.body.harvest_date),
+			expire_date: moment(req.body.harvest_date).add(30, 'days'),
 			product_type: (dateIsAfter) ? 'forecast' : 'available'
 		}
 
@@ -842,6 +843,7 @@ const edit = (req, res) => {
 				unit_price: parseFloat(req.body.unit_price),
 				total_unit_price: removePointerInCurrence(total_unit_price),
 				harvest_date: new Date(req.body.harvest_date),
+				expire_date: moment(req.body.expire_date),
 				product_type: (dateIsAfter) ? 'forecast' : 'available'
 			}
 

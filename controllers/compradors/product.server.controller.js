@@ -269,7 +269,7 @@ exports.list = function(req, res) {
 };
 
 exports.add = function(req, res) {
-	if(req.body.product_category && req.body.title && req.body.unit && req.body.unit_value && req.body.lower_price_range && req.body.higher_price_range && req.body.state_id && req.body.city_id && req.body.location){
+	if(req.body.product_category && req.body.title && req.body.unit && req.body.unit_value && req.body.lower_price_range && req.body.higher_price_range ){
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			category_id: req.body.product_category,
@@ -283,9 +283,9 @@ exports.add = function(req, res) {
 			expire_date: new Date(req.body.expire_date),
 			period: req.body.period,
 			where_to_deliver_id: req.body.where_to_deliver_id,
-			state_id: req.body.state_id,
-			city_id: req.body.city_id,
-			location: req.body.location,
+			// state_id: req.body.state_id,
+			// city_id: req.body.city_id,
+			// location: req.body.location,
 			status: 'approved'
 		}
 
@@ -391,7 +391,7 @@ exports.display = function(req, res) {
 };
 
 exports.edit = function(req, res) {
-	if(req.body.product_id && req.body.product_category && req.body.title && req.body.unit && req.body.unit_value && req.body.state_id && req.body.city_id && req.body.location && req.body.lower_price_range && req.body.higher_price_range && req.body.expire_date){
+	if(req.body.product_id && req.body.product_category && req.body.title && req.body.unit && req.body.unit_value  && req.body.lower_price_range && req.body.higher_price_range && req.body.expire_date){
 		Product.findOne({ product_id: req.body.product_id }, { _id: 0, product_id: 1, higher_price_range: 1 }, (err, response) => {
 			if(!response){
 				return res.redirect('list');
@@ -409,9 +409,9 @@ exports.edit = function(req, res) {
 				expire_date: new Date(req.body.expire_date),
 				period: req.body.period,
 				where_to_deliver_id: req.body.where_to_deliver_id,
-				state_id: req.body.state_id,
-				city_id: req.body.city_id,
-				location: req.body.location
+				// state_id: req.body.state_id,
+				// city_id: req.body.city_id,
+				// location: req.body.location
 			}
 
 			Language.find({ status: 'active' }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {

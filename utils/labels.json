@@ -1073,7 +1073,7 @@
 	},
 	"LBL_INVALID_OTP": {
 		"EN": "Invalid OTP",
-		"PT": "OTP inválido"
+		"PT": "Código inválido"
 	},
 	"LBL_PASSWORD_CHANGED_VALIDATION": {
 		"EN": "Password changed successfully",
@@ -1332,16 +1332,16 @@
 		"PT": "O número de telefone já existe"
 	},
 	"LBL_OTP": {
-		"EN": "OTP",
-		"PT": "OTP"
+		"EN": "Validate OTP",
+		"PT": "Validar código"
 	},
 	"LBL_ENTER_OTP": {
 		"EN": "Enter otp",
-		"PT": "Digite otp"
+		"PT": "Digite o código"
 	},
 	"LBL_VERIFY_OTP": {
 		"EN": "Verify OTP",
-		"PT": " Verificar OTP"
+		"PT": " Verificar código"
 	},
 	"LBL_CANCEL_BTN": {
 		"EN": "Cancel Order",
@@ -1365,7 +1365,7 @@
 	},
 	"LBL_TYPE_CODE_YOU_RECEIVED": {
 		"EN": "Type the code you have received",
-		"PT": "Digite o código que você recebeu"
+		"PT": "Recebeu no seu telefone uma mensagem com um codigo. \n Por favor insira o código."
 	},
 	"LBL_PRODUCT_ID": {
 		"EN": "Product ID",
@@ -1854,19 +1854,19 @@
 	},
 	"LBL_VERIFY_OTP_TITLE": {
 		"EN": "Verify OTP",
-		"PT": "Verificar OTP"
+		"PT": "Validar código"
 	},
 	"LBL_VERIFY_OTP_DESCRIPTION": {
 		"EN": "Type the code you have received",
-		"PT": "Digite o código que você recebeu"
+		"PT": "Recebeu no seu telefone uma mensagem com um codigo. \n Por favor insira o código."
 	},
 	"LBL_VERIFY_OTP_OTP_PLACEHOLDER": {
-		"EN": "OTP",
-		"PT": "OTP"
+		"EN": "Validate OTP",
+		"PT": "Validar código"
 	},
 	"LBL_VERIFY_OTP_BUTTON": {
-		"EN": "OTP",
-		"PT": "OTP"
+		"EN": "Validate OTP",
+		"PT": "Validar código"
 	},
 	"LBL_VERIFY_OTP_SIGN_IN": {
 		"EN": "Sign In",
@@ -1874,7 +1874,7 @@
 	},
 	"LBL_VERIFY_OTP_VALIDATE_BLANK_OTP": {
 		"EN": "Enter otp",
-		"PT": "Digite otp"
+		"PT": "Digite o código"
 	},
 	"LBL_PRODUCER_DASHBOARD_POST_FORECAST_OR_PRODUCTS": {
 		"EN": "Post Forecast or Products",
@@ -2670,7 +2670,7 @@
 	},
 	"LBL_VERIFY_OTP_RESEND_OTP": {
 		"EN": "Resend OTP",
-		"PT": "Reenviar OTP"
+		"PT": "Reenviar código"
 	},
 	"LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS": {
 		"EN": "Ongoing Sales",
@@ -3207,11 +3207,11 @@
 	},
 	"LBL_OTP_SENT_SUCCESSFULLY": {
 		"EN": "OTP sent successfully",
-		"PT": "OTP enviado com sucesso"
+		"PT": "Código enviado com sucesso"
 	},
 	"LBL_OTP_SENT_FAILURE": {
 		"EN": "OTP sending failed",
-		"PT": "Falha no envio do OTP"
+		"PT": "Falha no envio do código"
 	},
 	"LBL_PRODUCER_YOUR_ORDER_WAITING_FOR_PAYMENT": {
 		"EN": "Waiting for payment",

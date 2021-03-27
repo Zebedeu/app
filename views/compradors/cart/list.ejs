@@ -622,6 +622,7 @@
      function setAddressType(address_id) {
           ajax_address_id = address_id;
           $.post("<%=baseURL%>compradors/checkout/transport_fees", { address_id: (transportNeeded == 'yes' ? address_id : '') }).done(function (data) {
+              console.log(data)
                transport_fees = ($('input[name=transport-needed]:checked').val() == 'yes') ? parseFloat(data.transport_fees) : 0;
                setOrder(data.reserve_order_hrs);
                calculationPrice();

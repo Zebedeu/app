@@ -133,6 +133,8 @@ exports.list = async (req, res) => {
 		productArr.push(productObj);
 
 		let transportFeesRes = await Estimated_transportation.findOne({ origin: product.state_id, to: to_state_id }, { _id: 0, estimated_transportation_id: 1, price: 1 });
+		
+		console.log(transportFeesRes)
 		if (transportFeesRes) {
 			transportFees += transportFeesRes.price;
 		}

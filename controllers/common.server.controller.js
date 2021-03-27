@@ -1369,7 +1369,7 @@ exports.getVeriety = function (req, res) {
 					element.product_variety_id
 				) {
 					varietyStr +=
-						"<option value='" +
+						"<option ' value='" +
 						element.product_variety_id +
 						"' selected>" +
 						element.title[
@@ -1379,7 +1379,7 @@ exports.getVeriety = function (req, res) {
 						'</option>';
 				} else {
 					varietyStr +=
-						"<option value='" +
+						"<option 'value='" +
 						element.product_variety_id +
 						"'>" +
 						element.title[
