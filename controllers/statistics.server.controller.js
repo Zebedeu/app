@@ -16,6 +16,7 @@ let __ = require('lodash');
 let moment = require('moment');
 let labels = require('../utils/labels.json');
 let Unit = require('mongoose').model('Unit');
+let logger = require('../utils/logger');
 
 exports.outwards = async (req, res) => {
 	let firstDate = moment().format('YYYY') + '-01-01';
@@ -328,12 +329,24 @@ exports.total = async (req, res) => {
 	User.findOne({ user_id: req.session.user_id }, { _id: 0, favourite_product_id: 1, recent_search_product_id: 1, statistics: 1 }, (err, singleUser) => {
 		// if (req.session.user_type == 'compradors') { // original
 		if (req.session.user_type == 'compradors' || req.session.user_type == 'trading') {
+
+			let total_purchase = 0;
+			Order.find({ 'buyer_info.user_id': req.session.user_id }, (error, orders) => {
+				_.each(orders, data => {
+					if (data.status == 'delivered') {
+						total_purchase += 1;
+					}
+				})
+			//})
+
 			let responseObj = {
-				total_purchase: (singleUser.statistics && singleUser.statistics.total_purchase) ? separators(singleUser.statistics.total_purchase) : 0,
+				total_purchase: total_purchase,
+				//total_purchase: (singleUser.statistics && singleUser.statistics.total_purchase) ? separators(singleUser.statistics.total_purchase) : 0,
 				total_product_views: (singleUser.statistics && singleUser.statistics.product_views) ? separatorsWD(singleUser.statistics.product_views.length) : 0,
 				total_favourite_products: separatorsWD(singleUser.favourite_product_id.length),
 				total_purchase_products: (singleUser.statistics && singleUser.statistics.total_purchase_products) ? separatorsWD(singleUser.statistics.total_purchase_products) : 0
 			}
+
 			let activeColumnAndValues = [
 				{
 					$match: {
@@ -374,9 +387,11 @@ exports.total = async (req, res) => {
 					return false;
 				})
 			})
+		})
+
 		} else {
 			let responseObj = {
-				total_sales: (singleUser.statistics && singleUser.statistics.total_sales) ? separators(singleUser.statistics.total_sales) : 0,
+				//total_sales: (singleUser.statistics && singleUser.statistics.total_sales) ? separators(singleUser.statistics.total_sales) : 0,
 				total_product_views: (singleUser.statistics && singleUser.statistics.total_product_views) ? separatorsWD(singleUser.statistics.total_product_views) : 0
 			}
 			Unit.find({}, {}, (err, unitData) => {
@@ -392,19 +407,18 @@ exports.total = async (req, res) => {
 								done(errors.internalServer(true), null);
 								return;
 							}
-							let total_sales =0;
 							let finalProducts = [];
+							let total_sales = 0;
 							_.each(orders, data => {
 								data.products = JSON.parse(JSON.stringify(data.products));
 								_.each(data.products, singleProduct => {
 									singleProduct.seller_id = singleProduct.user_info.user_id
 								})
-								if(data.status == 'paid'){
+								if (data.status == 'delivered') {
 									total_sales += 1;
 								}
 								finalProducts.push(_.where(data.products, { seller_id: req.session.user_id }))
 							})
-
 							finalProducts = _.flatten(finalProducts)
 							finalProducts = _.groupBy(finalProducts, 'product_id');
 							finalProducts = finalProducts || {};
@@ -416,7 +430,7 @@ exports.total = async (req, res) => {
 								responseObj['total_favourite_list'] = separatorsWD(users.length);
 								responseObj['total_sold_products'] = separatorsWD(soldCount);
 								responseObj['total_unsold_products'] = separatorsWD(unSoldProducts.length);
-								responseObj['total_sales'] = separatorsWD(total_sales);
+								responseObj['total_sales'] = total_sales;
 								res.send({ code: 200, response: responseObj })
 								return false;
 							})

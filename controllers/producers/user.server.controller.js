@@ -11,6 +11,7 @@ let s3Manager = require('../../utils/s3-manager');
 let s3Handler = require('../../utils/s3-handler');
 s3Handler = new s3Handler();
 let labels = require('../../utils/labels.json');
+let logger = require('../../utils/logger');
 
 exports.list = function(req, res) {
 	Farmer.find({ user_id: req.session.user_id }, { _id: 0, created_at: 0, updated_at: 0 }, (err, farmers) => {
@@ -247,6 +248,7 @@ exports.profile = function(req, res) {
 			}
 
 			let userInfo = response[0];
+
 			userInfo['user_type'] = labels['LBL_SIGN_UP_USER_PRODUCERS'][req.session.language];
 			passwordHandler.decrypt(userInfo.password, (decPin) => {
 				userInfo.password = (userInfo.password ? decPin : '');

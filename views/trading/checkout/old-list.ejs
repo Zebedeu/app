@@ -16,7 +16,7 @@
 								<h2><%= products[i].sub_category_title %></h3>
 								<h3 class='capitalize'><%= products[i].category_title %></h3>
 								<p class="itemNumber"><%= labels['LBL_QTY'][language] %>: <span style="color: #000;"><%= products[i].qty %></span> <%= products[i].unit_plural_title %></p>
-								<p class="itemNumber"><%= labels['LBL_PRICE'][language] %> - <%= (products[i].unit_price).toFixed(2) %> Kz / <%= products[i].unit_type %></p>
+								<p class="itemNumber"><%= labels['LBL_PRICE'][language] %> - <%= (products[i].unit_price).toFixed(2) %> Kz/<%= products[i].unit_type %></p>
 								<p class="itemNumber"><%= labels['LBL_ORDER_TOTAL'][language] %>: <span style="color: #000;"><%= (products[i].qty * products[i].unit_price).toFixed(2) %> Kz</span></p>
 							</div>
 						</div>

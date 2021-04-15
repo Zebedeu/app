@@ -19,6 +19,13 @@ let Setting = require('mongoose').model('Setting');
 let User = require('mongoose').model('User');
 let sortBy = require('lodash').sortBy;
 let labels = require('../../utils/labels.json');
+let MobileCountryCode = require('mongoose').model('Mobile_country_code');
+let CMS = require('mongoose').model('Cms');
+let Sms_template = require('mongoose').model('Sms_template');
+let Push_template = require('mongoose').model('Push_template');
+let Notification_log = require('mongoose').model('Notification_log');
+let smsManager = require('../../utils/sms-manager');
+let passwordHandler = require('../../utils/password-handler');
 
 
 exports.toExplore = (req, res) => {
@@ -27,6 +34,8 @@ exports.toExplore = (req, res) => {
 
 
 exports.authenticate = function (req, res) {
+
+	console.log(req.body)
 	if (req.body.type == 'email' && req.body.email && req.body.password) {
 		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
 			let email = req.body.email.trim();
@@ -61,7 +70,9 @@ exports.authenticate = function (req, res) {
 				}
 			})
 		})
-	} else if ((req.body.type == 'google' || req.body.type == 'facebook') && req.body.social_id) {
+	}
+	
+	else if ((req.body.type == 'google' || req.body.type == 'facebook') && req.body.social_id) {
 		User.findOne({ social_id: req.body.social_id }, { _id: 0, user_id: 1, first_name: 1, user_type: 1, password: 1, status: 1 }, (err, response) => {
 			if (!response) {
 				res.send({ code: 404, message: `${labels['LBL_YOUR_SOCIAL_ACCOUNT'][(req.session.language || 'PT')]}`, user_type: '' });
@@ -736,8 +747,18 @@ function detailsProduct(req, res) {
 
 		productObj['expire_date'] = convert_date(productObj.expire_date, req.session.language);
 		productObj['harvest_date'] = convert_date(productObj.harvest_date, req.session.language);
-		productObj['share_description'] = labels['LBL_PRICE'][req.session.language] + '-' + productObj['unit_price'] + '  Kz / ' + productObj['unit_type'] + ', ' + labels['LBL_QUANTITY'][req.session.language] + '- ' + productObj['remaining_unit_qty'] + ' ' + productObj['unit_type'] + ', ' + labels['LBL_LOCATION'][req.session.language] + '- ' + productObj['state_name'];
+		productObj['share_description'] = labels['LBL_PRICE'][req.session.language] + '-' + productObj['unit_price'] + '  Kz/' + productObj['unit_type'] + ', ' + labels['LBL_QUANTITY'][req.session.language] + '- ' + productObj['remaining_unit_qty'] + ' ' + productObj['unit_type'] + ', ' + labels['LBL_LOCATION'][req.session.language] + '- ' + productObj['state_name'];
 
+		// login 
+
+		MobileCountryCode.find({}, { _id: 0, mobile_country_code_id: 1, code: 1 }, (err, mobile_country_codes) => {
+			CMS.findOne({ code: 'TERMS_AND_CONDITIONS', user_type: 'producers' }, { _id: 0, cms_id: 1, title: 1, code: 1, description: 1 }, (err, cms_pages) => {
+				let tc_title = (cms_pages) ? cms_pages['title'][req.session.language || 'PT'] : '';
+				let tc_description = (cms_pages) ? cms_pages['description'][req.session.language || 'PT'] : '';
+
+		State.find({ status: 'active' }, { _id: 0, state_id: 1, name: 1 }, (err, states) => {
+			states = _.sortBy(states, function (item) { return item.name; })
+		
 		console.log(productObj['share_description']);
 		res.render('compradors/explore/details', {
 			user: {
@@ -750,12 +771,19 @@ function detailsProduct(req, res) {
 			product: productObj,
 			moment,
 			labels,
+			states,
+			mobile_country_codes,
+			tc_title,
+			tc_description,
 			language: req.session.language || 'PT',
 			breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "compradors/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "compradors/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'PT')] + "</li>",
 			messages: req.flash('error') || req.flash('info'),
 			messages: req.flash('info')
 		});
 	})
+})
+})
+})
 }
 
 exports.cart = function (req, res) {
@@ -780,4 +808,204 @@ exports.cart = function (req, res) {
 			})
 		}
 	})
+};
+
+
+exports.checkYourEmail = function (req, res) {
+	res.render('check-your-email', {
+		labels,
+		language: req.session.language || config.default_language_code,
+		email: req.body.email,
+		layout: false,
+		messages: req.flash('error') || req.flash('info'),
+		messages: req.flash('info'),
+	});
+};
+
+exports.checkEmailExist = function (req, res) {
+	
+	console.log('call checkEmailExist');
+	if (req.body.type == 'email' && req.body.email && req.body.mobile_country_code && req.body.phone_number) {
+		let email = req.body.email.trim();
+		let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
+		let columnAndValues = { email: regexEmail };
+
+		if (req.body.mobile_country_code && req.body.phone_number) {
+			columnAndValues = { $or: [{ email: regexEmail }, { mobile_country_code: req.body.mobile_country_code, phone_number: req.body.phone_number }] };
+		}
+
+		User.findOne(columnAndValues, { _id: 0, user_id: 1, first_name: 1, email: 1, is_verify_mobile: 1, mobile_country_code: 1, phone_number: 1 }, (err, response) => {
+			if (response) {
+				if (response.mobile_country_code == req.body.mobile_country_code && response.phone_number == req.body.phone_number) {
+					if (!response.is_verify_mobile) {
+						Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
+							if (sms) {
+								let otp = parseInt(Math.random() * (999999 - 111111) + 111111);
+								let caption = (sms['value'][req.session.language || config.default_language_code]);
+								caption = caption.replace("#OTP#", otp).replace("#NAME#", response.first_name);
+								smsManager.sendSMS({ message: caption, mobile: (req.body.mobile_country_code + req.body.phone_number) });
+
+								User.update({ mobile_country_code: req.body.mobile_country_code, phone_number: req.body.phone_number }, { $set: { otp } }, (err, update_response) => {
+									res.send({ code: 410, message: '', user_info: response });
+								})
+							} else {
+								res.send({ code: 409, message: `${labels['LBL_TEMPLATE_NOT_EXIST'][(req.session.language || 'PT')]}` });
+							}
+						})
+					} else {
+						res.send({ code: 409, message: `${labels['LBL_PHONE_NO_EXIST'][(req.session.language || 'PT')]}` });
+					}
+				} else {
+					res.send({ code: 409, message: `${labels['LBL_EMAIL_ID_EXIST'][(req.session.language || 'PT')]}` });
+				}
+			} else {
+				res.send({ code: 200, message: '' });
+			}
+		})
+	} else if ((req.body.type == 'google' || req.body.type == 'facebook') && req.body.social_id) {
+		let columnAndValues = { social_id: req.body.social_id };
+
+		if (req.body.email) {
+			let email = req.body.email.trim();
+			let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
+
+			columnAndValues = { $or: [{ email: regexEmail }, { social_id: req.body.social_id }] };
+		}
+
+		console.log(columnAndValues);
+		User.findOne(columnAndValues, { _id: 0, user_id: 1, first_name: 1, last_name: 1, user_type: 1, password: 1, status: 1 }, (err, response) => {
+			if (response) {
+				if (response.status == 'inactive') {
+					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}` });
+					return false;
+				} else {
+					req.session.user_id = response.user_id;
+					req.session.name = response.first_name;
+					req.session.user_type = response.user_type;
+					req.session.login_type = req.body.type;
+					res.send({ code: 409, message: '', user_type: response.user_type });
+					return false;
+				}
+			} else {
+				;
+				let nameArr = req.body.name ? req.body.name.trim().split(' ') : [];
+				let userObject = {
+					social_id: req.body.social_id,
+					register_type: req.body.type,
+					first_name: ((nameArr.length > 0) ? nameArr[0] : ''),
+					last_name: ((nameArr.length > 1) ? nameArr[1] : ''),
+					email: req.body.email,
+					is_verify_mobile: true,
+					user_type: req.body.user_type
+				}
+
+				let userObj = new User(userObject);
+				userObj.save((err, response) => {
+					if (req.body.email) {
+						let template_code = "COMPRADOR_SIGN_UP";
+						if (req.body.user_type == 'producers') {
+							template_code = "PRODUCER_SIGN_UP";
+						} else if (req.body.user_type == 'aggregators') {
+							template_code = "AGGREGATOR_SIGN_UP";
+						} else if (req.body.user_type == 'transporters') {
+							template_code = "TRANSPORTER_SIGN_UP";
+						}
+
+						emailController.send({ language: (req.session.language || config.default_language_code), code: template_code, name: ((nameArr.length > 0) ? nameArr[0] : ''), email: req.body.email, password: '' });
+					}
+
+					Push_template.findOne({ code: 'SIGN_UP' }, { _id: 0, caption_value: 1, value: 1 }, (err, pushTemplate) => {
+						console.log(err);
+						console.log(pushTemplate);
+						if (pushTemplate) {
+							let notLogObj = new Notification_log({
+								user_type: req.body.user_type,
+								user_id: response.user_id,
+								title: pushTemplate.caption_value,
+								description: pushTemplate.value
+							});
+
+							notLogObj.save((err, responseLog) => {
+								console.log(err);
+								console.log(responseLog);
+							})
+						}
+
+						req.session.user_id = response.user_id;
+						req.session.name = ((nameArr.length > 0) ? nameArr[0] : '');
+						req.session.user_type = req.body.user_type;
+						req.session.login_type = req.body.type;
+
+						res.send({ code: 200, message: '', user_type: response.user_type });
+						return false;
+					})
+				})
+			}
+		})
+	} else {
+		res.send({ code: 400, message: `${labels['LBL_PARAMETER_MISSING'][(req.session.language || 'PT')]}` });
+		return false;
+	}
+};
+
+exports.signUp = function (req, res) {
+	
+	if (req.body.first_name && req.body.last_name && req.body.email && req.body.province && req.body.city && req.body.mobile_country_code && req.body.phone_number && req.body.password && req.body.users && req.body.type) {
+		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
+			let userObject = {
+				first_name: req.body.first_name,
+				last_name: req.body.last_name,
+				email: req.body.email,
+				type: req.body.type,
+				company_name: req.body.company_name || '',
+				password: encPin,
+				state_id: req.body.province,
+				city_id: req.body.city,
+				mobile_country_code: req.body.mobile_country_code,
+				phone_number: req.body.phone_number,
+				user_type: req.body.users
+			}
+
+			let userObj = new User(userObject);
+			userObj.save((err, response) => {
+				Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
+					if (sms) {
+						let otp = parseInt(Math.random() * (999999 - 111111) + 111111);
+						let caption = (sms['value'][req.session.language || 'PT']);
+						caption = caption.replace("#OTP#", otp).replace("#NAME#", req.body.first_name);
+						smsManager.sendSMS({ message: caption, mobile: (req.body.mobile_country_code + req.body.phone_number) });
+
+						User.update({ mobile_country_code: req.body.mobile_country_code, phone_number: req.body.phone_number }, { $set: { otp } }, (err, update_response) => {
+							return res.redirect("/verify-otp?mobile_country_code=" + req.body.mobile_country_code + '&phone_number=' + req.body.phone_number);
+						})
+					} else {
+						return res.redirect('/');
+					}
+				})
+			});
+		})
+	} else {
+		MobileCountryCode.find({}, { _id: 0, mobile_country_code_id: 1, code: 1 }, (err, mobile_country_codes) => {
+			CMS.findOne({ code: 'TERMS_AND_CONDITIONS', user_type: 'producers' }, { _id: 0, cms_id: 1, title: 1, code: 1, description: 1 }, (err, cms_pages) => {
+				let tc_title = (cms_pages) ? cms_pages['title'][req.session.language || 'PT'] : '';
+				let tc_description = (cms_pages) ? cms_pages['description'][req.session.language || 'PT'] : '';
+
+				State.find({ status: 'active' }, { _id: 0, state_id: 1, name: 1 }, (err, states) => {
+					states = _.sortBy(states, function (item) { return item.name; })
+
+					res.render('sign-up', {
+						labels,
+						language: req.session.language || config.default_language_code,
+						states,
+						mobile_country_codes,
+						layout: false,
+						tc_title,
+						tc_description,
+						messages: req.flash('error') || req.flash('info'),
+						messages: req.flash('info'),
+					});
+				})
+			})
+		})
+	}
 };

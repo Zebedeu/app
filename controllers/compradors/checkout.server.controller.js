@@ -207,7 +207,6 @@ exports.reserveOrder = async (req, res) => {
                     let orderObj = new Order(columnAndValues);
                     orderObj.save((err, response) => {
                          updateProductsQuantity(products);
-
                          Cart.remove({ user_id: req.session.user_id }, (err, remove_response) => {
                               Sms_template.find({ code: { $in: ['ORDER_PLACED', 'SELLER_NEW_ORDER'] } }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {
                                    let productStr = '', sellerInfoNo = [], sellerInfo = [], sellerInfoId = [], sellerInfoDetails = [];
@@ -537,6 +536,7 @@ exports.placeOrder = async (req, res) => {
                                    })
 
                                    let userProfileObj = { $inc: { 'statistics.total_purchase_products': products.length } };
+
                                    if (req.body.payment_type == 'wallet') {
                                         userProfileObj = { $inc: { 'statistics.total_purchase_products': products.length, wallet: -parseFloat(walletAmount) } };
 
@@ -559,12 +559,12 @@ exports.placeOrder = async (req, res) => {
 
                                    User.update({ user_id: singleUser.user_id }, userProfileObj, function (err, update_response) { });
 
-                                   if (addressObj.email) {
+                                   if (addressObj.email && req.body.payment_type == 'wallet') {
                                         emailController.send({ language: (req.session.language || 'PT'), code: 'INVOICE', email: addressObj.email, order_id: response.order_id, client_name: (singleUser.first_name + ' ' + singleUser.first_name), address_type: (_.isEmpty(addressObj) ? '' : (addressObj.type)).toUpperCase(), address_name: addressObj.name, full_address: (_.isEmpty(addressObj) ? '' : (addressObj.complete_address + ', ' + addressObj.locality + ', ' + addressObj.city_district + ', ' + addressObj.state + ', ' + addressObj.pin_code)), sub_total: parseFloat(total).toFixed(2), transport_fees: parseFloat(req.body.transport_fees), total: parseFloat((total + parseFloat(req.body.transport_fees))).toFixed(2), delivery_date: moment().format('Do MMM YYYY, hh:mm A'), products: productStr });
                                    }
 
                                    let orderPlacedCaption = {}, sellerNewOrderCaption = {};
-                                   if (sms.length > 0) {
+                                   if (sms.length > 0 && req.body.payment_type == 'wallet') {
                                         orderPlacedCaption = _.findWhere(sms, { code: "ORDER_PLACED" });
                                         console.log("addressObj", addressObj);
                                         if (!_.isEmpty(orderPlacedCaption) && addressObj.mobile_country_code && addressObj.mobile_number) {
@@ -574,9 +574,7 @@ exports.placeOrder = async (req, res) => {
                                              caption = caption.replace("#ORDER_ID#", response.order_id);
                                              smsManager.sendSMS({ message: caption, mobile: addressObj.mobile_country_code + addressObj.mobile_number });
                                         }
-
                                         sellerNewOrderCaption = _.findWhere(sms, { code: "SELLER_NEW_ORDER" });
-
                                         if (!_.isEmpty(sellerNewOrderCaption)) {
                                              let sellerCaption = (sellerNewOrderCaption['value'][req.session.language || 'PT']);
                                              sellerCaption = sellerCaption.replace("#ORDER_ID#", response.order_id);
@@ -586,11 +584,9 @@ exports.placeOrder = async (req, res) => {
                                              })
                                         }
                                    }
-
                                    _.each(transporters, (element, index, list) => {
                                         config.firebase.firebaseDBRef.ref('assigned_trips/' + element.user_id + '/').set({ status: 'pending_' + response.order_id });
                                    });
-
                                    if (req.body.payment_type == 'atm_reference') {
                                         const today = moment();
                                         const nextData = today.add(settingInfo.atm_reference_days, 'days');

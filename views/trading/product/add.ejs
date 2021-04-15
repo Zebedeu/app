@@ -96,7 +96,7 @@
 									<label
 										class="my-1 mr-2"><%= labels['LBL_TRADING_DEMAND_PERIOD'][language] %></label>
 									<select class="select_plug period" id="period" name="period">
-										<option value="none">---
+										<!-- <option value="none">---
 											<%= labels['LBL_TRADING_DEMAND_SELECT_PERIOD'][language] %> ---</option>
 										<option value="every_week">
 											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_WEEK'][language] %></option>
@@ -110,8 +110,21 @@
 										</option>
 										<option value="every_3_months">
 											<%= labels['LBL_TRADING_DEMAND_PERIOD_EVERY_3_MONTHS'][language] %>
+										</option> -->
+										<option value="none">---
+											<%= labels['LBL_COMPRADOR_DEMAND_SELECT_PERIOD'][language] %> ---</option>
+										<option value="one-off">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_PONTUAL'][language] %></option>
+										<option value="weekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_WEEKLY'][language] %>
 										</option>
+										<option value="biweekly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_BIWEEKLY'][language] %></option>
+										</option>
+										<option value="monthly">
+											<%= labels['LBL_COMPRADOR_DEMAND_PERIOD_EVERY_MONTHLY'][language] %></option>
 									</select>
+
 								</div>
 							</div>
 						</div>
@@ -164,14 +177,11 @@
 							</div>
 						</div>
 						<div class="row" id="btn-add-new-address">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<a href="javascript:void(0);" id="addNewProduct"
-									style="color: blue;text-decoration:underline;">+
+							
+							<a class="product-address-button btn-wallet" href="javascript:void(0);" id="addNewProduct"
+									style="color: #fff;;margin-top: 8px; margin-left: 11px; padding: 1%; font-size: 16px;">+
+
 									<%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
 								<button type="button" class="main_btn post-add-now"
 									onclick="submitPost()"><%= labels['LBL_TRADING_ADD_NEW_DEMAND_SUBMIT_BUTTON'][language] %></button>
 								<div class="lds-facebook" style="display:none">
@@ -301,15 +311,16 @@
 		if (validatePost()) {
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			notificacao();
+			//$('#frm-add-product').submit()
+			salvar();
 		}
 	}
 
-	function notificacao() {
+	function notificacao(product_id) {
 		$.confirm({
-			title: 'Producto publicado',
+			title: 'Pedido publicado',
 			icon: 'fa fa-check',
-			content: 'O seu produto foi adicionado com sucesso! O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			content: 'O seu pedido ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
 			type: 'kepya',
 			typeAnimated: true,
 			buttons: {
@@ -317,12 +328,34 @@
 					text: 'Ok',
 					btnClass: 'kepya-green',
 					action: function () {
-						$('#frm-add-product').submit();
+						window.location.href = "<%=baseURL%>trading/product/list";
+
 					}
 				}
 			}
 		});
 	}
+
+	function salvar(){
+        var url = '<%=baseURL%>trading/product/add';
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $('#frm-add-product').serialize(),
+            dataType: "JSON",
+                success: function (data){
+					notificacao(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+					showAlert("Erro ao publicar o pedido!");
+					setTimeout(() => {
+						hideAlert()
+						window.location.reload();
+					}, 3000);
+                }
+        });
+    }
+
 
 	$(document).ready(function () {
 

@@ -106,7 +106,7 @@
 							<div class="product-text">
 								<a href="<%=baseURL%>trading/explore/details/<%= products[i]['product_id'] %>"><p><%= products[i]['sub_category_title'] %></p></a>
 								<h5><%= products[i]['category_title'] %></h5>
-								<h5 class='capitalize'><span>Kz <%= products[i]['unit_price'] %> / <%= products[i]['unit_type'] %></span></h5>
+								<h5 class='capitalize'><span><%= products[i]['unit_price'] %> Kz/<%= products[i]['unit_type'] %></span></h5>
 								<h6 class='capitalize'><%= labels['LBL_QUANTITY'][language] %> : <%= products[i]['remaining_unit_value'] %> <%= (products[i]['remaining_unit_value'] > 1) ? products[i]['unit_plural_title'] : products[i]['unit_type'] %></h6>
 								<div class="kp_location">
 									<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].state_name %></span>

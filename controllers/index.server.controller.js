@@ -554,3 +554,14 @@ exports.deleteNotifiy = function(req, res) {
 
 	})
 };
+
+
+exports.faqs = function (req, res) {
+	res.render('faqs', {
+		labels,
+		language: req.session.language || config.default_language_code,
+		layout: false,
+		messages: req.flash('error') || req.flash('info'),
+		messages: req.flash('info')
+	});
+};

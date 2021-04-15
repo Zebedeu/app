@@ -18,7 +18,21 @@
 										</div>
 										<div class="inline">
 											<h6><%= labels['LBL_STATUS'][language] %></h6>
-											<p style="text-transform: capitalize !important;"><%= orders[i]['status'] %></p>
+											<p style="text-transform: capitalize !important;">                                                                                                           
+												<% if(orders[i]['status'] == 'packed'){ %>
+													 <%= labels['LBL_PACKED'][language] %>
+												<% } else if(orders[i]['status'] == 'shipped'){ %>
+													 <%= labels['LBL_SHIPPED'][language] %>
+												<% } else if(orders[i]['status'] == 'delivered'){ %>
+													 <%= labels['LBL_DELIVERED'][language] %>
+												<% } else if(orders[i]['status'] == 'waiting'){ %>
+													 <%= labels['LBL_WAITING'][language] %>
+												<% }else if(orders[i]['status'] == 'paid'){ %>
+													<%= labels['LBL_PAID'][language] %>
+											   <% }else{ %>
+												<%= labels['LBL_CANCELLED'][language] %>
+										   <% }%>
+										   </p>
 										</div>
 										<% if(orders[i]['payment_type'] == 'atm_reference'){ %>
 											<% if(orders[i]['atm_reference_response']['TIME_LEFT']){ %>
@@ -27,7 +41,7 @@
 													<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['TIME_LEFT'] %></p>
 												</div>
 											<% } %>
-											<div class="inline">
+											<!-- <div class="inline">
 												<h6><%= labels['LBL_ENTITY_ID'][language] %></h6>
 												<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['ENTITY_ID'] %></p>
 											</div>
@@ -38,12 +52,12 @@
 											<div class="inline">
 												<h6><%= labels['LBL_WALLET_AMOUNT'][language] %></h6>
 												<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['AMOUNT'] %></p>
-											</div>
+											</div> -->
 										<% } %>
 									</div>
 									<div class="col-md-4 col-sm-4 col-xs-12 align_right">
 										<ul class="nav navbar-nav invoice_lable">
-											<li class="dropdown"><a href="<%=baseURL%>aggregators/order/details/<%= orders[i]['order_id'] %>" class="dropdown-toggle"><%= labels['LBL_ORDER_DETAILS'][language] %></a></li>
+											<li class="dropdown"><a href="<%=baseURL%>aggregators/order/details/<%= orders[i]['order_id'] %>" class="dropdown-toggle"> <button style="margin: 5px;" class="button btn-details"><%= labels['LBL_ORDER_DETAILS'][language] %></button></a></li>
 		                                </ul>
 									</div>
 								</div>

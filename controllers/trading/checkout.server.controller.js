@@ -395,7 +395,7 @@ exports.placeOrder = async (req, res) => {
                     $sort: { created_at: 1 }
                }
           ], (err, products) => {
-               console.log(products);
+
                products = JSON.parse(JSON.stringify(products));
                let total = 0;
                let productAmount = 0, sellerAmount = 0, kepyaCommission = 0;
@@ -571,9 +571,9 @@ exports.placeOrder = async (req, res) => {
                                    let orderPlacedCaption = {}, sellerNewOrderCaption = {};
                                    if (sms.length > 0) {
                                         orderPlacedCaption = _.findWhere(sms, { code: "ORDER_PLACED" });
-                                        console.log("addressObj", addressObj);
+
                                         if (!_.isEmpty(orderPlacedCaption) && addressObj.mobile_country_code && addressObj.mobile_number) {
-                                             console.log('send sms');
+
                                              let caption = (orderPlacedCaption['value'][req.session.language || 'PT']);
                                              caption = caption.replace("#NAME#", addressObj.name);
                                              caption = caption.replace("#ORDER_ID#", response.order_id);
@@ -662,11 +662,8 @@ exports.transport_fees = async (req, res) => {
 
      if (userInfo && userInfo.addresses.length > 0) {
           if (req.body.address_id) {
-               console.log("userInfo.addresses", userInfo.addresses)
                let addressList = JSON.parse(JSON.stringify(userInfo.addresses));
-               console.log("userInfo.addressList", addressList)
                let addresses = _.where(addressList, { address_id: parseInt(req.body.address_id) });
-               console.log("addresses", addresses);
                to_state_id = addresses[0] ? addresses[0]['state'] : "";
           } else {
                let addresses = userInfo.addresses.reverse();
@@ -674,9 +671,7 @@ exports.transport_fees = async (req, res) => {
           }
      }
      await forEach(products, async (product) => {
-          console.log("origin:", product.state_id, "to: ", to_state_id);
           let transportFeesRes = await Estimated_transportation.findOne({ origin: product.state_id, to: to_state_id }, { _id: 0, estimated_transportation_id: 1, price: 1 });
-          console.log("transportFeesRes", transportFeesRes);
           if (transportFeesRes) {
                transportFees += transportFeesRes.price;
           }
@@ -838,7 +833,7 @@ updateProductsQuantity = (requestParam) => {
                return false;
           })
           .catch((e) => {
-               console.log(e);
+               //console.log(e);
           });
 }
 
@@ -884,6 +879,6 @@ updateWalletBalance = (requestParam, payment_type) => {
                return false;
           })
           .catch((e) => {
-               console.log(e);
+              // console.log(e);
           });
 }

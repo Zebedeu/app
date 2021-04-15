@@ -15,6 +15,7 @@ let {
      separators,
      separatorsWD
 } = require('../../utils/formatter');
+let logger = require('../../utils/logger');
 
 exports.filterList = function (req, res) {
 

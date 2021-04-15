@@ -29,7 +29,8 @@ exports.list = function(req, res) {
 };
 
 exports.totalSales = function(req, res) {
-	Order.find({ 'products.user_info.user_id': {$in: [req.session.user_id]}, status: { $nin: ['cancelled', 'delivered'] } }, { _id: 0, updated_at: 0 }, (err, orders) => {
+	Order.find({ 'products.user_info.user_id': {$in: [req.session.user_id]}, status: { $in: ['delivered'] } }, { _id: 0, updated_at: 0 }, (err, orders) => {
+	//Order.find({ 'products.user_info.user_id': {$in: [req.session.user_id]}, status: { $nin: ['cancelled', 'delivered'] } }, { _id: 0, updated_at: 0 }, (err, orders) => {
 		let tbl_sales_orders = "", userProducts = 0, userProductsSum = 0, ordered_date = '', shipped_date = '', className = '', total = 0;
 		if(orders.length > 0){
 			_.each(orders, (element, index, list) => {

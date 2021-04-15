@@ -357,8 +357,8 @@ const soldList = async (req, res) => {
 		_.each(orders, data => {
 			data.products = JSON.parse(JSON.stringify(data.products));
 			_.each(data.products, singleProduct => {
+				console.log(data)
 
-				console.log(singleProduct)
 				singleProduct.buyer_info = data.buyer_info
 				singleProduct.order_id = data.order_id
 				singleProduct.seller_id = singleProduct.user_info.user_id
@@ -369,7 +369,7 @@ const soldList = async (req, res) => {
 				singleProduct['sub_category_title'] = singleProduct.sub_category_title[req.session.language || config.default_language_code];
 				singleProduct['category_title'] = singleProduct.category_title[req.session.language || config.default_language_code];
 				singleProduct.unit_price = separators(singleProduct.unit_price)
-				singleProduct['images'][0] = ((singleProduct.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element.images[0] : '../../../images/forcast.png');
+				singleProduct['images'][0] = ((singleProduct.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + data.images : '../../../images/forcast.png');
 
 				// singleProduct.seller_amount = "Kz " + separatorsWD(singleProduct.seller_amount)
 				// singleProduct.kepya_commission = "Kz " + separators(singleProduct.kepya_commission) + " (" + singleProduct.kepya_commission_percentage + "%)"
@@ -589,13 +589,11 @@ const addResponse = (req, res, columnAndValues) => {
 		
 	})
 };
-
 const add = (req, res) => {
 	if (req.body.product_category && req.body.title && req.body.product_variety_id && req.body.unit && req.body.unit_value && req.body.size && req.body.state_id && req.body.city_id && req.body.location) {
 		let dateIsAfter = moment(req.body.harvest_date).isAfter(moment());
 		let total_unit_price = req.body.total_unit_price;
 
-		console.log(req.body.unit_price + '-------')
 		let columnAndValues = {
 			user_id: req.session.user_id,
 			category_id: req.body.product_category,
@@ -608,10 +606,10 @@ const add = (req, res) => {
 			state_id: req.body.state_id,
 			city_id: req.body.city_id,
 			location: req.body.location,
-			unit_price: removePointerInCurrence(req.body.unit_price),
-			total_unit_price: parseFloat(total_unit_price),
+			unit_price: parseFloat(req.body.unit_price),
+			total_unit_price: removePointerInCurrence(total_unit_price),
 			harvest_date: new Date(req.body.harvest_date),
-			expire_date: moment(req.body.harvest_date).add(30, 'days'),
+			expire_date: moment(req.body.harvest_date).add(req.body.validate_days, 'days'),
 			product_type: (dateIsAfter) ? 'forecast' : 'available'
 		}
 
@@ -748,12 +746,10 @@ const add = (req, res) => {
 		}).sort({ order_number: 1 })
 	}
 };
-
 const remove = (req, res) => {
 	let columnsAndValue = { products: { $elemMatch: { product_id: req.params.id } } }
 	Order.find(columnsAndValue, { _id: 0 }, (error, orders) => {
 		if (orders.length > 0) {
-			console.log("orders - ", orders.length);
 			return res.end('0');
 		} else {
 			Product.findOne({ product_id: req.params.id }, { _id: 0, product_id: 1, images: 1 }, (err, singleProduct) => {
@@ -817,9 +813,10 @@ const display = (req, res) => {
 
 const editResponse = (req, res, columnAndValues, product_id) => {
 	Product.update({ product_id }, columnAndValues, function (err, response) {
-		return res.redirect('list');
+		return res.send({product_id: product_id})
 	})
 };
+
 
 const edit = (req, res) => {
 	if (req.body.product_id && req.body.product_category && req.body.title && req.body.product_variety_id && req.body.size && req.body.state_id && req.body.city_id && req.body.location) {
@@ -829,6 +826,7 @@ const edit = (req, res) => {
 				return res.redirect('list');
 			}
 
+			console.log(req.body.validate_days)
 			let imageArr = response.images;
 			let dateIsAfter = moment(req.body.harvest_date).isAfter(moment());
 			let columnAndValues = {
@@ -843,7 +841,7 @@ const edit = (req, res) => {
 				unit_price: parseFloat(req.body.unit_price),
 				total_unit_price: removePointerInCurrence(total_unit_price),
 				harvest_date: new Date(req.body.harvest_date),
-				expire_date: moment(req.body.expire_date),
+				expire_date: moment(req.body.harvest_date).add(req.body.validate_days, 'days'),
 				product_type: (dateIsAfter) ? 'forecast' : 'available'
 			}
 
@@ -972,7 +970,9 @@ const edit = (req, res) => {
 	} else {
 		return res.redirect('list');
 	}
-};
+};  
+
+
 const order = function (req, res) {
 	if (req.params.id) {
 		console.log("req.params.id", req.params.id);
@@ -993,7 +993,7 @@ const order = function (req, res) {
 
 					product = JSON.parse(JSON.stringify(product));
 					product.harvest_date = moment(product.harvest_date).format('YYYY-MM-DD');
-					product.total_unit_price = separators(product.total_unit_price);
+					product.total_unit_price = (product.total_unit_price);
 					_.each(product.images, (element, index, list) => {
 						product.images[index] = ((element) ? config.aws.prefix + config.aws.s3.productBucket + '/' + element : '../../../images/forcast.png');
 					})
@@ -1060,6 +1060,7 @@ const order = function (req, res) {
 		return res.redirect('list');
 	}
 };
+
 module.exports = {
 	add,
 	addResponse,

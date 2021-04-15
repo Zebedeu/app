@@ -12,7 +12,7 @@ var notificationLogSchema = new Schema({
     },
     user_type: {
         type: String,
-        enum: ['producers', 'aggregators', 'compradors', 'transporters'],
+        enum: ['producers', 'aggregators', 'compradors', 'transporters', 'trading'],
         default: 'producers'
     },
     user_id: {

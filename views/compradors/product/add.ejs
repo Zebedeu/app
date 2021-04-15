@@ -130,7 +130,7 @@
 							</div>
 						</div>
 
-						<!-- <div class="row">
+						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
@@ -161,7 +161,7 @@
 									<span class="validation-alert" id='err-location'></span>
 								</div>
 							</div>
-						</div> -->
+						</div>
 
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12" id="section_city_id">
@@ -264,29 +264,29 @@
 			$('#err-expire-date').hide();
 		}
 
-		// if (!$('#state_id').val()) {
-		// 	errStateFlag = 1;
-		// 	$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
-		// } else {
-		// 	errStateFlag = 0;
-		// 	$('#err-state-id').hide();
-		// }
+		if (!$('#state_id').val()) {
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
 
-		// if (!$('#city_id').val()) {
-		// 	errCityFlag = 1;
-		// 	$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
-		// } else {
-		// 	errCityFlag = 0;
-		// 	$('#err-city-id').hide();
-		// }
+		if (!$('#city_id').val()) {
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
 
-		// if (!$('#location').val()) {
-		// 	errLocationFlag = 1;
-		// 	$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
-		// } else {
-		// 	errLocationFlag = 0;
-		// 	$('#err-location').hide();
-		// }
+		if (!$('#location').val()) {
+			errLocationFlag = 1;
+			$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
+		} else {
+			errLocationFlag = 0;
+			$('#err-location').hide();
+		}
 
 		if (!$('#where_to_deliver_id').val()) {
 			errWhereToDeliverFlag = 1;
@@ -323,7 +323,7 @@
 		$.confirm({
 			title: 'Pedido publicado',
 			icon: 'fa fa-check',
-			content: 'O seu pedido ( #'+  product_id + ' ) foi adicionado com sucesso! <br> O seu produto será primeiro validado pela equipa Kepya antes de estar disponível para compra. Obrigado!',
+			content: 'O seu pedido ( #'+  product_id + ' ) foi adicionado com sucesso!',
 			type: 'kepya',
 			typeAnimated: true,
 			buttons: {

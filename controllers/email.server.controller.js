@@ -50,6 +50,7 @@ const send = (requestParams) => {
 	}
 	Setting.findOne({}, { _id: 0, website: 1, email_logo: 1, fb_url: 1, twitter_url: 1, instagram_url: 1, linkedin_url: 1, address: 1 }, (err, setting) => {
 		EmailTemplate.findOne({ code: requestParams.code }, { _id: 0, created_at: 0, updated_at: 0 }, (err, email_template) => {
+			console.log(email_template)
 			let from_name = email_template.from_name;
 			//let from_email = email_template.from_email;
 			let from_email = "agromplace@gmail.com";
@@ -83,6 +84,31 @@ const send = (requestParams) => {
 				description = description.replace('#TOTAL#', requestParams.total).replace('#TOTAL#', requestParams.total);
 				description = description.replace('#DELIVERY_DATE#', requestParams.delivery_date);
 				description = description.replace('#PRODUCTS#', requestParams.products);
+			} else if(requestParams.code == 'ORDER_STATUS'){
+				subject = subject.replace('#ORDER_ID#', requestParams.order_id);
+
+				if(requestParams.estado == 'empacotado'){
+					subject = subject.replace('foi #STATUS#', 'está pronto para a recolha');
+				    description = description.replace('foi #STATUS#', 'está pronto para a recolha');
+
+				}else{
+					subject = subject.replace('#STATUS#', requestParams.estado);
+				    description = description.replace('#STATUS#', requestParams.estado);
+
+				}
+				
+				description = description.replace('#ORDER_ID#', requestParams.order_id);
+				description = description.replace('#NAME#', requestParams.client_name);
+				description = description.replace('#PNAME#', requestParams.product);
+			
+				description = description.replace('#UNIT#', requestParams.unit);
+				description = description.replace('#VARIETY#', requestParams.product_variety);
+				description = description.replace('#SIZE#', requestParams.size);
+				description = description.replace('#QTY#', requestParams.qtd);
+				description = description.replace('#HARVEST#', requestParams.harvest);
+			
+				description = description.replace('#IMAGE#', (requestParams.images.length > 0) ? config.aws.prefix + config.aws.s3.productBucket + '/' + requestParams.images[0] : 'http://my.kepya.co.ao/images/forcast.png');
+
 			}
 
 			console.log(from_name);

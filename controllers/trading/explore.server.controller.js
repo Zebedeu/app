@@ -17,10 +17,16 @@ let SubCategory = require('mongoose').model('Sub_category');
 let Product = require('mongoose').model('Product');
 let Setting = require('mongoose').model('Setting');
 let User = require('mongoose').model('User');
-
 let tradingHandler = require('./trading-company.server.controller');
 let sortBy = require('lodash').sortBy;
 let labels = require('../../utils/labels.json');
+let MobileCountryCode = require('mongoose').model('Mobile_country_code');
+let CMS = require('mongoose').model('Cms');
+
+
+exports.toExplore = (req, res) => {
+	return res.redirect('/compradors/explore/list');
+} 
 
 exports.demand = function (req, res) {
 	Cart.count({ user_id: req.session.user_id }, (err, total_cart_products) => {
@@ -671,181 +677,202 @@ exports.saveSearch = async (req, res) => {
 };
 
 exports.details = function (req, res) {
+
 	User.findOne({ user_id: req.session.user_id }, { _id: 0, favourite_product_id: 1, recent_search_product_id: 1, over_margin: 1 }, (err, singleUser) => {
-		Product.aggregate([
-			{
-				$lookup:
-				{
-					from: 'categories',
-					localField: 'category_id',
-					foreignField: 'category_id',
-					as: 'categoryDetails'
-				}
-			}, {
-				"$unwind": "$categoryDetails"
-			}, {
-				$lookup:
-				{
-					from: 'sub_categories',
-					localField: 'sub_category_id',
-					foreignField: 'sub_category_id',
-					as: 'subCategoryDetails'
-				}
-			}, {
-				"$unwind": "$subCategoryDetails"
-			}, {
-				$lookup:
-				{
-					from: 'units',
-					localField: 'unit_type',
-					foreignField: 'unit_id',
-					as: 'unitDetails'
-				}
-			}, {
-				"$unwind": "$unitDetails"
-			}, {
-				$lookup:
-				{
-					from: 'sizes',
-					localField: 'size',
-					foreignField: 'size_id',
-					as: 'sizeDetails'
-				}
-			}, {
-				"$unwind": "$sizeDetails"
-			}, {
-				$lookup:
-				{
-					from: 'states',
-					localField: 'state_id',
-					foreignField: 'state_id',
-					as: 'statesDetails'
-				}
-			}, {
-				"$unwind": "$statesDetails"
-			}, {
-				$lookup:
-				{
-					from: 'users',
-					localField: 'user_id',
-					foreignField: 'user_id',
-					as: 'userDetails'
-				}
-			}, {
-				"$unwind": "$userDetails"
-			}, {
-				$match: {
-					product_id: req.params.id
-				},
-			}, {
-				"$project": {
-					_id: 0,
-					user_id: "$user_id",
-					user_name: "$userDetails.name",
-					category_title: "$categoryDetails.title",
-					sub_category_title: "$subCategoryDetails.title",
-					product_id: "$product_id",
-					product_type: "$product_type",
-					description: "$description",
-					unit_min_qty: "$unitDetails.min_qty",
-					unit_type: "$unitDetails.title",
-					unit_plural_title: "$unitDetails.plural_title",
-					unit_value: "$unit_value",
-					size: "$sizeDetails.title",
-					unit_price: "$unit_price",
-					remaining_unit_value: "$remaining_unit_value",
-					lower_price_range: "$lower_price_range",
-					higher_price_range: "$higher_price_range",
-					state_name: "$statesDetails.name",
-					expire_date: "$expire_date",
-					harvest_date: "$harvest_date",
-					images: "$images",
-					reviews: "$reviews",
-					location: "$location",
-					created_at: "$created_at",
-				}
-			},
-			{
-				$sort: { created_at: -1 }
-			}
-		], (err, products) => {
-			if (err || products.length == 0) {
-				return res.redirect('list');
-			}
-
-			let productObj = products[0];
-
-			var unit_price = productObj.unit_price;
-
-			unit_price = unit_price + (unit_price * singleUser.over_margin / 100);
-
-			productObj['unit_price'] = separators(unit_price);
-			productObj['remaining_unit_qty'] = separatorsWD(productObj.remaining_unit_value);
-			productObj['category'] = productObj.category_title;
-			productObj['sub_category'] = productObj.sub_category_title;
-			productObj['category_title'] = productObj.category_title[req.session.language || config.default_language_code];
-			productObj['sub_category_title'] = productObj.sub_category_title[req.session.language || config.default_language_code];
-			productObj['unit_type'] = productObj.unit_type[req.session.language || config.default_language_code];
-			productObj['unit_plural_title'] = productObj.unit_plural_title[req.session.language || config.default_language_code];
-			productObj['size'] = productObj.size[req.session.language || config.default_language_code];
-			productObj['description'] = productObj.description[req.session.language || config.default_language_code];
-			_.each(productObj.images, (element, index, list) => {
-				productObj['images'][index] = config.aws.prefix + config.aws.s3.productBucket + '/' + element;
-			})
-
-			if (productObj.images.length == 0) {
-				productObj['images'][0] = '../../../images/item-placeholder.png';
-			}
-
-			productObj.reviews = (productObj.reviews.length > 0) ? productObj.reviews.reverse() : [];
-			let totalRatings = 0, totalReview = 0;
-			_.each(productObj.reviews, (element_product, index_product, list_product) => {
-				if (element_product.rating) {
-					totalRatings += element_product.rating;
-					totalReview += 1;
-				}
-			})
-			productObj.average_ratings = Math.ceil(totalRatings / totalReview);
-			//productObj.is_favourite = (_.contains(singleUser.favourite_product_id, productObj.product_id)) ? 'yes' : 'no';
-			productObj.is_favourite = 'no';
-			if (moment(productObj.expire_date).isSameOrAfter(moment().format('YYYY-MM-DD'), 'day')) {
-				let startDate = moment(moment(productObj.expire_date).format('YYYY-MM-DD'));
-				let endDate = moment(moment().format('YYYY-MM-DD'));
-				let days = startDate.diff(endDate, 'days', true)
-				productObj['days'] = '- Expires in ' + days + ' days';
-			} else {
-				productObj['days'] = '';
-			}
-
-			productObj['expire_date'] = convert_date(productObj.expire_date, req.session.language);
-			productObj['harvest_date'] = convert_date(productObj.harvest_date, req.session.language);
-			productObj['share_description'] = labels['LBL_PRICE'][req.session.language] + '- Kz ' + productObj['unit_price'] + ' / ' + productObj['unit_type'] + ', ' + labels['LBL_QUANTITY'][req.session.language] + '- ' + productObj['remaining_unit_qty'] + ' ' + productObj['unit_type'] + ', ' + labels['LBL_LOCATION'][req.session.language] + '- ' + productObj['state_name'];
-
-			console.log(productObj['share_description']);
-			res.render('trading/explore/details', {
-				user: {
-					user_id: req.session.user_id,
-					name: req.session.name,
-					user_type: req.session.user_type,
-					login_type: req.session.login_type
-				},
-				layout: false,
-				product: productObj,
-				moment,
-				labels,
-				language: req.session.language || 'PT',
-				breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'PT')] + "</li>",
-				messages: req.flash('error') || req.flash('info'),
-				messages: req.flash('info')
-			});
-		})
-
-
+		if(singleUser) {
+		detailProduct(req, res, singleUser)
+		}else {
+			detailProduct(req, res)
+		}
 	})
 };
 
+const detailProduct = (req = null, res = null, singleUser = null) =>{
+	Product.aggregate([
+		{
+			$lookup:
+			{
+				from: 'categories',
+				localField: 'category_id',
+				foreignField: 'category_id',
+				as: 'categoryDetails'
+			}
+		}, {
+			"$unwind": "$categoryDetails"
+		}, {
+			$lookup:
+			{
+				from: 'sub_categories',
+				localField: 'sub_category_id',
+				foreignField: 'sub_category_id',
+				as: 'subCategoryDetails'
+			}
+		}, {
+			"$unwind": "$subCategoryDetails"
+		}, {
+			$lookup:
+			{
+				from: 'units',
+				localField: 'unit_type',
+				foreignField: 'unit_id',
+				as: 'unitDetails'
+			}
+		}, {
+			"$unwind": "$unitDetails"
+		}, {
+			$lookup:
+			{
+				from: 'sizes',
+				localField: 'size',
+				foreignField: 'size_id',
+				as: 'sizeDetails'
+			}
+		}, {
+			"$unwind": "$sizeDetails"
+		}, {
+			$lookup:
+			{
+				from: 'states',
+				localField: 'state_id',
+				foreignField: 'state_id',
+				as: 'statesDetails'
+			}
+		}, {
+			"$unwind": "$statesDetails"
+		}, {
+			$lookup:
+			{
+				from: 'users',
+				localField: 'user_id',
+				foreignField: 'user_id',
+				as: 'userDetails'
+			}
+		}, {
+			"$unwind": "$userDetails"
+		}, {
+			$match: {
+				product_id: req.params.id
+			},
+		}, {
+			"$project": {
+				_id: 0,
+				user_id: "$user_id",
+				user_name: "$userDetails.name",
+				category_title: "$categoryDetails.title",
+				sub_category_title: "$subCategoryDetails.title",
+				product_id: "$product_id",
+				product_type: "$product_type",
+				description: "$description",
+				unit_min_qty: "$unitDetails.min_qty",
+				unit_type: "$unitDetails.title",
+				unit_plural_title: "$unitDetails.plural_title",
+				unit_value: "$unit_value",
+				size: "$sizeDetails.title",
+				unit_price: "$unit_price",
+				remaining_unit_value: "$remaining_unit_value",
+				lower_price_range: "$lower_price_range",
+				higher_price_range: "$higher_price_range",
+				state_name: "$statesDetails.name",
+				expire_date: "$expire_date",
+				harvest_date: "$harvest_date",
+				images: "$images",
+				reviews: "$reviews",
+				location: "$location",
+				created_at: "$created_at",
+			}
+		},
+		{
+			$sort: { created_at: -1 }
+		}
+	], (err, products) => {
+		if (err || products.length == 0) {
+			return res.redirect('list');
+		}
 
+		let productObj = products[0];
 
+		var unit_price = productObj.unit_price;
+		var over_margin = !singleUser ? 0 : singleUser.over_margin 
+		unit_price = unit_price + (unit_price * over_margin / 100);
+
+		productObj['unit_price'] = separators(unit_price);
+		productObj['remaining_unit_qty'] = separatorsWD(productObj.remaining_unit_value);
+		productObj['category'] = productObj.category_title;
+		productObj['sub_category'] = productObj.sub_category_title;
+		productObj['category_title'] = productObj.category_title[req.session.language || config.default_language_code];
+		productObj['sub_category_title'] = productObj.sub_category_title[req.session.language || config.default_language_code];
+		productObj['unit_type'] = productObj.unit_type[req.session.language || config.default_language_code];
+		productObj['unit_plural_title'] = productObj.unit_plural_title[req.session.language || config.default_language_code];
+		productObj['size'] = productObj.size[req.session.language || config.default_language_code];
+		productObj['description'] = productObj.description[req.session.language || config.default_language_code];
+		_.each(productObj.images, (element, index, list) => {
+			productObj['images'][index] = config.aws.prefix + config.aws.s3.productBucket + '/' + element;
+		})
+
+		if (productObj.images.length == 0) {
+			productObj['images'][0] = '../../../images/item-placeholder.png';
+		}
+
+		productObj.reviews = (productObj.reviews.length > 0) ? productObj.reviews.reverse() : [];
+		let totalRatings = 0, totalReview = 0;
+		_.each(productObj.reviews, (element_product, index_product, list_product) => {
+			if (element_product.rating) {
+				totalRatings += element_product.rating;
+				totalReview += 1;
+			}
+		})
+		productObj.average_ratings = Math.ceil(totalRatings / totalReview);
+		//productObj.is_favourite = (_.contains(singleUser.favourite_product_id, productObj.product_id)) ? 'yes' : 'no';
+		productObj.is_favourite = 'no';
+		if (moment(productObj.expire_date).isSameOrAfter(moment().format('YYYY-MM-DD'), 'day')) {
+			let startDate = moment(moment(productObj.expire_date).format('YYYY-MM-DD'));
+			let endDate = moment(moment().format('YYYY-MM-DD'));
+			let days = startDate.diff(endDate, 'days', true)
+			productObj['days'] = '- Expires in ' + days + ' days';
+		} else {
+			productObj['days'] = '';
+		}
+
+		productObj['expire_date'] = convert_date(productObj.expire_date, req.session.language);
+		productObj['harvest_date'] = convert_date(productObj.harvest_date, req.session.language);
+		productObj['share_description'] = labels['LBL_PRICE'][req.session.language] + '- Kz ' + productObj['unit_price'] + ' / ' + productObj['unit_type'] + ', ' + labels['LBL_QUANTITY'][req.session.language] + '- ' + productObj['remaining_unit_qty'] + ' ' + productObj['unit_type'] + ', ' + labels['LBL_LOCATION'][req.session.language] + '- ' + productObj['state_name'];
+
+		// login 
+
+		MobileCountryCode.find({}, { _id: 0, mobile_country_code_id: 1, code: 1 }, (err, mobile_country_codes) => {
+			CMS.findOne({ code: 'TERMS_AND_CONDITIONS', user_type: 'producers' }, { _id: 0, cms_id: 1, title: 1, code: 1, description: 1 }, (err, cms_pages) => {
+				let tc_title = (cms_pages) ? cms_pages['title'][req.session.language || 'PT'] : '';
+				let tc_description = (cms_pages) ? cms_pages['description'][req.session.language || 'PT'] : '';
+
+		State.find({ status: 'active' }, { _id: 0, state_id: 1, name: 1 }, (err, states) => {
+			states = _.sortBy(states, function (item) { return item.name; })
+		
+		console.log(productObj['share_description']);
+		res.render('trading/explore/details', {
+			user: {
+				user_id: req.session.user_id,
+				name: req.session.name,
+				user_type: req.session.user_type,
+				login_type: req.session.login_type
+			},
+			layout: false,
+			product: productObj,
+			moment,
+			labels,
+			states,
+			mobile_country_codes,
+			tc_title,
+			tc_description,
+			language: req.session.language || 'PT',
+			breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "trading/dashboard'>" + labels['LBL_HOME'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'><a href='" + config.base_url + "trading/explore/list'>" + labels['LBL_EXPLORE'][(req.session.language || 'PT')] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_PRODUCT_DETAILS'][(req.session.language || 'PT')] + "</li>",
+			messages: req.flash('error') || req.flash('info'),
+			messages: req.flash('info')
+		});
+	});	
+});	
+});	
+})
+} 
 exports.cart = function (req, res) {
 	Cart.findOne({ user_id: req.session.user_id, product_id: req.body.product_id }, { _id: 0, cart_id: 1, product_id: 1, user_id: 1, qty: 1 }, (err, item) => {
 		if (item) {

@@ -77,12 +77,13 @@
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-12 col-xs-12">
-					 		<div class="search-container loginsecurity_detail security-box-height">
-					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>:</label>
-							    <p class='profile_bank_name'><%= user_info.bank_name %></p>
-							    <button class="main_btn2" onClick="getUserInfo('bank_name','<%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
-							</div>
-						</div>
+							<div class="search-container loginsecurity_detail security-box-height">
+							   <label class="my-1 mr-2"><%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>:</label>
+							   <p class='profile_doc'><%= user_info.bank_name %></p>
+							   <button class="main_btn2" onClick="getUserStateBank_Name_Info('<%=baseURL%>','bank_name','<%= labels['LBL_PRODUCER_USER_BANK_NAME'][language] %>','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC'][language] %>','<%= user_info.user_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+						   </div>
+					   </div>
+
 						<div class="col-md-4 col-sm-12 col-xs-12">
 					 		<div class="search-container loginsecurity_detail security-box-height">
 					        	<label class="my-1 mr-2"><%= labels['LBL_PRODUCER_USER_BANK_ACCOUNT_NO'][language] %>:</label>

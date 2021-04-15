@@ -29,4 +29,7 @@ module.exports = function(app) {
 	app.post('/clear-notifications', index.clearNotifications);
 	app.get('/note/:id', index.deleteNotifiy);
 
+	app.route('/faqs')
+	.get(index.faqs);
+
 };

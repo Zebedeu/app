@@ -34,6 +34,8 @@
                                                             <%= labels['LBL_WAITING'][language] %>
                                                        <% } else if(order.status == 'paid'){ %>
                                                             <%= labels['LBL_PAID'][language] %>
+                                                       <% }else { %>
+                                                            <%= labels['LBL_CANCELLED'][language] %>
                                                        <% } %>
                                                   </p>
                                              </div>
@@ -149,6 +151,7 @@
                                                             class="img-thumbnail img-sm"></div>
                                                   <figcaption class="media-body kp_myorder">
                                                        <h3><%= order['products'][j]['sub_category_title'] %></h3>
+                                                       <h4>#<%= order['products'][j]['product_id'] %></h4>
                                                        <h4><%= order['products'][j]['category_title'] %></h4>
                                                   </figcaption>
                                              </figure>
@@ -166,6 +169,8 @@
                                                        <%= labels['LBL_DELIVERED'][language] %>
                                                   <% } else if(order['products'][j]['shipment_status'] == 'waiting'){ %>
                                                        <%= labels['LBL_WAITING'][language] %>
+                                                  <% }else if(order.status == 'cancelled'){ %>
+                                                       <%= labels['LBL_CANCELLED'][language] %>
                                                   <% } %>
                                              </h4>
                                         </td>

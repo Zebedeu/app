@@ -376,6 +376,7 @@ exports.soldList = async (req, res) => {
 		// console.log("orders", orders[0].products);
 		_.each(orders, data => {
 			data.products = JSON.parse(JSON.stringify(data.products));
+			console.log(data)
 			_.each(data.products, singleProduct => {
 				singleProduct.buyer_info = data.buyer_info
 				singleProduct.order_id = data.order_id
@@ -613,7 +614,8 @@ exports.add = function (req, res) {
 			producer_id: req.body.producer_id,
 			product_type: 'forecast',
 			harvest_date: new Date(req.body.harvest_date),
-			location: req.body.location
+			expire_date: moment(req.body.harvest_date).add(req.body.validate_days, 'days'),
+ 			location: req.body.location
 		}
 
 		Language.find({ status: 'active' }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {
@@ -678,9 +680,7 @@ exports.add = function (req, res) {
 						columnAndValues['images'] = imageArr;
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
-							//res.end(response.product_id);
-							//console.log(response)
-							return res.redirect('order/'+response.product_id);
+							res.send({ product_id: response.product_id })
 						})
 					});
 				} else {
@@ -723,8 +723,7 @@ exports.add = function (req, res) {
 									columnAndValues['images'] = [url.substring(url.lastIndexOf('/') + 1)];
 									let productObj = new Product(columnAndValues);
 									productObj.save((err, response) => {
-										//res.end(response.product_id);
-										return res.redirect('list');
+										res.send({ product_id: response.product_id })
 									})
 								});
 							});
@@ -732,18 +731,14 @@ exports.add = function (req, res) {
 					} else {
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
-							res.end(response.product_id);
-							//console.log(err);
-							return res.redirect('list');
+							res.send({ product_id: response.product_id })
 						})
 					}
 				}
 			} else {
 				let productObj = new Product(columnAndValues);
 				productObj.save((err, response) => {
-					//res.end(response.product_id);
-					//console.log(err);
-					return res.redirect('list');
+					res.send({ product_id: response.product_id })
 				})
 			}
 		}).sort({ order_number: 1 })
@@ -934,6 +929,7 @@ exports.edit = function (req, res) {
 				city_id: req.body.city_id,
 				producer_id: req.body.producer_id,
 				harvest_date: new Date(req.body.harvest_date),
+				expire_date: moment(req.body.harvest_date).add(req.body.validate_days, 'days'),
 				location: req.body.location
 			}
 
@@ -997,7 +993,9 @@ exports.edit = function (req, res) {
 						}, function () {
 							columnAndValues['images'] = imageArr;
 							Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
-								return res.redirect('list');
+								//return res.redirect('list');
+								return res.send({ product_id: req.body.product_id })
+
 							})
 						});
 					} else {
@@ -1040,7 +1038,9 @@ exports.edit = function (req, res) {
 										imageArr.push(url.substring(url.lastIndexOf('/') + 1));
 										columnAndValues['images'] = imageArr;
 										Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
-											return res.redirect('list');
+											//return res.redirect('list');
+											return res.send({ product_id: req.body.product_id })
+
 										})
 									});
 								});
@@ -1049,14 +1049,18 @@ exports.edit = function (req, res) {
 						} else {
 							columnAndValues['images'] = imageArr;
 							Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
-								return res.redirect('list');
+								//return res.redirect('list');
+								return res.send({product_id: req.body.product_id})
+
 							})
 						}
 					}
 				} else {
 					columnAndValues['images'] = imageArr;
 					Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
-						return res.redirect('list');
+						//return res.redirect('list');
+						return res.send({product_id: req.body.product_id})
+
 					})
 				}
 			}).sort({ order_number: 1 })

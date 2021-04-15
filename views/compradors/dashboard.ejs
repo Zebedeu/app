@@ -356,7 +356,7 @@ $(document).ready(()=> {
 
     $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
     	//$('.total-purchase').text(result.response.total_sales);
-    	$('.total-purchase').text((result.response.total_purchase_products  > 1)? (result.response.total_purchase_products - 1): (result.response.total_purchase_products))
+    	$('.total-purchase').text((result.response.total_purchase_products  > 1) ? (result.response.total_purchase_products - 1): (result.response.total_purchase_products))
         $('.total-product-views').text(result.response.total_product_views);
         $('.total-favourite-products').text(result.response.total_favourite_products);
         $('.total-purchase-products').text(result.response.total_purchase_products);

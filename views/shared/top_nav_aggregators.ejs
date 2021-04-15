@@ -40,7 +40,7 @@
 				<nav class="menu">
 			    	<ul>
 			    		<li class="dropdown cart header-cart total_wallet_balance hide">
-							<h3 class="header-wallet wallet-top"> <i class="fa fa-plus-circle wallet-icon enable-cursor" onclick="addAmountInWallet('<%=baseURL%>')"></i> <span class='btn-wallet' onclick="redirectToWallet('<%=baseURL%>')" class="pointer"><%= labels['LBL_AMOUNT_IN_WALLET'][language] %> <span class="user_wallet_balance">0,00</span> Kz</span></h3>
+							<h3 class="header-wallet wallet-top"> <i class="fa fa-plus-circle wallet-icon enable-cursor" onclick="addAmountInWalletATM('<%=baseURL%>')"></i> <span class='btn-wallet' onclick="redirectToWallet('<%=baseURL%>')" class="pointer"><%= labels['LBL_AMOUNT_IN_WALLET'][language] %> <span class="user_wallet_balance">0,00</span> Kz</span></h3>
 						</li>
 						<!-- <li class="dropdown cart header-cart">
 							<a href="<%=baseURL%>chat" role="button" aria-expanded="false">
@@ -60,8 +60,13 @@
 </div>
 
 <script>
-	function addAmountInWallet(baseURL){
-	    $('#addAmountInWalletModal').modal('show');
+	$(document).ready(function(){
+		$.ajax({url: "<%=baseURL%>notification/get-total-user-notifications",  success: (result) => {
+			$('.notification_count').text(result);
+	    }});
+	})
+	function addAmountInWalletATM(baseURL){
+	    $('#addAmountInWalletATMModal').modal('show');
 	}
 
 </script>

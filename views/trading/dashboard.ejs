@@ -12,16 +12,29 @@
 				</div>
 			</a>
 		</li>
+
 		<li>
-			<a href="<%=baseURL%>trading/product/add">
-				<div class="account_box2">
-		        	<img src="../../../images/postadd.png">
-		        	<div class="account_box_inner2">
-			        	<h3><%= labels['LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND'][language] %></h3>
-		        	</div>
-				</div>
-			</a>
-		</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<div class="account_box2">
+						<img src="../../../images/open-box.png">
+						<div class="account_box_inner2">
+							<h3><%= labels['LBL_LIST_COMPRADOR_PEDIDO_MENU'][language] %></h3>
+							<b class="caret"></b>
+						</div>
+					</div>
+				</a>
+
+				<ul class="dropdown-menu my_account">
+					<li><a class="" href="<%=baseURL%>trading/product/add"><%= labels['LBL_TRADING_DASHBOARD_POST_YOUR_DEMAND'][language] %></a></li>
+					<li style="margin-top: -25px;" class=''><a class="" href="<%=baseURL%>trading/product/list"><%= labels['LBL_MENU_COMPRADOR_MANAGE_ORDERS'][language] %></a></li>
+				</ul>
+			</li>
+		
+	</li>
+
+
+
 		<li>
 			<a href="<%=baseURL%>trading/explore/list">
 				<div class="account_box2">
@@ -65,7 +78,7 @@
 	</div>
 </ul>
 
-	<section class="products">
+<section class="products" style="margin-bottom: -60px;">
 	<div class="container">
 
 		<div class="accordion js-accordion">
@@ -208,7 +221,7 @@
 	</div>
 </section>
 
-<section class="best_product products">
+<section class="best_product products" style="margin-bottom: -40px;">
 	<div class="container">
 		<div class="white_bg product_card">
 			<div class="row">
@@ -224,7 +237,7 @@
 		</div>
 	</div>
 </section>
-<section class="best_product products">
+<section class="best_product products" style="margin-bottom: -40px;">
 	<div class="container">
 		
 		<div class="white_bg product_card">
@@ -260,7 +273,7 @@
 	</div>
 </section>
 
-<section class="best_product products">
+<section class="best_product products" style="margin-bottom: -40px;">
 	<div class="container">
 		
 		<div class="white_bg product_card">
@@ -335,8 +348,7 @@ $(document).ready(()=> {
     }});
 
     $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
-    	//$('.total-purchase').text(result.response.total_purchase);
-    	$('.total-purchase').text(result.response.total_purchase_products);
+    	$('.total-purchase').text(result.response.total_purchase);
         $('.total-product-views').text(result.response.total_product_views);
         $('.total-favourite-products').text(result.response.total_favourite_products);
         $('.total-purchase-products').text(result.response.total_purchase_products);

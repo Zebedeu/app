@@ -14,8 +14,7 @@ let Size = require('mongoose').model('Size');
 let Product = require('mongoose').model('Product');
 let Setting = require('mongoose').model('Setting');
 let s3Manager = require('../utils/s3-manager');
-//let s3Handler = require('../../utils/s3-handler');
-//s3Handler = new s3Handler();
+let logger = require('../utils/logger');
 let labels = require('../utils/labels.json');
 let { separators } = require('../utils/formatter');
 const NodeGeocoder = require('node-geocoder');
@@ -1347,7 +1346,9 @@ exports.getSubCategory = function (req, res) {
 	);
 };
 
+
 exports.getVeriety = function (req, res) {
+	let validate_days;
 	let varietyStr =
 		"<option value=''>--- " +
 		labels['LBL_SELECT_VARIETY'][
@@ -1356,7 +1357,7 @@ exports.getVeriety = function (req, res) {
 		' ---</option>';
 	ProductVariety.find(
 		{ status: 'active', sub_category_id: req.query.sub_category_id },
-		{ _id: 0, product_variety_id: 1, title: 1 },
+		{ _id: 0, product_variety_id: 1, title: 1, validate_days: 1 },
 		(err, variety) => {
 			variety = _.sortBy(variety, function (item) {
 				return item
@@ -1368,8 +1369,11 @@ exports.getVeriety = function (req, res) {
 					req.query.product_variety_id ==
 					element.product_variety_id
 				) {
+
+					validate_days += element.validate_days;
+					
 					varietyStr +=
-						"<option ' value='" +
+						"<option data-validateday='"+element.validate_days+"' value='" +
 						element.product_variety_id +
 						"' selected>" +
 						element.title[
@@ -1378,8 +1382,10 @@ exports.getVeriety = function (req, res) {
 						] +
 						'</option>';
 				} else {
+
+					validate_days += element.validate_days;
 					varietyStr +=
-						"<option 'value='" +
+						"<option data-validateday='"+element.validate_days+"' value='" +
 						element.product_variety_id +
 						"'>" +
 						element.title[
@@ -1389,8 +1395,8 @@ exports.getVeriety = function (req, res) {
 						'</option>';
 				}
 			});
-
-			res.send({ response: varietyStr });
+			console.log(validate_days)
+			res.send({ response: varietyStr, validate_days: validate_days });
 		}
 	);
 };
@@ -1653,6 +1659,22 @@ exports.editDocUser = function (req, res) {
 	}
 };
 
+exports.editBankName = function (req, res ){
+	
+	let columnAndValues = {
+		bank_name: req.body.bank_name
+	}	
+
+	console.log(columnAndValues)
+	
+	User.update({ user_id: req.session.user_id }, columnAndValues, function (err, response) {
+		User.findOne({ user_id: req.session.user_id }, function (err, user) {
+			console.log(user);
+			res.end('1');
+			//return res.redirect('list');
+		})
+	})
+} 
 
 exports.validIdwallet_log_id = function (req, res) {
     console.log(req.query.wallet_log_id); 

@@ -571,6 +571,10 @@
 		"EN": "Edit",
 		"PT": "Editar"
 	},
+	"LBL_EDIT_BANK_NAME":{
+		"EN": "Edit",
+		"PT": "Escolher"
+	},
 	"LBL_DELETE": {
 		"EN": "Delete",
 		"PT": "Excluir"
@@ -1313,7 +1317,7 @@
 	},
 	"LBL_RECENTLY_NOT_ANY_ADD": {
 		"EN": "Recently you don't have any Add",
-		"PT": "Não adicionou produtos recentemente"
+		"PT": "Não tens nenhum produto registado"
 	},
 	"LBL_BTN_POST_ADD_NOE": {
 		"EN": "Add product",
@@ -1517,7 +1521,7 @@
 	},
 	"LBL_PRODUCER_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "Nome do banco"
+		"PT": "o banco"
 	},
 
 	"LBL_PRODUCER_USER_SELECT_BANK_NAME": {
@@ -1802,19 +1806,19 @@
 	},
 	"LBL_CHECK_YOUR_EMAIL_PLEASE_CHECK_YOUR_EMAIL": {
 		"EN": "Please Check Your Email",
-		"PT": "Por favor verifique seu email"
+		"PT": "Por favor verifique o seu email"
 	},
 	"LBL_CHECK_YOUR_EMAIL_FIRST_LINE_DESCRIPTION": {
 		"EN": "We sent an email to",
 		"PT": "Enviamos um email para"
 	},
 	"LBL_CHECK_YOUR_EMAIL_SECOND_LINE_DESCRIPTION": {
-		"EN": "Which contains a",
-		"PT": "Que contém um"
+		"EN": "which contains a",
+		"PT": "que contém um"
 	},
 	"LBL_CHECK_YOUR_EMAIL_THIRD_LINE_DESCRIPTION": {
 		"EN": "link to reset your Kepya password",
-		"PT": "link para redefinir sua senha do Kepya"
+		"PT": "link para redefinir a sua senha do Kepya"
 	},
 	"LBL_CHECK_YOUR_EMAIL_ALREADY_DONE": {
 		"EN": "Already Done",
@@ -1934,7 +1938,7 @@
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS": {
 		"EN": "My Orders",
-		"PT": "As minhas Compras"
+		"PT": "As minhas compras"
 	},
 	"LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -1982,7 +1986,7 @@
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS": {
 		"EN": "My Orders",
-		"PT": "As minhas encomendas"
+		"PT": "As minhas compras"
 	},
 	"LBL_TRADING_DASHBOARD_YOUR_ORDERS_DESCRIPTION": {
 		"EN": "Track, order list, or buy things again",
@@ -2234,7 +2238,7 @@
 	},
 	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_TITLE": {
 		"EN": "Order",
-		"PT": "Ordem"
+		"PT": "Pedidos"
 	},
 	"LBL_COMPRADOR_WALLET_DEDUCT_FOR_ORDER_DESCRIPTION": {
 		"EN": "Deducted Kz #AMOUNT# from your wallet for order #ORDER_ID#",
@@ -2394,7 +2398,7 @@
 	},
 	"LBL_COMPRADOR_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "Nome do banco"
+		"PT": "o banco"
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -2506,7 +2510,7 @@
 	},
 	"LBL_FARMER_USER_BANK_NAME": {
 		"EN": "Bank name",
-		"PT": "Nome do banco"
+		"PT": "o banco"
 	},
 	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_NAME": {
 		"EN": "Enter your bank name",
@@ -2746,7 +2750,7 @@
 	},
 	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS": {
 		"EN": "Ongoing Orders",
-		"PT": "Vendas em andamento"
+		"PT": "Pedidos em andamento"
 	},
 	"LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID": {
 		"EN": "Order ID",
@@ -2982,7 +2986,7 @@
 	},
 	"LBL_TRADING_DASHBOARD_RECOMMENDED_PRODUCTS": {
 		"EN": "Recommended Products",
-		"PT": "produtos recomendados"
+		"PT": "Produtos recomendados"
 	},
 	"LBL_PRODUCER_DASHBOARD_STATISTICS": {
 		"EN": "Statistics",
@@ -3832,6 +3836,9 @@
 	"LBL_PAID": {
 		"EN": "Paid",
 		"PT": "Pago"
+	},"LBL_CANCELLED": {
+		"EN": "Cancelled",
+		"PT": "Cancelado"
 	},
 	"LBL_TABLE_PROCESSING": {
 		"EN": "Processing...",

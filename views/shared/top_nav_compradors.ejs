@@ -95,6 +95,9 @@
 			$('.cart_count').text(result);
 			$('.total_cart_products').removeClass('hide').addClass('show');
 	    }});
+		$.ajax({url: "<%=baseURL%>notification/get-total-user-notifications",  success: (result) => {
+			$('.notification_count').text(result);
+	    }});
 	})
 
 	function addAmountInWalletATM(baseURL){

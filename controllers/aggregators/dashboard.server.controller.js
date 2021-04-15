@@ -44,7 +44,18 @@ exports.get_ongoing_orders = function (req, res) {
 				
 				element.address_info.locality + ', ' + element.address_info.city_district + ', ' + element.address_info.state
         
-				_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
+				_status = "";
+				if (element.status == 'paid') {
+					_status = (element.status == 'Paid') ? labels['LBL_PAID'][(req.session.language || config.default_language_code)] : labels['LBL_PAID'][(req.session.language || config.default_language_code)];
+				} else if (element.status == 'packed') {
+					_status = (element.status == 'packed') ? labels['LBL_PACKED'][(req.session.language || config.default_language_code)] : labels['LBL_PACKED'][(req.session.language || config.default_language_code)];
+				} else if (element.status == 'shipped') {
+					_status = (element.status == 'shipped') ? labels['LBL_SHIPPED'][(req.session.language || config.default_language_code)] : labels['LBL_SHIPPED'][(req.session.language || config.default_language_code)];
+				} else if (element.status == 'delivered') {
+					_status = (element.status == 'delivered') ? labels['LBL_DELIVERED'][(req.session.language || config.default_language_code)] : labels['LBL_DELIVERED'][(req.session.language || config.default_language_code)];
+				} else if (element.status == 'waiting') {
+					_status = (element.status == 'waiting') ? labels['LBL_WAITING'][(req.session.language || config.default_language_code)] : labels['LBL_WAITING'][(req.session.language || config.default_language_code)];
+				}
 				
 				tbl_ongoing_orders += "<tr class='"+ className +"'><td class='column_order_table' onClick=orderDetails('" + config.base_url + "','aggregators','" + element.order_id + "')>" + element.order_id + "</td><td>" + element.buyer_info.user_id + "</td><td>" + ordered_date + "</td><td>" + shipped_date + "</td><td>" + address + "</td><td>Kz " + separators(userProductsSum) + "</td><td style='text-transform:capitalize;'>" + _status + "</td></tr>";
 

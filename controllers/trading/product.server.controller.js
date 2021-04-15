@@ -289,7 +289,6 @@ exports.add = function(req, res) {
 
 		Language.find({ status: 'active' }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {
 			let descriptionObj = {};
-			console.log(req.body);
 			_.each(languages, (element, index, list) => {
 				let desc = 'description_'+element.code;
 				let descCode = (req.body[desc]) ? (req.body[desc]).trim() : '';
@@ -300,7 +299,8 @@ exports.add = function(req, res) {
 			columnAndValues['description'] = descriptionObj;
 			let productObj = new Product(columnAndValues);
 			productObj.save((err, response) => {
-				return res.redirect('list');
+				return res.send(response.product_id);
+
 			})
 		}).sort({ order_number : 1 })
 	} else {

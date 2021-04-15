@@ -134,7 +134,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- <div class="row">
+						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12" id="section_state_id">
 								<div class="search-container">
 									<label class="my-1 mr-2"><%= labels['LBL_STATE'][language] %></label>
@@ -164,7 +164,7 @@
 									<span class="validation-alert" id='err-location'></span>
 								</div>
 							</div>
-						</div> -->
+						</div>
 
 						
 						<div class="row">
@@ -183,14 +183,10 @@
 							</div>
 						</div>
 						<div class="row" id="btn-add-new-address">
-							<div class="col-md-12 col-sm-12 col-xs-12">
-								<a href="javascript:void(0);" id="addNewProduct"
-									style="color: blue;text-decoration:underline;">+
+							<a class="product-address-button btn-wallet" href="javascript:void(0);" id="addNewProduct"
+									style="color: #fff;;margin-top: 8px; margin-left: 11px; padding: 1%; font-size: 16px;">+
+
 									<%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 col-sm-12 col-xs-12">
 								<button type="button" class="main_btn post-add-now"
 									onclick="submitPost()"><%= labels['LBL_SAVE_CHANGES'][language] %></button>
 								<div class="lds-facebook" style="display:none">
@@ -270,29 +266,29 @@
 			$('#err-expire-date').hide();
 		}
 
-		// if (!$('#state_id').val()) {
-		// 	errStateFlag = 1;
-		// 	$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
-		// } else {
-		// 	errStateFlag = 0;
-		// 	$('#err-state-id').hide();
-		// }
+		if (!$('#state_id').val()) {
+			errStateFlag = 1;
+			$('#err-state-id').text("<%= labels['LBL_SELECT_STATE_VALIDATION'][language] %>").show();
+		} else {
+			errStateFlag = 0;
+			$('#err-state-id').hide();
+		}
 
-		// if (!$('#city_id').val()) {
-		// 	errCityFlag = 1;
-		// 	$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
-		// } else {
-		// 	errCityFlag = 0;
-		// 	$('#err-city-id').hide();
-		// }
+		if (!$('#city_id').val()) {
+			errCityFlag = 1;
+			$('#err-city-id').text("<%= labels['LBL_SELECT_CITY_VALIDATION'][language] %>").show();
+		} else {
+			errCityFlag = 0;
+			$('#err-city-id').hide();
+		}
 
-		// if (!$('#location').val()) {
-		// 	errLocationFlag = 1;
-		// 	$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
-		// } else {
-		// 	errLocationFlag = 0;
-		// 	$('#err-location').hide();
-		// }
+		if (!$('#location').val()) {
+			errLocationFlag = 1;
+			$('#err-location').text("<%= labels['LBL_ENTER_LOCATION'][language] %>").show();
+		} else {
+			errLocationFlag = 0;
+			$('#err-location').hide();
+		}
 
 		if (!$('#where_to_deliver_id').val()) {
 			errWhereToDeliverFlag = 1;

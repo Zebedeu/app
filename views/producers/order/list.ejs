@@ -65,7 +65,9 @@
 																		 <%= labels['LBL_WAITING'][language] %>
 																	<% }else if(orders[i]['status'] == 'paid'){ %>
 																		<%= labels['LBL_PAID'][language] %>
-																   <% }%>
+																    <% }else if(orders[i]['status'] == 'cancelled'){ %>
+																		<%= labels['LBL_CANCELLED'][language] %>
+																    <% }%>
 															   </p>
 
 															</div>
@@ -114,6 +116,7 @@
 														<div class="img-wrap"><img src="<%= orders[i]['products'][j]['images'][0] %>" class="img-thumbnail img-sm"></div>
 														<figcaption class="media-body kp_myorder">
 															<h3><%= orders[i]['products'][j]['sub_category_title'] %></h3>
+															<h4>#<%= orders[i]['products'][j]['product_id'] %></h4>
 															<h4><%= orders[i]['products'][j]['category_title'] %></h4>
 														</figcaption>
 													</figure>

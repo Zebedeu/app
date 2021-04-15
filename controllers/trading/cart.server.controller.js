@@ -149,6 +149,7 @@ exports.list = async (req, res) => {
 
 	// console.log('Formated: '+separators(total), 'No formated: '+total);
 
+
 	res.render('trading/cart/list', {
 		user: {
 			user_id: req.session.user_id,

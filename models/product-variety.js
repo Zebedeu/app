@@ -18,6 +18,11 @@ var productVarietySchema = new Schema({
         type: Object,
         default:{}
     },
+
+    validate_days: {
+        type: String,
+        default:'30'
+    }, 
     status: {
         type: String,
         enum: ['active', 'inactive']

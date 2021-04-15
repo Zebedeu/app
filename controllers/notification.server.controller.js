@@ -11,6 +11,7 @@ let NotificationLog = require('mongoose').model('Notification_log');
 exports.list = function(req, res) {
 
 	NotificationLog.find({ user_id: req.session.user_id }, { _id: 0, notification_log_id: 1, title: 1, description: 1, created_at: 1 }, (err, logs) => {
+		console.log(" +++++++++++++++++++ "+logs)
 		logs = JSON.parse(JSON.stringify(logs));
 		_.each(logs, (element, index, list) => {
 			logs[index]['title'] = element.title[req.session.language || config.default_language_code];
@@ -42,3 +43,13 @@ exports.remove = function(req, res) {
 	})
 };
 
+exports.getTotaUserlNotifications = (req, res) => {
+	console.log(req.session.user_id);
+	NotificationLog.count(
+		{ user_id: req.session.user_id },
+		(err, total_user_notifications) => {
+			console.log(total_user_notifications);
+			res.send(total_user_notifications.toString());
+		}
+	);
+};

@@ -160,9 +160,10 @@
                               <fieldset class="transport-section">
                                    <div class="row">
                                         <div class="col-md-12 mb-sm--20">
-                                             <a style="padding-top: 14px;font-size: 16px;color: #000;right: 18px;top: -25px;"
+                                             <a class="cart-address-button btn-wallet"
                                                   href="javascript:void(0);" id="addNewProduct" class="sell_btn">+
                                                   <%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+                                             <h3><%= labels['LBL_DO_YOU_NEED_TRANSPORTATION'][language] %></h3>
                                         </div>
 
                                         <div class="col-md-6">
@@ -302,8 +303,6 @@
                                                                                 <div></div>
                                                                                 <div></div>
                                                                            </div>
-                                                                           <p style="color: rgb(247, 35, 44);margin-top: 15px;"
-                                                                                id="wallet-caption"></p>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -316,6 +315,14 @@
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
                                                                       <div class="col-md-12">
+                                                                           <p style="margin-top: 15px;"
+                                                                           id="atm-reference-caption33">
+                                                                           <% if( wallet > total ){ %>
+                                                                                <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
+                                                                           <% } else { %>
+                                                                                <%= labels['LBL_COMPRADOR_ATM_DESCRIBE_IF_NOT_WALLET'][language] %>
+                                                                                <% }  %>      </p>                                                                            
+                                                                           
                                                                            <a href="javascript:void(0)"><button
                                                                                      type="button" name="add-to-cart"
                                                                                      class="add-to-cart-btn button btn-cart btn-atm-reference"
@@ -327,8 +334,6 @@
                                                                                 <div></div>
                                                                                 <div></div>
                                                                            </div>
-                                                                           <p style="color: rgb(247, 35, 44);margin-top: 15px;"
-                                                                                id="atm-reference-caption"></p>
                                                                       </div>
                                                                  </div>
                                                             </div>
@@ -341,33 +346,47 @@
                                                             </div>
                                                             <div class="accordion-body js-accordion-body">
                                                                  <div class="row">
-                                                                      <div class="col-md-12">
-                                                                           <div class="search-container">
-                                                                                <p><%= labels['LBL_ACCOUNT_NO'][language] %>
-                                                                                     : <span id='account_no'></p>
-                                                                           </div>
-                                                                      </div>
-                                                                      <div class="col-md-12">
-                                                                           <div class="search-container">
-                                                                                <p><%= labels['LBL_CODE'][language] %> :
-                                                                                     <span id='account_code'></p>
-                                                                           </div>
-                                                                      </div>
-                                                                      <div class="col-md-12">
-                                                                           <div class="search-container">
-                                                                                <p><%= labels['LBL_TRADING_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME'][language] %>
-                                                                                     : <span
-                                                                                          id="account_company_name"></span>
+                                                                      <% if( wallet > total ){ %>
+                                                                           <p style="margin-top: 15px; margin-left: 10px;"
+                                                                           id="atm-reference-caption33">
+                                                                                <%= labels['LBL_COMPRADOR_IF_WALLET'][language] %>
+                                                                           </p>
+     
+                                                                           <% } else { %>
+                                                                                <p style="margin-top: 15px; margin-left: 10px;"
+                                                                                id="atm-reference-caption33">
+                                                                                <%= labels['LBL_COMPRADOR_ACCOUNT_DESCRIBE_IF_NOT_WALLET'][language] %>
                                                                                 </p>
+                                                                               
+                                                                           <div class="col-md-12">
+                                                                                <div class="search-container">
+                                                                                     <p style="margin-left: 20px;"><%= labels['LBL_ACCOUNT_NO'][language] %>
+                                                                                          : <span id='account_no'></p>
+                                                                                </div>
                                                                            </div>
-                                                                      </div>
+                                                                           <div class="col-md-12">
+                                                                                <div class="search-container">
+                                                                                     <p style="margin-left: 20px;"><%= labels['LBL_CODE'][language] %> :
+                                                                                          <span id='account_code'></p>
+                                                                                </div>
+                                                                           </div>
+                                                                           <div class="col-md-12">
+                                                                                <div class="search-container">
+                                                                                     <p style="margin-left: 20px;"><%= labels['LBL_TRADING_CHECKOUT_PAYMENT_OPTION_COMPANY_NAME'][language] %>
+                                                                                          : <span
+                                                                                               id="account_company_name"></span>
+                                                                                     </p>
+                                                                                </div>
+                                                                           </div>
+                                                                           <% }  %>
+                                                                         
                                                                       <div class="col-md-12">
                                                                            <div class="search-container">
                                                                                 <a href="javascript:void(0)"><button
                                                                                           type="button"
                                                                                           name="add-to-cart"
                                                                                           class="add-to-cart-btn button btn-cart btn-bank"
-                                                                                          onclick="placeOrder('bank','place_order')"><%= labels['LBL_ORDER_NOW'][language] %></button></a>
+                                                                                          onclick="placeOrder('bank','place_order')" ><%= labels['LBL_ORDER_NOW'][language] %></button></a>
 
                                                                                 <div class="lds-facebook"
                                                                                      style="display:none">
@@ -375,9 +394,6 @@
                                                                                      <div></div>
                                                                                      <div></div>
                                                                                 </div>
-                                                                                <p style="color: rgb(247, 35, 44);margin-top: 15px;"
-                                                                                     id="payment-from-the-bank-caption">
-                                                                                </p>
                                                                            </div>
                                                                       </div>
                                                                  </div>
@@ -528,9 +544,9 @@
           ajax_cart_product_arr = cart_product_arr;
           total += transport_fees;
 
-          $('.cart-tax').text('' + thousands_separators(transport_fees)+ ' Kz');
-          $('.cart-total').text('' + thousands_separators(total)+ ' Kz');
-          $('.cart-subtotal').text('' + thousands_separators(subtotal)+ ' Kz');
+          $('.cart-tax').text(thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text( thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text( thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
           saveCart();
      }
@@ -567,9 +583,9 @@
           }
 
           total += transport_fees;
-          $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
-          $('.cart-total').text( + thousands_separators(total)+ ' Kz');
-          $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
+          $('.cart-tax').text( thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text( thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text( thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
           saveCart();
      }
@@ -596,9 +612,9 @@
           console.log('da:',ajax_cart_product_arr);
 
           total += transport_fees;
-          $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
-          $('.cart-total').text( + thousands_separators(total)+ ' Kz');
-          $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
+          $('.cart-tax').text( thousands_separators(transport_fees)+ ' Kz');
+          $('.cart-total').text( thousands_separators(total)+ ' Kz');
+          $('.cart-subtotal').text( thousands_separators(subtotal)+ ' Kz');
           manageATMBankOption(total);
      }
 
@@ -640,10 +656,10 @@
      }
 
      function placeOrder(payment_type, type) {
-          if (payment_type == 'atm_reference') {
+          /*if (payment_type == 'atm_reference') {
                alert('Payment gateway is under development');
                return false;
-          }
+          }*/
 
           $(".order_now_other").attr("disabled", true);
           $(".order_now").attr("disabled", true);
@@ -651,9 +667,37 @@
           $(".lds-facebook").show();
           transport_fees = ($('input[name="transport-needed"]:checked').val() == 'yes') ? transport_fees : 0;
           $.post("<%=baseURL%>trading/checkout/" + type, { payment_type, address_id: ((transportNeeded == 'yes') ? ajax_address_id : ''), transport_fees }).done(function (data) {
-               window.location.href = "<%=baseURL%>trading/thanks/list/" + data.order_id;
+               notificacao(data.order_id, payment_type, data.reference, data.amount)
+               //window.location.href = "<%=baseURL%>trading/thanks/list/" + data.order_id;
           });
      }
+
+     function notificacao(order_id,payment_type,reference, amount) {
+          var mensage = '<p style = "font-size:18px;"> A sua compra #' + order_id + ' foi realizada com sucesso!</p>';
+          if (payment_type == 'atm_reference') {
+               mensage = '<p style="font-size:16px;"> A sua compra #' + order_id + ' foi realizada com sucesso! ' +
+                             ' Por favor efectue o pagamento utilizando os seguintes dados:</p>' +
+                        '<p style="margin-bottom:1px; margin-left: 20px; font-size:14px;"><b>Entidade:</b> 00229</p>' +
+                        '<p style="margin-bottom:1px; margin-left: 20px;font-size:14px; font-weight:bold">Referência: ' + reference + '</p>' +
+                        '<p style="margin-bottom:0px; margin-left: 20px;font-size:14px; font-weight:bold">Valor: ' + amount + ' Kz</p>'
+          }
+		$.confirm({
+			title: '',
+			content: mensage,
+			type: 'kepya',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Ok',
+					btnClass: 'kepya-green',
+					action: function () {
+                              window.location.href = "<%=baseURL%>trading/order/list";
+					}
+				}
+			}
+		});
+	}
+
 
      function manageATMBankOption(total_cart_amount) {
           if (wallet_balance >= total_cart_amount) {
@@ -725,18 +769,18 @@
           var needTransport = $("input[name='transport-needed']:checked").val();
           console.log("needTransport", needTransport)
           if (needTransport == "no") {
-               $('.cart-tax').text( + thousands_separators(0)+ ' Kz');
-               $('.cart-total').text( + thousands_separators(subtotal)+ ' Kz');
-               $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
+               $('.cart-tax').text( thousands_separators(0)+ ' Kz');
+               $('.cart-total').text( thousands_separators(subtotal)+ ' Kz');
+               $('.cart-subtotal').text( thousands_separators(subtotal)+ ' Kz');
                manageATMBankOption(subtotal);
 
                transportNeeded = "no";
                flag = true;
                $("input[name='address_radio']").prop("checked", false);
           } else {
-               $('.cart-tax').text( + thousands_separators(transport_fees)+ ' Kz');
-               $('.cart-total').text( + thousands_separators(subtotal + transport_fees)+ ' Kz');
-               $('.cart-subtotal').text( + thousands_separators(subtotal)+ ' Kz');
+               $('.cart-tax').text( thousands_separators(transport_fees)+ ' Kz');
+               $('.cart-total').text( thousands_separators(subtotal + transport_fees)+ ' Kz');
+               $('.cart-subtotal').text( thousands_separators(subtotal)+ ' Kz');
                manageATMBankOption(subtotal + transport_fees);
                transportNeeded = "yes";
                flag = true;

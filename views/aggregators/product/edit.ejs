@@ -6,7 +6,7 @@
 		</div>
 		<div class="product_card">
 			<div class="help_sidebar_right">
-				<form id="frm-edit-product" action="<%=baseURL%>aggregators/product/edit" method="post" enctype="multipart/form-data">
+				<form id="frm-edit-product" action="" method="post" enctype="multipart/form-data">
 					<input class="custom_input" type="hidden" placeholder="" value="<%= product.product_id %>" id="product_id" name="product_id">
 					<div class="row order-list-title">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -72,6 +72,7 @@
 								    <select class="select_plug product_variety_id" id="product_variety_id" name="product_variety_id">
 										<option value="">--- <%= labels['LBL_SELECT_VARIETY'][language] %> ---</option>
 									</select>
+									<input type="hidden" id="validateday_imput" name="validate_days">
 									<span class="validation-alert" id='err-product-variety-id'></span>
 								</div>
 							</div>
@@ -331,11 +332,35 @@
 		}
 	}
 
+	function editarProduto(){
+        var url = '<%=baseURL%>aggregators/product/edit'; 
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $('#frm-edit-product').serialize(),
+            dataType: "JSON",
+                success: function (data){
+					showAlert("Produto #"  + data.product_id + " actualizado com sucesso!");
+					setTimeout(() => {
+						hideAlert()
+						window.location.href = "<%=baseURL%>aggregators/product/list"
+					}, 3000);
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+					showAlert("Erro ao actualizar o produto!");
+					setTimeout(() => {
+						hideAlert()
+						window.location.href = "<%=baseURL%>aggregators/product/list"
+					}, 3000);
+                }
+        });
+    }
+
 	function submitPost(){
 		if(validatePost()){
 			$(".post-add-now").attr("disabled", true);
 			$(".lds-facebook").show();
-			$('#frm-edit-product').submit()
+			editarProduto();
 		}
 	}
 
@@ -348,5 +373,9 @@
 		getSizes('<%=baseURL%>', '<%= product.size %>');
 		getStates('<%=baseURL%>', '<%= product.state_id %>');
 		getCities('<%=baseURL%>', '<%= product.city_id %>', '<%= product.state_id %>');
+	});
+	$("#product_variety_id").change(function () {
+		var prop = $("#product_variety_id option:selected").data("validateday");
+		$("#validateday_imput").val(prop);
 	});
 </script>

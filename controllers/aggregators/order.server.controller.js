@@ -11,6 +11,11 @@ let Order = require('mongoose').model('Order');
 let pushTemplate = require('mongoose').model('Push_template');
 let notificationLog = require('mongoose').model('Notification_log');
 
+let Unit = require('mongoose').model('Unit');
+let Size = require('mongoose').model('Size');
+let smsManager = require('../../utils/sms-manager');
+let emailController = require('../email.server.controller');
+
 let Language = require('mongoose').model('Language');
 let labels = require('../../utils/labels.json');
 let { getMonthDateRange } = require('../../utils/date');
@@ -467,13 +472,14 @@ exports.details = function (req, res) {
           }
      );
 };
-
+/*
 exports.changeShipmentStatus = function (req, res) {
      console.log("req.params.id", req.params.id)
      console.log("req.params.productID", req.params.productID)
-
+     columnAndValues['status'] = 'packed';
      Order.findOneAndUpdate(
-          { order_id: req.params.id, products: { $elemMatch: { shipment_id: req.params.productID } } }, { $set: { "products.$.shipment_status": 'packed' } },
+          { order_id: req.params.id, products: { $elemMatch: { shipment_id: req.params.productID } } }, columnAndValues,
+        //  { order_id: req.params.id, products: { $elemMatch: { shipment_id: req.params.productID } } }, { $set: { "products.$.shipment_status": 'packed' } },
           { _id: 0 },
           (err, singleOrder) => {
                let user_ids = [];
@@ -488,6 +494,73 @@ exports.changeShipmentStatus = function (req, res) {
                res.end(JSON.stringify({ status: "200" }));
           }
      );
+};*/
+
+exports.changeShipmentStatus = function (req, res) {
+     console.log("req.params.id", req.params.id)
+     console.log("req.params.productID", req.params.productID)
+
+     let _title = { EN: 'Kepya', PT: 'Kepya' };
+     let _description = {
+          EN: 'O produto #' + req.params.productID + ' foi embalado.',
+          PT: 'O produto #' + req.params.productID + ' foi embalado.'
+     };
+
+     let sellerCaption = "O pedido " + req.params.id + " está embalado.";
+     let phone_number = 0;
+     let notificationLogData = {}
+
+     Order.findOne({ order_id: req.params.id }, (err, singleOrder) => {
+          Product.findOne({ product_id: req.params.productID }, (err, product) => {
+               console.log(product);
+               console.log(product.description.PT);
+               Unit.findOne({ unit_id: product.unit_type }, (err, unit) => {
+                    console.log(unit.title.PT);
+                    ProductVariety.findOne({ product_variety_id: product.product_variety_id }, (err, product_variety) => {
+                         console.log(product_variety.title.PT);
+                         Size.findOne({ size_id: product.size }, (err, size) => {
+                              console.log(size.title.PT);
+                              User.findOne({ user_id: singleOrder.buyer_info.user_id }, (err, user) => {
+                                   console.log(user)
+                                   notificationLogData = [];
+                                   notificationLogData = {
+                                        notification_log_id: `${moment().unix()}${Math.floor((Math.random() * 99) + 11)}`,
+                                        user_id: singleOrder.buyer_info.user_id,
+                                        user_type: user.user_type,
+                                        title: _title,
+                                        description: _description,
+                                   };
+                                   phone_number = (user.mobile_country_code + user.phone_number);
+                                   if (!singleOrder) {
+                                        res.end(JSON.stringify({ status: "200" }));
+                                        return;
+                                   }
+                                   let totalPackedProductsArr = _.where(singleOrder.products, { shipment_status: "packed" });
+                                   let columnAndValues = {
+                                        "products.$.shipment_status": 'packed'
+                                   };
+                                   if ((totalPackedProductsArr.length + 1) == singleOrder.products.length) {
+                                        columnAndValues['status'] = 'packed';
+                                   }
+
+                                   let notificationUser = new notificationLog(notificationLogData);
+                                   notificationUser.save((err, response) => {
+                                        smsManager.sendSMS({ message: sellerCaption, mobile: phone_number });
+                                        emailController.send({
+                                             language: (req.session.language || 'PT'), code: 'ORDER_STATUS', estado: 'empacotado', email: user.email, order_id: req.params.id, client_name: (user.first_name + ' ' + user.last_name),
+                                             product: product.description.PT, unit: unit.title.PT, product_variety: product_variety.title.PT, size: size.title.PT, qtd: product.unit_value + " " + unit.title.PT, harvest: moment(product.harvest_date).format('DD/MM/YYYY'), images: product.images
+                                        });
+                                   });
+                                   Order.update({ order_id: req.params.id, products: { $elemMatch: { shipment_id: req.params.productID } } }, columnAndValues, function (err, response) {
+                                        res.end(JSON.stringify({ status: "200" }));
+                                        return;
+                                   })
+                              })
+                         })
+                    })
+               })
+          })
+     })
 };
 
 

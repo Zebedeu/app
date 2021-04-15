@@ -283,9 +283,9 @@ exports.add = function(req, res) {
 			expire_date: new Date(req.body.expire_date),
 			period: req.body.period,
 			where_to_deliver_id: req.body.where_to_deliver_id,
-			// state_id: req.body.state_id,
-			// city_id: req.body.city_id,
-			// location: req.body.location,
+			state_id: req.body.state_id,
+			city_id: req.body.city_id,
+			location: req.body.location,
 			status: 'approved'
 		}
 
@@ -409,9 +409,9 @@ exports.edit = function(req, res) {
 				expire_date: new Date(req.body.expire_date),
 				period: req.body.period,
 				where_to_deliver_id: req.body.where_to_deliver_id,
-				// state_id: req.body.state_id,
-				// city_id: req.body.city_id,
-				// location: req.body.location
+				state_id: req.body.state_id,
+				city_id: req.body.city_id,
+				location: req.body.location
 			}
 
 			Language.find({ status: 'active' }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {

@@ -96,7 +96,7 @@ exports.profile = function(req, res){
 			}
 
 			let userInfo = response[0];
-			userInfo['user_type'] = labels['LBL_SIGN_UP_USER_COMPRADORS'][req.session.language];
+			userInfo['user_type'] = labels['LBL_SIGN_UP_USER_TRADING'][req.session.language];
 			passwordHandler.decrypt(userInfo.password, (decPin) => {
 				userInfo.password = (userInfo.password ? decPin : '');
 				userInfo.display_password = userInfo.password.replace(/./g, "*");
@@ -127,7 +127,7 @@ exports.profile = function(req, res){
 				City.findOne({ city_id: userInfo['city_id'] }, { _id: 0, name: 1 }, (err, cityInfo) => {
 					userInfo['state_name'] = stateInfo ? stateInfo['name'] : '';
 					userInfo['city_name'] = cityInfo ? cityInfo['name'] : '';
-					userInfo['user_type'] = labels['LBL_SIGN_UP_USER_COMPRADORS'][req.session.language];
+					userInfo['user_type'] = labels['LBL_SIGN_UP_USER_TRADING'][req.session.language];
 					passwordHandler.decrypt(userInfo.password, (decPin) => {
 						userInfo.password = (userInfo.password ? decPin : '');
 						userInfo.display_password = userInfo.password.replace(/./g, "*");
