@@ -164,7 +164,8 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 padding-right">
 									<div class="search-container form-group">
-									    <input type="text" id="txt-email-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_EMAIL'][language] %>" required="">
+									    <input type="text" id="txt-email-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_EMAIL'][language] %>" >
+									    <input type="hidden" id="txt-email2-address" name="emailFack" class="form-control" >
 									    <span class="validation-alert" id='err-email-address'></span>
 									</div>
 								</div>
@@ -346,7 +347,7 @@
 
 		errEmailAddressFlag = validateEmailAddress($('#txt-email-address').val());
 		if(errEmailAddressFlag > 0){
-			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL'][language] %>";
+			caption = (errEmailAddressFlag == 1) ? " " : "<%= labels['LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL'][language] %>";
 			$('#err-email-address').text(caption).show();
 		} else {
 			$('#err-email-address').hide();
@@ -395,7 +396,7 @@
 			$('#err-confirm-password').hide();
 		}
 
-		if(!errFirstNameFlag && !errLastNameFlag && !errCompanyNameFlag && !errEmailAddressFlag && !errProvince && !errPhoneNumber && !errPassword && !errConfirmPassword){
+		if(!errFirstNameFlag && !errLastNameFlag && !errCompanyNameFlag && !errProvince && !errPhoneNumber && !errPassword && !errConfirmPassword){
 			return true;
 		} else {
 			return false;
@@ -403,8 +404,17 @@
 	}
 
 	function submitSignUp(){
+
+		var email = ''
+		if( $('#txt-email-address').val()){
+			email =  $('#txt-email-address').val()
+		} else{
+			var name = $('#txt-firstname').val() + '.' + $('#txt-firstname').val()
+			email =$('#txt-email2-address').val(name  + '.kepya@gmail.com')
+		} 
+
 		if(validateSignUp()){
-			signUp({ type: 'email', email: $('#txt-email-address').val(), mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#txt-phone-number').val() });
+			signUp({ type: 'email', mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#txt-phone-number').val() });
 		}
 	}
 

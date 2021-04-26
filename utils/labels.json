@@ -1051,6 +1051,10 @@
 		"EN": "Email id not exists",
 		"PT": "Esse email não existe"
 	},
+	"LBL_EMAIL_AND_PHONE_ID_NOT_EXIST": {
+		"EN": "Email id not exists",
+		"PT": "Esse email ou telefone não existe"
+	},
 	"LBL_INVALID_PASSWORD": {
 		"EN": "Your password is invalid",
 		"PT": "A sua password é invalida"
@@ -1552,6 +1556,10 @@
 		"EN": " Kepya - AGRO MARKETPLACE, SA. All rights reserved.",
 		"PT": " Kepya - AGRO MARKETPLACE, SA. Todos os direitos reservados"
 	},
+	"LBL_SIGN_IN_EMAIL_PHONE": {
+		"EN": "Email",
+		"PT": "Email ou Telefone"
+	},
 	"LBL_SIGN_IN_EMAIL": {
 		"EN": "Email",
 		"PT": "Email"
@@ -1708,9 +1716,21 @@
 		"EN": "Enter email address",
 		"PT": "Insira o endereço de e-mail"
 	},
+	"LBL_SIGN_IN_VALIDATE_BLANK_EMAIL_AND_PHONE": {
+		"EN": "Enter email address",
+		"PT": "Insira o endereço de e-mail ou do telefone"
+	},
 	"LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL": {
 		"EN": "Enter correct email address",
-		"PT": "Digite o endereço de e-mail correto"
+		"PT": "Digite o endereço de e-mail ou número do telefone correcto"
+	},
+	"LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL_PHONE": {
+		"EN": "Enter correct email address",
+		"PT": "Digite o endereço de e-mail ou número do telefone correcto"
+	},
+	"LBL_SIGN_IN_VALIDATE_FORMAT_PHONE": {
+		"EN": "Enter phone number",
+		"PT": "Digite o número de telefone"
 	},
 	"LBL_SIGN_IN_VALIDATE_BLANK_PASSWORD": {
 		"EN": "Enter password",
@@ -1722,7 +1742,7 @@
 	},
 	"LBL_SIGN_UP_VALIDATE_FORMAT_FULL_NAME": {
 		"EN": "Enter correct full name",
-		"PT": "Digite o nome completo correto"
+		"PT": "Digite o nome completo correcto"
 	},
 	"LBL_SIGN_UP_VALIDATE_BLANK_EMAIL": {
 		"EN": "Enter email address",
@@ -1730,7 +1750,7 @@
 	},
 	"LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL": {
 		"EN": "Enter correct email address",
-		"PT": "Digite o endereço de e-mail correto"
+		"PT": "Digite o endereço de e-mail correcto"
 	},
 	"LBL_SIGN_UP_VALIDATE_BLANK_PROVINCE": {
 		"EN": "Select province",
@@ -1774,7 +1794,7 @@
 	},
 	"LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
 		"EN": "Enter your correct IBAN no",
-		"PT": "Digite seu IBAN correto "
+		"PT": "Digite seu IBAN correcto "
 	},
 	"LBL_FORGOT_PASSWORD_TITLE": {
 		"EN": "Enter your email address and we'll send you a link to reset your password",
@@ -1802,7 +1822,7 @@
 	},
 	"LBL_FORGOT_PASSWORD_VALIDATE_FORMAT_EMAIL": {
 		"EN": "Enter correct email address",
-		"PT": "Digite o endereço de e-mail correto"
+		"PT": "Digite o endereço de e-mail correcto"
 	},
 	"LBL_CHECK_YOUR_EMAIL_PLEASE_CHECK_YOUR_EMAIL": {
 		"EN": "Please Check Your Email",
@@ -2114,7 +2134,7 @@
 	},
 	"LBL_PRODUCT_REVIEW_VALIDATE_CORRECT_EMAIL": {
 		"EN": "Enter correct email address",
-		"PT": "Digite o endereço de e-mail correto"
+		"PT": "Digite o endereço de e-mail correcto"
 	},
 	"LBL_PRODUCT_REVIEW_SUBMIT": {
 		"EN": "Submit",
@@ -2410,7 +2430,7 @@
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
 		"EN": "Enter your correct IBAN no",
-		"PT": "Digite seu IBAN correto "
+		"PT": "Digite seu IBAN correcto "
 	},
 	"LBL_COMPRADOR_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",
@@ -2434,7 +2454,7 @@
 	},
 	"LBL_TRADING_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
 		"EN": "Enter your correct IBAN no",
-		"PT": "Digite seu IBAN correto "
+		"PT": "Digite seu IBAN correcto "
 	},
 	"LBL_TRADING_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",
@@ -2522,7 +2542,7 @@
 	},
 	"LBL_FARMER_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO": {
 		"EN": "Enter your correct IBAN no",
-		"PT": "Digite seu IBAN correto "
+		"PT": "Digite seu IBAN correcto "
 	},
 	"LBL_FARMER_LOGIN_SECURITY_NIF": {
 		"EN": "NIF",

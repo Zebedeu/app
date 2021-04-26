@@ -16,6 +16,7 @@ let config = require('../../config/config');
 let _ = require('underscore');
 let Cart = require('mongoose').model('Cart');
 let moment = require('moment');
+let axios = require('axios');
 
 exports.welcome = function (req, res) {
 	res.render('welcome', {
@@ -49,12 +50,22 @@ exports.render = function (req, res) {
 		req.session.language = config.default_language_code;
 	}
 
-	if (req.body.email && req.body.password) {
+	if (req.body.phoneNumberAndEmail && req.body.password) {
 		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
-			let email = req.body.email.trim();
-			let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
+			let email_or_phone = req.body.phoneNumberAndEmail.trim();
+			let regEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
 
-			User.findOne({ email: regexEmail }, { _id: 0, user_id: 1, first_name: 1, last_name: 1, user_type: 1, password: 1, status: 1, over_margin: 1 }, (err, response) => {
+			var emailAndPhone= '';
+			if( regEmail.test(email_or_phone) == true ){
+
+				let regexEmail = new RegExp(['^', email_or_phone, '$'].join(''), 'i');
+				emailAndPhone = { email: regexEmail }
+			} else{
+				console.log('phone')
+				emailAndPhone = { phone_number: email_or_phone }
+			} 
+
+			User.findOne( emailAndPhone, { _id: 0, user_id: 1, first_name: 1, last_name: 1, user_type: 1, password: 1, status: 1, over_margin: 1 }, (err, response) => {
 				if (response && response.status == 'active' && response.password == encPin) {
 					req.session.user_id = response.user_id;
 					req.session.name = response.first_name;
@@ -86,14 +97,24 @@ exports.render = function (req, res) {
 };
 
 exports.authenticate = function (req, res) {
-	if (req.body.type == 'email' && req.body.email && req.body.password) {
-		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
-			let email = req.body.email.trim();
-			let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
+	if (req.body.type == 'email' && req.body.phoneNumberAndEmail && req.body.password) {
 
-			User.findOne({ email: regexEmail }, { _id: 0, user_id: 1, first_name: 1, email: 1, user_type: 1, password: 1, mobile_country_code: 1, phone_number: 1, status: 1, is_verify_mobile: 1 }, (err, response) => {
+			let email_or_phone = req.body.phoneNumberAndEmail.trim();
+
+			passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
+			let regEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+
+			var emailAndPhone= '';
+			if( regEmail.test(email_or_phone) == true ){
+				let regexEmail = new RegExp(['^', email_or_phone, '$'].join(''), 'i');
+				emailAndPhone = { email: regexEmail }
+			} else{
+				emailAndPhone = { phone_number: email_or_phone }
+			} 
+
+			User.findOne( emailAndPhone , { _id: 0, user_id: 1, first_name: 1, email: 1, user_type: 1, password: 1, mobile_country_code: 1, phone_number: 1, status: 1, is_verify_mobile: 1 }, (err, response) => {
 				if (!response) {
-					res.send({ code: 404, message: `${labels['LBL_EMAIL_ID_NOT_EXIST'][(req.session.language || 'PT')]}`, user_type: '' });
+					res.send({ code: 404, message: `${labels['LBL_EMAIL_AND_PHONE_ID_NOT_EXIST'][(req.session.language || 'PT')]}`, user_type: '' });
 				} else if (response.status == 'inactive') {
 					res.send({ code: 406, message: `${labels['LBL_YOUR_ACCOUNT_INACTIVE'][(req.session.language || 'PT')]}`, user_type: response.user_type });
 				} else if (response.password != encPin) {
@@ -243,8 +264,10 @@ exports.getMobileCountryCode = function (req, res) {
 
 exports.checkEmailExist = function (req, res) {
 	console.log('call checkEmailExist');
-	if (req.body.type == 'email' && req.body.email && req.body.mobile_country_code && req.body.phone_number) {
-		let email = req.body.email.trim();
+	if (req.body.type == 'email' &&  req.body.mobile_country_code && req.body.phone_number) {
+
+		let email = req.body.email ? req.body.email.trim() : req.body.emailFack
+		 
 		let regexEmail = new RegExp(['^', email, '$'].join(''), 'i');
 		let columnAndValues = { email: regexEmail };
 
@@ -463,13 +486,22 @@ exports.submitVerifyOTP = function (req, res) {
 	}
 };
 
+const odoo_register = ( url, params) => {
+	axios.post(url, params)
+	.then(function (response) {
+
+	})
+	  .catch(function (error) {
+		console.log(error);
+	  });
+} 
 exports.signUp = function (req, res) {
-	if (req.body.first_name && req.body.last_name && req.body.email && req.body.province && req.body.city && req.body.mobile_country_code && req.body.phone_number && req.body.password && req.body.users && req.body.type) {
+	if (req.body.first_name && req.body.last_name && req.body.province && req.body.city && req.body.mobile_country_code && req.body.phone_number && req.body.password && req.body.users && req.body.type) {
 		passwordHandler.encrypt(req.body.password.toString(), (encPin) => {
 			let userObject = {
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
-				email: req.body.email,
+				email: req.body.email || req.body.emailFack,
 				type: req.body.type,
 				company_name: req.body.company_name || '',
 				password: encPin,
@@ -480,6 +512,35 @@ exports.signUp = function (req, res) {
 				user_type: req.body.users
 			}
 
+			City.find({ city_id: req.body.city }, { _id: 0, city_id: 1, name: 1 }, (err, cities) => {
+				
+				State.find({ state_id: req.body.province }, { _id: 0, state_id: 1, name: 1 }, (err, states) => {
+				var cite = [], state = [];
+
+				cities.forEach( (item, value)  => {
+					cite.push({name: item.name })
+				})
+
+					states.forEach( (item, value)  => {
+						state.push({name: item.name })
+					})
+
+				// odoo_register('http://localhost:5000/client/',  
+				// {
+				// 	name: req.body.first_name,
+				// 	email: req.body.email,
+				// 	city: cite[0].name,
+				// 	phone: req.body.phone_number,
+				
+				// })
+			
+			
+				});
+	
+			});
+			
+			
+			
 			let userObj = new User(userObject);
 			userObj.save((err, response) => {
 				Sms_template.findOne({ code: 'VERIFY_MOBILE_NO' }, { _id: 0, sms_template_id: 1, title: 1, code: 1, value: 1 }, (err, sms) => {

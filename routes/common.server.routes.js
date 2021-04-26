@@ -37,6 +37,7 @@ module.exports = function (app) {
 		authenticate_compradors,
 		common.getUserAddress
 	);
+
 	app.post('/edit_address', authenticate_compradors, common.editAddress);
 	app.post('/add-product-review', common.addProductReview);
 

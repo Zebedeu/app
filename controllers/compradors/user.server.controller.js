@@ -5,6 +5,7 @@ let config = require('../../../config/config');
 let User = require('mongoose').model('User');
 let passwordHandler = require('../../utils/password-handler');
 let labels = require('../../utils/labels.json');
+let axios = require('axios');
 
 
 exports.toDashboard = (req, res) => {
@@ -106,6 +107,19 @@ exports.profile = function(req, res){
 				userInfo.password = (userInfo.password ? decPin : '');
 				userInfo.display_password = userInfo.password.replace(/./g, "*");
 
+					odoo_register('http://localhost:5000/client/'+userInfo.user_id,  
+					{
+						name: userInfo.first_name,
+						email: userInfo.email,
+						city: userInfo.city_name,
+						phone: userInfo.phone_number,
+						vat: userInfo.nif,
+					
+					}	
+				)
+				
+				
+
 				res.render('compradors/user/profile', {
 					user: {
 						user_id: req.session.user_id,
@@ -137,6 +151,17 @@ exports.profile = function(req, res){
 						userInfo.password = (userInfo.password ? decPin : '');
 						userInfo.display_password = userInfo.password.replace(/./g, "*");
 
+						// odoo_register('http://localhost:5000/client/'+userInfo.user_id,  
+						// {
+						// 	name: userInfo.first_name,
+						// 	email: userInfo.email,
+						// 	city: userInfo['city_name'],
+						// 	phone: userInfo.phone_number,
+						// 	vat: userInfo.nif,
+						
+						// })
+					
+
 						res.render('compradors/user/profile', {
 							user: {
 								user_id: req.session.user_id,
@@ -161,6 +186,16 @@ exports.profile = function(req, res){
 	}
 };
 
+
+const odoo_register = ( url, params) => {
+	axios.put(url, params)
+	.then(function (response) {
+			console.log(response)
+	})
+	  .catch(function (error) {
+		console.log(error);
+	  });
+} 
 exports.address = function(req, res) {
 	User.findOne({ user_id: req.session.user_id }, { _id: 0, user_id: 1, email: 1, addresses: 1 }, (err, response) => {
 		res.render('compradors/user/address', {

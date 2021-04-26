@@ -38,8 +38,8 @@
 					<div class="col-md-12 col-sm-12 form">
 						<form id="frm-sign-in" action="/" method="post">
 							<div class="form-group">
-							    <input type="text" id="txt-email-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL'][language] %>" required="">
-							    <span class="validation-alert" id='err-email-address'></span>
+								<input type="text" id="txt-phoneAndEmail-address" name="phoneNumberAndEmail" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL_PHONE'][language] %>" required="">
+							    <span class="validation-alert" id='err-phoneEmailCheck-address'></span>
 							</div>
 							<div class="form-group">
 							    <input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_PASSWORD'][language] %>" required="">
@@ -70,15 +70,33 @@
 <script src='js/validation.js'></script>
 <script type="text/javascript">
 	let emailAddress = '', password = '';
-	let errEmailAddressFlag = 0, errPassword = 0;
+	let errEmailAddressFlag = 0, errPassword = 0, errPhoneAndEmailAddressFlag = 0;
+
 	function validateSignIn(){
-		errEmailAddressFlag = validateEmailAddress($('#txt-email-address').val());
-		if(errEmailAddressFlag > 0){
-			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL'][language] %>";
-			$('#err-email-address').text(caption).show();
+
+		errPhoneAndEmailAddressFlag = validateEmailAndPhoneAddress($('#txt-phoneAndEmail-address').val());
+
+		if(errPhoneAndEmailAddressFlag > 0){
+			caption = (errPhoneAndEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL_AND_PHONE'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL_PHONE'][language] %>";
+			$('#err-phoneEmailCheck-address').text(caption).show();
 		} else {
-			$('#err-email-address').hide();
+			$('#err-phoneEmailCheck-address').hide();
 		}
+
+		if(!errPhoneAndEmailAddressFlag && !errPassword){
+			return true;
+		} else {
+			return false;
+		}
+			
+		// errEmailAddressFlag = validateEmailAddress($('#txt-email-address').val());
+
+		// if(errEmailAddressFlag > 0){
+		// 	caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL'][language] %>";
+		// 	$('#err-email-address').text(caption).show();
+		// } else {
+		// 	$('#err-email-address').hide();
+		// }
 
 		if(!$('#txt-password').val()){
 			errPassword = 1;
@@ -97,13 +115,13 @@
 
 	function submitSignIn(){
 		if(validateSignIn()){
-			signIn({ type: 'email', email: $('#txt-email-address').val(), password: $('#txt-password').val() });
+			signIn({ type: 'email', phoneNumberAndEmail: $('#txt-phoneAndEmail-address').val(), password: $('#txt-password').val() });
 		}
 	}
 
 	function signIn(obj){
 		$.post('authenticate', obj).done((response) => {
-			console.log(response);
+
 			console.log("Test.. auth...")
 			if(parseInt(response.code) == 200){
 				if(obj.type == 'email'){
