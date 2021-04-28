@@ -28,6 +28,8 @@ let logger = require('../../utils/logger');
 let path = require('path');
 let fs = require('fs');
 let __ = require('lodash');
+let smsManager = require('../../utils/sms-manager');
+
 
 // filter list
 const filterList = (req, res) => {
@@ -343,6 +345,7 @@ const list = (req, res) => {
 		}
 	})
 };
+
 const soldList = async (req, res) => {
 
 	let categoryArr = [];
@@ -427,6 +430,7 @@ const soldList = async (req, res) => {
 		}
 	});
 };
+
 const unsoldList = async (req, res) => {
 	let unitData = await Unit.find({}, {});
 
@@ -584,6 +588,9 @@ const unsoldList = async (req, res) => {
 const addResponse = (req, res, columnAndValues) => {
 	let productObj = new Product(columnAndValues);
 	productObj.save((err, response) => {
+		const sellerCaption = 'Foi adicionado um produto com o id ' + response.product_id;
+		const phone_number = '+244925273096';
+		smsManager.sendSMS({ message: sellerCaption, mobile:phone_number });
 		//return res.send({product_id: response.product_id})
 		return res.redirect('order/'+response.product_id)
 		

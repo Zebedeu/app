@@ -597,18 +597,47 @@ exports.placeOrder = async (req, res) => {
                                    });
 
                                    if (req.body.payment_type == 'atm_reference') {
-                                        axios.post('http://18.229.213.198:2000/references', {
-                                             SOURCE_ID: response.order_id,
-                                             CUSTOMER_NAME: singleUser.first_name,
+                                
+                                        const today = moment();
+                                        const nextData = today.add(settingInfo.atm_reference_days, 'days');
+                                        const end_date = nextData.format('YYYY-MM-DD');
+
+                                        let referenceObj = new Reference({
+                                             user_type: req.session.user_type,
+                                             user_id: req.session.user_id,
+                                             source_id: generateReference(),
+                                             customer_name: singleUser.first_name,
                                              email: singleUser.email,
-                                             PHONE_NUMBER: singleUser.phone_number,
-                                             AMOUNT: (total + parseFloat(req.body.transport_fees)),
-                                             START_DATE: moment().format('YYYY-MM-DD'),
-                                             END_DATE: moment(moment().format('YYYY-MM-DD'), "YYYY-MM-DD").add(settingInfo.atm_reference_days, 'days')
-                                        }).then((atmRes) => {
-                                             Order.update({ order_id: response.order_id }, { atm_reference_response: atmRes.data }, function (err, update_response) {
-                                                  res.send({ code: 200, order_id: response.order_id });
-                                             });
+                                             phone_number: singleUser.phone_number,
+                                             amount: (total + parseFloat(req.body.transport_fees)),
+                                             start_date: moment().format('YYYY-MM-DD'),
+                                             end_date: end_date,
+                                             atm_reference_response: {}
+                                        });
+                                       
+                                        referenceObj.save((err, reference) => {
+                                             console.log(reference);
+                                             axios.post('http://18.229.213.198:2000/references', {
+                                                  SOURCE_ID: response.order_id,
+                                                  CUSTOMER_NAME: singleUser.first_name,
+                                                  email: singleUser.email,
+                                                  PHONE_NUMBER: singleUser.phone_number,
+                                                  AMOUNT: (total + parseFloat(req.body.transport_fees)),
+                                                  START_DATE: moment().format('YYYY-MM-DD'),
+                                                  END_DATE: end_date
+                                             }).then((atmRes) => {
+                                                  console.log(atmRes.data)
+                                                  Order.update({ order_id: response.order_id }, { atm_reference_response: atmRes.data }, function (err, update_response) {
+                                                       console.log(update_response);
+                                                       Reference.update({ reference_id: reference.reference_id}, { $set: { atm_reference_response: atmRes.data } }, function (err, update_reference) {
+                                                            console.log(update_reference);
+                                                            Order.findOne({ order_id: response.order_id }, function (err, order) {
+                                                                 console.log(order);
+                                                                 res.send({ code: 200, order_id: order.order_id, reference: atmRes.data.REFERENCE, amount:atmRes.data.AMOUNT});
+                                                            })
+                                                       })
+                                                  });
+                                             })
                                         })
                                    } else {
                                         res.send({ code: 200, order_id: response.order_id });

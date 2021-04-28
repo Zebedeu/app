@@ -157,7 +157,9 @@
                                    <button type="button" style="margin: 20px 15px 20px;"
                                         class="next button btn-cart"><%= labels['LBL_CONTINUE'][language] %></button>
                               </fieldset>
+
                               <fieldset class="transport-section">
+
                                    <div class="row">
                                         <div class="col-md-12 mb-sm--20">
                                              <a class="cart-address-button btn-wallet"
@@ -166,15 +168,12 @@
                                              <h3><%= labels['LBL_DO_YOU_NEED_TRANSPORTATION'][language] %></h3>
                                         </div>
 
-                                        <div class="col-md-6">
-                                             <div class="my_orders">
-
+                                        <div class="col-md-6"> 
+                                             <div class="my_orders">                                                  
                                                   <div class="order_header">
                                                        <div class="row">
-                                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                                 <h3><%= labels['LBL_DO_YOU_NEED_TRANSPORTATION'][language] %>
-                                                                 </h3>
-                                                                 <div style="display: inline-block;padding: 10px;"
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">                                                                
+                                                                 <div style="display: inline-block;padding-top:3px;"
                                                                       class="funkyradio">
                                                                       <div class="funkyradio-primary mar10">
                                                                            <input checked="" type="radio"
@@ -184,7 +183,7 @@
                                                                                 for="radio13"><%= labels['LBL_YES'][language] %></label>
                                                                       </div>
                                                                  </div>
-                                                                 <div style="display: inline-block;padding: 10px;"
+                                                                 <div style="display: inline-block;padding-top:3px;"
                                                                       class="funkyradio">
                                                                       <div class="funkyradio-primary mar10">
                                                                            <input type="radio" name="transport-needed"
@@ -200,11 +199,11 @@
                                              </div>
                                         </div>
 
-
                                         <div id="address-list">
                                              <div class="col-md-6">
                                                   <div class="row">
-                                                       <% for(let i=0; i < addresses.length; i++) { %>
+                                                       <% for(let i=0; i < addresses.length; i++) {
+                                                            let address_id = addresses[i]['address_id'];%>
                                                             <div class="col-md-12">
                                                                  <div class="my_orders">
                                                                       <div class="order_header">
@@ -220,7 +219,7 @@
                                                                                                     class="address_radio">
                                                                                                <label
                                                                                                     for="radio_<%= addresses[i]['address_id'] %>"
-                                                                                                    onClick="setAddressType('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_USE_THIS'][language] %></label>
+                                                                                                    onClick="setAddressType('<%= address_id %>')" ><%= labels['LBL_USE_THIS'][language] %></label>
                                                                                           </div>
                                                                                      </div>
                                                                                 </div>
@@ -256,12 +255,14 @@
                                                   </div>
                                              </div>
                                             
-                                        </div>
+                                        </div>     
                                    </div>
+
+
                                    <button type="button" style="margin: 20px 0px 20px 15px;"
                                         class="previous button btn-cart btn-back"
                                         section="transport"><%= labels['LBL_BACK'][language] %></button>
-                                   <button style="margin:20px 15px 20px; 0px" type="button" class="button btn-cart"
+                                   <button style="margin:20px 15px 20px;" type="button" class="button btn-cart"
                                         id="deliverHere"><%= labels['LBL_CONTINUE'][language] %></button>
                               </fieldset>
                               

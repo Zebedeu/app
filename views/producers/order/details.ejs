@@ -31,7 +31,7 @@
                                                        <% } else if(order.status == 'delivered'){ %>
                                                             <%= labels['LBL_DELIVERED'][language] %>
                                                        <% } else if(order.status == 'waiting'){ %>
-                                                            <%= labels['LBL_WAITING'][language] %>
+                                                            <%= labels['LBL_RESERVED'][language] %>
                                                        <% } else if(order.status == 'paid'){ %>
                                                             <%= labels['LBL_PAID'][language] %>
                                                        <% }else { %>
@@ -41,13 +41,13 @@
                                              </div>
                                              <% if(order['payment_type'] == 'atm_reference'){ %>
                                              <% if(order['atm_reference_response']['TIME_LEFT']){ %>
-                                             <div class="inline">
-                                                  <h6><%= labels['LBL_TIME_LEFT'][language] %></h6>
-                                                  <p style="text-transform: capitalize !important;">
-                                                       <%= order['atm_reference_response']['TIME_LEFT'] %></p>
-                                             </div>
+                                                  <!-- <div class="inline">
+                                                       <h6><%= labels['LBL_TIME_LEFT'][language] %></h6>
+                                                       <p style="text-transform: capitalize !important;">
+                                                            <%= order['atm_reference_response']['TIME_LEFT'] %></p>
+                                                  </div> -->
                                              <% } %>
-                                             <div class="inline">
+                                             <!-- <div class="inline">
                                                   <h6><%= labels['LBL_ENTITY_ID'][language] %></h6>
                                                   <p style="text-transform: capitalize !important;">
                                                        <%= order['atm_reference_response']['ENTITY_ID'] %></p>
@@ -61,7 +61,7 @@
                                                   <h6><%= labels['LBL_WALLET_AMOUNT'][language] %></h6>
                                                   <p style="text-transform: capitalize !important;">
                                                        <%= order['atm_reference_response']['AMOUNT'] %></p>
-                                             </div>
+                                             </div> -->
                                              <% } %>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12 align_right hide">

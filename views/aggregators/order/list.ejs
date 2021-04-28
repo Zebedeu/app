@@ -47,10 +47,10 @@
 																<h6><%= labels['LBL_ORDER_ID'][language] %></h6>
 																<p><%= orders[i]['order_id'] %></p>
 															</div>
-															<div class="inline">
+															<!-- <div class="inline">
 																<h6><%= labels['LBL_AGGREGATOR_YOUR_ORDER_CLIENT_ID'][language] %></h6>
 																<p><%= orders[i]['buyer_info']['user_id'] %></p>
-															</div>
+															</div> -->
 															<div class="inline">
 																<h6><%= labels['LBL_STATUS'][language] %></h6>
 																<p style="text-transform: capitalize !important;">                                                                                                           
@@ -61,7 +61,7 @@
 																	<% } else if(orders[i]['status'] == 'delivered'){ %>
 																		 <%= labels['LBL_DELIVERED'][language] %>
 																	<% } else if(orders[i]['status'] == 'waiting'){ %>
-																		 <%= labels['LBL_WAITING'][language] %>
+																		 <%= labels['LBL_RESERVED'][language] %>
 																	<% }else if(orders[i]['status'] == 'paid'){ %>
 																		<%= labels['LBL_PAID'][language] %>
 																   <% }%>
@@ -69,10 +69,10 @@
 															</div>
 															<% if(orders[i]['payment_type'] == 'atm_reference'){ %>
 																<% if(orders[i]['atm_reference_response']['TIME_LEFT']){ %>
-																	<div class="inline">
+																	<!-- <div class="inline">
 																		<h6><%= labels['LBL_TIME_LEFT'][language] %></h6>
 																		<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['TIME_LEFT'] %></p>
-																	</div>
+																	</div> -->
 																<% } %>
 																<!-- <div class="inline">
 																	<h6><%= labels['LBL_ENTITY_ID'][language] %></h6>

@@ -27,6 +27,7 @@ let imagemagick = require('imagemagick');
 let path = require('path');
 let fs = require('fs');
 let __ = require('lodash');
+let smsManager = require('../../utils/sms-manager');
 
 exports.filterList = function (req, res) {
 	let sortColumnAndValues = {}, filterColumnAndValues = { user_id: req.session.user_id };
@@ -364,6 +365,7 @@ exports.list = function (req, res) {
 		}
 	})
 };
+
 exports.soldList = async (req, res) => {
 	let categoryArr = [];
 	Order.find({ 'products.user_info.user_id': { $in: [req.session.user_id] } }, (error, orders) => {
@@ -443,6 +445,7 @@ exports.soldList = async (req, res) => {
 		}
 	});
 };
+
 exports.unsoldList = async (req, res) => {
 	let unitData = await Unit.find({}, {});
 
@@ -595,6 +598,7 @@ exports.unsoldList = async (req, res) => {
 		}
 	})
 };
+
 exports.add = function (req, res) {
 	if (req.body.product_category && req.body.title && req.body.product_variety_id && req.body.unit && req.body.unit_value && req.body.total_unit_price && req.body.size && req.body.unit_price && req.body.state_id && req.body.city_id && req.body.location) {
 		let total_unit_price = req.body.total_unit_price;
@@ -615,7 +619,7 @@ exports.add = function (req, res) {
 			product_type: 'forecast',
 			harvest_date: new Date(req.body.harvest_date),
 			expire_date: moment(req.body.harvest_date).add(req.body.validate_days, 'days'),
- 			location: req.body.location
+			location: req.body.location
 		}
 
 		Language.find({ status: 'active' }, { _id: 0, language_id: 1, code: 1, title: 1 }, (err, languages) => {
@@ -680,6 +684,9 @@ exports.add = function (req, res) {
 						columnAndValues['images'] = imageArr;
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
+							const sellerCaption = 'Foi adicionado um produto com o id ' + response.product_id;
+							const phone_number = '+244925273096';
+							smsManager.sendSMS({ message: sellerCaption, mobile: phone_number });
 							res.send({ product_id: response.product_id })
 						})
 					});
@@ -731,6 +738,9 @@ exports.add = function (req, res) {
 					} else {
 						let productObj = new Product(columnAndValues);
 						productObj.save((err, response) => {
+							const sellerCaption = 'Foi adicionado um produto com o id ' + response.product_id;
+							const phone_number = '+244925273096';
+							smsManager.sendSMS({ message: sellerCaption, mobile: phone_number });
 							res.send({ product_id: response.product_id })
 						})
 					}
@@ -738,6 +748,9 @@ exports.add = function (req, res) {
 			} else {
 				let productObj = new Product(columnAndValues);
 				productObj.save((err, response) => {
+					const sellerCaption = 'Foi adicionado um produto com o id ' + response.product_id;
+					const phone_number = '+244925273096';
+					smsManager.sendSMS({ message: sellerCaption, mobile: phone_number });
 					res.send({ product_id: response.product_id })
 				})
 			}
@@ -1050,7 +1063,7 @@ exports.edit = function (req, res) {
 							columnAndValues['images'] = imageArr;
 							Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
 								//return res.redirect('list');
-								return res.send({product_id: req.body.product_id})
+								return res.send({ product_id: req.body.product_id })
 
 							})
 						}
@@ -1059,7 +1072,7 @@ exports.edit = function (req, res) {
 					columnAndValues['images'] = imageArr;
 					Product.update({ product_id: req.body.product_id }, columnAndValues, function (err, response) {
 						//return res.redirect('list');
-						return res.send({product_id: req.body.product_id})
+						return res.send({ product_id: req.body.product_id })
 
 					})
 				}
