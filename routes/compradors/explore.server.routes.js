@@ -8,8 +8,8 @@ module.exports = function(app) {
 	app.get('/compradors', explore.toExplore);
      app.get('/compradors/order', authenticate_compradors, explore.toExplore);
      app.get('/compradors/order/details', authenticate_compradors, explore.toExplore);
-	 app.get('/compradors/explore', explore.toExplore);
-	app.get('/compradors/explore/list', explore.list);
+	 app.get('/compradors/explore', authenticate_compradors, explore.toExplore);
+	app.get('/compradors/explore/list', authenticate_compradors, explore.list);
 	app.get('/compradors/explore/demand', authenticate_compradors, explore.demand);
 	app.get('/compradors/explore/filter_product_items', authenticate_compradors, explore.filter_product_items);
 	app.get('/compradors/explore/details/:id', explore.details);
