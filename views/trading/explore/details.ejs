@@ -9,7 +9,7 @@
 	<!-- <meta property="og:site_name" content="Scotch" /> -->
 	<meta property="og:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>" />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>" />
+	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %> | <%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %> " />
 	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" />
 	<meta property="og:image" content="<%=product.images[0]%>" />
 	<!-- <meta property="og:image:type" content="image/jpeg" /> -->
