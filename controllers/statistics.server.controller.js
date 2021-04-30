@@ -331,46 +331,30 @@ exports.total = async (req, res) => {
 		if (req.session.user_type == 'compradors' || req.session.user_type == 'trading') {
 
 			let total_purchase = 0;
-			Order.find({ 'buyer_info.user_id': req.session.user_id }, (error, orders) => {
+
+			Order.find({'buyer_info.user_id': req.session.user_id }, (error, orders) => {
+			
 				_.each(orders, data => {
 					if (data.status == 'delivered') {
 						total_purchase += 1;
 					}
 				})
-			//})
 
-			let responseObj = {
-				total_purchase: total_purchase,
-				//total_purchase: (singleUser.statistics && singleUser.statistics.total_purchase) ? separators(singleUser.statistics.total_purchase) : 0,
-				total_product_views: (singleUser.statistics && singleUser.statistics.product_views) ? separatorsWD(singleUser.statistics.product_views.length) : 0,
-				total_favourite_products: separatorsWD(singleUser.favourite_product_id.length),
-				total_purchase_products: (singleUser.statistics && singleUser.statistics.total_purchase_products) ? separatorsWD(singleUser.statistics.total_purchase_products) : 0
-			}
-
-			let activeColumnAndValues = [
-				{
-					$match: {
-						user_id: req.session.user_id,
-						product_type: 'demand',
-						expire_date: { $gte: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') }
-					}
-				},
-				{
-					$group: {
-						_id: null,
-						count: { $sum: 1 }
-					}
+				let responseObj = {
+					//total_purchase: (singleUser.statistics && singleUser.statistics.total_purchase) ? separators(singleUser.statistics.total_purchase) : 0,
+					total_product_views: (singleUser.statistics && singleUser.statistics.product_views) ? separatorsWD(singleUser.statistics.product_views.length) : 0,
+					total_favourite_products: separatorsWD(singleUser.favourite_product_id.length),
+					total_purchase_products: (singleUser.statistics && singleUser.statistics.total_purchase_products) ? separatorsWD(singleUser.statistics.total_purchase_products) : 0
 				}
-			];
 
-			Product.aggregate(activeColumnAndValues, (error, orders) => {
-				responseObj['total_active_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
-				let expireColumnAndValues = [
+				responseObj['total_purchase'] = total_purchase;
+
+				let activeColumnAndValues = [
 					{
 						$match: {
 							user_id: req.session.user_id,
 							product_type: 'demand',
-							expire_date: { $lt: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') }
+							expire_date: { $gte: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') }
 						}
 					},
 					{
@@ -381,13 +365,31 @@ exports.total = async (req, res) => {
 					}
 				];
 
-				Product.aggregate(expireColumnAndValues, (error, orders) => {
-					responseObj['total_expired_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
-					res.send({ code: 200, response: responseObj })
-					return false;
+				Product.aggregate(activeColumnAndValues, (error, orders) => {
+					responseObj['total_active_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
+					let expireColumnAndValues = [
+						{
+							$match: {
+								user_id: req.session.user_id,
+								product_type: 'demand',
+								expire_date: { $lt: new Date(moment().format('YYYY-MM-DD') + 'T00:00:00.000Z') }
+							}
+						},
+						{
+							$group: {
+								_id: null,
+								count: { $sum: 1 }
+							}
+						}
+					];
+
+					Product.aggregate(expireColumnAndValues, (error, orders) => {
+						responseObj['total_expired_demands'] = (orders.length > 0) ? separatorsWD(orders[0]['count']) : 0;
+						res.send({ code: 200, response: responseObj })
+						return false;
+					})
 				})
 			})
-		})
 
 		} else {
 			let responseObj = {

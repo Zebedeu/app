@@ -101,7 +101,7 @@
 									<div class="row">
 										<div class="col-md-12 cus_paddy">
 											<div class="box dash_bg">
-												<h3 class="dash_title"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS'][language] %>
+												<h3 class="dash_title"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS'][language] %></h3>
 												<section class="statis text-center">
 													<div class="row">
 														<div class="col-md-12">
@@ -355,8 +355,7 @@ $(document).ready(()=> {
     }});
 
     $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
-    	//$('.total-purchase').text(result.response.total_sales);
-    	$('.total-purchase').text((result.response.total_purchase_products  > 1) ? (result.response.total_purchase_products - 1): (result.response.total_purchase_products))
+    	$('.total-purchase').text(result.response.total_purchase);
         $('.total-product-views').text(result.response.total_product_views);
         $('.total-favourite-products').text(result.response.total_favourite_products);
         $('.total-purchase-products').text(result.response.total_purchase_products);

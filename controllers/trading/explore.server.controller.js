@@ -41,7 +41,15 @@ exports.demand = function (req, res) {
 				}
 			}, {
 				"$unwind": "$categoryDetails"
-			}, {
+			},{
+				$lookup:
+				{
+					from: 'users',
+					localField: 'user_id',
+					foreignField: 'user_id',
+					as: 'userDetails'
+				}
+			},{
 				$lookup:
 				{
 					from: 'sub_categories',

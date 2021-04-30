@@ -31,9 +31,11 @@
                                                        <% } else if(order.status == 'delivered'){ %>
                                                             <%= labels['LBL_DELIVERED'][language] %>
                                                        <% } else if(order.status == 'waiting'){ %>
-                                                            <%= labels['LBL_WAITING'][language] %>
+                                                            <%= labels['LBL_RESERVED'][language] %>
                                                        <% } else if(order.status == 'paid'){ %>
                                                             <%= labels['LBL_PAID'][language] %>
+                                                       <% }else if(order.status == 'cancelled'){ %>
+                                                            <%= labels['LBL_CANCELLED'][language] %>
                                                        <% } %>
                                                   </p>
                                              </div>
@@ -184,7 +186,7 @@
                                                   <% } else if(order['products'][j]['shipment_status'] == 'delivered'){ %>
                                                        <%= labels['LBL_DELIVERED'][language] %>
                                                   <% } else if(order['products'][j]['shipment_status'] == 'waiting'){ %>
-                                                       <%= labels['LBL_WAITING'][language] %>
+                                                       <%= labels['LBL_RESERVED'][language] %>
                                                   <% } %>
                                              </h4>
                                         </td>

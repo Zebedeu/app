@@ -58,10 +58,12 @@
 																	<% } else if(orders[i]['status'] == 'delivered'){ %>
 																		 <%= labels['LBL_DELIVERED'][language] %>
 																	<% } else if(orders[i]['status'] == 'waiting'){ %>
-																		 <%= labels['LBL_WAITING'][language] %>
+																		 <%= labels['LBL_RESERVED'][language] %>
 																	<% }else if(orders[i]['status'] == 'paid'){ %>
 																		<%= labels['LBL_PAID'][language] %>
-																   <% }%>
+																   <% }else if(orders[i]['status'] == 'cancelled'){ %>
+																	    <%= labels['LBL_CANCELLED'][language] %>
+															       <% }%>
 															   </p>
 															</div>
 															<% if(orders[i]['payment_type'] == 'atm_reference'){ %>

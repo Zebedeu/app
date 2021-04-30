@@ -37,7 +37,7 @@ i.accordion2 {
     font-weight: bold;
 }
 </style>
-<section class="productsdetail">
+<section class="productsdetail" style="margin-top: -10px;">
 	<div class="container">
 		<div class="breadcrumb_card">
 			<%- include('../../shared/breadcrumb') %>
@@ -48,7 +48,7 @@ i.accordion2 {
 				<p class="product-p"><%= labels['LBL_SELL_SPICES_FRUITS'][language] %></p>
 			</div>
 		</div> -->
-		<div class="row" style='margin-bottom:50px;'>
+		<div class="row" style='margin-bottom:10px; margin-top: -20px;'>
 			<div class="col-md-3 col-sm-12 col-xs-12">
 				<h6 href="#" style="cursor:pointer;width: 100%;text-align: right;color: red;font-size: 14px;background-color: whitesmoke;padding: 10px 5px;margin: 0;"><span class="filter-clear-all" onclick='clearAll()'><%= labels['LBL_CLEAR_ALL'][language] %></span></h6>
 				<div class="category">
@@ -117,7 +117,7 @@ i.accordion2 {
 					</div>
 				</div>
 			</div>
-			<div class="col-md-9 col-sm-12 col-xs-12">
+			<div class="col-md-9 col-sm-12 col-xs-12" >
 				<div class="white_bg2">
 					<div class="row" id="product-list-section">
 						<% if(products.length > 0){ %>
@@ -127,19 +127,23 @@ i.accordion2 {
 									<% is_product = 'yes'; %>
 									<div class="col-md-4 col-sm-6 col-xs-12 product-list">
 										<div class="product-data">
-											<span style='z-index:999;right: 23px;' class="add-fav" onClick="toggleGetSetFavourite('<%= (products[i].product_id) %>')"><a href="javascript:void(0)"><i favourite_product_id="<%= products[i].product_id %>" class="favourite_icon favourite_icon_<%= products[i].product_id %> <% if(products[i].is_favourite == 'yes'){ %> fa fa-heart <% } else { %> fa fa-heart-o <% } %>" aria-hidden="true"></i></a></span>
 											<div class="product-img" onClick="goToDetails('<%= products[i].product_id %>')">
-											  	<img src="<%= products[i].images[0] %>" alt="<%= products[i].sub_category_title %>" class="pro-image img-size">
-											</div>
+												<img src="<%= products[i].images[0] %>" alt="<%= products[i].sub_category_title %>" class="pro-image img-size">
+											    <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+										    </div>
 											<div class="product-text">
-												<a href="details/<%= products[i].product_id %>"><h3 class="pro_title_"><%= products[i].sub_category_title %></h3></a>					
-												<h4><%= products[i].category_title %> / <%= labels['LBL_QUANTITY'][language] %>: <%= products[i].remaining_unit_qty %> <%= (products[i]['remaining_unit_value'] > 1) ? products[i]['unit_plural_title'] : products[i]['unit_type'] %></h4>
-												<h4 class="currency_color_text sku_wrapper pro-bottom"><%= (products[i].product_unit_price) %> Kz/<%= products[i].unit_type %></h4>
-												<div class="kp_location">
-													<i class="fa fa-map-marker" aria-hidden="true"></i> <span class='pro-location'><%= products[i].state_name %></span>
-												</div>
+												<div class="product-text">
+													<a href="details/<%= products[i].product_id %>">
+														<h3 class="pro_title_"><%= products[i].sub_category_title %></h3>
+													</a>					
+													<h4><%= products[i].category_title %> / <%= labels['LBL_QUANTITY'][language] %>: <%= products[i].remaining_unit_qty %> <%= (products[i]['remaining_unit_value'] > 1) ? products[i]['unit_plural_title'] : products[i]['unit_type'] %></h4>
+													<h4 class="currency_color_text sku_wrapper pro-bottom"><%= (products[i].product_unit_price) %> Kz/<%= products[i].unit_type %></h4>
+													<div class="kp_location">
+														<i class="fa fa-map-marker" aria-hidden="true"></i> <span class='pro-location'><%= products[i].state_name %></span>
+													</div>
+												</div>												
 											</div>
-										</div>
+										</div>	
 									</div>
 								<% } %>
 							<% } %>
@@ -155,6 +159,7 @@ i.accordion2 {
 		</div>
 	</div>
 </section>
+
 <script>
 	let category_id = 'all'
 		,availability_in_stock = 'yes'
