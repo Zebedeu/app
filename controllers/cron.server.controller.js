@@ -49,7 +49,7 @@ exports.clearATMReference = function(req, res) {
 		  	let endDate = moment(moment(element.atm_reference_response.END_DATE).format('YYYY-MM-DD'), "YYYY-MM-DD");
 
 		  	let days = endDate.diff(currentDate, 'days');
-		  	if(days<0){
+		  	if(days < 0){
 		  		orderIdArr.push(element.order_id);
 		  	}
         })

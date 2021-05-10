@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<%- include('shared/common_css') %>
+		<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+		<link rel="styhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.csslesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	<style type="text/css">
+		.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #6c88a7;
+
+}
+.fa {
+    font-size: 12px;
+}
+	</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script></head>
+<body>
+	<div class="container custom-container" style="margin-top: 20px; margin-bottom: 20px;">
+		<div class="row paddy50">
+			<div class="col-md-2">
+				<div class="logo">
+					<a href="" title="Freshmart">
+						<img class="img-responsive" src="../../../images/logo.png" alt="Freshmart">
+					</a>
+				</div>
+			</div>
+			<div class="col-md-10 paddy0">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 cus_width">
+						<ul class="topnav" id="myTopnav">
+							<li class="call"><a href="tel:+244 93620626"><img src="../../../images/telephone.png"> +244
+									936206262</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('shared/breadcrumb') %>
+
+		</div>
+
+		<div class="product_card">
+		<div class="row">
+			
+
+			<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2" style="margin-top: 100px;">
+					<form>
+						<input type="text" name="" class="form-control" placeholder="Mercado" disabled>
+						<input type="date" name="" class="form-control" disabled="">
+						<br>
+						<button type="button" class="btn btn-default btn-sign-in" disabled>Buscar</button>
+					</form>
+				</div>
+				<div class="col-md-10" style="padding-top: 50px;">
+
+					<div class="card border-secundary" style="width: 91%; margin-left: 3%; margin-bottom: 20px;background: black; color: #FFFFFF">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-1">
+									<img src="../../../images/logo.png" width="100" class="">
+								</div>
+								<div class="col-md-3" style="padding-top: 40px; padding-left: 70px; text-align: center;" >
+									<div class="col-md-12 index-text"></div>
+									<div class="col-md-12 index-porc"></div>
+								</div>
+								<div class="col-md-6" style="padding-top: 40px; padding-left: 1px; text-align: center;">
+									<div class="col-md-12">Mercado do 30</div>
+									<div class="col-md-12">VARIAÇÃO SEMANAL DA MÉDIA DE PREÇOS</div>
+								</div>
+							</div>
+							<div class="col-md-12" style="background: #f69624; padding: 1%; color: #000;">
+								<div class="row">
+									<div class="col-md-2">KEPYA INDEX</div>
+									<div class="col-md-10" style="text-align: center;"> DE 2021-04-27 ATÉ 2021-05-05</div>
+								</div>
+							</div>
+						</div>
+		
+						<div class="table-responsive-sm">
+							<table class="table table-striped table-dark">
+								<thead style="text-align: center;" >
+									<tr>
+										<th>Produto</th>
+										<th>Preço Ant.</th>
+										<th>Preço Act</th>
+										<th>Preço Min</th>
+										<th>Preço Max</th>
+										<th>Variaçâo %</th>
+										<th>Tendência</th>
+										<th>Variaçâo Kz</th>
+									</tr>
+								</thead>
+									<tbody id="tbody_record" style="text-align: center;">
+
+									</tbody>
+								</table>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		</div>
+	</div>
+</section>
+
+
+
+	<script type='text/javascript' src="../../js/jquery-1.12.4.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$.ajax({
+    url: "get-kepya-index",
+    type: "GET",
+    dataType: "json",
+    success: function(data){
+    	var index = data.all_element_trace.index;
+       $(".index-text").text("% "+ toFixed(index));
+
+       if(toFixed(index) > 0 ) {
+        		variant_tran = '<i class="fas fa-caret-up" style="color: red;"></i>';
+        	}else {
+        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+        	}
+
+        	$(".index-porc").html( variant_tran);
+
+
+       var trace = data.trace;
+
+       var trHtml ="";
+        trace.forEach(function(element, index){
+
+        	var variant_tran = "";
+
+        	if(toFixed(element.variant) > 0 ) {
+        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
+        	}else {
+        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+        	}
+             trHtml += '<tr><td style="color: #f69624;">'+element.element.product_name+'</td><td>'+element.last_price+'</td><td>'+element.element.act_price+'</td><td>'+element.element.min_price+'</td><td>'+element.element.max_price+'</td><td>'+toFixed(element.variant)+'</td><td>'+variant_tran+'</td><td>'+element.vari_in_kz+'</td></tr>';
+
+	        	});
+        	$("#tbody_record").append(trHtml);
+
+	    	}
+		});
+	});
+
+	function toFixed(x) {
+  return Number.parseFloat(x).toFixed(2);
+}
+
+</script>

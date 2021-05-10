@@ -17,7 +17,7 @@
 						 		<div class="search-container">
 						        	<label class="my-1 mr-2"><%= labels['LBL_HARVEST_DATE'][language] %></label>
 								    <div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd" style='position: relative;border-collapse: separate;display: initial;'>
-									    <input class="custom_input date-picker" type="text" id="harvest_date" name="harvest_date" value="<%= product.harvest_date %>" readonly/>
+									    <input class="custom_input date-picker txt-disabled" type="text" id="harvest_date" name="harvest_date" value="<%= product.harvest_date %>" readonly/>
 									    <span class="input-group-addon" style='display:none'></span>
 									</div>
 									<span class="validation-alert" id='err-harvest-date'></span>
