@@ -11,8 +11,6 @@
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<meta property="og:image" content="images/logo.png" />
-	<meta property="twitter:image" content="images/logo.png" />
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122654457-1"></script>
@@ -207,7 +205,7 @@
 								</div>
 								<div class="col-md-9 col-sm-12 padding-right">
 									<div class="search-container form-group">
-									    <input type="text" id="txt-phone-number" name='phone_number' class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
+									    <input type="number" id="txt-phone-number" name='phone_number' class="form-control phone_number_validate" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
 									    <span class="validation-alert" id='err-phone-number'></span>
 									</div>
 								</div>

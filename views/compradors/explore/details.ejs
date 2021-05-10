@@ -156,7 +156,7 @@
 		
 	</div>
 </div>
-<% if(! user.user_id){ %>
+<% if(!user.user_id){ %>
 
  <!-- Modal -->
  <div class="modal fade" id="loginModal" role="dialog">
@@ -285,7 +285,7 @@
 							</div>
 							<div class="col-md-9 col-sm-12 padding-right">
 								<div class="search-container form-group">
-									<input type="text" id="txt-phone-number" name='phone_number' class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
+									<input type="number" id="txt-phone-number" name='phone_number' class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
 									<span class="validation-alert" id='err-phone-number'></span>
 								</div>
 							</div>
@@ -351,10 +351,10 @@
 			</div>
 		</div>
 	</section>
-    </div>
+  </div>
+<% }   %>
 
 </div>
-<% }   %>
 
 <%- include('../../shared/common_modal') %>
 <%- include('../../shared/common_js') %>
