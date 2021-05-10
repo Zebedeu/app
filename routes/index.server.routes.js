@@ -28,8 +28,6 @@ module.exports = function(app) {
 	app.get('/get-wallet-details', index.getWalletDetails);
 	app.post('/clear-notifications', index.clearNotifications);
 	app.get('/note/:id', index.deleteNotifiy);
-	app.get('/get-kepya-index', index.getKepyaIndex);
-	app.get('/kepyaindex', index.kepyaIndex);
 
 	app.route('/faqs')
 	.get(index.faqs);
