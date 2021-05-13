@@ -653,7 +653,7 @@
 	},
 	"LBL_SHIPPING": {
 		"EN": "Shipping",
-		"PT": "Envio"
+		"PT": "Dados de envio"
 	},
 	"LBL_ORDER_SUMMERY": {
 		"EN": "Order Summary",
