@@ -133,6 +133,40 @@
      </div>
 </div>
 
+<div class="modal fade in" id="AddInvoiceDocInfo" role="dialog">
+     <input type='hidden' class="profile_type">
+     <input type='hidden' class="profile_type_error">
+     <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content ">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"><%= labels['LBL_EDIT'][language] %> <span class='profile_title'></h4>
+               </div>
+               <div class="modal-body">
+                    <div class="row order-list-title">
+                         <div class="col-md-12">
+                              <div class="search-container">
+                                   <div class="input-group">
+                                        <div class="custom-file">
+                                             <input type="file" class="custom-file-input" 
+                                                  aria-describedby="inputGroupFileAddon01" name="invoice" id="invoice" multiple>
+                                             <label class="custom-file-label" for="inputGroupFile01"></label>
+                                       </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-md-12 align_center">
+                              <a href="javascript:void(0);" onClick="AddInvoice()">
+                                   <button style="margin: 5px 0;" class="button btn-cart"><%= labels['LBL_SAVE'][language] %></button>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
 
 <div class="modal fade in" id="editUserBank_Name_InfoModal" role="dialog">
      <input type='hidden' class="profile_type">
@@ -690,6 +724,35 @@ function addBankName(){
         });               
    }
 
+   function AddInvoice(){               
+        
+        var file_data = $('#invoice').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('invoice', file_data);
+  
+        var url = "<%=baseURL%>producers/order/add-invoice/"+orderID;
+        $.ajax({
+             url: url,
+             type: "POST",
+             data: form_data,
+             processData: false,
+             contentType: false,
+             success: function (data){
+                  showAlert("Documento submetido com sucesso!");
+                  setTimeout(() => {
+                       hideAlert();
+                       window.location.reload();
+                  }, 3000); 
+             },
+             error: function (jqXHR, textStatus, errorThrown){
+                  showAlert("Erro ao publicar o produto!");
+                  setTimeout(() => {
+                       hideAlert()
+                       window.location.reload();
+                  }, 3000);                        
+             }
+        });               
+   }
      function addReceiptUser(){               
         
         var wallet_log_id = $('.wallet_log_id').val();

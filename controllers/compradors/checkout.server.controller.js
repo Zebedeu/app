@@ -204,6 +204,7 @@ exports.reserveOrder = async (req, res) => {
                          payment_status: 'waiting',
                          transporters: transporterArr,
                          subtotal: total,
+                         invoice: '',
                          transport_fee: parseFloat(req.body.transport_fees),
                          total: (total + parseFloat(req.body.transport_fees))
                     }

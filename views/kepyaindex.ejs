@@ -20,6 +20,7 @@
     font-size: 12px;
 }
 	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script></head>
 <body>
 	<div class="container custom-container" style="margin-top: 20px; margin-bottom: 20px;">
@@ -60,10 +61,10 @@
 			<div class="row">
 				<div class="col-md-2" style="margin-top: 100px;">
 					<form>
-						<input type="text" name="" class="form-control" placeholder="Mercado" disabled>
-						<input type="date" name="" class="form-control" disabled="">
+						<input type="text" name="mercado" class="form-control" placeholder="Mercado" disabled>
+						<input type="date" name="dateTo" id="date-to" class="form-control" >
 						<br>
-						<button type="button" class="btn btn-default btn-sign-in" disabled>Buscar</button>
+						<button type="button" id="submit" class="btn btn-default btn-sign-in">Buscar</button>
 					</form>
 				</div>
 				<div class="col-md-10" style="padding-top: 50px;">
@@ -86,7 +87,7 @@
 							<div class="col-md-12" style="background: #f69624; padding: 1%; color: #000;">
 								<div class="row">
 									<div class="col-md-2">KEPYA INDEX</div>
-									<div class="col-md-10" style="text-align: center;"> DE 2021-04-27 ATÉ 2021-05-05</div>
+									<div class="col-md-10" style="text-align: center;"> DE <d id="dateFrom"></d> ATÉ <d id="dateTo"></d> </div>
 								</div>
 							</div>
 						</div>
@@ -127,42 +128,66 @@
 	<script>
 		$(document).ready(function(){
 
-			$.ajax({
-    url: "get-kepya-index",
-    type: "GET",
-    dataType: "json",
-    success: function(data){
-    	var index = data.all_element_trace.index;
-       $(".index-text").text("% "+ toFixed(index));
+				
+				$("#submit").click( function(){
 
-       if(toFixed(index) > 0 ) {
-        		variant_tran = '<i class="fas fa-caret-up" style="color: red;"></i>';
-        	}else {
-        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
-        	}
+				$("#dateTo").text("");
+				$("#dateFrom").text("");
 
-        	$(".index-porc").html( variant_tran);
+				var date = $('#date-to').val();
+
+				
+				$("#dateTo").text(date);
+				dateFrom = moment(date).subtract(7,'d').format('YYYY-MM-DD');
+				$("#dateFrom").text(dateFrom);
 
 
-       var trace = data.trace;
+					$.ajax({
+					    url: "get-kepya-index/"+date,
+					    type: "GET",
+					    dataType: "json",
+					    success: function(data){
 
-       var trHtml ="";
-        trace.forEach(function(element, index){
+					    	var index = data.all_element_trace.index ? toFixed(data.all_element_trace.index) * 100 : 0 ;
+					       $(".index-text").text("% "+ index);
 
-        	var variant_tran = "";
+					     		if(index > 0 ) {
+					        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
+					        	}else if(index < 0 ){
+					        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+					        	}else {
+					        		variant_tran = '<img src="https://img.icons8.com/color/25/000000/equal-sign.png"/>';	
+					        	}
 
-        	if(toFixed(element.variant) > 0 ) {
-        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
-        	}else {
-        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
-        	}
-             trHtml += '<tr><td style="color: #f69624;">'+element.element.product_name+'</td><td>'+element.last_price+'</td><td>'+element.element.act_price+'</td><td>'+element.element.min_price+'</td><td>'+element.element.max_price+'</td><td>'+toFixed(element.variant)+'</td><td>'+variant_tran+'</td><td>'+element.vari_in_kz+'</td></tr>';
+					        	$(".index-porc").html( variant_tran);
 
-	        	});
-        	$("#tbody_record").append(trHtml);
 
-	    	}
-		});
+					       var trace = data.trace;
+
+					       var trHtml ="";
+					        trace.forEach(function(element, index){
+
+					        	var variant_tran = "";
+					        	if( element.variant) {
+					        		variant = toFixed(element.variant) * 100
+					        	}else {
+					        		variant = 0
+					        	}
+					        	if(element.variant > 0 ) {
+					        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
+					        	}else if(element.variant < 0 ){
+					        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+					        	}else {
+					        		variant_tran = '<img src="https://img.icons8.com/color/25/000000/equal-sign.png"/>';	
+					        	}
+					             trHtml += '<tr><td style="color: #f69624;">'+element.element.product_name+'</td><td>'+element.last_price+'</td><td>'+element.element.act_price+'</td><td>'+element.element.min_price+'</td><td>'+element.element.max_price+'</td><td>'+ variant  +'</td><td>'+variant_tran +'</td><td>'+element.vari_in_kz+'</td></tr>';
+
+						        	});
+					        	$("#tbody_record").append(trHtml);
+
+						    	}
+							});
+			})
 	});
 
 	function toFixed(x) {

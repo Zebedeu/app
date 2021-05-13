@@ -58,7 +58,7 @@ exports.render = function (req, res) {
 			var emailAndPhone= '';
 			if( regEmail.test(email_or_phone) == true ){
 
-				let regexEmail = new RegExp(['^', email_or_phone, '$'].join(''), 'i');
+				let regexEmail = new RegExp(['^', email_or_phone.toLowerCase(), '$'].join(''), 'i');
 				emailAndPhone = { email: regexEmail }
 			} else{
 				console.log('phone')
@@ -501,7 +501,7 @@ exports.signUp = function (req, res) {
 			let userObject = {
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
-				email: req.body.email || req.body.emailFack,
+				email: req.body.email.toLowerCase() || req.body.emailFack.toLowerCase(),
 				type: req.body.type,
 				company_name: req.body.company_name || '',
 				password: encPin,
@@ -616,6 +616,40 @@ exports.deleteNotifiy = function(req, res) {
 	})
 };
 
+
+exports.getKepyaIndex = async function (req, res) {
+
+console.log(req.params.dateTo)
+	
+	try{
+	date = req.params.dateTo ? req.params.dateTo : '2021-04-13';
+	var currentTime = moment(date).format("YYYY-MM-DD");
+
+	var response = await axios.get("http://186.192.168.122:4000/api/v1/trace/mercado/30/start/"+ currentTime)
+
+	var idx = response.data
+	  return res.send(idx) ;	
+
+	}catch(error) {
+		console.error(error)
+	}
+}
+exports.kepyaIndex = function (req, res) {
+
+
+	res.render('kepyaindex', {
+		
+		labels,
+		moment,
+		breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_KEPYA_INDEX'][(req.session.language || config.default_language_code)] + "</li>",
+		language: req.session.language || config.default_language_code,
+		layout: false,
+		messages: req.flash('error') || req.flash('info'),
+		messages: req.flash('info')
+	});
+
+	
+};
 
 exports.faqs = function (req, res) {
 	res.render('faqs', {

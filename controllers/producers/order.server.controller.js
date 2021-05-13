@@ -15,6 +15,7 @@ let Notification_log = require('mongoose').model('Notification_log');
 let labels = require('../../utils/labels.json');
 let smsManager = require('../../utils/sms-manager');
 let emailController = require('../email.server.controller');
+let s3Manager = require('../../utils/s3-manager');
 
 let { getMonthDateRange } = require('../../utils/date');
 let {
@@ -292,5 +293,144 @@ exports.changeShipmentStatus = function (req, res) {
                     })
                })
           })
+     })
+};
+
+
+const editResponse = (req, res, columnAndValues, product_id) => {
+     Order.update({ product_id }, columnAndValues, function (err, response) {
+               return res.redirect('list');
+     })
+};
+
+
+exports.addInvoice = function(req, res) {
+
+      console.log('----------')
+          console.log(req)
+          console.log('----------')
+
+     Order.findOne({ order_id: req.params.id },  { _id: 0 }, (err, singleOrder) => {
+
+          console.log(singleOrder)
+          if(!singleOrder){
+               return res.redirect('list1');
+          }
+          let imageArr = singleOrder.invoice;
+         
+          var columnAndValues = [];
+
+
+                    if (!_.isEmpty(req.files)) {
+                         console.log('File0: ', req.files);
+                         if (Array.isArray(req.files.invoice)) {
+                              console.log('File1: ', req.files);
+                              async.forEachSeries(req.files.invoice, (singleFile, callbackSingleFile) => {
+                                   if (_.contains(['jpeg', 'jpg', 'png'], singleFile.name.split('.').pop().toLowerCase())) {
+                                        let fileObj = singleFile;
+                                        let filePath = path.join(__dirname, "../../../upload/") + fileObj.name;
+                                        let dstFilePath = path.join(__dirname, "../../../upload/") + 'dst_' + fileObj.name;
+
+                                        fileObj.mv(filePath, function (err) {
+                                             console.log('File2: ', req.files);
+                                             if (err) {
+                                                  console.log(err);
+                                             }
+                                             imagemagick.crop({
+                                                  srcPath: filePath,
+                                                  dstPath: dstFilePath,
+                                                  width: 500,
+                                                  height: 500,
+                                                  quality: 1,
+                                                  gravity: "North"
+                                             }, function (err, stdout, stderr) {
+
+                                                  console.log('File3: ', req.files);
+                                                  const fileContent = fs.readFileSync(dstFilePath);
+                                                  let fileObject = {
+                                                       name: fileObj.name,
+                                                       data: fileContent,
+                                                       encoding: fileObj.encoding,
+                                                       mimetype: fileObj.mimetype,
+                                                       mv: fileObj.mv
+                                                  }
+
+                                                  s3Manager.uploadFileObj(fileObject, config.aws.s3.productBucket, 'product_', (error, url) => {
+                                                       if (error) {
+                                                            logger('Error: upload photo from aws s3 bucket. ' + error);
+                                                            done(errors.internalServer(true), null);
+                                                            return;
+                                                       }
+
+                                                       fs.unlinkSync(filePath);
+                                                       fs.unlinkSync(dstFilePath);
+                                                       imageArr.push(url.substring(url.lastIndexOf('/') + 1));
+                                                       callbackSingleFile();
+                                                  });
+                                             });
+                                        });
+                                   } else {
+                                        callbackSingleFile();
+                                   }
+                              }, function () {
+                                   columnAndValues['invoice'] = imageArr;
+                                   editResponse(req, res, columnAndValues, req.params.id);
+                              });
+                         } else {
+                              console.log('File4: ', req.files);
+                              if (_.contains(['jpeg', 'jpg', 'png'], req.files.invoice.name.split('.').pop().toLowerCase())) {
+                                   let fileObj = req.files.invoice;
+                                   let filePath = path.join(__dirname, "../../../upload/") + req.files.invoice.name;
+                                   let dstFilePath = path.join(__dirname, "../../../upload/") + 'dst_' + req.files.invoice.name;
+                                   fileObj.mv(filePath, function (err) {
+                                        if (err) {
+                                             console.log('File5_1: ', req.files);
+                                             console.log(err);
+                                        }
+
+                                        imagemagick.crop({
+                                             srcPath: filePath,
+                                             dstPath: dstFilePath,
+                                             width: 500,
+                                             height: 500,
+                                             quality: 1,
+                                             gravity: "North"
+                                        }, function (err, stdout, stderr) {
+                                             const fileContent = fs.readFileSync(dstFilePath);
+                                             let fileObject = {
+                                                  name: req.files.invoice.name,
+                                                  data: fileContent,
+                                                  encoding: req.files.invoice.encoding,
+                                                  mimetype: req.files.invoice.mimetype,
+                                                  mv: req.files.invoice.mv
+                                             }
+
+                                             s3Manager.uploadFileObj(fileObject, config.aws.s3.productBucket, 'product_', (error, url) => {
+                                                  if (error) {
+                                                       logger('Error: upload photo from aws s3 bucket. ' + error);
+                                                       done(errors.internalServer(true), null);
+                                                       return;
+                                                  }
+
+                                                  fs.unlinkSync(filePath);
+                                                  fs.unlinkSync(dstFilePath);
+
+                                                  imageArr.push(url.substring(url.lastIndexOf('/') + 1));
+                                                  columnAndValues['invoice'] = imageArr;
+                                                  editResponse(req, res, columnAndValues, req.params.id);
+                                             });
+                                        });
+                                   });
+                              } else {
+                                   columnAndValues['invoice'] = imageArr;
+                                   editResponse(req, res, columnAndValues, req.params.id);
+                              }
+                         }
+                    } else {
+                         console.log('File6: ', req.files);
+                         columnAndValues['invoice'] = imageArr;
+                         editResponse(req, res, columnAndValues, req.params.id);
+                    }
+
      })
 };

@@ -89,6 +89,10 @@ let orderSchema = new Schema({
         type: Number,
         default: 0
     },
+    invoice : {
+     type: String,
+        default: ''
+    },
     status: {
         type: String,
         enum: ['waiting', 'reserved', 'paid', 'packed', 'shipped', 'delivered', 'cancelled'],

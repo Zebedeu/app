@@ -6,6 +6,7 @@
           <div class="breadcrumb_card">
                <%- include('../../shared/breadcrumb') %>
           </div>
+
           <div class="product_card">
                <div class="row add-address post-add">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -214,10 +215,34 @@
                               </tbody>
                          </table>
                     </div>
+
+                    <div class="col-md-4" style="border: 2px solid #ccc;">
+                         
+                         <form id="add_invoice" action="" method="post" enctype="multipart/form-data">
+
+                                   <input type="text" name="test" />
+                                <input type="file" class="custom-file-input" name="invoice"  multiple />
+
+                              <button type="button" id="invoice" class="button btn-cart pt-3" value="Enviar">Enviar</button>
+
+                         </form>
+                    </div>
+
+                    <div class="col-md-8">
+                         <h4 class="text-center">Fatura</h4>
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+
                </div>
           </div>
      </div>
 </section>
+
 <% if(order.is_rated){ %>
 <section class="productsdetail">
      <div class="container">
@@ -276,11 +301,14 @@
                               </tbody>
                          </table>
                     </div>
+
                </div>
           </div>
      </div>
 </section>
+
 <% } %>
+
 <script>
      $(document).ready(function () {
           $(".packed").on("click", function () {
@@ -294,5 +322,25 @@
           if (isRated) {
                $(":radio").attr("disabled", true);
           }
+
+           $("#invoice").on("click", function () {
+               var orderID = "<%= order.order_id %>";
+               var datas = $("#add_invoice :input").serializeArray(); 
+
+               console.log(datas);
+               $.ajax({
+               url: "<%=baseURL%>producers/order/add-invoice/"+orderID,
+               type: "POST",
+               data: datas,
+               success: function(data) {
+                    console.log(data);
+
+               }
+
+               });
+          });
+
+
      });
+
 </script>

@@ -974,7 +974,7 @@ exports.signUp = function (req, res) {
 			let userObject = {
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
-				email: req.body.email || req.body.emailFack,
+				email: req.body.email.toLowerCase() || req.body.emailFack.toLowerCase(),
 				type: req.body.type,
 				company_name: req.body.company_name || '',
 				password: encPin,

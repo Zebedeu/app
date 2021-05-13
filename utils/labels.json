@@ -279,6 +279,10 @@
 		"EN": "Empty Products",
 		"PT": "Adicionar produtos"
 	},
+	"LBL_KEPYA_INDEX": {
+		"EN": "Kepya index",
+		"PT": "Kepya index"
+	},
 	"LBL_LIST_PRODUCTS": {
 		"EN": "List products",
 		"PT": "Lista de produtos"
@@ -1666,7 +1670,7 @@
 	},
 	"LBL_SIGN_UP_CONFIRM_PASSWORD": {
 		"EN": "Confirm Password",
-		"PT": "Confirme a password"
+		"PT": "Confirme a senha"
 	},
 	"LBL_SIGN_UP_USER_PRODUCERS": {
 		"EN": "Producers",
@@ -1999,6 +2003,10 @@
 	"LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY": {
 		"EN": "My account",
 		"PT": "A minha conta"
+	},
+	"LBL_COMPRADOR_DASHBOARD_KEPYA_INDEX": {
+		"EN": "KEPYA INDEX",
+		"PT": "Kepya Index"
 	},
 	"LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION": {
 		"EN": "Edit login, name, and mobile number",
