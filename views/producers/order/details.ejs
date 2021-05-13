@@ -216,28 +216,6 @@
                          </table>
                     </div>
 
-                    <div class="col-md-4" style="border: 2px solid #ccc;">
-                         
-                         <form id="add_invoice" action="" method="post" enctype="multipart/form-data">
-
-                                   <input type="text" name="test" />
-                                <input type="file" class="custom-file-input" name="invoice"  multiple />
-
-                              <button type="button" id="invoice" class="button btn-cart pt-3" value="Enviar">Enviar</button>
-
-                         </form>
-                    </div>
-
-                    <div class="col-md-8">
-                         <h4 class="text-center">Fatura</h4>
-                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-
                </div>
           </div>
      </div>
@@ -325,19 +303,35 @@
 
            $("#invoice").on("click", function () {
                var orderID = "<%= order.order_id %>";
-               var datas = $("#add_invoice :input").serializeArray(); 
 
-               console.log(datas);
-               $.ajax({
-               url: "<%=baseURL%>producers/order/add-invoice/"+orderID,
-               type: "POST",
-               data: datas,
-               success: function(data) {
-                    console.log(data);
+                  var file_data = $('#invoice').prop('files')[0];   
+        var form_data = new FormData();                  
+        form_data.append('invoice', file_data);
+  
+        var url = "<%=baseURL%>producers/order/add-invoice/"+orderID;
+        $.ajax({
+             url: url,
+             type: "POST",
+             data: form_data,
+             processData: false,
+             contentType: false,
+             success: function (data){
+                  showAlert("Documento submetido com sucesso!");
+                  setTimeout(() => {
+                       hideAlert();
+                       window.location.reload();
+                  }, 3000); 
+             },
+             error: function (jqXHR, textStatus, errorThrown){
+                  showAlert("Erro ao publicar o produto!");
+                  setTimeout(() => {
+                       hideAlert()
+                       window.location.reload();
+                  }, 3000);                        
+             }
+        });
 
-               }
 
-               });
           });
 
 
