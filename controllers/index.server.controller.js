@@ -638,9 +638,13 @@ exports.kepyaIndex = function (req, res) {
 
 
 	res.render('kepyaindex', {
-		
+		user: {
+			user_id: req.session.user_id,
+			name: req.session.name,
+			user_type: req.session.user_type,
+			login_type: req.session.login_type
+		},
 		labels,
-		moment,
 		breadcrumb: "<li class='breadcrumb-item'><a href='" + config.base_url + "producers/dashboard'>" + labels['LBL_HOME'][(req.session.language || config.default_language_code)] + "</a></li><li class='breadcrumb-item active' aria-current='page'>" + labels['LBL_KEPYA_INDEX'][(req.session.language || config.default_language_code)] + "</li>",
 		language: req.session.language || config.default_language_code,
 		layout: false,

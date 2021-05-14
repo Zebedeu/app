@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<title>Kepya Agromercado Digital</title>
-	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
 	<%- include('shared/common_css') %>
 		<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
 		<link rel="styhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.csslesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -21,30 +13,8 @@
 }
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script></head>
-<body>
-	<div class="container custom-container" style="margin-top: 20px; margin-bottom: 20px;">
-		<div class="row paddy50">
-			<div class="col-md-2">
-				<div class="logo">
-					<a href="" title="Freshmart">
-						<img class="img-responsive" src="../../../images/logo.png" alt="Freshmart">
-					</a>
-				</div>
-			</div>
-			<div class="col-md-10 paddy0">
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 cus_width">
-						<ul class="topnav" id="myTopnav">
-							<li class="call"><a href="tel:+244 93620626"><img src="../../../images/telephone.png"> +244
-									936206262</a></li>
-						</ul>
-					</div>
-				</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
 
-			</div>
-		</div>
-	</div>
 	
 <section class="productsdetail">
 	<div class="container">
@@ -61,10 +31,12 @@
 			<div class="row">
 				<div class="col-md-2" style="margin-top: 100px;">
 					<form>
-						<input type="text" name="mercado" class="form-control" placeholder="Mercado" disabled>
-						<input type="date" name="dateTo" id="date-to" class="form-control" >
-						<br>
-						<button type="button" id="submit" class="btn btn-default btn-sign-in">Buscar</button>
+						<select class="form-control" name="mercado" disabled>
+							<option>Seleccionar o mercado</option>
+							<option value="30">Mercado do 30</option>
+						</select>
+						<input type="date" name="dateTo" id="date-to" class="form-control" style="margin: 2px 0;">
+						<button type="button" id="submit" class="button btn-cart" style="margin: 2px 0;">Buscar</button>
 					</form>
 				</div>
 				<div class="col-md-10" style="padding-top: 50px;">
@@ -134,7 +106,9 @@
 				$("#dateTo").text("");
 				$("#dateFrom").text("");
 
-				var date = $('#date-to').val();
+				var date = $('#date-to').val() ? $('#date-to').val() : new Date();
+
+				console.log(date);
 
 				
 				$("#dateTo").text(date);
