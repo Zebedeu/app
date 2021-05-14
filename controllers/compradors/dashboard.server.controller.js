@@ -18,13 +18,6 @@ exports.toDashboard = (req, res) => {
 } 
 exports.list = function (req, res) {
 
-	axios.get('http://0.0.0.0:8080/api/v1/trace/list')
-	.then(function (response) {
-		console.log(response)
-})
-  .catch(function (error) {
-	console.log(error);
-  });	
 	res.render('compradors/dashboard', {
 		user: {
 			user_id: req.session.user_id,
