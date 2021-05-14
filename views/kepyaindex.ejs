@@ -100,17 +100,16 @@
 	<script>
 		$(document).ready(function(){
 
-				
+
 				$("#submit").click( function(){
+
 
 				$("#dateTo").text("");
 				$("#dateFrom").text("");
 
 				var date = $('#date-to').val() ? $('#date-to').val() : new Date();
 
-				console.log(date);
-
-				
+				setInterval( '');
 				$("#dateTo").text(date);
 				dateFrom = moment(date).subtract(7,'d').format('YYYY-MM-DD');
 				$("#dateFrom").text(dateFrom);
@@ -157,6 +156,8 @@
 					             trHtml += '<tr><td style="color: #f69624;">'+element.element.product_name+'</td><td>'+element.last_price+'</td><td>'+element.element.act_price+'</td><td>'+element.element.min_price+'</td><td>'+element.element.max_price+'</td><td>'+ variant  +'</td><td>'+variant_tran +'</td><td>'+element.vari_in_kz+'</td></tr>';
 
 						        	});
+					        				$("#tbody_record").html("");
+
 					        	$("#tbody_record").append(trHtml);
 
 						    	}
