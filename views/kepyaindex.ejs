@@ -1,42 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:locale" content="pt_PT" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Kepya Agromercado Digital | Kepya Index </title>
+	<meta name="description" content="Kepya Index - Todas as semanas o Kepya Index avalia a evolução dos preços dos produtos mais vendidos nos principais mercados de Angola." />
+	<meta property="og:description" content="Kepya Index - Todas as semanas o Kepya Index avalia a evolução dos preços dos produtos mais vendidos nos principais mercados de Angola." />
+	<meta property="og:url" content="<%=baseURL%>kepyaindex" />
+	<meta name="og:image" content="images/logo.png" /> 
+	<meta name="twitter:image" content="images/logo.png" /> 
+	<meta name="twitter:title" content="Kepya Agromercado Digital" /> 
+	<meta property="twitter:description" content="Kepya Index - Todas as semanas o Kepya Index avalia a evolução dos preços dos produtos mais vendidos nos principais mercados de Angola." />
+	<meta property="fb:app_id" content="1389892087910589" />
+	<meta property="fb:admins" content="579622216,709634581" />
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>" />
+<!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
 
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
 	<%- include('shared/common_css') %>
-		<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
-		<link rel="styhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.csslesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="css/new_style.css">
 
-	<style type="text/css">
-		.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: #6c88a7;
 
-}
-.fa {
-    font-size: 12px;
-}
-	</style>
+	<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="js/language.js"></script>
+	<script type='text/javascript' src="js/validation.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
+	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=605a3ed36f7ab900129ceb13&product=sop' async='async'></script>
 
-	
+<style type="text/css">
+		.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+			background-color: #6c88a7;
+
+			}
+		.fa {
+			font-size: 12px;
+			}
+	</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122654457-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-122654457-1');
+	</script>
+</head>
+
+
+<body>
+
+<div class="">
+	<div id="nav-icon" class="menu-button visible-xs">
+		<span class="burger-icon"></span>
+	</div>
+</div>
+<div class="main_header">
+		<%- include('shared/top_nav_compradors') %>
+</div>
+<div class="sharethis-sticky-share-buttons"></div>
+
 <section class="productsdetail">
 	<div class="container">
-		<div class="breadcrumb_card">
-			<%- include('shared/breadcrumb') %>
-
-		</div>
+		<% if(user && user.user_id){ %>
+			<div class="breadcrumb_card">
+				<%- include('shared/breadcrumb') %>
+			</div>
+		<% } %>
 
 		<div class="product_card">
-		<div class="row">
+			<div class="row">
 			
-
 			<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-2" style="margin-top: 100px;">
-					<form>
-						<select class="form-control" name="mercado" disabled>
+					<form id="formIndex">
+						<select class="form-control mercado_data" name="mercado" id="txt-mercado" >
 							<option>Seleccionar o mercado</option>
-							<option value="30">Mercado do 30</option>
+							<option selected value="30">Mercado do 30</option>
 						</select>
-						<input type="date" name="dateTo" id="date-to" class="form-control" style="margin: 2px 0;">
+						<span class="validation-alert" id='err-mercado'></span>
+
+						<input type="date" name="dateTo" id="txt-date-to" class="form-control date-to" style="margin: 2px 0;">
+						<span class="validation-alert" id='err-date-to'></span>
+
+
+					<% if(user && user.user_id){ %>
 						<button type="button" id="submit" class="button btn-cart" style="margin: 2px 0;">Buscar</button>
+					<%  } else { %>
+
+						<button type="button" id="submit" class="button btn-cart" data-toggle="modal" data-target="#exampleModalLong" style="margin: 2px 0;">Buscar</button>
+							<%  } %>
+
 					</form>
 				</div>
 				<div class="col-md-10" style="padding-top: 50px;">
@@ -65,20 +121,20 @@
 						</div>
 		
 						<div class="table-responsive-sm">
-							<table class="table table-striped table-dark">
-								<thead style="text-align: center;" >
+							<table  class="table table-striped table-dark">
+								<thead>
 									<tr>
-										<th>Produto</th>
-										<th>Preço Ant.</th>
-										<th>Preço Act</th>
-										<th>Preço Min</th>
-										<th>Preço Max</th>
-										<th>Variaçâo %</th>
-										<th>Tendência</th>
-										<th>Variaçâo Kz</th>
+										<th style="text-align: center;">Produto</th>
+										<th style="text-align: center;">Preço Ant.</th>
+										<th style="text-align: center;">Preço Act</th>
+										<th style="text-align: center;">Preço Min</th>
+										<th style="text-align: center;">Preço Max</th>
+										<th style="text-align: center;">Variação %</th>
+										<th style="text-align: center;" style="text-align: center;">Tendência</th>
+										<th style="text-align: center;">Variação Kz</th>
 									</tr>
 								</thead>
-									<tbody id="tbody_record" style="text-align: center;">
+									<tbody id="tbody_record">
 
 									</tbody>
 								</table>
@@ -95,22 +151,247 @@
 </section>
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ 
+	<section class="login-section text-center" id="Div1">
+			<div class="overlay-position"></div>
+			<div class="login-page">
+				<div class="container">
+					<div class="login-box">
+						<div class="row">
 
-	<script type='text/javascript' src="../../js/jquery-1.12.4.js"></script>
+						</div>
+						
+						<img src="<%=baseURL%>images/logo.png">
+						<h1><%= labels['LBL_SIGN_IN'][language] %></h1>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 form">
+								<form id="frm-sign-in" action="/" method="post">
+									<div class="form-group">
+										<input type="text" id="txt-email-address" name="phoneNumberAndEmail" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL_PHONE'][language] %>" required="">
+										<span class="validation-alert" id='err-email-address'></span>
+									</div>
+									<div class="form-group">
+										<input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_PASSWORD'][language] %>" required="">
+										<span class="validation-alert" id='err-password' style="width: 100%;text-align: left !important;"></span>
+									</div>
+									<div class="forgot-pw row">
+										  <div class="col-md-6 col-sm-6 col-xs-6 checkbox"><label class="checkbox-container"><%= labels['LBL_SIGN_IN_REMEMBER_ME'][language] %><input type="checkbox"><span class="checkbox-checkmark"></span></label></div>
+										  <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="<%=baseURL%>forgot-password"><%= labels['LBL_SIGN_IN_FORGOT_PASSWORD'][language] %>?</a></div>
+									</div>
+									<button type="button" class="btn btn-default btn-sign-in" onclick="submitSignIn()"><%= labels['LBL_SIGN_IN_BUTTON'][language] %></button>
+		
+									<a href="javascript:void(0)" class="google btn" id="google-sign-in">
+										<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %>
+									</a>
+									
+									<div class="text-center creat_new"><%= labels['LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT'][language] %>? <a href="sign-up"><%= labels['LBL_SIGN_IN_SIGN_UP_FOR_FREE'][language] %></a></div>
+		
+									<div class="g-signin2 hide" data-onsuccess="onSignIn"><%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %></div>
+								</form>
+							</div>
+					
+				</div>
+			</div>
+	</section>
+</div>
+
+
+<footer class="main-section">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('shared/site_map') %>
+		</div>
+	</div>
+</footer>
+
+<div class="main-section social-media">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('shared/footer') %>
+		</div>
+		
+	</div>
+</div>
+<%- include('shared/common_modal') %>
+<%- include('shared/common_js') %>
+
+	<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
 	<script>
 		$(document).ready(function(){
-
+				
+				 setTimeout( displayRequestIndex, 10 );
 
 				$("#submit").click( function(){
+				if(validateIndexForm()) {
+					 displayRequestIndex()	
+				}
+
+			})
+		
+	});
+
+function onLoad() {
+  	gapi.load('client:auth2', function() {
+    	gapi.auth2.init();
+  	});
+}
+
+function logOut(login_type) {
+	if(login_type == 'google'){
+		let auth2 = gapi.auth2.getAuthInstance();
+	  	auth2.signOut().then(function () {
+	    	window.location.href = '/logout';
+	  	});
+	} else {
+		window.location.href = '/logout';
+	}
+}
+
+	let emailAddress = '', password = '';
+	let errEmailAddressFlag = 0, errPassword = 0;
+
+	function validateSignIn(){
+		errEmailAddressFlag = validateEmailAndPhoneAddress($('#txt-email-address').val());
+		if(errEmailAddressFlag > 0){
+			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL'][language] %>";
+			$('#err-email-address').text(caption).show();
+		} else {
+			$('#err-email-address').hide();
+		}
+
+		if(!$('#txt-password').val()){
+			errPassword = 1;
+			$('#err-password').text("<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_PASSWORD'][language] %>").show();
+		} else {
+			errPassword = 0;
+			$('#err-password').hide();
+		}
+
+		if(!errEmailAddressFlag && !errPassword){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function submitSignIn(){
+		if(validateSignIn()){
+			signIn({ type: 'email', phoneNumberAndEmail: $('#txt-email-address').val(), password: $('#txt-password').val() });
+		}
+	}
+
+	function signIn(obj){
+		$.post('<%=baseURL%>', obj).done((response) => {
+			console.log(response);
+			console.log("Test.. auth...")
+			if(parseInt(response.code) == 200){
+				if(obj.type == 'email'){
+					$('#frm-sign-in').submit()
+
+				} else {
+					if(response.user_type == 'producers') {
+						window.location.href = "producers/dashboard";
+					} else if(response.user_type == 'aggregators') {
+						window.location.href = "aggregators/dashboard";
+					} else if(response.user_type == 'compradors') {
+						window.location.href = "compradors/dashboard";
+					} else if(response.user_type == 'transporters') {
+						window.location.href = "transporters/dashboard";
+					}
+				}
+					return false;
+			} else if(obj.type == 'email' && parseInt(response.code) == 409) {
+				window.location.href = "<%=baseURL%>verify-otp?mobile_country_code="+response.user_info.mobile_country_code+'&phone_number='+response.user_info.phone_number;
+			} else {
+				if(obj.type == 'google'){
+					var auth2 = gapi.auth2.getAuthInstance();
+				  	auth2.signOut().then(function () {});
+				}
+
+				showAlert(response.message);
+				setTimeout(() => {
+					hideAlert()
+					window.location.reload(true);
+				}, 3000);
+			}
+		});
+	}
+
+	function showAlert(message){
+		notify({
+            type: "error",
+            title: "<%= labels['LBL_MESSAGE'][language] %>",
+			 theme: "dark-theme",
+			 position: {
+                x: "right",
+                y: "top"
+            },
+            icon: '<img src="<%=baseURL%>images/paper_plane.png" />',
+            message: message
+        });
+	}
+
+	function hideAlert(){
+		$( ".notify-close-btn" ).trigger( "click" );
+	}
+
+	function onSignIn(googleUser) {
+		let profile = googleUser.getBasicProfile();
+	  	if(profile.getId()){
+	  		signIn({ type: 'google', social_id: profile.getId() });
+	  	}
+	}
+
+	$(document).ready(function(){
+		$('#txt-password').keypress(function (e) {
+		 	let key = e.which;
+		 	if(key == 13){
+		 		$('.btn-sign-in').trigger('click');
+		    	return false;
+		  	}
+		});
+
+	  	$('#google-sign-in').click('on', function(){
+	  		$('.abcRioButton').trigger('click');
+	  	})
+	});
+
+function validateIndexForm(){
 
 
-				$("#dateTo").text("");
+		if(!$('#txt-mercado').val()){
+			errMercadoFlag = 1;
+			$('#err-mercado').text("Selecciona um mercado").show();
+		} else {
+			errMercadoFlag = 0;
+			$('#err-mercado').hide();
+		}
+
+		if(!$('#txt-date-to').val()){
+			errDateTo = 1;
+			$('#err-date-to').text("Selecciona uma data").show();
+		} else {
+			errDateTo = 0;
+			$('#err-date-to').hide();
+		}
+
+		if(!errMercadoFlag && !errDateTo){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+const displayRequestIndex = () => {
+			$("#dateTo").text("");
 				$("#dateFrom").text("");
 
-				var date = $('#date-to').val() ? $('#date-to').val() : new Date();
+				var date = $('.date-to').val() ? $('.date-to').val() : new Date();
+				var mercado = $(".mercado_data").val() ? $(".mercado_data").val() : 30;
 
-				setInterval( '');
-				$("#dateTo").text(date);
+				$("#dateTo").text(moment(date).format('YYYY-MM-DD'));
 				dateFrom = moment(date).subtract(7,'d').format('YYYY-MM-DD');
 				$("#dateFrom").text(dateFrom);
 
@@ -118,6 +399,7 @@
 					$.ajax({
 					    url: "get-kepya-index/"+date,
 					    type: "GET",
+					    data: { mercado : mercado},
 					    dataType: "json",
 					    success: function(data){
 
@@ -153,7 +435,7 @@
 					        	}else {
 					        		variant_tran = '<img src="https://img.icons8.com/color/25/000000/equal-sign.png"/>';	
 					        	}
-					             trHtml += '<tr><td style="color: #f69624;">'+element.element.product_name+'</td><td>'+element.last_price+'</td><td>'+element.element.act_price+'</td><td>'+element.element.min_price+'</td><td>'+element.element.max_price+'</td><td>'+ variant  +'</td><td>'+variant_tran +'</td><td>'+element.vari_in_kz+'</td></tr>';
+					             trHtml += '<tr><td style="color: #f69624; text-align: center;">'+element.element.product_name+'</td><td style="text-align: center;">'+element.last_price+'</td><td style="text-align: center;">'+element.element.act_price+'</td><td style="text-align: center;">'+element.element.min_price+'</td><td style="text-align: center;">'+element.element.max_price+'</td><td style="text-align: center;">'+ variant  +'</td><td style="text-align: center;">'+variant_tran +'</td><td style="text-align: center;">'+element.vari_in_kz+'</td></tr>';
 
 						        	});
 					        				$("#tbody_record").html("");
@@ -162,11 +444,13 @@
 
 						    	}
 							});
-			})
-	});
+			
+		}
 
 	function toFixed(x) {
   return Number.parseFloat(x).toFixed(2);
 }
 
 </script>
+</body>
+</html>

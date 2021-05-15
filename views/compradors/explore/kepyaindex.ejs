@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:locale" content="pt_PT" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Kepya Agromercado Digital </title>
+
+	<meta property="fb:app_id" content="1389892087910589" />
+	<meta property="fb:admins" content="579622216,709634581" />
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>" />
+<!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
+	
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<%- include('shared/common_css') %>
+	<link rel="stylesheet" href="css/new_style.css">
+	<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+
+	<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="js/language.js"></script>
+	<script type='text/javascript' src="js/validation.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=605a3ed36f7ab900129ceb13&product=sop' async='async'></script>
+
+<style type="text/css">
+		.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+			background-color: #6c88a7;
+
+			}
+		.fa {
+			font-size: 12px;
+			}
+	</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122654457-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-122654457-1');
+	</script>
+</head>
+
+
+<body>
+
+<div class="">
+	<div id="nav-icon" class="menu-button visible-xs">
+		<span class="burger-icon"></span>
+	</div>
+</div>
+<div class="main_header">
+		<%- include('shared/top_nav_compradors') %>
+</div>
+<div class="sharethis-sticky-share-buttons"></div>
+
+<section class="productsdetail">
+	<div class="container">
+		<% if(user && user.user_id){ %>
+			<div class="breadcrumb_card">
+				<%- include('shared/breadcrumb') %>
+			</div>
+		<% } %>
+
+		<div class="product_card">
+		<div class="row">
+			
+
+			<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2" style="margin-top: 100px;">
+					<form id="formIndex">
+						<select class="form-control" name="mercado" id="mercado_data">
+							<option>Seleccionar o mercado</option>
+							<option value="30">Mercado do 30</option>
+						</select>
+						<input type="date" name="dateTo" id="date-to" class="form-control" style="margin: 2px 0;">
+						<button type="button" id="submit" class="button btn-cart" style="margin: 2px 0;">Buscar</button>
+					</form>
+				</div>
+				<div class="col-md-10" style="padding-top: 50px;">
+
+					<div class="card border-secundary" style="width: 91%; margin-left: 3%; margin-bottom: 20px;background: black; color: #FFFFFF">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-1">
+									<img src="../../../images/logo.png" width="100" class="">
+								</div>
+								<div class="col-md-3" style="padding-top: 40px; padding-left: 70px; text-align: center;" >
+									<div class="col-md-12 index-text"></div>
+									<div class="col-md-12 index-porc"></div>
+								</div>
+								<div class="col-md-6" style="padding-top: 40px; padding-left: 1px; text-align: center;">
+									<div class="col-md-12">Mercado do 30</div>
+									<div class="col-md-12">VARIAÇÃO SEMANAL DA MÉDIA DE PREÇOS</div>
+								</div>
+							</div>
+							<div class="col-md-12" style="background: #f69624; padding: 1%; color: #000;">
+								<div class="row">
+									<div class="col-md-2">KEPYA INDEX</div>
+									<div class="col-md-10" style="text-align: center;"> DE <d id="dateFrom"></d> ATÉ <d id="dateTo"></d> </div>
+								</div>
+							</div>
+						</div>
+		
+						<div class="table-responsive-sm">
+							<table  class="table table-striped table-dark">
+								<thead>
+									<tr>
+										<th style="text-align: center;">Produto</th>
+										<th style="text-align: center;">Preço Ant.</th>
+										<th style="text-align: center;">Preço Act</th>
+										<th style="text-align: center;">Preço Min</th>
+										<th style="text-align: center;">Preço Max</th>
+										<th style="text-align: center;">Variação %</th>
+										<th style="text-align: center;" style="text-align: center;">Tendência</th>
+										<th style="text-align: center;">Variação Kz</th>
+									</tr>
+								</thead>
+									<tbody id="tbody_record">
+
+									</tbody>
+								</table>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		</div>
+	</div>
+</section>
+
+
+
+	<script type='text/javascript' src="../../js/jquery-1.12.4.js"></script>
+	<script>
+		$(document).ready(function(){
+
+
+				$("#submit").click( function(){
+
+					console.log($("#mercado_data").val());
+
+				$("#dateTo").text("");
+				$("#dateFrom").text("");
+
+				var date = $('#date-to').val() ? $('#date-to').val() : new Date();
+
+				$("#dateTo").text(date);
+				dateFrom = moment(date).subtract(7,'d').format('YYYY-MM-DD');
+				$("#dateFrom").text(dateFrom);
+
+
+					$.ajax({
+					    url: "get-kepya-index/"+date,
+					    type: "GET",
+					    data: { mercado : $("#mercado_data").val()},
+					    dataType: "json",
+					    success: function(data){
+
+					    	var index = data.all_element_trace.index ? toFixed(data.all_element_trace.index) * 100 : 0 ;
+					       $(".index-text").text("% "+ index);
+
+					     		if(index > 0 ) {
+					        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
+					        	}else if(index < 0 ){
+					        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+					        	}else {
+					        		variant_tran = '<img src="https://img.icons8.com/color/25/000000/equal-sign.png"/>';	
+					        	}
+
+					        	$(".index-porc").html( variant_tran);
+
+
+					       var trace = data.trace;
+
+					       var trHtml ="";
+					        trace.forEach(function(element, index){
+
+					        	var variant_tran = "";
+					        	if( element.variant) {
+					        		variant = toFixed(element.variant) * 100
+					        	}else {
+					        		variant = 0
+					        	}
+					        	if(element.variant > 0 ) {
+					        		variant_tran = '<img src="https://img.icons8.com/emoji/25/000000/red-triangle-pointed-up-emoji.png"/>';
+					        	}else if(element.variant < 0 ){
+					        		variant_tran = '<img src="https://img.icons8.com/ios-filled/25/26e07f/sort-down.png"/>';
+					        	}else {
+					        		variant_tran = '<img src="https://img.icons8.com/color/25/000000/equal-sign.png"/>';	
+					        	}
+					             trHtml += '<tr><td style="color: #f69624; text-align: center;">'+element.element.product_name+'</td><td style="text-align: center;">'+element.last_price+'</td><td style="text-align: center;">'+element.element.act_price+'</td><td style="text-align: center;">'+element.element.min_price+'</td><td style="text-align: center;">'+element.element.max_price+'</td><td style="text-align: center;">'+ variant  +'</td><td style="text-align: center;">'+variant_tran +'</td><td style="text-align: center;">'+element.vari_in_kz+'</td></tr>';
+
+						        	});
+					        				$("#tbody_record").html("");
+
+					        	$("#tbody_record").append(trHtml);
+
+						    	}
+							});
+			})
+	});
+
+	function toFixed(x) {
+  return Number.parseFloat(x).toFixed(2);
+}
+
+</script>
+</body>
+</html>

@@ -4,8 +4,10 @@ const {
 } = require('../utils/session.js');
 
 module.exports = function(app) {
-	app.get('/kepyaindex', authenticate_common, index_k.kepyaIndex);
-	app.get('/get-kepya-index/:dateTo', authenticate_common, index_k.getKepyaIndex);
+
+	app.post('/kepyaindex/authenticate', index_k.authenticate);
+	app.get('/kepyaindex', index_k.kepyaIndex);
+	app.get('/get-kepya-index/:dateTo', index_k.getKepyaIndex);
 
 
 };
