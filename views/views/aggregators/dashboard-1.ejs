@@ -1,0 +1,311 @@
+<link rel="stylesheet" href="../../../css/chart.css"/>
+<script src="../../../js/highcharts.js"></script>
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row order-list-title">
+							<div class="col-md-12">
+								<h3><%= labels['LBL_YOUR_ACCOUNT'][language] %></h3>
+								<div class="row">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>aggregators/product/list">
+											<div class="account_box">
+									        	<img src="../../../images/postadd.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_TITLE'][language] %></h3>
+										        	<p><%= labels['LBL_AGGREGATOR_DASHBOARD_LIST_FORECAST_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>aggregators/product/add">
+											<div class="account_box">
+									        	<img src="../../../images/postadd.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST'][language] %></h3>
+										        	<p><%= labels['LBL_AGGREGATOR_DASHBOARD_POST_FORECAST_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>aggregators/user/list">
+											<div class="account_box">
+									        	<img src="../../../images/signup.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS'][language] %></h3>
+										        	<p><%= labels['LBL_AGGREGATOR_DASHBOARD_MANAGE_USERS_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>aggregators/order/list">
+											<div class="account_box">
+									        	<img src="../../../images/order.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS'][language] %></h3>
+										        	<p><%= labels['LBL_AGGREGATOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="<%=baseURL%>aggregators/user/profile">
+											<div class="account_box">
+									        	<img src="../../../images/login.png">
+									        	<div class="account_box_inner">
+										        	<h3><%= labels['LBL_AGGREGATOR_DASHBOARD_LOGIN_SECURITY'][language] %></h3>
+										        	<p><%= labels['LBL_AGGREGATOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION'][language] %></p>
+									        	</div>
+											</div>
+										</a>
+									</div>							
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<% if(products.length > 0) { %>
+<section class="best_product products">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row" style='margin-bottom: 10px;'>
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_TODAYS_FORECASTED_PRODUCTS'][language] %></h3>
+				</div>
+			</div>
+			<div class="row" style='margin-bottom: 10px;'>
+				<div class="col-md-12 data-section">
+					<div class="kp_location" style='text-align: center;'>
+						<span class='blink' style='font-size:20px;'><%= labels['LBL_NOTE_TODAYS_FORECASTED_PRODUCTS'][language] %></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<% for(let i=0; i < products.length; i++) { %>
+					<div class="col-lg-12 col-sm-12 my_oderDetails">
+						<div class="col-lg-6 col-md-6 col-sm-7 kp_myorder">
+							<h2 class='capitalize'> <%= products[i].category_title %><span></span></h2>
+							<h3 class='capitalize'><%= products[i].sub_category_title %></h3>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span>
+							</div>
+							<div class="order_status">
+								<span>
+									<i class="fa fa-calendar" aria-hidden="true"></i> 
+									<%= labels['LBL_FORECASTED_DATE'][language] %> : <%= moment(products[i].expire_date).format('Do MMM YYYY') %>
+								</span>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 price_set">
+							<div class="sell_Cat Price_box">
+								<ul>
+									<li>
+										<span style='text-transform: capitalize'><%= labels['LBL_UNIT_PRICE'][language] %> - Kz <%= (products[i].unit_price).toFixed(2) %> / <%= products[i].unit_type %></span>
+									</li>
+									<li>
+										<span style='text-transform: capitalize'><%= labels['LBL_QUANTITY'][language] %> - <%= products[i].unit_value %> <%= (products[i].unit_value > 1) ? products[i].unit_plural_title : products[i].unit_type %></span>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="edit_ico">
+							<a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+<% } %>
+
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row add-new-products">
+								
+							<div class="col-md-12">
+								<div class="row chart-header">									
+									<div class="col-md-6 col-sm-6 col-xs-6">
+										<a href="<%=baseURL%>aggregators/product/add"><h3><i class="fa fa-plus-circle"></i><%= labels['LBL_ADD_NEW_PRODUCTS'][language] %></h3></a>
+									</div>
+								</div>
+
+								<div class="row">		
+									<div class="col-md-12 col-sm-12 col-xs-12 dashboard-table">
+										<h3><%= labels['LBL_MY_PRODUCTS'][language] %></h3>
+										<div style="padding: 0;" class="col-md-4 col-md-offset-8 col-sm-12 col-xs-12" id="section_product_category">
+										 	<div class="search-container">
+										       	<select class="select_plug" id="category_id" name="category_id" onchange="filterCategory()">
+													<option value="">--- <%= labels['LBL_SELECT_CATEGORY'][language] %> ---</option>
+													<option value="all"><%= labels['LBL_ALL'][language] %></option>
+													<% for(let i=0; i < categories.length; i++) { %>
+														<option value="<%= categories[i].category_id %>">
+															<%= categories[i].category_title %>
+														</option>
+													<% } %>
+												</select>
+												<span class="validation-alert" id="err-producer-id"></span>
+											</div>
+										</div>
+										<table class=" responsive-dashboard-table">
+										  <thead>
+											<tr>
+											  <th scope="col" width='10%'><%= labels['LBL_PRODUCT_ID'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_PRODUCT_TITLE'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_ADD_PRODUCES'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_CATEGORY'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_AVERAGE_RATINGS'][language] %></th>
+											  <th scope="col" width='10%'><%= labels['LBL_PRODUCER_DASHBOARD_MY_PRODUCTS_ALREADY_SOLD'][language] %></th>
+											  <th scope="col" width='10%'><%= labels['LBL_PRODUCER_DASHBOARD_MY_PRODUCTS_TO_SELL'][language] %></th>
+											  <th scope="col" width='10%'><%= labels['LBL_PRICE'][language] %></th>
+											</tr>
+										  </thead>
+										  <tbody id='my_products_list'>
+										  	<% if(my_products.length > 0) { %>
+										  		<% for(let i=0; i < my_products.length; i++) { %>
+													<tr onClick="productDetails('<%= my_products[i].product_id %>')">
+													  <td><%= my_products[i].product_id %></td>
+													  <td><%= my_products[i].sub_category_title %></td>
+													  <td><%= my_products[i].name %></td>
+													  <td><%= my_products[i].category_title %></td>
+													  <td><%= my_products[i].average_ratings %></td>
+													  <td><%= my_products[i].already_sold %></td>
+		  											  <td><%= my_products[i].to_sell %></td>
+													  <td>Kz <%= my_products[i].unit_price.toFixed(2) %></td>
+													</tr>
+												<% } %>
+											<% } else { %>
+												<tr><td colspan='8'><%= labels['LBL_NO_PRODUCTS_AVAILABLE'][language] %></td></tr>
+											<% } %>
+										  </tbody>
+										</table>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row add-new-products">
+							<div class="col-md-12">
+								<div class="row">									
+									<div class="col-md-12 col-sm-12 col-xs-12 dashboard-table">
+										<h3><%= labels['LBL_ORDERS_TO_BE_SHIPPED_SOON'][language] %></h3>
+										<table class=" responsive-dashboard-table">
+										  <thead>
+											<tr>
+											  <th scope="col" width='15%'><%= labels['LBL_ORDER_ID'][language] %></th>
+											  <th scope="col" width='25%'><%= labels['LBL_AGGREGATOR_DASHBOARD_ORDER_SHIPPED_SOON_CLIENT_ID'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_TOTAL_ITEMS'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_DELIVERED_ON'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_TOTAL_AMOUNT'][language] %></th>
+											  <th scope="col" width='15%'><%= labels['LBL_STATUS'][language] %></th>
+											</tr>
+										  </thead>
+										  	<tbody id='tbl_orders_shipped_soon'>
+										  		<tr><td colspan='6'><%= labels['LBL_NO_ORDERS_AVAILABLE'][language] %></td></tr>
+										  	</tbody>
+										</table>
+									</div>					
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row add-new-products">
+							<div class="col-md-12">
+								<div class="row">		
+									<div class="col-md-6 col-sm-12 col-xs-12 dashboard-table">
+										<h3><%= labels['LBL_TOP_PRODUCERS'][language] %></h3>
+										<div id="top_producers"></div>
+									</div>
+									<div class="col-md-6 col-sm-12 col-xs-12 dashboard-table">
+										<h3><%= labels['LBL_TOP_DESTINATIONS'][language] %></h3>
+										<div id="top_destinations_chart"></div>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script type="text/javascript">
+	function filterCategory(){
+		if($('#category_id').val()){
+    		$.ajax({url: "<%=baseURL%>aggregators/dashboard/get-my-products?category_id="+$('#category_id').val(),  success: function(result) {
+	            $('#my_products_list').html(result)
+	        }});
+    	} else {
+			$('#my_products_list').html("<tr><td colspan='8'><%= labels['LBL_NO_PRODUCTS_AVAILABLE'][language] %></td></tr>")
+    	}
+	}
+
+	function productDetails(product_id){
+		window.location.href = "<%=baseURL%>aggregators/product/display/"+product_id;
+	}
+
+	function orderDetails(order_id){
+		window.location.href = "<%=baseURL%>aggregators/order/details/"+order_id;
+	}
+	function blink_text() {
+	    $('.blink').fadeOut(500);
+	    $('.blink').fadeIn(500);
+	}
+
+	$(document).ready(function(){
+		$.ajax({url: "<%=baseURL%>aggregators/dashboard/get-orders-shipped-soon", success: function(result) {
+            $('#tbl_orders_shipped_soon').html(result)
+        }});
+
+        $.ajax({url: "<%=baseURL%>aggregators/dashboard/top-destinations", success: function(result) {
+            $('#top_destinations_chart').html(result)
+        }});
+
+        $.ajax({url: "<%=baseURL%>aggregators/dashboard/top-producers", success: function(result) {
+            $('#top_producers').html(result)
+        }});
+
+		setInterval(blink_text, 1000);
+	})
+</script>

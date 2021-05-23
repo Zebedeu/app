@@ -1,0 +1,51 @@
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ 
+	<section class="login-section text-center" id="Div1">
+			<div class="overlay-position"></div>
+			<div class="login-page">
+				<div class="container">
+					<div class="login-box">
+						<div class="row">
+
+						</div>
+						
+						<img src="<%=baseURL%>images/logo.png">
+						<h1><%= labels['LBL_SIGN_IN'][language] %></h1>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 form">
+								<form id="frm-sign-in" action="/" method="post">
+									<div class="form-group">
+										<input type="text" id="txt-email-address" name="phoneNumberAndEmail" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL_PHONE'][language] %>" required="">
+										<span class="validation-alert" id='err-email-address'></span>
+									</div>
+									<div class="form-group">
+										<input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_PASSWORD'][language] %>" required="">
+										<span class="validation-alert" id='err-password' style="width: 100%;text-align: left !important;"></span>
+									</div>
+									<div class="forgot-pw row">
+										  <div class="col-md-6 col-sm-6 col-xs-6 checkbox"><label class="checkbox-container"><%= labels['LBL_SIGN_IN_REMEMBER_ME'][language] %><input type="checkbox"><span class="checkbox-checkmark"></span></label></div>
+										  <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="<%=baseURL%>forgot-password"><%= labels['LBL_SIGN_IN_FORGOT_PASSWORD'][language] %>?</a></div>
+									</div>
+									<button type="button" class="btn btn-default btn-sign-in" onclick="submitSignIn()"><%= labels['LBL_SIGN_IN_BUTTON'][language] %></button>
+		
+									<a href="javascript:void(0)" class="google btn" id="google-sign-in">
+										<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %>
+									</a>
+									
+									<div class="text-center creat_new"><%= labels['LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT'][language] %>? <a href="sign-up"><%= labels['LBL_SIGN_IN_SIGN_UP_FOR_FREE'][language] %></a></div>
+		
+									<div class="g-signin2 hide" data-onsuccess="onSignIn"><%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %></div>
+								</form>
+							</div>
+					
+				</div>
+			</div>
+	</section>
+</div>
+<script>
+	  		setTimeout( () => {
+			$('#exampleModalLong').modal('show')
+
+		}, 10 );
+
+</script>

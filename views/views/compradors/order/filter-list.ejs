@@ -1,0 +1,114 @@
+<% if(orders.length > 0){ %>
+	<% for(let i=0; i < orders.length; i++) { %>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<table class="table shopping-cart-wrap">
+				<tbody>
+					<tr>
+						<td style="padding: 0;border-bottom: none !important;" colspan="4">
+							<div class="order_header">
+								<div class="row">
+									<div class="col-md-8 col-sm-8 col-xs-12">
+										<div class="inline">
+											<h6><%= labels['LBL_ORDER_ID'][language] %></h6>
+											<p><%= orders[i]['order_id'] %></p>
+										</div>
+										<div class="inline">
+											<h6><%= labels['LBL_STATUS'][language] %></h6>
+											<p style="text-transform: capitalize !important;">
+												<% if(orders[i]['status'] == 'packed'){ %>
+													<%= labels['LBL_PACKED'][language] %>
+											   <% } else if(orders[i]['status'] == 'shipped'){ %>
+													<%= labels['LBL_SHIPPED'][language] %>
+											   <% } else if(orders[i]['status'] == 'delivered'){ %>
+													<%= labels['LBL_DELIVERED'][language] %>
+											   <% } else if(orders[i]['status'] == 'waiting'){ %>
+													<%= labels['LBL_WAITING'][language] %>
+											   <% }else if(orders[i]['status'] == 'paid'){ %>
+												   <%= labels['LBL_PAID'][language] %>
+											  <% }%></p>
+										</div>
+										<% if(orders[i]['payment_type'] == 'atm_reference'){ %>
+											<% if(orders[i]['atm_reference_response']['TIME_LEFT']){ %>
+												<div class="inline">
+													<h6><%= labels['LBL_TIME_LEFT'][language] %></h6>
+													<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['TIME_LEFT'] %></p>
+												</div>
+											<% } %>
+											<div class="inline">
+												<h6><%= labels['LBL_ENTITY_ID'][language] %></h6>
+												<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['ENTITY_ID'] %></p>
+											</div>
+											<div class="inline">
+												<h6><%= labels['LBL_REFERENCE_CODE'][language] %></h6>
+												<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['REFERENCE'] %></p>
+											</div>
+											<div class="inline">
+												<h6><%= labels['LBL_WALLET_AMOUNT'][language] %></h6>
+												<p style="text-transform: capitalize !important;"><%= orders[i]['atm_reference_response']['AMOUNT'] %></p>
+											</div>
+										<% } %>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xs-12 align_right">
+								
+										<ul class="nav navbar-nav invoice_lable">		
+											<li>
+												<a href="<%=baseURL%>compradors/order/details/<%= orders[i]['order_id'] %>"><button style="margin: 5px;" class="button btn-details" ><%= labels['LBL_ORDER_DETAILS'][language] %></button></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+					  <th scope="col"><%= labels['LBL_PRODUCT'][language] %></th>
+					  <th scope="col" width="180"><%= labels['LBL_QUANTITY'][language] %></th>
+					  <th scope="col" width="180"><%= labels['LBL_PRICE'][language] %></th>
+					  <th scope="col" width="180"><%= labels['LBL_TOTAL'][language] %></th>
+					</tr>
+					<% for(let j=0; j < orders[i]['products'].length; j++) { %>
+						<tr>
+							<td>
+								<figure class="">
+									<div class="img-wrap"><img src="<%= orders[i]['products'][j]['images'][0] %>" class="img-thumbnail img-sm"></div>
+									<figcaption class="media-body kp_myorder">
+										<h3><%= orders[i]['products'][j]['sub_category_title'] %></h3>
+										<h4><%= orders[i]['products'][j]['category_title'] %></h4>
+									</figcaption>
+								</figure> 
+							</td>
+							<td> 
+								<h4><%= orders[i]['products'][j]['product_qty'] %></h4>	
+							</td>
+							<td> 
+								<h4 class="currency_color_text sku_wrapper"><%= (orders[i]['products'][j]['unit_price']) %> Kz</h4>
+							</td>
+							<td> 
+								<h4 class="currency_color_text sku_wrapper"><%= orders[i]['products'][j]['item_total'] %> Kz</h4>
+							</td>
+						</tr>
+					<% } %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4" style="padding: 0 !important;background-color: whitesmoke;">
+							<div class="row order_total">
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<p><%= labels['LBL_ORDERED_ON'][language] %>: <span><%= orders[i]['delivery_at'] %></span></p>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12 align_right">
+									<p><%= labels['LBL_ORDER_TOTAL'][language] %> : <span>Kz <%= (orders[i]['total']) %></span></p>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	<% } %>
+<% } else { %>
+	<div class="col-md-12 thankyou">
+		<img src="../../../images/thankyou.png">
+		<p><%= labels['LBL_COMPRADOR_YOUR_ORDER_EMPTY'][language] %>.</p>
+	</div>
+<% } %>

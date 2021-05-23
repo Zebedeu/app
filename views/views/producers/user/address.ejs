@@ -1,0 +1,39 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="help_sidebar_right">
+					<div class="row order-list-title">
+						<div class="col-md-12">
+							<div class="heading cf addnew">
+							    <a href="javascript:void(0)" class="button btn-cart" onClick="addNewAddress()">+ <%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+							</div>
+							<h3><%= labels['LBL_MANAGE_ADDRESSES'][language] %></h3>
+							<div class="row" id="address_list">
+								<% for(let i=0; i < addresses.length; i++) { %>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="row my_orders">
+				                            <div class="col-md-12 mb-sm--20">
+				                                <div class="text-block address_">
+				                                    <p style='text-transform:capitalize'><%= addresses[i]['type'] %> - <%= addresses[i]['name'] %></p>
+				                                    <address><%= addresses[i]['complete_address'] %>, <%= addresses[i]['locality'] %>, <%= addresses[i]['city_district'] %>, <%= addresses[i]['state'] %>, <%= addresses[i]['pin_code'] %></address>
+				                                    <h6><%= labels['LBL_EMAIL'][language] %>: <span><%= addresses[i]['email'] %></span></h6>
+				                                    <h6><%= labels['LBL_MOBILE_NUMBER'][language] %>: <span><%= addresses[i]['mobile_number'] %></span></h6>
+				                                    <a href="javascript:void(0)" onClick="editAddress('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_EDIT'][language] %> <span> | </span></a><a href="javascript:void(0)" onClick="removeAddress('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_DELETE'][language] %></a>
+				                                </div>
+				                            </div>
+				                        </div>
+									</div>	
+								<% } %>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

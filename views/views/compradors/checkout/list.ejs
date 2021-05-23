@@ -1,0 +1,260 @@
+<link rel="stylesheet" type="text/css" href="../../../css/checkout.css">
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="row order-list-title">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+			 		<h3 style="padding-bottom: 20px;"><%= labels['LBL_CHECKOUT'][language] %></h3>
+				</div>
+				<div class="col-md-12">
+					<form id="msform">
+					  <!-- progressbar -->
+					  <ul id="progressbar">
+					    <li class="active">shopping cart</li>
+					    <li>Shipping</li>
+					    <li>Reviews & Payments</li>
+					    <li>Reserved</li>
+					    <li>Ordered</li>
+					    <li>Shipped</li>
+					    <li>Transported</li>
+					    <li>Delivered</li>
+					  </ul>
+						<fieldset>
+						  	<div class="row">
+						  		<div class="col-md-8">
+						  			<div class="card">
+										<table class="table shopping-cart-wrap">
+											<thead class="text-muted">
+											<tr>
+											  <th scope="col">Product</th>
+											  <th scope="col" width="180">Quantity</th>
+											  <th scope="col" width="120">Price</th>
+											  <th scope="col" width="100">Total</th>
+											</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<figure class="">
+															<div class="img-wrap"><img src="../../../images/3.jpg" class="img-thumbnail img-sm"></div>
+															<figcaption class="media-body kp_myorder">
+																<h3>Organic sweet corn</h3>
+																<h4>Vegetables &nbsp; <i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span>Aungola</span></h4>
+															</figcaption>
+														</figure> 
+													</td>
+													<td> 
+														<div class="">
+															<div style="margin-top: 12px;width: 120px;display: inline-block;" class="custom">
+																<div class="quantity">
+																	<button class="minus decrease items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>												
+																	<input type="text" class="count input-text qty number_158782817411" step="1" min="1" max="" name="quantity" value="300" title="Qty" size="4" inputmode="numeric">
+																	<button class="plus increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
+																</div>
+															</div>
+															<span style="position: relative;top: 1px;left: 10px;">KG</span><br />
+															<a class="remove_cart" href="javascript:void(0)" onclick="removeProduct('158782817411')">Remove Item</a>
+														</div>
+													</td>
+													<td> 
+														<h4 style="padding-top: 11px;" class="currency_color_text sku_wrapper">Kz 1,00 / Kg</h4>
+													</td>
+													<td> 
+														<h4 style="padding-top: 11px;" class="currency_color_text sku_wrapper">Kz 300</h4>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+						   		</div>
+						   		<div class="col-md-4">
+						   			<div style="background-color: #efefef;" class="totals no-items-in-cart card">
+										<h3 style="padding: 15px 20px;margin: 0 !important;font-size: 18px !important;"><%= labels['LBL_ORDER_TOTAL'][language] %></h3>
+										<div class="totals-item">
+									  		<label><%= labels['LBL_SUB_TOTAL'][language] %></label>
+										  	<div class="totals-value" id="cart-subtotal"><%= subtotal =>  Kz</div>
+										</div>
+										<div class="totals-item">
+										  	<label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
+										  	<div class="totals-value" id="cart-tax"><%= transportFees %>  Kz</div>
+										</div>
+										<div class="totals-item hide">
+										  	<label>Shipping</label>
+										  	<div class="totals-value" id="cart-shipping">0.00  Kz</div>
+										</div>
+										<hr style="border-color: #cecece;margin: 15px;">
+										<div class="totals-item totals-item-total">
+										  	<label style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
+										  	<div style="font-size: 18px;" class="totals-value" id="cart-total"><%= (total + transportFees) %>  Kz</div>
+										</div>
+									
+									</div>
+						   		</div>
+						   	</div>
+
+							<button type="button" style="margin: 20px 15px 20px;" class="next button btn-cart">Continue</button>
+						</fieldset>
+						<fieldset>
+						    <div class="row">
+			                    <div class="col-md-12 mb-sm--20">
+									<a style="padding-top: 14px;font-size: 16px;color: #000;position: absolute;right: 18px;top: -25px;" data-toggle="modal" data-target="#myModal" href="#" class="sell_btn">+ Add New Address</a>
+								</div>
+								<div class="col-md-6">
+									<div class="my_orders">
+										<div class="order_header">
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<div class="funkyradio">
+														<div class="funkyradio-primary mar10">
+												            <input type="radio" name="radio" id="radio">
+												            <label for="radio">Use this</label>
+												        </div>	
+												        <div class="pull-right">
+												        	<a href="#">Edit <span> | </span></a><a href="#">Delete</a>
+												        </div>
+											    	</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+				                            <div class="col-md-12 mb-sm--20">
+				                                <div class="text-block address_">
+				                                    <h4>John Kartar</h4>
+				                                    <address>Rua Antonio A Mendes Correia 32/34 ,Luanda,Angola</address>
+
+				                                    <h6>Phone number: <span>+244 222 352858</span></h6>							
+				                                </div>							                                
+				                            </div>
+				                        </div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="my_orders">
+										<div class="order_header">
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<div class="funkyradio">
+														<div class="funkyradio-primary mar10">
+												            <input type="radio" name="radio" id="radio11">
+												            <label for="radio11">Use this</label>           
+												        </div>
+												        <div class="pull-right">
+												        	<a href="#">Edit <span> | </span></a><a href="#">Delete</a>
+												        </div>
+												    </div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+				                            <div class="col-md-12 mb-sm--20">
+				                                <div class="text-block address_">
+				                                    <h4>John Kartar</h4>
+				                                    <address>Rua Antonio A Mendes Correia 32/34 ,Luanda,Angola</address>
+
+				                                    <h6>Phone number: <span>+244 222 352858</span></h6>						       
+				                                </div>
+				                            </div>
+				                        </div>
+									</div>
+								</div>	
+								<div class="col-md-6">
+									<div class="my_orders">
+										
+										<div class="order_header">
+											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<h3>Do you need transportation?</h3>
+													<div style="display: inline-block;padding: 10px;" class="funkyradio">
+														<div class="funkyradio-primary mar10">
+												            <input checked="" type="radio" name="radio" id="radio13">
+												            <label for="radio13">Yes</label>           
+												        </div>
+												    </div>
+												    <div style="display: inline-block;padding: 10px;" class="funkyradio">
+														<div class="funkyradio-primary mar10">
+												            <input type="radio" name="radio" id="radio14">
+												            <label for="radio14">No</label>           
+												        </div>
+												    </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>				
+							</div>
+							<button style="margin: 0px 15px 20px;" type="button" class="next button btn-cart">Deliver Here</button>				
+						</fieldset>
+						<fieldset>
+						    <div class="payment_method">			
+								<div class="row">
+									<div class="col-md-12">
+										<div class="accordion js-accordion">
+											  <div class="accordion__item js-accordion-item">
+											    <div class="accordion-header js-accordion-header head_"><img src="../../../images/wallet.png">Wallet <span>(KZ 310)</span></div>
+											    <div class="accordion-body js-accordion-body">
+											     	<div class="row">
+														<div class="col-md-12">
+															<a href="thankyoupage.html"><button class="button btn-cart">Place Order</button></a>
+														</div>
+													</div>
+											    </div>
+											  </div>
+
+											  <div class="accordion__item js-accordion-item">
+											    <div class="accordion-header js-accordion-header head_"><img src="../../../images/wallet.png">ATM Reference</div>
+											    <div class="accordion-body js-accordion-body">
+											     	<div class="row">
+														<div class="col-md-12">
+															<a href="thankyoupage.html"><button class="button btn-cart">Place Order</button></a>
+														</div>
+													</div>
+											    </div>
+											  </div>
+
+											  <!-- accordion item -->
+											  <div class="accordion__item js-accordion-item">
+											    <div class="accordion-header js-accordion-header head_"><img src="../../../images/card.png">Payment From the Bank</div>
+											    <div class="accordion-body js-accordion-body">
+													<div class="row">
+														<div class="col-md-12">
+															<div class="search-container">
+															    <p>IBAN : <span id="account_no">AO06.0045.0050.0002.8780.5806.0</span></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="search-container">
+															    <p>Bank : <span id="account_code">Banco Económico</span></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="search-container">
+															    <p>Company name : <span id="account_company_name">Standard Chartered Bank de Angola</span></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="search-container">
+																<a href="javascript:void(0)"><button id="order_now" style="display:none" class="button btn-cart" onclick="placeOrder('bank','place_order')">Order Now</button></a>
+																<a href="javascript:void(0)"><button id="reserve_now" style="" class="button btn-cart" onclick="placeOrder('bank','reserve_order')">Reserve Order</button></a>
+																<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+																<p style="color: rgb(247, 35, 44);" id="no_balance">Your account doesn't have enough funds to complete the purchase.  We can put the product on hold for 4 hours while you charge your account.</p>
+															</div>
+														</div>
+													</div>
+											    </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+	            </div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src='../../../js/jquery-ui.min.js'></script>
+<script  src="../../../js/payment.js"></script>

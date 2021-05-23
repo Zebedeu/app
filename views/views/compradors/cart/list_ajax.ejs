@@ -1,0 +1,59 @@
+<% for(let i=0; i < products.length; i++) { %>
+	<div class="col-lg-12 col-sm-12 my_oderDetails">
+		<div class="col-lg-4 col-md-6 col-sm-12 kp_myorder">
+			<img src="<%= products[i].images[0] %>" height="216">
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12 kp_myorder">
+			<h2 style='text-transform: uppercase'><%= products[i].category_title %> <span></span></h2>
+			<h3 style='text-transform: capitalize'><%= products[i].sub_category_title %></h3>
+			<div class="kp_location">
+				<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span>
+			</div>
+
+			<span class="kp-price">Price -  <%= (products[i].unit_price).toFixed(2) %> Kz /Unit</span>
+			<div class="">
+				<div class="custom pull-left">
+					<div class="quantity">
+						<button onclick="decreaseValue('<%= products[i].product_id %>')" class="minus decrease items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
+						<input type="text" class="count input-text qty number_<%= products[i].product_id %>" step="1" min="1" max="" name="quantity" value="<%= products[i].qty %>" title="Qty" size="4" inputmode="numeric">
+						<button onclick="increaseValue('<%= products[i].product_id %>')" class="plus increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12 price_set">
+			<div class="sell_Cat Price_box">
+				<ul>
+					<li>	
+						<span style='text-transform: capitalize'>Units - <%= products[i].unit_type %></span>
+					</li>
+					<li>
+						<span style='text-transform: capitalize'>Available Stock - <%= products[i].unit_value %> <%= products[i].unit_type %></span>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		
+	</div>
+<% } %>
+
+<div class="totals">
+	<div class="totals-item">
+	  <label>Subtotal</label>
+	  <div class="totals-value" id="cart-subtotal"><%= (total).toFixed(2) %> Kz</div>
+	</div>
+	<div class="totals-item">
+	  <label>Tax (0%)</label>
+	  <div class="totals-value" id="cart-tax">0.00 Kz</div>
+	</div>
+	<div class="totals-item">
+	  <label>Shipping</label>
+	  <div class="totals-value" id="cart-shipping">0.00 Kz</div>
+	</div>
+	<div class="totals-item totals-item-total">
+	  <label>Grand Total</label>
+	  <div class="totals-value" id="cart-total"><%= (total).toFixed(2) %> Kz</div>
+	</div>
+</div>
+<a href="javascript:void(0)"><button type="button" name="add-to-cart" class="button btn-cart button pull-right">Proceed to Buy</button></a>

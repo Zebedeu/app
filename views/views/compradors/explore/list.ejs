@@ -1,0 +1,342 @@
+<link rel="stylesheet" href="../../../css/product.css">
+<style type="text/css">
+.irs--square {
+    height: 50px !important;
+}
+.panel {
+  display: none;
+  overflow: hidden;
+  margin: 0 !important;
+}
+.category h3 {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    padding: 15px 15px 10px 15px;
+    position: relative;
+    display: block;
+    margin-top: 0px;
+    color: #292929;
+    text-transform: uppercase;
+    border-bottom: 1px #eaeaea solid;
+    border-left: 4px #824d9f solid;
+    font-family: 'GTEestiDisplay-Medium';
+    margin: 0;
+    background-color: #fff;
+}
+i.accordion2 {
+    padding: 6px 20px;
+    cursor: pointer;
+    float: right;
+    font-style: normal;
+    position: absolute;
+    display: inline-block;
+    right: 15px;
+    color: #000000;
+    font-size: 22px;
+    top: 35px;
+    font-weight: bold;
+}
+</style>
+<section class="productsdetail" style="margin-top: -10px;">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<!-- <div class="row ">
+			<div class="col-md-12 data-section mt40">
+				<h2><%= labels['LBL_BEST_MARKET_PLACE'][language] %></h3>
+				<p class="product-p"><%= labels['LBL_SELL_SPICES_FRUITS'][language] %></p>
+			</div>
+		</div> -->
+		<div class="row" style='margin-bottom:10px; margin-top: -20px;'>
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<h6 href="#" style="cursor:pointer;width: 100%;text-align: right;color: red;font-size: 14px;background-color: whitesmoke;padding: 10px 5px;margin: 0;"><span class="filter-clear-all" onclick='clearAll()'><%= labels['LBL_CLEAR_ALL'][language] %></span></h6>
+				<div class="category">
+					<h3><%= labels['LBL_CATEGORIES'][language] %></h3><i class="accordion2">+</i>
+					<div class="panel" id="accordion">
+					  <ul>
+					  	<div class="">
+						   	<li><a href="javascript:void(0)" category_id="all" class="list-categories"><%= labels['LBL_ALL'][language] %></a></li>
+						  	<% for(let i=0; i < categories.length; i++) { %>
+						  		<li><a href="javascript:void(0)" category_id="<%= categories[i]['category_id'] %>" class="list-categories"><%= categories[i]['category_title'] %></a></li>
+						  	<% } %>
+					   	</div>
+					  </ul>
+					</div>
+				</div>
+				<div class="category">
+					<div id="accordion">
+					  <ul>
+					  	<h3><%= labels['LBL_PRODUCT'][language] %></h3>
+					  </ul>
+					  	<div id="custom-search-input">
+                            <input type="text" id="search-by-product" class="search-query form-control" placeholder="<%= labels['LBL_SEARCH_PRODUCT'][language] %>">
+                            <a href="javascript:void(0)" onClick="doSearch()"><i class="fa fa-arrow-right"></i></a>
+                        </div>
+					</div>
+				</div>
+				<div class="category">
+					<div id="accordion">
+					  <ul>
+					  	<h3><%= labels['LBL_AREA'][language] %></h3>
+					  </ul>
+					  	<div id="custom-search-input">
+                            <select class="filter_select filter_select_state_id state_id" id="state_id" name="state_id" onchange="filterByProvince()">
+								<option value="">--- <%= labels['LBL_SELECT_PROVINCE'][language] %> ---</option>
+							</select>
+                        </div>
+					</div>
+				</div>
+				<div class="category">
+					<div id="accordion">
+					  <ul>
+					  	<h3><%= labels['LBL_PRICE'][language] %></h3>
+					  </ul>
+					  	<div class="cd-filter-block">
+							<div class="cd-filter-content cd-filters list">
+								<input type="text" class="js-range-slider" name="my_range" value=""/>    
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="category">
+					<div id="accordion">
+					  <ul>
+					  	<h3><%= labels['LBL_AVAILABILITY_STATUS'][language] %></h3>
+					  </ul>
+					  	<div class="control-group kp-filter">
+						    <label class="control control--checkbox">&nbsp; <%= labels['LBL_FORECAST'][language] %>
+						      <input type="checkbox" id="forecasted" name="forecasted" checked="checked"/>
+						      <div class="control__indicator"></div>
+						    </label><br />
+						    <label class="control control--checkbox">&nbsp; <%= labels['LBL_IN_STOCK'][language] %>
+						      <input type="checkbox" id="in_stock" name="in_stock" checked="checked"/>
+						      <div class="control__indicator"></div>
+						    </label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12" >
+				<div class="white_bg2">
+					<div class="row" id="product-list-section">
+						<% if(products.length > 0){ %>
+							<% let is_product = 'no'; %>
+							<% for(let i=0; i < products.length; i++) { %>
+								<% if(products[i]['remaining_unit_value'] >= products[i]['min_qty']){ %>
+									<% is_product = 'yes'; %>
+									<div class="col-md-4 col-sm-6 col-xs-12 product-list">
+										<div class="product-data">
+											<div class="product-img" onClick="goToDetails('<%= products[i].product_id %>')">
+												<img src="<%= products[i].images[0] %>" alt="<%= products[i].sub_category_title %>" class="pro-image img-size">
+											    <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+										    </div>
+											<div class="product-text">
+												<div class="product-text">
+													<a href="details/<%= products[i].product_id %>">
+														<h3 class="pro_title_"><%= products[i].sub_category_title %></h3>
+													</a>					
+													<h4><%= products[i].category_title %> / <%= labels['LBL_QUANTITY'][language] %>: <%= products[i].remaining_unit_qty %> <%= (products[i]['remaining_unit_value'] > 1) ? products[i]['unit_plural_title'] : products[i]['unit_type'] %></h4>
+													<h4 class="currency_color_text sku_wrapper pro-bottom"><%= (products[i].product_unit_price) %> Kz/<%= products[i].unit_type %></h4>
+													<div class="kp_location">
+														<i class="fa fa-map-marker" aria-hidden="true"></i> <span class='pro-location'><%= products[i].state_name %></span>
+													</div>
+												</div>												
+											</div>
+										</div>	
+									</div>
+								<% } %>
+							<% } %>
+							<% if(is_product == 'no'){ %>
+								<div class='row'><div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'><p><%= labels['LBL_COMPRADOR_EXPLORE_NO_PRODUCTS'][language] %></p></div></div>
+							<% } %>
+						<% } else { %>
+							<div class='row'><div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'><p><%= labels['LBL_COMPRADOR_EXPLORE_NO_PRODUCTS'][language] %></p></div></div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	let category_id = 'all'
+		,availability_in_stock = 'yes'
+		,availability_forecasted = 'yes'
+		,lower_price_range = 0
+		,default_higher_price_range = "<%= higher_price_range %>"
+		,higher_price_range = "<%= higher_price_range %>"
+		,higher_price_range_original = "<%= higher_price_range_original %>"
+		,max_price_range = higher_price_range_original
+		,search_product_title = ''
+		,search_product_location = ''
+		,ajax_product_id = ''
+		,ajax_favourite_type = ''
+		,ajax_product_arr = [];
+
+	$(document).ready(() => {
+		getStates('<%=baseURL%>');
+
+		$('.list-categories').click(function() {
+			category_id = $(this).attr("category_id");
+		    filterProductItems();
+		})
+
+		$('#in_stock').on('change', function() {
+		    if(this.checked){
+		    	availability_in_stock = 'yes';
+		    } else {
+		    	availability_in_stock = 'no';
+		    }
+
+		    filterProductItems();
+		});
+
+		$('#forecasted').on('change', function() {
+		    if(this.checked){
+		    	availability_forecasted = 'yes';
+		    } else {
+		    	availability_forecasted = 'no';
+		    }
+
+		    filterProductItems();
+		});
+	  	
+	  	let typingTimer;
+		let doneTypingInterval = 1000;
+	  	let saveResult = function(data) {
+	  		lower_price_range = data.from;
+	  		higher_price_range = data.to;
+		
+	  		clearTimeout(typingTimer);
+  			typingTimer = setTimeout(doneTyping, doneTypingInterval);
+		};
+
+		function doneTyping () {
+		 	filterProductItems();
+		}
+
+	  	$(".js-range-slider").ionRangeSlider({
+		    skin: "square",
+		    step: 10,
+		    type: "double",
+		    grid: false,
+		    min: lower_price_range,
+		    max: higher_price_range,
+		    from: 0,
+		    to: higher_price_range,
+		    prefix: "Kz ",
+		    onChange: saveResult,
+		    onFinish: saveResult
+		});
+	});
+
+	function doSearch(){
+		filterProductItems();
+	}
+
+	let typingTimer;
+	let doneTypingInterval = 1000;
+	function toggleGetSetFavourite(product_id){
+		ajax_product_id = product_id;
+		if($(".favourite_icon_"+product_id).hasClass("fa fa-heart-o")){
+			ajax_favourite_type = 'set';
+			$(".favourite_icon_"+product_id).removeClass("fa fa-heart-o");
+			$(".favourite_icon_"+product_id).addClass("fa fa-heart");
+		} else {
+			ajax_favourite_type = 'unset';
+			$(".favourite_icon_"+product_id).removeClass("fa fa-heart");
+			$(".favourite_icon_"+product_id).addClass("fa fa-heart-o");
+		}
+
+		clearTimeout(typingTimer);
+		typingTimer = setTimeout(setFavourite, doneTypingInterval);
+	}
+
+	function setFavourite(){
+		ajax_product_arr = [];
+		$( ".product-list .product-data .add-fav a .favourite_icon" ).each(function( index ) {
+			let inner_favourite_type = '';
+			if($(this).hasClass("fa fa-heart")){
+				inner_favourite_type = 'set';
+			} else {
+				inner_favourite_type = 'unset';
+			}
+
+			ajax_product_arr.push({
+				product_id: $(this).attr('favourite_product_id'),
+				type: inner_favourite_type
+			});
+		});
+
+		console.log(ajax_product_arr);
+		clearTimeout(typingTimer);
+		let url = "<%=baseURL%>compradors/favourite/set-unset";
+		$.post( url, { product_obj: ajax_product_arr }).done(function( data ) {
+		    console.log('done');
+		});
+	}
+
+	function clearAll(){
+		$('#search-by-product').val('');
+		$('#search-by-location').val('');
+		$('#state_id').val('');
+		category_id = 'all';
+		availability_in_stock = 'yes';
+		availability_forecasted = 'yes';
+		lower_price_range = 0;
+		higher_price_range = default_higher_price_range;
+		search_product_title = '';
+		search_product_location = '';
+
+		$("#in_stock").prop('checked', true);
+		$("#forecasted").prop('checked', true);
+
+		// Saving it's instance to let
+		let slider = $(".js-range-slider").data("ionRangeSlider");
+
+		slider.update({
+		    from: 0,
+		    to: default_higher_price_range
+		});
+		// Fire public method
+		slider.reset();
+
+		filterProductItems();
+	}
+
+	function filterProductItems(){
+		search_product_title = $('#search-by-product').val();
+		search_product_location = $('#state_id').val();
+
+		let url = "<%=baseURL%>compradors/explore/filter_product_items?category_id="+category_id+"&availability_in_stock="+availability_in_stock+"&availability_forecasted="+availability_forecasted+"&lower_price_range="+lower_price_range+"&higher_price_range="+higher_price_range+"&higher_price_range_original="+higher_price_range_original+"&search_product_title="+search_product_title+"&search_product_location="+search_product_location;
+		$.ajax({url,  success: function(result) {
+            $('#product-list-section').html(result);
+        }});
+	}
+
+	function goToDetails(product_id){
+		window.location.href = "<%=baseURL%>compradors/explore/details/"+product_id;
+	}
+
+	function filterByProvince(){
+		filterProductItems();
+	}
+</script>
+<script>
+var acc = document.getElementsByClassName("accordion2");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>

@@ -1,0 +1,9 @@
+<div style="width: 100%;" class="">
+	<form class="boxed">
+		<input type="radio" id="ios" name="language" value="PT" <%= (language == 'PT') ? 'checked' : '' %>>
+	  	<label for="ios" style='cursor:pointer;' onClick="setLabels('PT', '<%=baseURL%>')">PT</label>
+	  	<span>|</span>
+	  	<input type="radio" id="android" name="language" value="EN" <%= (language == 'EN') ? 'checked' : '' %>>
+	  	<label for="android" style='cursor:pointer;' onClick="setLabels('EN', '<%=baseURL%>')">EN</label>
+	</form>
+</div>

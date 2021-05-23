@@ -1,0 +1,255 @@
+<link rel="stylesheet" href="../../../css/new_style.css">
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+		<div class="row order-list-title">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+		 		<h3 style="padding-bottom: 20px;"><%= labels['LBL_SHOPPING_CART'][language] %></h3>
+			</div>
+			<div class="row no-items-in-cart">
+				<% if(products.length > 0){ %>
+			  		<div class="col-md-8">
+			  			<div class="card">
+							<table class="table shopping-cart-wrap">
+								<thead class="text-muted">
+									<tr>
+									  <th scope="col"><%= labels['LBL_TRADING_CART_LIST_TABLE_PRODUCT'][language] %></th>
+									  <th scope="col" width="200"><%= labels['LBL_TRADING_CART_LIST_TABLE_QUANTITY'][language] %></th>
+									  <th scope="col" width="200"><%= labels['LBL_TRADING_CART_LIST_TABLE_PRICE'][language] %></th>
+									</tr>
+								</thead>
+								<tbody>
+									<% for(let i=0; i < products.length; i++) { %>
+										<tr class="my_oderDetails_<%= products[i].product_id %>">
+											<td>
+												<figure class="">
+													<div class="img-wrap"><img src="<%= products[i].images[0] %>" class="img-thumbnail img-sm"></div>
+													<figcaption class="media-body kp_myorder">
+														<h3><%= products[i].sub_category_title %></h3>
+														<h4><%= products[i].category_title %> &nbsp; <i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span style="font-size: 14px;"><%= products[i].state_name %></span></h4>
+													</figcaption>
+												</figure>
+											</td>
+											<td>
+												<div class="">
+													<div style="margin-top: 12px;width: 115px;display: inline-block;" class="custom">
+														<div class="quantity">
+															<button onclick="decreaseValue('<%= products[i].product_id %>')" class="minus decrease items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
+															<input type="hidden" class="product_price_<%= products[i].product_id %>" value="<%= products[i].unit_price %>">
+															<input type="hidden" class="product_price_qty product_price_qty_<%= products[i].product_id %>" value="<%= products[i].unit_price %>_<%= products[i].qty %>_<%= products[i].product_id %>">
+															<input type="hidden" class="product_min_qty_<%= products[i].product_id %>" value="<%= products[i].unit_min_qty %>">
+															<input type="hidden" class="product_max_qty_<%= products[i].product_id %>" value="<%= products[i].remaining_unit_value %>">
+															<input type="text" class="count input-text qty number_<%= products[i].product_id %>" step="1" min="1" max="" name="quantity" value="<%= products[i].qty %>" title="Qty" size="4" inputmode="numeric" onKeyUp="updateQty('<%= products[i].product_id %>')" readonly>
+															<button onclick="increaseValue('<%= products[i].product_id %>')" class="plus increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
+														</div>
+													</div>
+													<span style="position: relative;top: 1px;left: 10px;"><%= products[i].unit_type %></span><br />
+													<a class="remove_cart" href="javascript:void(0)" onclick="removeProduct('<%= products[i].product_id %>')"><%= labels['LBL_TRADING_CART_LIST_TABLE_REMOVE'][language] %></a>
+												</div>
+											</td>
+											<td> 
+												<h4 style="padding-top: 12px;" class="currency_color_text sku_wrapper">Kz <%= products[i].product_unit_price %> / <%= products[i].unit_type %></h4>
+											</td>
+										</tr>
+									<% } %>
+								</tbody>
+							</table>
+						</div>
+			   		</div>
+			   		<div class="col-md-4">
+			   			<div style="background-color: #efefef;" class="totals card">
+							<h3 style="font-family: 'GTEestiDisplayRegular';font-weight: 400;padding: 20px;"><%= labels['LBL_TRADING_CART_LIST_ORDER_TOTAL'][language] %></h3>
+							<div class="totals-item">
+						  		<label><%= labels['LBL_SUB_TOTAL'][language] %></label>
+							  	<div class="totals-value" id="cart-subtotal"><%= format_subtotal %> Kz</div>
+							</div>
+							<div class="totals-item">
+							  	<label><%= labels['LBL_TRANSPORTATION_FEES'][language] %></label>
+							  	<div class="totals-value" id="cart-tax"><%= format_transport_fees %> Kz</div>
+							</div>
+							<hr style="border-color: #cecece;margin: 15px;">
+							<div class="totals-item totals-item-total">
+							  	<label style="font-size: 18px;"><%= labels['LBL_TOTAL'][language] %></label>
+							  	<div style="font-size: 18px;" class="totals-value" id="cart-total"><%= format_total %> Kz</div>
+							</div>
+						</div>
+						<% if(products.length > 0){ %>
+							<a href="<%=baseURL%>trading/checkout/list"><button type="button" name="add-to-cart" class="proceed-to-buy button btn-cart button pull-right"><%= labels['LBL_PROCEED_TO_BUY'][language] %></button></a>
+						<% } %>
+			   		</div>
+			   	<% } else { %>
+			   		<div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'><p><%= labels['LBL_TRADING_EXPLORE_NO_PRODUCTS'][language] %></p></div>
+			   	<% } %>
+		   	</div>
+		</div>
+	</div>
+</section> 
+
+<script>
+	let typingTimer;
+	let doneTypingInterval = 300;
+	let transport_fees = parseFloat('<%= (transportFees).toFixed(2) %>');
+	let subtotal = 0, total = 0, ajax_cart_product_arr = [];
+	let product_id = '', product_qty = 0;
+	let products = JSON.parse('<%- JSON.stringify(products) %>');
+	function increaseValue(id) {
+		var value = parseInt($('.number_'+id).val());
+	  	value = isNaN(value) ? 0 : value;
+	  	value++;
+	  	if(value > $('.product_max_qty_'+id).val()){
+	  		return false;
+	  	}
+
+	  	$('.number_'+id).val(value);
+	  	$('.product_price_qty_'+id).val($('.product_price_'+id).val()+'_'+value+'_'+id);
+	  	product_id = id;
+	  	product_qty = value;
+
+	  	clearTimeout(typingTimer);
+		typingTimer = setTimeout(updateCart, doneTypingInterval);
+	}
+
+	function decreaseValue(id) {
+		let product_min_qty = parseInt($('.product_min_qty_'+id).val());
+		var value = parseInt($('.number_'+id).val());
+	  	value = isNaN(value) ? 0 : value;
+	  	value < 1 ? value = 1 : '';
+	  	value--;
+	  	if(value < product_min_qty){
+	  		return false;
+	  	}
+	  	$('.number_'+id).val(value);
+	  	$('.product_price_qty_'+id).val($('.product_price_'+id).val()+'_'+value+'_'+id);
+
+	  	product_id = id;
+	  	product_qty = value;
+
+	  	clearTimeout(typingTimer);
+		typingTimer = setTimeout(updateCart, doneTypingInterval);
+	}
+
+	function updateQty(id){
+		return false;
+		$('.product_price_qty_'+id).val(($('.product_price_'+id).val())+'_'+($('.number_'+id).val())+'_'+id);
+
+		clearTimeout(typingTimer);
+		typingTimer = setTimeout(updateCart, doneTypingInterval);
+	}
+
+	function updateCart(){
+		total = 0, subtotal = 0;
+		let cart_product_arr = [];
+		$.each(ajax_cart_product_arr, function (key, val) {
+			if(product_qty && val.qty){
+				let productObj = {};
+				let itemTotal = 0;
+				if(val.product_id == product_id){
+					productObj = {
+						product_id: val.product_id,
+						price: val.price,
+						qty: product_qty
+					}
+
+					itemTotal = (val.price * product_qty);
+					total+= itemTotal;
+					subtotal+= itemTotal;
+				} else {
+					productObj = {
+						product_id: val.product_id,
+						price: val.price,
+						qty: val.qty
+					}
+
+					itemTotal = (val.price * val.qty);
+					total+= itemTotal;
+					subtotal+= itemTotal;
+				}
+
+				$('.item_total_'+val.product_id).text(itemTotal.toFixed(2));
+				cart_product_arr.push(productObj)
+			}
+	    });
+
+	    ajax_cart_product_arr = [];
+	    ajax_cart_product_arr = cart_product_arr;
+	    total+= transport_fees;
+		$('#cart-total').text('Kz '+thousands_separators(total));
+		$('#cart-subtotal').text('Kz '+thousands_separators(subtotal));
+
+		saveCart();
+	}
+
+	function removeProduct(id){
+		$('.my_oderDetails_'+id).remove();
+		total = 0, subtotal = 0;
+		let cart_product_arr = [];
+		$.each(ajax_cart_product_arr, function (key, val) {
+			let productObj = {};
+			if(val.product_id != id){
+				productObj = {
+					product_id: val.product_id,
+					price: val.price,
+					qty: val.qty
+				}
+
+				total+= (val.price * val.qty);
+				subtotal+= (val.price * val.qty);
+
+				cart_product_arr.push(productObj)
+			}
+	    });
+
+	    ajax_cart_product_arr = [];
+	    ajax_cart_product_arr = cart_product_arr;
+
+	    if(ajax_cart_product_arr.length > 0){
+	    	$('.cart_count').text(ajax_cart_product_arr.length);
+	    } else {
+	    	$('.cart_count').text(ajax_cart_product_arr.length);
+	    	$('.proceed-to-buy').hide();
+	    	$('.no-items-in-cart').html("<div class='col-md-12 thankyou'><img src='<%=baseURL%>images/thankyou.png'><p><%= labels['LBL_TRADING_EXPLORE_NO_PRODUCTS'][language] %></p></div>")
+	    }
+
+	    total+= transport_fees;
+		$('#cart-total').text('Kz '+thousands_separators(total));
+		$('#cart-subtotal').text('Kz '+thousands_separators(subtotal));
+		
+		saveCart();
+	}
+
+	function saveCart(){
+		console.log('call saveCart');
+		console.log(ajax_cart_product_arr);
+		$.post( "<%=baseURL%>trading/cart/update", { product_obj: ajax_cart_product_arr }).done(function( data ) {
+		    console.log('done');
+		});
+	}
+
+	function loadCart(){
+		$.each(products, function (key, val) {
+	        ajax_cart_product_arr.push({
+	        	product_id: val.product_id,
+	        	price: val.unit_price,
+	        	qty: val.qty
+	        })
+
+	        total+= (val.unit_price * val.qty);
+			subtotal+= (val.unit_price * val.qty);
+	    });
+
+	    total+= transport_fees;
+		$('#cart-total').text('Kz '+thousands_separators(total));
+		$('#cart-subtotal').text('Kz '+thousands_separators(subtotal));
+	}
+
+	$(document).ready(function(){
+		loadCart();
+
+		if(performance.navigation.type == 2){
+		   location.reload(true);
+		}
+	});
+</script>

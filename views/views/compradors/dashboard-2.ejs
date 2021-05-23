@@ -1,0 +1,393 @@
+<link rel="stylesheet" href="../../../css/dashboard.css"/>
+<div class="row">
+	<div class="col-md-3">
+		<div class="option">
+		  	<div class="clear"></div>
+		    <ul class="menu2">
+		    	<div class="row">									
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/order/list">
+							<div class="account_box">
+					        	<img src="../../../images/order.png">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ORDERS_DESCRIPTION'][language] %></p>
+					        	</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/product/add">
+							<div class="account_box">
+					        	<img src="../../../images/postadd.png">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_POST_YOUR_DEMAND_DESCRIPTION'][language] %></p>
+					        	</div>
+							</div>
+						</a>
+					</div>	
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/explore/list">
+							<div class="account_box">
+					        	<img src="../../../images/explore_pro.PNG">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_EXPLORE_PRODUCTS_DESCRIPTION'][language] %> </p>
+					        	</div>
+							</div>
+						</a>
+					</div>	
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/favourite/list">
+							<div class="account_box">
+					        	<img src="../../../images/wishlist.png">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_FAVOURITE_LIST_DESCRIPTION'][language] %></p>
+					        	</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/user/address">
+							<div class="account_box">
+					        	<img src="../../../images/pin_.png">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_YOUR_ADDRESSES_DESCRIPTION'][language] %></p>
+					        	</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<a href="<%=baseURL%>compradors/user/profile">
+							<div class="account_box">
+					        	<img src="../../../images/login.png">
+					        	<div class="account_box_inner">
+						        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY'][language] %></h3>
+						        	<p><%= labels['LBL_COMPRADOR_DASHBOARD_LOGIN_SECURITY_DESCRIPTION'][language] %></p>
+					        	</div>
+							</div>
+						</a>
+					</div>
+				</div>	
+		  	</ul>
+		</div>	
+	</div>
+	<div class="col-md-9">
+		<div class="dashboard-heading">
+		  	<div class="all">
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				<div class="box dash_bg">
+		  					<h3>Outward (Amounts in Kz)</h3>
+		  					<div class="starter-stats">
+						      	<div class="clear"></div>
+						        <div class="gains">
+						          	<canvas id="myChart"></canvas>
+						        </div>
+						    </div>
+		  				</div>
+		  			</div>
+		  			<div class="col-md-6">
+		  				<div class="box dash_bg">
+		  					<h3>Purchase (Qty)</h3>
+		  					<div class="starter-stats">
+						      	<div class="clear"></div>
+						        <div class="gains">
+						          	<canvas id="myChart"></canvas>
+						          	<canvas id="bar-chart"></canvas>
+						        </div>
+						    </div>
+		  				</div>
+		  			</div>
+		  		</div>
+
+		  		<div class="row">
+		  			<div class="col-md-12">
+		  				<div class="box dash_bg">
+				  			<h3 class="dash_title"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS'][language] %></h3>
+							<section class="statis text-center">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-bar-chart"></i>
+											<h3 class="stat_title total-purchase">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE'][language] %> </p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-eye"></i>
+											<h3 class="stat_title total-product-views">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-heart-o"></i>
+											 <h3 class="stat_title total-favourite-products">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_FAVOURITE_PRODUCTS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-cart-plus"></i>
+											 <h3 class="stat_title total-purchase-products">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_PURCHASE_PRODUCTS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-check-circle"></i>
+											 <h3 class="stat_title total-active-demands">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_ACTIVE_DEMANDS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-hourglass-end"></i>
+											 <h3 class="stat_title total-expired-demands">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_STATISTICS_TOTAL_EXPIRED_DEMANDS'][language] %></p>
+										</div>
+									</div>
+								</div>
+							</section>
+
+							<h3 style="margin: 0;padding: 0 15px;" class="dash_title"><%= labels['LBL_COMPRADOR_DASHBOARD_TOTAL_ORDERS'][language] %></h3>
+							<section class="statis text-center">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-shopping-cart"></i>
+											<h3 class="stat_title open-orders">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_TOTAL_OPEN_ORDERS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-shopping-cart"></i>
+											<h3 class="stat_title completed-orders">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_TOTAL_COMPLETED_ORDERS'][language] %></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="box dash_bg">
+											<i class="fa fa-shopping-cart"></i>
+											<h3 class="stat_title cancelled-orders">0</h3>
+											<p class="lead"><%= labels['LBL_COMPRADOR_DASHBOARD_TOTAL_CANCELLED_ORDERS'][language] %></p>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+		  	</div>
+		</div>	
+	</div>
+</div>
+<section class="best_product products">
+	<div class="container">
+		
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS'][language] %></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box dash_bg">
+						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
+							<table>
+								<thead>
+									<tr>
+										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDER_ID'][language] %></th>
+										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE'][language] %></th>
+										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE'][language] %></th>
+										<th scope="col" width='15%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_TOTAL_ITEMS'][language] %></th>
+										<th scope="col" width='15%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT'][language] %></th>
+										<th scope="col" width='10%'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_STATUS'][language] %></th>
+									</tr>
+								</thead>
+								<tbody id='tbl_ongoing_orders'>
+							  		<tr><td colspan='6'><%= labels['LBL_COMPRADOR_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][language] %></td></tr>
+							  	</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="best_product products">
+	<div class="container">
+		
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS'][language] %></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box dash_bg">
+						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
+							<table>
+								<thead>
+									<tr>
+										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_TITLE'][language] %></th>
+										<th scope="col" width='20%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_CATEGORY'][language] %></th>
+										<th scope="col" width='25%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_UNIT_PRICE'][language] %></th>
+										<th scope="col" width='25%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_QTY'][language] %></th>
+										<th scope="col" width='10%'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_LOCATION'][language] %></th>
+									</tr>
+								</thead>
+								<tbody id='tbl_recently_viewed_products'>
+							  		<tr><td colspan='5'><%= labels['LBL_COMPRADOR_DASHBOARD_RECENTLY_VIEWED_PRODUCTS_NO_PRODUCTS'][language] %></td></tr>
+							  	</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="best_product products">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_COMPRADOR_DASHBOARD_RECOMMENDED_PRODUCTS'][language] %></h3>
+				</div>
+			</div>
+			<div class="row recommended-products">
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="best_product products hide">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3>Match Demand Products</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="white_bg2">
+						<div class="row">
+							<div class="col-md-12">
+								<h2 class="demand_title">Fruit <span>- Apple</span></h2>
+							</div>
+						</div>
+						<div class="row" id="product-list-section">
+							<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+								<div class="product-data">
+									<div class="product-img">
+									  <img src="https://s3.sa-east-1.amazonaws.com/kepya-media/products/1587308811103.jpg" class="pro-image">
+									</div>
+									<div class="product-text">
+										<a href="#"><p>Apple</p></a>
+										<h5 class='capitalize'>Fruit</h5>
+										<h5 class='capitalize'><span>2.00 / Kilogram Kz</span></h5>
+										<h6 class='capitalize'>Quantity : 4700 Kilograms</h6>
+										<div class="kp_location">
+											<i class="fa fa-map-marker" aria-hidden="true"></i> <span>Bengo</span>
+										</div>
+									</div>
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<script type="text/javascript">
+// Bar chart
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [
+        {
+          	label: "Qty",
+          	backgroundColor: '#f69624',
+          	data: [500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000]
+        }
+      ]
+    },
+    options: []
+});
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+            label: "Amount",
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            borderColor: 'rgba(26, 188, 138, 1)',
+            data: [2478,5267,734,784,433,2478,734,2478,5267,734,784,2478]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+$(document).ready(()=> {
+	$.ajax({url: "<%=baseURL%>compradors/dashboard/get-ongoing-orders", success: (result) => {
+        $('#tbl_ongoing_orders').html(result)
+    }});
+
+    $.ajax({url: "<%=baseURL%>compradors/dashboard/get-recently-viewed-products", success: (result) => {
+        $('#tbl_recently_viewed_products').html(result)
+    }});
+
+    $.ajax({url: "<%=baseURL%>statistics/total-orders", success: (result) => {
+        $('.open-orders').text(result.response.open);
+        $('.completed-orders').text(result.response.completed);
+        $('.cancelled-orders').text(result.response.cancelled);
+    }});
+
+    $.ajax({url: "<%=baseURL%>statistics/total", success: (result) => {
+    	$('.total-purchase').text(result.response.total_purchase);
+        $('.total-product-views').text(result.response.total_product_views);
+        $('.total-favourite-products').text(result.response.total_favourite_products);
+        $('.total-purchase-products').text(result.response.total_purchase_products);
+        $('.total-active-demands').text(result.response.total_active_demands);
+        $('.total-expired-demands').text(result.response.total_expired_demands);
+    }});
+
+    $.ajax({url: "<%=baseURL%>statistics/recommended-products", success: (result) => {
+        $('.recommended-products').html(result);
+    }});
+})
+
+function orderDetails(order_id){
+	window.location.href = "<%=baseURL%>compradors/order/details/"+order_id;
+}
+
+function goToDetails(product_id){
+	window.location.href = "<%=baseURL%>compradors/explore/details/"+product_id;	
+}
+</script>

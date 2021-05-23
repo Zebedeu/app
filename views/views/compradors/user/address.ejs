@@ -1,0 +1,80 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="help_sidebar_right">
+					<div class="row order-list-title">
+						<div class="col-md-12">
+							<div class="heading cf addnew" style="border: 0; margin-top: 10px;">
+							    <a href="javascript:void(0)" class="button btn-cart" onClick="addNewAddress('address')" style="color: #FFF; margin-right: 15px;">+ <%= labels['LBL_ADD_NEW_ADDRESS'][language] %></a>
+							</div>
+							<h3 style="margin-left: 20px; margin-top: -30px; border: 0px;"><%= labels['LBL_MANAGE_ADDRESSES'][language] %></h3>
+							<div class="row" id="address_list">
+								<% for(let i=0; i < addresses.length; i++) { %>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="row my_orders">
+				                            <div class="col-md-12 mb-sm--20">
+				                                <div class="text-block address_">
+				                                    <p style='text-transform:capitalize'><%= addresses[i]['type'] %> <% if(addresses[i]['name']) { %> - <%= addresses[i]['name'] %> <% } %></p>
+				                                    <address><%= addresses[i]['complete_address'] %>, <%= addresses[i]['locality'] %>, <%= addresses[i]['city_name'] %>, <%= addresses[i]['state_name'] %></address>
+				                                    <% if(addresses[i]['email']){ %>
+				                                    	<h6><%= labels['LBL_EMAIL'][language] %>: <span><%= addresses[i]['email'] %></span></h6>	
+				                                    <% } %>
+
+				                                    <% if(addresses[i]['mobile_country_code'] && addresses[i]['mobile_number']){ %>
+				                                    	<h6><%= labels['LBL_MOBILE_NUMBER'][language] %>: <span><%= addresses[i]['mobile_country_code'] %> <%= addresses[i]['mobile_number'] %></span></h6>	
+				                                    <% } %>
+				                                    
+				                                    <a href="javascript:void(0)" onClick="editAddress('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_EDIT'][language] %> <span> | </span></a>
+													<a href="javascript:void(0)" onClick="removeAddress('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_DELETE'][language] %></a>
+													<!-- <a href="javascript:void(0)" onClick="notificacao('<%= addresses[i]['address_id'] %>');removeAddress('<%= addresses[i]['address_id'] %>')"><%= labels['LBL_DELETE'][language] %></a> -->
+				                                </div>
+				                            </div>
+				                        </div>
+									</div>	
+								<% } %>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+
+	function notificacao(adress_id) {
+		$.confirm({
+			title: 'Desejas remover o endereço ?',
+			content: "ID: " + adress_id,
+			type: 'purple',
+			typeAnimated: true,
+			buttons: {
+				tryAgain: {
+					text: 'Sim',
+					btnClass: 'btn',
+					action: function () {
+						/*$.ajax({
+							url: "/remove_address",
+							success: function (result) {
+
+							},
+							error: function () {
+							}
+						});*/
+					}
+				},
+				close: function () {
+				}
+			}
+		});
+	}
+</script>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:locale" content="pt_PT" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Kepya Agromercado Digital - <%= product.category[language] %> - <%= product.sub_category[language] %> | <%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %></title>
+	<meta name=”description” content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" /> 
+	<!-- <meta property="og:site_name" content="Scotch" /> -->
+	<meta property="og:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>" />
+	<meta property="og:type" content="product" />
+	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %> | <%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %> " />
+	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>" />
+	<meta property="og:image" content="<%=product.images[0]%>" />
+	<!-- <meta property="og:image:type" content="image/jpeg" /> -->
+	<meta property="og:type" content="product" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:image" content="<%=product.images[0]%>" /> 
+	<meta name="twitter:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %> | <%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %> " />
+	<meta name="twitter:description" content="<%= product.category[language] %> - <%= product.sub_category[language] %> | <%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %> " />
+	<meta property="twitter:url" content="<%=baseURL%>compradors/explore/details/<%=product.product_id%>" />
+
+
+	<meta property="og:image:alt" content="<%= product.category[language] %> - <%= product.sub_category[language] %>" />
+	<meta property="fb:app_id" content="1389892087910589" />
+	<meta property="fb:admins" content="579622216,709634581" />
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>" />
+<!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
+	
+	<link rel="shortcut icon" type="image/x-icon" href="../../../images/logo.png">
+	<%- include('../../shared/common_css') %>
+	<link rel="stylesheet" href="../../../css/new_style.css">
+	<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'>
+
+	<script type='text/javascript' src="../../../js/jquery-1.12.4.js"></script>
+	<script type='text/javascript' src="../../../js/language.js"></script>
+	<script type='text/javascript' src="../../../js/validation.js"></script>
+	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-au.js"></script>
+	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=605a3ed36f7ab900129ceb13&product=sop' async='async'></script>
+	<script src="../../../js/ligh-slider.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122654457-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-122654457-1');
+	</script>
+</head>
+
+<body>
+
+<div class="">
+	<div id="nav-icon" class="menu-button visible-xs">
+		<span class="burger-icon"></span>
+	</div>
+</div>
+<div class="main_header">
+		<%- include('../../shared/top_nav_compradors') %>
+</div>
+<div class="sharethis-sticky-share-buttons"></div>
+
+<section class="productsdetail">
+	<div class="container">
+		<% if(user && user.user_id){ %>
+			<div class="breadcrumb_card">
+				<%- include('../../shared/breadcrumb') %>
+			</div>
+		<% } %>
+		<div class="product_card kpproduct_detail">
+		<div class="row">
+			<div class="col-md-5 col-sm-12 col-xs-12">
+				<ul id="lightSlider">
+			        <li>
+			        	<a href="<%= product.images[0] %>" data-fancybox="gallery">
+			            	<img src="<%= product.images[0] %>" style='height:440px;width:440px;'/>
+			        	</a>
+			        </li>
+			        <% for(let i=0; i < product.images.length; i++) { %>
+			        	<li class="thumb">
+				        	<a class="thumb" href="<%= product.images[i] %>" data-fancybox="gallery">
+				            	<img class="thumb" src="<%= product.images[i] %>" style='height:76px;width:76px;'/>
+				        	</a>
+				        </li>
+					<% } %>
+			    </ul>
+			</div>
+			<div class="col-md-7 col-sm-12 col-xs-12 details">
+					<!-- <a href="javascript:void(0)" style="position: absolute;right: 0;" id="PriceListCart" data-popover="custom"><img style="width: 37px;" src="../../../images/verified.png"></a>
+					<div class="PriceListCart" style="display: none;">
+                      <p class="quantity">Quality :  Excellent</p>
+                      <p class="quantity">Matching :  Better</p>
+                    </div> -->
+                    
+					<h3 class="product-title"><%= product.sub_category_title %></h3>
+					<h4><%= product.category_title %> &nbsp;
+							<i style="font-size: 14px;" class="fa fa-map-marker" aria-hidden="true"></i> <span style="font-size: 14px;"><%= product.state_name %></span>
+						</h4>
+					<div class="rating">
+						<p class="pt10"><%= product.description %></p>
+					</div>
+
+					<div class="product_meta"><br>
+							<h4 class="currency_color_text sku_wrapper"><%= labels['LBL_PRICE'][language] %> : <%= product.unit_price %> Kz</h4>
+							<% if(product.product_type == 'forecast'){ %>
+							<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_plural_title %></h5>
+								<h5 style='padding-bottom: 4px;'><%= labels['LBL_DATE_OF_AVAILABILITY'][language] %> : <%= product.harvest_date %></h5>
+							<% } else { %>
+								<h5 class='capitalize' style='padding-bottom: 4px;'><%= labels['LBL_QUANTITY'][language] %> : <%= product.remaining_unit_qty %> <%= product.unit_type %></h5>
+							<% } %>
+							<h5 style='padding-bottom: 3px;'><%= labels['LBL_EXPIRY_DATE'][language] %> : <%= product.expire_date %></h5>
+
+							<h5><%= labels['LBL_COMPRADOR_EXPLORE_DETAILS_CLIENT_ID'][language] %> <span style="background-color: #f69624;color: #fff;position: relative;top: -3px;left: 5px;" class="badge badge-secondary"><%= product.user_id %></span></h5>
+							<h5><%= labels['LBL_COMPRADOR_EXPLORE_DETAILS_PRODUCT_ID'][language] %> <span style="background-color: #f69624;color: #fff;position: relative;top: -3px;left: 5px;" class="badge badge-secondary"><%= product.product_id %></span></h5>
+					</div>
+					<% if(user && user.user_id){ %>
+						<div class="pull-left qty-space">
+							<label class="qty-product-details"><%= labels['LBL_QTY'][language] %> : </label>
+							<div class="custom pull-left">
+								<div class="quantity">
+									<!-- <input type="number" id="number" class="count input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'> -->
+									<input type="number" id="number" class="input-text qty" step="1" min="<%= product.unit_min_qty %>" max="<%= product.remaining_unit_value %>" name="quantity" value="<%= product.unit_min_qty %>" title="Qty" size="4" inputmode="numeric" style='width: 80px !important;'>
+								</div>
+							</div>
+							<span style="position: relative;top: 20px;left: 10px;"><%= product.unit_type %></span>
+						</div>
+
+						<form class="cart" action="" method="post" enctype="multipart/form-data">
+							<a href="javascript:void(0)"><button type="button" name="add-to-cart" value="116" class="add-to-cart-btn button btn-cart" onclick="addToCart('<%= product.product_id %>','add_to_cart')"><%= labels['LBL_ADD_CART'][language] %></button></a>
+							<div class="lds-facebook" style="display:none"><div></div><div></div><div></div></div>
+						</form>
+					<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="main-section">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../../shared/site_map') %>
+		</div>
+	</div>
+</footer>
+
+<div class="main-section social-media">
+	<div class="sub-section">
+		<div class="container">
+			<%- include('../../shared/footer') %>
+		</div>
+		
+	</div>
+</div>
+<% if(!user.user_id){ %>
+
+ <!-- Modal -->
+ <div class="modal fade" id="loginModal" role="dialog">
+
+	<section class="login-section text-center" id="Div1">
+			<div class="overlay-position"></div>
+			<div class="login-page">
+				<div class="container">
+					<div class="login-box">
+						<div class="row">
+
+						</div>
+						
+						<img src="<%=baseURL%>images/logo.png">
+						<h1><%= labels['LBL_SIGN_IN'][language] %></h1>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 form">
+								<form id="frm-sign-in" action="/" method="post">
+									<div class="form-group">
+										<input type="text" id="txt-email-address" name="phoneNumberAndEmail" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_EMAIL_PHONE'][language] %>" required="">
+										<span class="validation-alert" id='err-email-address'></span>
+									</div>
+									<div class="form-group">
+										<input type="password" id="txt-password" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_IN_PASSWORD'][language] %>" required="">
+										<span class="validation-alert" id='err-password' style="width: 100%;text-align: left !important;"></span>
+									</div>
+									<div class="forgot-pw row">
+										  <div class="col-md-6 col-sm-6 col-xs-6 checkbox"><label class="checkbox-container"><%= labels['LBL_SIGN_IN_REMEMBER_ME'][language] %><input type="checkbox"><span class="checkbox-checkmark"></span></label></div>
+										  <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="<%=baseURL%>forgot-password"><%= labels['LBL_SIGN_IN_FORGOT_PASSWORD'][language] %>?</a></div>
+									</div>
+									<button type="button" class="btn btn-default btn-sign-in" onclick="submitSignIn()"><%= labels['LBL_SIGN_IN_BUTTON'][language] %></button>
+		
+									<a href="javascript:void(0)" class="google btn" id="google-sign-in">
+										<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %>
+									</a>
+									
+									<div class="text-center creat_new"><%= labels['LBL_SIGN_IN_DONT_HAVE_AN_ACCOUNT'][language] %>? <a href="#" onclick="switchVisible();"><%= labels['LBL_SIGN_IN_SIGN_UP_FOR_FREE'][language] %></a></div>
+		
+									<div class="g-signin2 hide" data-onsuccess="onSignIn"><%= labels['LBL_SIGN_IN_WITH_GOOGLE_BUTTON'][language] %></div>
+								</form>
+							</div>
+					
+				</div>
+			</div>
+	</section>
+	<section class="login-section text-center" id="Div2">
+		<div class="overlay-position"></div>
+		<div class="login-page">
+			<div class="container">
+				<div class="login-box">
+					
+	
+					<form id="frm-sign-up" action="" method="post">
+						<img src="<%=baseURL%>images/logo.png">
+						<h1><%= labels['LBL_SIGN_UP_CREATE_ACCOUNT'][language] %></h1>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 padding-left">
+								<div class="search-container form-group">
+									<input type="text" id="txt-firstname" name="first_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_FIRST_NAME'][language] %>" required="">
+									<span class="validation-alert" id='err-firstname'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 padding-left">
+								<div class="search-container form-group">
+									<input type="text" id="txt-lastname" name="last_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_LAST_NAME'][language] %>" required="">
+									<span class="validation-alert" id='err-lastname'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 padding-left">
+								<select class="form-control reg-txt-province" placeholder="Type" id="txt-type" name="type" onchange="getType()">
+									<option value="individual" selected><%= labels['LBL_SIGN_UP_TYPE_INDIVIDUAL'][language] %></option>
+									<option value="company"><%= labels['LBL_SIGN_UP_TYPE_COMPANY'][language] %></option>
+								</select>
+								<span class="validation-alert" id='err-type'></span>
+							</div>
+							<div class="col-md-6 col-sm-12 padding-left company_name hide">
+								<div class="search-container form-group">
+									<input type="text" id="txt-company-name" name="company_name" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_TYPE_COMPANY_NAME'][language] %>" required="">
+									<span class="validation-alert" id='err-company-name'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 padding-right">
+								<div class="search-container form-group">
+									<input type="text" id="txt-email-up-address" name="email" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_EMAIL'][language] %>" required="">
+									<input type="hidden" id="txt-email2-address" name="emailFack" class="form-control" >
+									<span class="validation-alert" id='err-email-up-address'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-12 padding-left">
+								<div class="form-group">
+									<select class="form-control reg-txt-province state_id" placeholder="Province" id="txt-province" name="province" onchange="getCities('<%=baseURL%>')">
+										<option value="">--- <%= labels['LBL_SIGN_UP_SELECT_PROVINCE'][language] %> ---</option>
+										<% for(let i=0; i < states.length; i++) { %>
+											<option value="<%= states[i].state_id %>">
+												<%= states[i].name %>
+											</option>
+										<% } %>
+									</select>
+									<span class="validation-alert" id='err-province'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 padding-left">
+								<div class="form-group">							
+									<select class="form-control reg-txt-city city_id" id="txt-city" name="city">
+										<option value="">--- <%= labels['LBL_SIGN_UP_SELECT_CITY'][language] %> ---</option>
+									</select>
+									<span class="validation-alert" id='err-city'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div  class="col-md-3 col-sm-12 padding-right">
+								<div class="search-container form-group">
+									<select class="form-control" id="mobile_country_code" name="mobile_country_code">
+										<% for(let i=0; i < mobile_country_codes.length; i++) { %>
+											<option value="<%= mobile_country_codes[i]['code'] %>" <% if(mobile_country_codes[i]['code'] == '+244'){ %>selected<% } %>><%= mobile_country_codes[i]['code'] %></option>
+										<% } %>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-9 col-sm-12 padding-right">
+								<div class="search-container form-group">
+									<input type="number" id="txt-phone-number" name='phone_number' class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PHONE_NUMBER'][language] %>" required="">
+									<span class="validation-alert" id='err-phone-number'></span>
+								</div>
+							</div>
+						</div>								
+						
+						<div class="row">
+							<div class="col-md-6 col-sm-12 padding-left">
+								<div class="search-container form-group">
+									<input type="password" id="txt-password-up" name="password" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_PASSWORD'][language] %>" required="">
+									<span class="validation-alert" id='err-password'></span>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 padding-right">
+								<div class="search-container form-group">
+									<input type="password" id="txt-confirm-password" name="confirm_password" class="form-control" placeholder="<%= labels['LBL_SIGN_UP_CONFIRM_PASSWORD'][language] %>" required="">
+									<span class="validation-alert" id='err-confirm-password'></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12 padding-left">
+								<div class="control-group">
+									<label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_PRODUCERS'][language] %>
+									  <input type="radio" name="users" checked="checked" value="producers" onchange="loadCMS('producers')"/>
+									  <div class="control__indicator"></div>
+									</label>
+									<label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_AGGREGATORS'][language] %>
+									  <input type="radio" name="users" value="aggregators" onchange="loadCMS('aggregators')"/>
+									  <div class="control__indicator"></div>
+									</label>
+									<label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_COMPRADORS'][language] %>
+									  <input type="radio" name="users" value="compradors" onchange="loadCMS('compradors')"/>
+									  <div class="control__indicator"></div>
+									</label>
+									<!-- <label class="control control--radio"><%= labels['LBL_SIGN_UP_USER_TRANSPORTERS'][language] %>
+									  <input type="radio" name="users" value="transporters" onchange="loadCMS('transporters')"/>
+									  <div class="control__indicator"></div>
+									</label> -->
+								</div>
+							</div>
+						</div>
+						<div class="forgot-pw row">
+							  <div class="col-md-12 col-sm-12 col-xs-12">
+								  <label class="terms_"><%= labels['LBL_SIGN_UP_TERMS_CREATING_AN_ACCOUNT'][language] %> <a href="javascript:void(0);" onClick="showTermsOfService('<%= language %>')"><%= labels['LBL_SIGN_UP_TERMS_OF_SERVICE'][language] %></a></label>
+							  </div>
+						</div>
+						<button type="button" class="btn btn-default" onclick="submitSignUp()"><%= labels['LBL_SIGN_UP_FOR_FREE_BUTTON'][language] %></button>
+	
+						<!-- <a href="javascript:void(0)" class="facebook btn" id="facebook-sign-up">
+							<i class="fa fa-facebook fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_FACEBOOK'][language] %>
+						</a> -->
+						<a href="javascript:void(0)" class="google btn" id="google-sign-up">
+							<i class="fa fa-google fa-fw"></i> <%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %>
+						</a>
+						
+						<div class="text-center creat_new"><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT'][language] %>? <a href="#" onclick="switchVisible();" ><%= labels['LBL_SIGN_UP_ALREADY_HAVE_AN_ACCOUNT_SIGN_IN'][language] %></a></div>
+						
+						<div class="g-signin2 hide" data-onsuccess="onSocialSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div>
+						<!-- <div class="g-signin2 hide" data-onsuccess="onFacebookSignUp"><%= labels['LBL_SIGN_UP_WITH_GOOGLE_BUTTON'][language] %></div> -->
+	
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+  </div>
+<% }   %>
+
+</div>
+
+<%- include('../../shared/common_modal') %>
+<%- include('../../shared/common_js') %>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js'></script>
+<script>
+let minQty = parseInt("<%= product.unit_min_qty %>");
+$(document).ready(() => {
+	let maxQty = parseInt("<%= product.remaining_unit_value %>");
+	$("#number").on("keypress", function(e){
+	    var currentValue = String.fromCharCode(e.which);
+	    var finalValue = $(this).val() + currentValue;
+	    if(finalValue > maxQty){
+	        e.preventDefault();
+	    }
+	});
+
+	$.post( "<%=baseURL%>compradors/explore/save-search", { product_id: "<%= product.product_id %>" }).done(function( data ) {
+		console.log('done');
+	});
+
+	$.ajax({url: "<%=baseURL%>get-my-wallet-balance",  success: (result) => {
+    	if(result.code != 404){
+    		$('.user_wallet_balance').html(result.wallet_balance);
+			$('.total_wallet_balance').removeClass('hide').addClass('show');
+    	}
+    }});
+})
+
+function increaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById('number').value = value;
+}
+
+function decreaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? value = 1 : '';
+  value--;
+  document.getElementById('number').value = value;
+}
+
+function addToCart(id,type){
+	if(!document.getElementById('number').value || parseInt(document.getElementById('number').value) < minQty){
+		showAlert("<%= labels['LBL_COMPRADOR_PRODUCT_DETAILS_MIN_UNIT_QTY'][language] %> <%= product.unit_min_qty %> <%= product.unit_plural_title %>", '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+		setTimeout(() => {
+			hideAlert()
+		}, 3000);
+		return false;
+	}
+
+	$(".add-to-cart-btn").attr("disabled", true);
+	$(".lds-facebook").show();
+
+	$.post( "<%=baseURL%>compradors/explore/cart", { product_id: id, qty: document.getElementById('number').value }).done(function( data ) {
+		if(type == 'buy_now'){
+			window.location.href = "<%=baseURL%>compradors/checkout/list";
+		} else {
+			window.location.href = "<%=baseURL%>compradors/cart/list";
+		}
+	});
+}
+
+let typingTimer;
+let doneTypingInterval = 1000;
+function toggleGetSetFavourite(product_id){
+	if($(".favourite_icon_"+product_id).hasClass("fa fa-heart-o")){
+		ajax_favourite_type = 'set';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart-o");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart");
+	} else {
+		ajax_favourite_type = 'unset';
+		$(".favourite_icon_"+product_id).removeClass("fa fa-heart");
+		$(".favourite_icon_"+product_id).addClass("fa fa-heart-o");
+	}
+
+	clearTimeout(typingTimer);
+	typingTimer = setTimeout(setFavourite, doneTypingInterval);
+}
+
+function setFavourite(){
+	ajax_product_arr = [];
+	$( ".favourite_icon" ).each(function( index ) {
+		let inner_favourite_type = '';
+		if($(this).hasClass("fa fa-heart")){
+			inner_favourite_type = 'set';
+		} else {
+			inner_favourite_type = 'unset';
+		}
+
+		ajax_product_arr.push({
+			product_id: $(this).attr('favourite_product_id'),
+			type: inner_favourite_type
+		});
+	});
+
+	console.log(ajax_product_arr);
+	clearTimeout(typingTimer);
+	let url = "<%=baseURL%>compradors/favourite/set-unset";
+	$.post( url, { product_obj: ajax_product_arr }).done(function( data ) {
+	    console.log('done');
+	});
+}
+
+jQuery(document).ready(function($) {
+	$('.menu').responsiveMenu({
+		breakpoint: '1200'
+	});
+});
+</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+<script  src="../../../js/script.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#accordion i").click(function(){
+		//slide up all the link lists
+		$("#accordion ul ul").slideUp(200);
+		//slide down the link list below the h3 clicked - only if its closed
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown(200);
+		}
+	})
+
+    let is_touch_device = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
+    $('#PriceListCart').popover({
+      html: true,
+      placement: wheretoplace,
+      container: "body",
+      trigger: "hover",
+      title: '<i style="font-size:12px;" class="fa fa-star tick-green" aria-hidden="true"></i> <span style="font-size: 14px; font-weight: bold; line-height: 21px; color: #000;">Ratings</span>',
+      template: getPopoverCustomTemplate('PriceListCart'),
+      content: function() {
+        return $(this).parents().find('.PriceListCart').html();           
+      },
+    }).on('shown.bs.popover', function () {
+        $("body").append('<div id="popover_overlay"></div>');
+    }).on('hidden.bs.popover', function () {
+        $("#popover_overlay").remove();
+    });
+    $(document).on("hover", ".popover .close_popover", function() {
+      $(this).parents(".popover").popover('hide');
+    })
+})
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function onLoad() {
+  	gapi.load('client:auth2', function() {
+    	gapi.auth2.init();
+  	});
+}
+
+function logOut(login_type) {
+	if(login_type == 'google'){
+		let auth2 = gapi.auth2.getAuthInstance();
+	  	auth2.signOut().then(function () {
+	    	window.location.href = '/logout';
+	  	});
+	} else {
+		window.location.href = '/logout';
+	}
+}
+
+function getPopoverCustomTemplate(className) {
+  	return '<div class="popover ' + className + '" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3> <div class="popover-content"></div></div>';
+}
+
+function wheretoplace(){
+    if ($(window).width() > 1024) return 'bottom';
+    if ($(window).width() < 768) return 'top';
+    return 'left';
+}
+
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+
+setInterval(function () {
+   $('#loginModal').modal('show');
+   $('#loginModal').modal({backdrop:'static',keyboard:false, show:true});
+
+}, 10000);
+
+
+
+
+	let emailAddress = '', password = '';
+	let errEmailAddressFlag = 0, errPassword = 0;
+	function validateSignIn(){
+		errEmailAddressFlag = validateEmailAndPhoneAddress($('#txt-email-address').val());
+		if(errEmailAddressFlag > 0){
+			caption = (errEmailAddressFlag == 1) ? "<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_EMAIL'][language] %>" : "<%= labels['LBL_SIGN_IN_VALIDATE_FORMAT_EMAIL'][language] %>";
+			$('#err-email-address').text(caption).show();
+		} else {
+			$('#err-email-address').hide();
+		}
+
+		if(!$('#txt-password').val()){
+			errPassword = 1;
+			$('#err-password').text("<%= labels['LBL_SIGN_IN_VALIDATE_BLANK_PASSWORD'][language] %>").show();
+		} else {
+			errPassword = 0;
+			$('#err-password').hide();
+		}
+
+		if(!errEmailAddressFlag && !errPassword){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function submitSignIn(){
+		if(validateSignIn()){
+			signIn({ type: 'email', phoneNumberAndEmail: $('#txt-email-address').val(), password: $('#txt-password').val() });
+		}
+	}
+
+	function signIn(obj){
+		$.post('<%=baseURL%>', obj).done((response) => {
+			console.log(response);
+			console.log("Test.. auth...")
+			if(parseInt(response.code) == 200){
+				if(obj.type == 'email'){
+					$('#frm-sign-in').submit()
+
+				} else {
+					if(response.user_type == 'producers') {
+						window.location.href = "producers/dashboard";
+					} else if(response.user_type == 'aggregators') {
+						window.location.href = "aggregators/dashboard";
+					} else if(response.user_type == 'compradors') {
+						window.location.href = "compradors/dashboard";
+					} else if(response.user_type == 'transporters') {
+						window.location.href = "transporters/dashboard";
+					}
+				}
+					return false;
+			} else if(obj.type == 'email' && parseInt(response.code) == 409) {
+				window.location.href = "<%=baseURL%>verify-otp?mobile_country_code="+response.user_info.mobile_country_code+'&phone_number='+response.user_info.phone_number;
+			} else {
+				if(obj.type == 'google'){
+					var auth2 = gapi.auth2.getAuthInstance();
+				  	auth2.signOut().then(function () {});
+				}
+
+				showAlert(response.message);
+				setTimeout(() => {
+					hideAlert()
+					window.location.reload(true);
+				}, 3000);
+			}
+		});
+	}
+
+	function showAlert(message){
+		notify({
+            type: "error",
+            title: "<%= labels['LBL_MESSAGE'][language] %>",
+			 theme: "dark-theme",
+			 position: {
+                x: "right",
+                y: "top"
+            },
+            icon: '<img src="<%=baseURL%>images/paper_plane.png" />',
+            message: message
+        });
+	}
+
+	function hideAlert(){
+		$( ".notify-close-btn" ).trigger( "click" );
+	}
+
+	function onSignIn(googleUser) {
+		let profile = googleUser.getBasicProfile();
+	  	if(profile.getId()){
+	  		signIn({ type: 'google', social_id: profile.getId() });
+	  	}
+	}
+
+	$(document).ready(function(){
+		$('#txt-password').keypress(function (e) {
+		 	let key = e.which;
+		 	if(key == 13){
+		 		$('.btn-sign-in').trigger('click');
+		    	return false;
+		  	}
+		});
+
+	  	$('#google-sign-in').click('on', function(){
+	  		$('.abcRioButton').trigger('click');
+	  	})
+	});
+
+
+ // SignUp
+
+ let name = '', emailAddress_up = '', province_up = '', phoneNumber_up = '', password_up = '', confirmPassword_up = '', caption_up = '';
+	let errFirstNameFlag_up = 0, errLastNameFlag_up = 0, errCompanyNameFlag_up = 0, errEmailAddressFlag_up = 0, errProvince_up = 0, errCity_up = 0, errPhoneNumber_up = 0, errPassword_up = 0, errConfirmPassword_up = 0;
+	
+ 	
+ function loadCMS(user_type){
+		let url = "<%=baseURL%>get-cms?user_type="+user_type;
+		$.get(url, ( data ) => {
+			$('.sign-up-terms-title').text(data.title);
+	        $('.sign-up-terms-description').html(data.description);
+	    });
+	}
+
+	function showTermsOfService(language){
+		$('#myModal').modal('show');
+	}
+
+	function getType(){
+		if($('#txt-type').val() == 'individual'){
+			$('.company_name').addClass('hide').removeClass('show');
+		} else {
+			$('.company_name').addClass('show').removeClass('hide');
+		}
+	}
+     
+	function validateSignUp(){
+         if(!$('#txt-firstname').val()){
+             errFirstNameFlag_up = 1;
+             $('#err-firstname').text("<%= labels['LBL_SIGN_UP_VALIDATE_FIRST_NAME'][language] %>").show();
+         } else {
+             errFirstNameFlag_up = 0;
+             $('#err-firstname').hide();
+         }
+ 
+         if(!$('#txt-lastname').val()){
+             errLastNameFlag_up = 1;
+             $('#err-lastname').text("<%= labels['LBL_SIGN_UP_VALIDATE_LAST_NAME'][language] %>").show();
+         } else {
+             errLastNameFlag_up = 0;
+             $('#err-lastname').hide();
+         }
+ 
+         if($('#txt-type').val() == 'company'){
+             if(!$('#txt-company-name').val()){
+                 errCompanyNameFlag_up = 1;
+                 $('#err-company-name').text("<%= labels['LBL_SIGN_UP_TYPE_VALIDATE_COMPANY_NAME'][language] %>").show();
+             } else {
+                 errCompanyNameFlag_up = 0;
+                 $('#err-company-name').hide();
+             }
+         } else {
+             errCompanyNameFlag_up = 0;
+             $('#err-company-name').hide();
+         }
+ 
+         errEmailAddressFlag_up = validateEmailAddress($('#txt-email-up-address').val());
+         if(errEmailAddressFlag_up > 0){
+             caption = (errEmailAddressFlag_up == 1) ? " " : "<%= labels['LBL_SIGN_UP_VALIDATE_FORMAT_EMAIL'][language] %>";
+             $('#err-email-up-address').text(caption_up).show();
+         } else {
+             $('#err-email-up-address').hide();
+         }
+ 
+         if(!$('#txt-province').val()){
+             errProvince_up = 1;
+             $('#err-province').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_PROVINCE'][language] %>").show();
+         } else {
+             errProvince_up = 0;
+             $('#err-province').hide();
+         }
+ 
+         if(!$('#txt-city').val()){
+             errCity_up = 1;
+             $('#err-city').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_CITY'][language] %>").show();
+         } else {
+             errCity_up = 0;
+             $('#err-city').hide();
+         }
+ 
+         if(!$('#txt-phone-number').val()){
+             errPhoneNumber_up = 1;
+             $('#err-phone-number').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_MOBILE_NO'][language] %>").show();
+         } else {
+             errPhoneNumber_up = 0;
+             $('#err-phone-number').hide();
+         }
+ 
+         if(!$('#txt-password-up').val()){
+             errPassword_up = 1;
+             $('#err-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_PASSWORD'][language] %>").show();
+         } else {
+             errPassword_up = 0;
+             $('#err-password').hide();
+         }
+ 
+         if(!$('#txt-confirm-password').val()){
+             errConfirmPassword_up = 1;
+             $('#err-confirm-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_BLANK_CONFIRM_PASSWORD'][language] %>").show();
+         } else if($('#txt-password-up').val() != $('#txt-confirm-password').val()) {
+             errConfirmPassword_up = 1;
+             $('#err-confirm-password').text("<%= labels['LBL_SIGN_UP_VALIDATE_MATCH_PASSWORD_CONFIRM_PASSWORD'][language] %>").show();
+         } else {
+             errConfirmPassword_up = 0;
+             $('#err-confirm-password').hide();
+         }
+ 
+         if(!errFirstNameFlag_up && !errLastNameFlag_up && !errCompanyNameFlag_up && !errProvince_up && !errPhoneNumber_up && !errPassword_up && !errConfirmPassword_up){
+             return true;
+         } else {
+             return false;
+         }
+     }
+
+ function submitSignUp(){
+	
+		var email = ''
+		if( $('#txt-email-address').val()){
+			email =  $('#txt-email-address').val()
+		} else{
+			var name = $('#txt-firstname').val() + '.' + $('#txt-firstname').val()
+			email =$('#txt-email2-address').val(name  + '.kepya@gmail.com')
+		} 
+
+         if(validateSignUp()){
+             signUp({ type: 'email', mobile_country_code: $('#mobile_country_code').val(), phone_number: $('#txt-phone-number').val() });
+         }
+ }
+ 
+ function signUp(obj){
+      
+	console.log(obj)
+	$.post('<%=baseURL%>compradors/explore/checkEmailExist', obj).done((response) => {
+
+		console.log(response)
+
+		if(parseInt(response.code) == 200 && obj.type == 'email'){
+				if(obj.type == 'email'){
+					$('#frm-sign-up').submit()
+				} else {
+					window.location.href = response.user_type+"/dashboard";
+				}
+			} else if(parseInt(response.code) == 410){
+				window.location.href = "<%=baseURL%>verify-otp?mobile_country_code="+response.user_info.mobile_country_code+'&phone_number='+response.user_info.phone_number;
+			} else if((parseInt(response.code) == 200 || parseInt(response.code) == 409) && (obj.type == 'google' || obj.type == 'facebook')) {
+				window.location.href = response.user_type+"/dashboard";
+			} else {
+				if(obj.type == 'google'){
+					var auth2 = gapi.auth2.getAuthInstance();
+				  	auth2.signOut().then(function () {});
+				}else{
+
+				} 
+				
+				showAlert(response.message);
+				setTimeout(() => {
+					hideAlert()
+				}, 3000);
+			}
+		});
+	}
+ 
+ 
+ function onSocialSignUp(googleUser) {
+         let profile = googleUser.getBasicProfile();
+         signUp({ type: 'google', social_id: profile.getId(), name: profile.getName(), email: profile.getEmail(), user_type: $('input[name=users]:checked').val() });
+     }
+ 
+     function onFacebookSignUp(obj) {
+         signUp({ type: 'facebook', social_id: obj.id, name: obj.name, email: obj.email, user_type: $('input[name=users]:checked').val() });
+     }
+ 
+ 
+     $(document).ready(function(){
+           $('#google-sign-up').click('on', function(){
+               $('.abcRioButton').trigger('click');
+           })
+ 
+           $('#acebook-sign-up').click('on', function(){
+               $('.abcRioButton').trigger('click');
+           })
+     });
+ 
+
+	 function switchVisible() {
+            if (document.getElementById('Div1')) {
+
+                if (document.getElementById('Div1').style.display == 'none') {
+                    document.getElementById('Div1').style.display = 'block';
+                    document.getElementById('Div2').style.display = 'none';
+                }
+                else {
+                    document.getElementById('Div1').style.display = 'none';
+                    document.getElementById('Div2').style.display = 'block';
+                }
+            }
+}
+
+</script>
+</body>
+</html>

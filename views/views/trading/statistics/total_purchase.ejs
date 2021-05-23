@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../../../css/dashboard.css"/>
+<link rel="stylesheet" href="../../../css/product.css">
+<section class="best_product products">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_TRADING_DASHBOARD_STATISTICS_TOTAL_PURCHASE'][language] %></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box dash_bg">
+						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
+							<table class="table table-striped tbl-bottom-space ">
+								<thead>
+									<tr>
+										<th scope="col" width='15%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_ORDER_ID'][language] %></th>
+										<th scope="col" width='15%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE'][language] %></th>
+										<th scope="col" width='15%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE'][language] %></th>
+										<th scope="col" width='30%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS'][language] %></th>
+										<th scope="col" width='15%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT'][language] %></th>
+										<th scope="col" width='10%'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_STATUS'][language] %></th>
+									</tr>
+								</thead>
+								<tbody id='tbl_total_purchase_orders'>
+							  		<tr><td colspan='6'><%= labels['LBL_TRADING_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][language] %></td></tr>
+							  	</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+$(document).ready(()=> {
+	$.ajax({url: "<%=baseURL%>trading/statistics/get-total-purchase", success: (result) => {
+        $('#tbl_total_purchase_orders').html(result)
+    }});
+})
+</script>

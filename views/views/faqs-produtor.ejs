@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<title>Kepya Agromercado Digital</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+	<link rel="stylesheet" href="../../../css/wallet.css" />
+	<%- include('shared/common_css') %>
+		<script type='text/javascript' src="js/jquery-1.12.4.js"></script>
+		<script type='text/javascript' src="js/language.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122654457-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+			gtag('config', 'UA-122654457-1');
+		</script>
+</head>
+
+<body>
+	<div class="container custom-container" style="margin-top: 20px; margin-bottom: 20px;">
+		<div class="row paddy50">
+			<div class="col-md-2">
+				<div class="logo">
+					<a href="" title="Freshmart">
+						<img class="img-responsive" src="../../../images/logo.png" alt="Freshmart">
+					</a>
+				</div>
+			</div>
+			<div class="col-md-10 paddy0">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 cus_width">
+						<ul class="topnav" id="myTopnav">
+							<li class="call"><a href="tel:+244 93620626"><img src="../../../images/telephone.png">
+									+244
+									936206262</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: -30px;">
+		<div class="col-md-2 col-sm-12 col-xs-12" style="margin-left: -200px;">
+			<div class="wallet" style="width: 195px;">
+				<ul>
+					<div class="" style="width: 195px;">
+                        <li class="active">
+							<a href="<%=baseURL%>faqs-produtor">Manual do Produtor</a>
+						</li>
+						<li>
+							<a href="<%=baseURL%>faqs">Manual do Agregador</a>
+						</li>
+					</div>
+				</ul>
+		   </div>
+		</div>
+		<div class="col-md-7 col-sm-12 col-xs-12" style="margin-left:-60px;">
+			<div class="wallet">
+				<table cellpadding="0" cellspacing="0" width="100%"  height="100%">
+					<tr>
+						<td><iframe src="manuais/P_R_Produtor_Web.pdf" width="950" height="780"
+								style="border: none;"></iframe>
+						</td>
+					</tr>
+				</table>
+		   </div>
+		</div>
+	</div>
+</body>
+
+</html>

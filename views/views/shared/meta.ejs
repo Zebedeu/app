@@ -1,0 +1,15 @@
+<meta property="og:site_name" content="Scotch">
+	<meta property="og:url" content="<%=baseURL%>trading/explore/details/<%=product.product_id%>">
+	<meta property="og:type" content="website">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="<%= product.category[language] %> - <%= product.sub_category[language] %>">
+	<meta property="og:description" content="<%= labels['LBL_PRICE'][language] %>: <%= product.unit_price %> Kz/<%= product.unit_type %>, <%= labels['LBL_QUANTITY'][language] %>: <%= product.remaining_unit_qty %> <%= product.unit_type %>, <%= labels['LBL_LOCATION'][language] %>: <%= product.state_name %>">
+	<meta property="og:image" content="<%=product.images[0]%>">
+	<meta property="fb:app_id" content="1389892087910589">
+	<meta property="fb:admins" content="579622216,709634581">
+	<meta name="google-signin-client_id" content="<%=gSignInClientId%>">
+    <%- include('../../shared/common_css') %>
+	<link rel="stylesheet" href="../../../css/new_style.css">
+	<link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'>
+

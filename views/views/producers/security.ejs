@@ -1,0 +1,227 @@
+<section class="productsdetail">
+	<div class="container">
+		<div class="product_card">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="help_sidebar_right">
+						<div class="row order-list-title">
+								
+							<div class="col-md-12">
+								<h3>Your Account</h3>
+
+								<div class="row">									
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="product/list">
+											<div class="account_box">
+									        	<img src="../../../images/postadd.png">
+									        	<div class="account_box_inner">
+										        	<h3>Post Forecast or Products</h3>
+										        	<p>Post Forecast</p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="explore/list">
+											<div class="account_box">
+									        	<img src="../../../images/explore_pro.PNG">
+									        	<div class="account_box_inner">
+										        	<h3>Explore Products</h3>
+										        	<p>Explore latest product </p>
+									        	</div>
+											</div>
+										</a>
+									</div>	
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="javascript:void(0)">
+											<div class="account_box">
+									        	<img src="../../../images/signup.png">
+									        	<div class="account_box_inner">
+										        	<h3>Manage Users</h3>
+										        	<p>Your your users</p>
+									        	</div>
+											</div>
+										</a>
+									</div>	
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="javascript:void(0)">
+											<div class="account_box">
+									        	<img src="../../../images/pin_.png">
+									        	<div class="account_box_inner">
+										        	<h3>Your Addresses</h3>
+										        	<p>Edit addresses for orders</p>
+									        	</div>
+											</div>
+										</a>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<a href="javascript:void(0)">
+											<div class="account_box">
+									        	<img src="../../../images/login.png">
+									        	<div class="account_box_inner">
+										        	<h3>Login & security</h3>
+										        	<p>Edit login, name, and mobile number</p>
+									        	</div>
+											</div>
+										</a>
+									</div>							
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<% if(products.length > 0) { %>
+<section class="best_product products">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row" style='margin-bottom: 10px;'>
+				<div class="col-md-12 data-section">
+					<h3>Today's Forecasted Products</h2>
+				</div>
+			</div>
+			<div class="row" style='margin-bottom: 10px;'>
+				<div class="col-md-12 data-section">
+					<div class="kp_location" style='text-align: center;'>
+						<span class='blink' style='font-size:20px;'>Note: Here are the list of today's forecasted products, You can change price</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<% for(let i=0; i < products.length; i++) { %>
+					<div class="col-lg-12 col-sm-12 my_oderDetails">
+						<div class="col-lg-6 col-md-6 col-sm-7 kp_myorder">
+							<h2 style='text-transform: uppercase'><%= products[i].category_title %> <span></span></h2>
+							<h3 style='text-transform: capitalize'><%= products[i].sub_category_title %></h3>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span><%= products[i].location %></span>
+							</div>
+							<div class="order_status">
+								<span>
+									<i class="fa fa-calendar" aria-hidden="true"></i> 
+									Forecasted Date : <%= moment(products[i].expire_date).format('Do MMM YYYY') %>
+								</span>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 price_set">
+							<div class="sell_Cat Price_box">
+								<ul>
+									<li>	
+										<span style='text-transform: capitalize'>Units - <%= products[i].unit_type %></span>
+									</li>
+									<li>
+										<span style='text-transform: capitalize'>Unit Price - Kz <%= (products[i].unit_price).toFixed(2) %></span>
+									</li>
+									<li>
+										<span style='text-transform: capitalize'>In Stock - <%= products[i].unit_value %> <%= products[i].unit_type %></span>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="edit_ico">
+							<a href="javascript:void(0)"><i class="fa fa-edit"></i></a>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+<% } %>
+
+<section class="best_product products">
+	<div class="container">
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3>Recommended based on your activity</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+					<div class="product-data">
+						<div class="product-img">
+						  <img src="../../../images/3.jpg" alt="Avatar" class="pro-image">
+						  <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+						</div>
+						<div class="product-text">
+							<a href="exploreproduct-detail.html"><p>Grape Tomatoes</p></a>					
+							<h5>Vegetables</h5>
+							<h5><span>Kz 12.00</span> Units : KG</h5>
+							<h6>In Stock : 20000</h6>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span>Aungola</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+					<div class="product-data">
+						<div class="product-img">
+						  <img src="../../../images/2.jpg" alt="Avatar" class="pro-image">
+						  <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+						</div>
+						<div class="product-text">
+							<a href="exploreproduct-detail.html"><p>Organic Sweet Corn</p></a>						
+							<h5>Vegetables</h5>						
+							<h5><span>Kz 14.99</span> Units : KG</h5>
+							<h6>In Stock : 4000</h6>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span>Aungola</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+					<div class="product-data">
+						<div class="product-img">
+						  <img src="../../../images/4.jpg" alt="Avatar" class="pro-image">
+						  <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+						</div>
+						<div class="product-text">
+							<a href="exploreproduct-detail.html"><p>Organic Green Cabbage</p></a>					
+							<h5>Vegetables</h5>
+							<h5><span>Kz 140.00</span> Units : Tons</h5>
+							<h6>In Stock : 5000</h6>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span>Aungola</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 product-list">
+					<div class="product-data">
+						<div class="product-img">
+						  <img src="../../../images/1.jpg" alt="Avatar" class="pro-image">
+						  <span class="add-fav"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></span>
+						</div>
+						<div class="product-text">
+							<a href="exploreproduct-detail.html"><p>Fress Red Seedless</p></a>														
+							<h5>Fruits</h5>							
+							<h5><span>Kz 12.00</span> Units : KG</h5>
+							<h6>In Stock : 1000</h6>
+							<div class="kp_location">
+								<i class="fa fa-map-marker" aria-hidden="true"></i> <span>Aungola</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	function blink_text() {
+	    $('.blink').fadeOut(500);
+	    $('.blink').fadeIn(500);
+	}
+
+	$(document).ready(function(){
+		setInterval(blink_text, 1000);
+	})
+</script>

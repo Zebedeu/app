@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(()=> {
+		let values = [];
+		values = <%- JSON.stringify(values)%>;
+		let ctx = document.getElementById('myChart').getContext('2d');
+		let chart = new Chart(ctx, {
+		    type: 'line',
+			data: {
+		        labels: ["<%= labels['LBL_JAN'][language] %>", "<%= labels['LBL_FEB'][language] %>", "<%= labels['LBL_MAR'][language] %>", "<%= labels['LBL_APR'][language] %>", "<%= labels['LBL_MAY'][language] %>", "<%= labels['LBL_JUN'][language] %>", "<%= labels['LBL_JUL'][language] %>", "<%= labels['LBL_AUG'][language] %>", "<%= labels['LBL_SEP'][language] %>", "<%= labels['LBL_OCT'][language] %>", "<%= labels['LBL_NOV'][language] %>", "<%= labels['LBL_DEC'][language] %>"],
+		        datasets: [{
+		            label: "<%= labels['LBL_DASHBOARD_OUTWARDS_AMOUNT'][language] %>",
+		            backgroundColor: 'rgba(255, 255, 255, 0)',
+		            borderColor: 'rgba(26, 188, 138, 1)',
+		            data: values
+		        }]
+		    },
+
+		    options: {}
+		});
+	});
+</script>

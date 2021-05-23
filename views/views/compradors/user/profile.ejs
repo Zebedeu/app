@@ -1,0 +1,117 @@
+<script src="../../../../js/profile.js"></script>
+<section class="productsdetail">
+	<div class="container">
+		<div class="breadcrumb_card">
+			<%- include('../../shared/breadcrumb') %>
+		</div>
+		<div class="product_card">
+			<div class="help_sidebar_right">
+				<div class="row order-list-title">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+				 		<h3><%= labels['LBL_LOGIN_AND_SECURITY'][language] %> </h3>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_YOUR_ACCOUNT_USER_ID'][language] %>:</label>
+							    <p><%= user_info.user_id %></p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_YOUR_ACCOUNT_USER_TYPE'][language] %>:</label>
+							    <p><%= user_info.user_type %></p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_YOUR_ACCOUNT_TYPE'][language] %>:</label>
+							    <p class='capitalize'><%= user_info.type %></p>
+							</div>
+						</div>
+						<% if(user_info.type == 'company'){ %>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+						 		<div class="search-container loginsecurity_detail security-box-height">
+						        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_YOUR_ACCOUNT_COMPANY_NAME'][language] %>:</label>
+								    <p><%= user_info.company_name %></p>
+								</div>
+							</div>
+						<% } %>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_LOGIN_SECURITY_FIRST_NAME'][language] %>:</label>
+							    <p class='profile_first_name'><%= user_info.first_name %></p>
+							    <button class="main_btn2" onClick="getUserInfo('first_name','<%= labels['LBL_COMPRADOR_LOGIN_SECURITY_FIRST_NAME'][language] %>','<%= labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_FIRST_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_LOGIN_SECURITY_LAST_NAME'][language] %>:</label>
+							    <p class='profile_last_name'><%= user_info.last_name %></p>
+							    <button class="main_btn2" onClick="getUserInfo('last_name','<%= labels['LBL_COMPRADOR_LOGIN_SECURITY_LAST_NAME'][language] %>','<%= labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_LAST_NAME'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_EMAIL'][language] %>:</label>
+							    <p class='profile_email'><%= user_info.email %></p>
+							    <button class="main_btn2" onClick="getUserInfo('email','<%= labels['LBL_EMAIL'][language] %>','<%= labels['LBL_PRODUCER_LOGIN_SECURITY_VALIDATE_EMAIL'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<% if(user.login_type == 'email'){ %>
+							<div class="col-md-4 col-sm-12 col-xs-12">
+						 		<div class="search-container loginsecurity_detail security-box-height">
+						        	<label class="my-1 mr-2"><%= labels['LBL_PASSWORD'][language] %>:</label>
+								    <p class='profile_password'><%= user_info.display_password %></p>
+								    <input type='hidden' class='default_profile_password' value='<%= user_info.password %>'>
+								    <button class="main_btn2" onClick="getUserPasswordInfo('password','<%= labels['LBL_PASSWORD'][language] %>', '<%= user_info.password %>')"><%= labels['LBL_EDIT'][language] %></button>
+								</div>
+							</div>
+						<% } %>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_MOBILE_NUMBER'][language] %>:</label>
+							    <p class='profile_phone_number'><%= user_info.mobile_country_code %> <%= user_info.phone_number %></p>
+								<button class="main_btn2" onClick="getUserInfo('phone_number','<%= labels['LBL_PHONE_NUMBER'][language] %>','<%= labels['LBL_ENTER_PHONE_NUMBER'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="search-container loginsecurity_detail security-box-height">
+							   <label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_USER_BANK_NAME'][language] %>:</label>
+							   <p class='profile_doc'><%= user_info.bank_name %></p>
+							   <button class="main_btn2" onClick="getUserStateBank_Name_Info('<%=baseURL%>','bank_name','<%= labels['LBL_COMPRADOR_USER_BANK_NAME'][language] %>','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC'][language] %>','<%= user_info.user_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+						   </div>
+					   </div>
+
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= labels['LBL_COMPRADOR_USER_BANK_ACCOUNT_NO'][language] %>:</label>
+							    <p class='profile_bank_account_no'><%= user_info.bank_account_no %></p>
+							    <button class="main_btn2" onClick="getUserInfo('bank_account_no','<%= labels['LBL_COMPRADOR_USER_BANK_ACCOUNT_NO'][language] %>','<%= labels['LBL_COMPRADOR_LOGIN_SECURITY_VALIDATE_BANK_ACCOUNT_NO'][language] %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+					 		<div class="search-container loginsecurity_detail security-box-height">
+					        	<label class="my-1 mr-2"><%= lbl_nif %>:</label>
+							    <p class='profile_nif'><%= user_info.nif %></p>
+							    <button class="main_btn2" onClick="getUserInfo('nif','<%= lbl_nif %>','<%= lbl_validate_nif %>')"><%= labels['LBL_EDIT'][language] %></button>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="search-container loginsecurity_detail security-box-height">
+							   <label class="my-1 mr-2"><%= labels['LBL_PRODUCER_YOUR_ACCOUNT_DOCUMENT'][language] %>:</label>
+							   <p class='profile_doc'> <a href="<%= user_info.doc %>"> BI</a></p>
+							   <button class="main_btn2" onClick="getUserStateDocInfo('<%=baseURL%>','doc','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_DOC'][language] %>','<%= labels['LBL_AGGREGATOR_YOUR_ACCOUNT_VALIDATE_DOC'][language] %>','<%= user_info.user_id %>')"><%= labels['LBL_EDIT'][language] %></button>
+						   </div>
+					   </div>
+
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+				 		<a href="<%=baseURL%>compradors/dashboard"><button class="main_btn"><%= labels['LBL_DONE'][language] %></button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

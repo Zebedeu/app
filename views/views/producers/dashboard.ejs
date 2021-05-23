@@ -1,0 +1,393 @@
+<link rel="stylesheet" href="../../../css/dashboard.css" />
+<ul class="menu2">
+	<div class="container">
+		<li>
+			<a href="<%=baseURL%>producers/product/add">
+				<div class="account_box2">
+					<img src="../../../images/postadd.png">
+					<div class="account_box_inner2">
+						<h3><%= labels['LBL_PRODUCER_DASHBOARD_POST_FORECAST_OR_PRODUCTS'][language] %></h3>
+					</div>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="<%=baseURL%>producers/product/list">
+				<div class="account_box2">
+					<img src="../../../images/open-box.png">
+					<div class="account_box_inner2">
+						<h3><%= labels['LBL_PRODUCER_DASHBOARD_LIST_PRODUCTS_TITLE'][language] %></h3>					
+					</div>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="<%=baseURL%>producers/order/list">
+				<div class="account_box2">
+					<img src="../../../images/order.png">
+					<div class="account_box_inner2">
+						<h3><%= labels['LBL_PRODUCER_DASHBOARD_YOUR_ORDERS'][language] %></h3>
+					</div>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="<%=baseURL%>producers/user/profile">
+				<div class="account_box2">
+					<img src="../../../images/login.png">
+					<div class="account_box_inner2">
+						<h3><%= labels['LBL_PRODUCER_DASHBOARD_LOGIN_SECURITY'][language] %></h3>
+					</div>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="<%=baseURL%>kepyaindex">
+				<div class="account_box2">
+		        	<img src="../../../images/graphic.png">
+		        	<div class="account_box_inner2">
+			        	<h3><%= labels['LBL_COMPRADOR_DASHBOARD_KEPYA_INDEX'][language] %></h3>
+		        	</div>
+				</div>
+			</a>
+		</li>
+	</div>
+</ul>
+
+<section class="products">
+	<div class="container">
+
+		<div class="accordion js-accordion">
+			<div class="accordion__item js-accordion-item">
+				 <div class="accordion-header-dash js-accordion-header head_">
+					  <span></span></div>
+				 <div class="accordion-body js-accordion-body">
+					
+					<div class="row">
+						<div style="padding:0;" class="col-md-3">
+							<div class="dashboard-heading">
+								<div class="all">
+									<div class="row">
+										<div class="col-md-12 cus_paddy">
+											<div class="box dash_bg">
+												<h3 class="dash_title"><%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS'][language] %>
+												</h3>
+												<section class="statis text-center">
+													<div class="row">
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/statistics/total_sales">
+																<div class="box dash_bg">
+																	<i class="fa fa-bar-chart"></i>
+																	<h4 class="stat_title total-sales">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_SALES'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<div class="box dash_bg">
+																<i class="fa fa-eye"></i>
+																<h4 class="stat_title total-product-views">0</h4>
+																<p class="lead">
+																	<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_PRODUCT_VIEWS'][language] %>
+																</p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="box dash_bg">
+																<i class="fa fa-heart-o"></i>
+																<h4 class="stat_title total-favourite-list">0</h4>
+																<p class="lead">
+																	<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_COMPRADOR_FAVOURITE_LIST'][language] %>
+																</p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/product/sold-list">
+																<div class="box dash_bg">
+																	<i class="fa fa-cart-plus"></i>
+																	<h4 class="stat_title total-sold-products">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_SOLD_PRODUCTS'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/product/unsold-list">
+																<div class="box dash_bg">
+																	<i class="fa fa-cart-arrow-down"></i>
+																	<h4 class="stat_title total-unsold-products">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_UNSOLD_PRODUCTS'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/product/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-check-circle"></i>
+																	<h4 class="stat_title total-active-products">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_ACTIVE_PRODUCTS'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/product/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-times-circle"></i>
+																	<h4 class="stat_title total-inactive-products">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_INACTIVE_PRODUCTS'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<a href="<%=baseURL%>producers/product/list">
+																<div class="box dash_bg">
+																	<i class="fa fa-hourglass-end"></i>
+																	<h4 class="stat_title total-expired-products">0</h4>
+																	<p class="lead">
+																		<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_EXPIRED_PRODUCTS'][language] %>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="col-md-12">
+															<div class="box dash_bg">
+																<i class="fa fa-star"></i>
+																<h4 class="stat_title total-rate-reviews">0</h4>
+																<p class="lead">
+																	<%= labels['LBL_PRODUCER_DASHBOARD_STATISTICS_TOTAL_RATE_REVIEWS'][language] %>
+																</p>
+															</div>
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="padding:0;" class="col-md-9">
+							<div class="dashboard-heading">
+								<div class="box dash_bg">
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="box dash_bg dash_height">
+												<h4><%= labels['LBL_PRODUCER_DASHBOARD_CHART_EARNINGS'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas height="184" id="myChart" class='earningsChart'></canvas>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="box dash_bg dash_height">
+												<h4><%= labels['LBL_AGGREGATOR_DASHBOARD_CHART_SALES'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas height="184" id="bar-chart" class='salesChart'></canvas>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="box dash_bg dash_height">
+												<h4><%= labels['LBL_PRODUCER_DASHBOARD_TOP_PRODUCTS'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas height="184" id="bar-chart2" class='topProductsChart'></canvas>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="box dash_bg dash_height">
+												<h4><%= labels['LBL_PRODUCER_DASHBOARD_TOP_DESTINATIONS'][language] %></h4>
+												<div class="starter-stats">
+													<div class="clear"></div>
+													<div class="gains">
+														<canvas height="184" id="bar-chart3" class='topDestinationsChart'></canvas>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div style="padding-top: 20px;" class="">
+										<h4 style="padding-bottom: 15px;" class="dash_title">
+											<%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_ORDERS'][language] %></h4>
+										<section class="statis text-center">
+											<div class="row">
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title open-orders">0</h4>
+														<p class="lead">
+															<%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_OPEN_ORDERS'][language] %></p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title completed-orders">0</h4>
+														<p class="lead">
+															<%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_COMPLETED_ORDERS'][language] %>
+														</p>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="box dash_bg">
+														<i class="fa fa-shopping-cart"></i>
+														<h4 class="stat_title cancelled-orders">0</h4>
+														<p class="lead">
+															<%= labels['LBL_PRODUCER_DASHBOARD_TOTAL_CANCELLED_ORDERS'][language] %>
+														</p>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="best_product products" style="margin-top: -60px;">
+	<div class="container">
+
+		<div class="white_bg product_card">
+			<div class="row">
+				<div class="col-md-12 data-section">
+					<h3><%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS'][language] %></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box dash_bg">
+						<div style="padding-top: 0;margin-top: 15px;" class="wallet_history">
+							<table class="table table-striped tbl-bottom-space ">
+								<thead>
+									<tr>
+										<th scope="col" width='13%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_ORDER_ID'][language] %>
+										</th>
+										<th scope="col" width='13%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_CLIENT_ID'][language] %>
+										</th>
+										<th scope="col" width='12%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_ORDERED_DATE'][language] %>
+										</th>
+										<th scope="col" width='12%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_SHIPPED_DATE'][language] %>
+										</th>
+										<th scope="col" width='30%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_DESTINATION_ADDRESS'][language] %>
+										</th>
+										<th scope="col" width='10%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_TOTAL_AMOUNT'][language] %>
+										</th>
+										<th scope="col" width='10%'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_STATUS'][language] %></th>
+									</tr>
+								</thead>
+								<tbody id='tbl_ongoing_orders'>
+									<tr>
+										<td colspan='7'>
+											<%= labels['LBL_PRODUCER_DASHBOARD_ONGOING_ORDERS_NO_ORDERS'][language] %>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script>
+	$(document).ready(() => {
+		$.ajax({
+			url: "<%=baseURL%>check-profile-status", success: (result) => {
+				if (!result.is_profile) {
+					$('.profile-section').html(result.caption).addClass('show').removeClass('hide');
+				} else {
+					$('.profile-section').html('').addClass('hide').removeClass('show');
+				}
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/earnings", success: (result) => {
+				$('.earningsChart').html(result);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/sales", success: (result) => {
+				$('.salesChart').html(result);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/top-products", success: (result) => {
+				$('.topProductsChart').html(result);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/top-destinations", success: (result) => {
+				$('.topDestinationsChart').html(result);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/total", success: (result) => {
+				$('.total-sales').text(result.response.total_sales);
+				$('.total-product-views').text(result.response.total_product_views);
+				$('.total-favourite-list').text(result.response.total_favourite_list);
+				$('.total-sold-products').text(result.response.total_sold_products);
+				$('.total-unsold-products').text(result.response.total_unsold_products);
+				$('.total-active-products').text(result.response.total_active_products);
+				$('.total-inactive-products').text(result.response.total_inactive_products);
+				$('.total-expired-products').text(result.response.total_expired_products);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>statistics/total-orders", success: (result) => {
+				$('.open-orders').text(result.response.open);
+				$('.completed-orders').text(result.response.completed);
+				$('.cancelled-orders').text(result.response.cancelled);
+			}
+		});
+
+		$.ajax({
+			url: "<%=baseURL%>producers/dashboard/get-ongoing-orders", success: (result) => {
+				$('#tbl_ongoing_orders').html(result)
+			}
+		});
+	})
+</script>
+</body>
+
+</html>

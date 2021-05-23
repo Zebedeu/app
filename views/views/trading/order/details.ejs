@@ -1,0 +1,405 @@
+<link rel="stylesheet" href="../../../css/track.css" />
+<link rel="stylesheet" href="../../../css/order-detail.css">
+<script src="../../../js/review.js"></script>
+<section class="productsdetail">
+     <div class="container">
+          <div class="breadcrumb_card">
+               <%- include('../../shared/breadcrumb') %>
+          </div>
+          <div class="product_card">
+               <div class="row add-address post-add">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                         <h3><%= labels['LBL_ORDER_DETAILS'][language] %></h3>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                         <div class="my_orders">
+                              <div class="order_header">
+                                   <div class="row">
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_ORDER_ID'][language] %></h6>
+                                                  <p><%= order.order_id %></p>
+                                             </div>
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_STATUS'][language] %></h6>
+                                                  <p style="text-transform: capitalize !important;">                                                                                                           
+                                                       <!-- <%= order.status %> -->
+                                                       <% if(order.status == 'packed'){ %>
+                                                            <%= labels['LBL_PACKED'][language] %>
+                                                       <% } else if(order.status == 'shipped'){ %>
+                                                            <%= labels['LBL_SHIPPED'][language] %>
+                                                       <% } else if(order.status == 'delivered'){ %>
+                                                            <%= labels['LBL_DELIVERED'][language] %>
+                                                       <% } else if(order.status == 'waiting'){ %>
+                                                            <%= labels['LBL_RESERVED'][language] %>
+                                                       <% } else if(order.status == 'paid'){ %>
+                                                            <%= labels['LBL_PAID'][language] %>
+                                                       <% }else if(order.status == 'cancelled'){ %>
+                                                            <%= labels['LBL_CANCELLED'][language] %>
+                                                       <% } %>
+                                                  </p>
+
+
+                                             </div>
+                                             <% if(order['payment_type'] == 'atm_reference'){ %>
+                                             <% if(order['atm_reference_response']['TIME_LEFT']){ %>
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_TIME_LEFT'][language] %></h6>
+                                                  <p style="text-transform: capitalize !important;">
+                                                       <%= order['atm_reference_response']['TIME_LEFT'] %></p>
+                                             </div>
+                                             <% } %>
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_ENTITY_ID'][language] %></h6>
+                                                  <p style="text-transform: capitalize !important;">
+                                                       <%= order['atm_reference_response']['ENTITY_ID'] %></p>
+                                             </div>
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_REFERENCE_CODE'][language] %></h6>
+                                                  <p style="text-transform: capitalize !important;">
+                                                       <%= order['atm_reference_response']['REFERENCE'] %></p>
+                                             </div>
+                                             <div class="inline">
+                                                  <h6><%= labels['LBL_WALLET_AMOUNT'][language] %></h6>
+                                                  <p style="text-transform: capitalize !important;">
+                                                       <%= order['atm_reference_response']['AMOUNT'] %></p>
+                                             </div>
+                                             <% } %>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-4 col-xs-12 align_right">
+                                             
+                                             <% if(order.cargon_is_delivered == true && order.buyer_received == 'waiting'){ %>
+                                                  <p><%= labels['LBL_CONFIRM_ORDER'][language] %></p>
+                                                  <a href="javascript:void(0)"><button type="button" name="add-to-cart"
+                                                       class="add-to-cart-btn button btn-cart btn-confirm"
+                                                        onclick="actionConfirmOrder(true)"><%= labels['LBL_CONFIRM_ORDER_TRUE'][language] %></button>
+                                                  </a>
+
+                                                  <a href="javascript:void(0)"><button type="button" name="add-to-cart"
+                                                       class="add-to-cart-btn button btn-cart btn-confirm"
+                                                        onclick="actionConfirmOrder(false)"><%= labels['LBL_CONFIRM_ORDER_FALSE'][language] %></button>
+                                                  </a>
+                                             <% } %>  
+                                                  
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-4 col-xs-12 align_right hide">
+                                             <ul class="nav navbar-nav invoice_lable">
+                                                  <li class="dropdown"><a href="#" class="dropdown-toggle"
+                                                            data-toggle="dropdown" aria-expanded="false">Invoice
+                                                            <b class="caret"></b></a>
+                                                       <ul class="dropdown-menu my_account invoice_drop">
+                                                            <li><a class="" href="#">Download as PDF</a></li>
+                                                            <li><a class="" href="javascript:void(0)"
+                                                                      onclick="orderPrint()">Print</a></li>
+                                                       </ul>
+                                                  </li>
+                                             </ul>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="row order-detail">
+                                   <div class="col-md-6 mb-sm--20">
+                                        <div class="text-block">
+                                             <h4 style="line-height: 20px;" class="mb--20">
+                                                  <%= labels['LBL_SHIPPING_ADDRESS'][language] %></h4>
+                                             <% if(order.address_info){ %>
+                                                  <p class="capitalize"><%= order.address_info.type %> -
+                                                  <%= order.address_info.name %></p>
+                                                  <address><%= order.address_info.complete_address %>,
+                                                       <%= order.address_info.locality %>,
+                                                       <%= order.address_info.city_district %>,
+                                                       <%= order.address_info.state %>, <%= order.address_info.pin_code %>
+                                                  </address>
+                                             <% } else { %>
+                                                  <%= labels['LBL_TRANSPORTATION_NOT_NEEDED'][language] %>
+                                             <% } %>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                        <div class="text-block">
+                                             <h4 style="line-height: 20px;" class="mb--20">
+                                                  <%= labels['LBL_ORDER_SUMMERY'][language] %></h4>
+                                             <h6><%= labels['LBL_ITEM_SUB_TOTAL'][language] %>: <span>
+                                                       <%= order.subtotal %> Kz</span></h6>
+                                             <h6><%= labels['LBL_TRANSPORTATION_FEES'][language] %>: <span>
+                                                       <%= order.transport_fee %> Kz</span></h6>
+                                             <h6><%= labels['LBL_TOTAL'][language] %>: <span>
+                                                       <%= order.total %> Kz</span></h6>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="row" style="border-bottom: 1px solid #f0f0f0 !important;">
+                                   <div class="col">
+                                        <form id="msform">
+                                             <ul id="progressbar">
+                                                  <%- include('../../shared/track') %>
+                                             </ul>
+                                        </form>
+                                   </div>
+                              </div>
+
+                              <div class="row order_total">
+                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <p><%= labels['LBL_ORDERED_ON'][language] %> :
+                                             <span><%= order.delivery_at %></span></p>
+                                   </div>
+                                   <div class="col-md-6 col-sm-6 col-xs-12 align_right">
+                                        <p><%= labels['LBL_ORDER_TOTAL'][language] %> : <span>
+                                                  <%= order.total %> Kz</span></p>
+                                   </div>
+                              </div>
+                         </div>
+                         <table style="margin: 20px 0px 20px;" class="table shopping-cart-wrap cus_table">
+                              <tbody>
+                                   <tr>
+                                        <th scope="col"><%= labels['LBL_PRODUCT'][language] %></th>
+                                        <th scope="col" width="180"><%= labels['LBL_SHIPMENT_ID'][language] %></th>
+                                        <th scope="col" width="180"><%= labels['LBL_SHIPMENT_STATUS'][language] %></th>
+                                        <th scope="col" width="180"><%= labels['LBL_SELLER_ID'][language] %></th>
+                                        <th scope="col" width="120"><%= labels['LBL_QUANTITY'][language] %></th>
+                                        <th scope="col" width="120"><%= labels['LBL_PRICE'][language] %></th>
+                                        <th scope="col" width="100"><%= labels['LBL_TOTAL'][language] %></th>
+                                   </tr>
+                                   <% for(let j=0; j < order['products'].length; j++) { %>
+                                   <tr>
+                                        <td>
+                                             <figure class="">
+                                                  <div class="img-wrap"><img
+                                                            src="<%= order['products'][j]['images'][0] %>"
+                                                            class="img-thumbnail img-sm"></div>
+                                                  <figcaption class="media-body kp_myorder">
+                                                       <h3><%= order['products'][j]['sub_category_title'] %></h3>
+                                                       <h4><%= order['products'][j]['category_title'] %></h4>
+                                                  </figcaption>
+                                             </figure>
+                                        </td>
+                                        <td>
+                                             <h4><%= order['products'][j]['shipment_id'] %></h4>
+                                        </td>
+                                        <td>
+                                             <h4 style="text-transform: capitalize !important;">
+                                                  <% if(order['products'][j]['shipment_status'] == 'packed'){ %>
+                                                       <%= labels['LBL_PACKED'][language] %>
+                                                  <% } else if(order['products'][j]['shipment_status'] == 'shipped'){ %>
+                                                       <%= labels['LBL_SHIPPED'][language] %>
+                                                  <% } else if(order['products'][j]['shipment_status'] == 'delivered'){ %>
+                                                       <%= labels['LBL_DELIVERED'][language] %>
+                                                  <% } else if(order['products'][j]['shipment_status'] == 'waiting'){ %>
+                                                       <%= labels['LBL_RESERVED'][language] %>
+                                                  <% } %>
+                                             </h4>
+                                        </td>
+                                        <td>
+                                             <h4><%= order['products'][j]['user_info']['user_id'] %></h4>
+                                        </td>
+                                        <td>
+                                             <h4><%= order['products'][j]['product_qty'] %>
+                                                  <%= order['products'][j]['unit_type'] %></h4>
+                                        </td>
+                                        <td>
+                                             <h4 class="currency_color_text sku_wrapper">
+                                                  <%= (order['products'][j]['unit_price']) %> Kz /
+                                                  <%= order['products'][j]['unit_type'] %></h4>
+                                        </td>
+                                        <td>
+                                             <h4 class="currency_color_text sku_wrapper">
+                                                  <%= order['products'][j]['item_total'] %> Kz</h4>
+                                        </td>
+                                   </tr>
+                                   <% } %>
+                              </tbody>
+                         </table>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+<% if(order['status'] == 'delivered'){ %>
+<section class="productsdetail">
+     <div class="container">
+          <div class="product_card">
+               <div class="row add-address post-add">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                         <h3><%= labels['LBL_RATINGS'][language] %></h3>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                         <table style="margin: 20px 0px 20px;" class="table shopping-cart-wrap">
+                              <tr>
+                                   <th>
+                                        <h4><%= labels['LBL_PRODUCT_RATING'][language] %></h4>
+                                   </th>
+                              </tr>
+                              <tbody>
+                                   <% for(let j=0; j < order['products'].length; j++) { %>
+                                   <tr>
+                                        <td>
+                                             <figure class="">
+                                                  <div class="img-wrap"><img
+                                                            src="<%= order['products'][j]['images'][0] %>"
+                                                            class="img-thumbnail img-sm"></div>
+                                                  <figcaption class="media-body kp_myorder">
+                                                       <h3 class="product_rating"
+                                                            rating_product_id="<%= order['products'][j]['product_id'] %>">
+                                                            <%= order['products'][j]['sub_category_title'] %></h3>
+                                                       <div class="InputGroup rate">
+                                                            <% if(!order.is_rated){ %>
+                                                            <input type="radio"
+                                                                 name="product_rating_<%= order['products'][j]['product_id'] %>"
+                                                                 id="size_1_<%= order['products'][j]['product_id'] %>"
+                                                                 value="BAD" checked />
+                                                            <% } else { %>
+                                                            <input type="radio"
+                                                                 name="product_rating_<%= order['products'][j]['product_id'] %>"
+                                                                 id="size_1_<%= order['products'][j]['product_id'] %>"
+                                                                 value="BAD"
+                                                                 <% if(order['products'][j]['rating'] == 'BAD'){ %>checked<% } %> />
+                                                            <% } %>
+                                                            <label
+                                                                 for="size_1_<%= order['products'][j]['product_id'] %>"><%= labels['LBL_BAD'][language] %></label>
+
+                                                            <input type="radio"
+                                                                 name="product_rating_<%= order['products'][j]['product_id'] %>"
+                                                                 id="size_2_<%= order['products'][j]['product_id'] %>"
+                                                                 value="REGULAR"
+                                                                 <% if(order['products'][j]['rating'] == 'REGULAR'){ %>checked<% } %> />
+                                                            <label
+                                                                 for="size_2_<%= order['products'][j]['product_id'] %>"><%= labels['LBL_REGULAR'][language] %></label>
+
+                                                            <input type="radio"
+                                                                 name="product_rating_<%= order['products'][j]['product_id'] %>"
+                                                                 id="size_3_<%= order['products'][j]['product_id'] %>"
+                                                                 value="EXCELLENT"
+                                                                 <% if(order['products'][j]['rating'] == 'EXCELLENT'){ %>checked<% } %> />
+                                                            <label
+                                                                 for="size_3_<%= order['products'][j]['product_id'] %>"><%= labels['LBL_EXCELLENT'][language] %></label>
+                                                       </div>
+                                                  </figcaption>
+                                             </figure>
+                                        </td>
+                                   </tr>
+                                   <% } %>
+                              </tbody>
+                         </table>
+                         <table style="margin: 20px 0px 20px;" class="table shopping-cart-wrap">
+                              <tr>
+                                   <th>
+                                        <h4><%= labels['LBL_TRANSPORTER_RATING'][language] %></h4>
+                                   </th>
+                              </tr>
+                              <tbody>
+                                   <tr>
+                                        <td>
+                                             <figure class="">
+                                                  <div class="img-wrap"><img
+                                                            src="<%= baseURL %>images/delivery-truck.png"
+                                                            class="img-thumbnail img-sm"></div>
+                                                  <figcaption class="media-body kp_myorder">
+                                                       <h3><%= labels['LBL_DELIVERY_ON_TIME'][language] %></h3>
+                                                       <div class="InputGroup rate">
+                                                            <% if(!order.is_rated){ %>
+                                                            <input type="radio" name="size5" id="size_15" value="LATER"
+                                                                 checked />
+                                                            <% } else { %>
+                                                            <input type="radio" name="size5" id="size_15" value="LATER"
+                                                                 <% if(order.transporter_rating == 'LATER'){ %>checked<% } %> />
+                                                            <% } %>
+                                                            <label for="size_15"><%= labels['LBL_LATER'][language] %>
+                                                            </label>
+
+                                                            <input type="radio" name="size5" id="size_16"
+                                                                 value="ON_TIME"
+                                                                 <% if(order.transporter_rating == 'ON_TIME'){ %>checked<% } %> />
+                                                            <label
+                                                                 for="size_16"><%= labels['LBL_ON_TIME'][language] %></label>
+
+                                                            <input type="radio" name="size5" id="size_17" value="FASTER"
+                                                                 <% if(order.transporter_rating == 'FASTER'){ %>checked<% } %> />
+                                                            <label
+                                                                 for="size_17"><%= labels['LBL_FASTER'][language] %></label>
+                                                       </div>
+                                                  </figcaption>
+                                             </figure>
+                                        </td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                         <% if(!order.is_rated){ %>
+                         <a href="javascript:void(0)"><button type="button" name="add-to-cart"
+                                   class="add-to-cart-btn button btn-cart btn-rating"
+                                   onclick="actionRating()"><%= labels['LBL_SUBMIT'][language] %></button></a>
+                         <% } %>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+<% } %>
+<script>
+     let order_id = '<%= order.order_id %>';
+     $(document).ready(function () {
+          let isRated = JSON.parse(("<%= order.is_rated %>").toLowerCase());
+          if (isRated) {
+               $(":radio").attr("disabled", true);
+          }
+     });
+
+     function orderPrint() {
+          window.print();
+     }
+
+     function actionBidders(type, transporter_id) {
+          $.ajax({
+               url: "<%=baseURL%>trading/order/action-bidders?order_id=" + order_id + "&transporter_id=" + transporter_id + "&type=" + type, success: function (result) {
+                    console.log(result);
+               }
+          });
+     }
+
+     function actionConfirmOrder(params) {
+         
+          $.ajax({
+               url: "<%=baseURL%>trading/order/confirm?order_id=" + order_id + "&params=" + params, success: function (result) {
+                  
+                    if (result.code == 200) {
+                         showAlert("<%= labels['LBL_CONFIRM'][language] %>", '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                         setTimeout(() => {
+                              hideAlert()
+                         }, 3000);
+                    }
+               }
+          });
+
+          $('.btn-confirm').hide();
+     }
+
+     function actionRating() {
+          let ratingArr = [];
+          $('.product_rating').each(function () {
+               let currentElement = $(this);
+
+               let value = currentElement.attr('rating_product_id');
+               let rating_product_id = 'product_rating_' + value;
+
+               ratingArr.push({
+                    product_id: value,
+                    rating: $("input[name='" + rating_product_id + "']:checked").val()
+               })
+          });
+
+          $(":radio").attr("disabled", true);
+          $('.btn-rating').hide();
+          $.ajax({
+               url: "<%=baseURL%>trading/order/rating?order_id=" + order_id + "&delivery_on_time=" + $("input[name='size5']:checked").val() + "&product_rating=" + JSON.stringify(ratingArr), success: function (result) {
+                    if (result.code == 200) {
+                         showAlert("<%= labels['LBL_RATED'][language] %>", '<%=baseURL%>', "<%= labels['LBL_MESSAGE'][language] %>");
+                         setTimeout(() => {
+                              hideAlert()
+                         }, 3000);
+                    }
+               }
+          });
+     }
+</script>
